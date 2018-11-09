@@ -1,0 +1,10 @@
+.canvas__container {
+    width: 100%;
+    height: 55vh;
+
+    .canvas {
+        width: 100%;
+        height: 95%;
+        border: 1px solid $green;
+    }
+}

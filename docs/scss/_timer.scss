@@ -1,0 +1,12 @@
+.timer__container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: lightgray;
+    .timer {
+        height: 0.5rem;
+        width: 60%;
+        background-color: $green;
+    }
+}

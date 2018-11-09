@@ -1,0 +1,29 @@
+{
+  "name": "prototype",
+  "version": "1.0.0",
+  "description": "prototype",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alitvina812/prototype.git"
+  },
+  "author": "Anastasiia Litvina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alitvina812/prototype/issues"
+  },
+  "homepage": "https://github.com/alitvina812/prototype#readme",
+  "dependencies": {
+    "foundation-sites": "^6.5.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.10.0",
+    "grunt": "^1.0.3",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "load-grunt-tasks": "^4.0.0"
+  }
+}

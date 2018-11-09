@@ -1,0 +1,30 @@
+.bars__container {
+    width: 100%;
+    .bar__empty {
+        height: 30px;
+        width: 100%;
+        margin: 0 auto 10px auto;
+        line-height: 30px;
+        font-size: 16px;
+        color: white;
+        position: relative;
+        background-color: lightgray;
+        .bar__full {
+          display: block;
+          background-color: $green;
+          // width: 50%;
+          height: 100%;
+        } 
+        
+      }
+    
+      /* @keyframes bar-before{
+        0%{
+          width: 0px;
+        }
+        100%{
+          width: 100%;
+        }
+      } */
+
+}

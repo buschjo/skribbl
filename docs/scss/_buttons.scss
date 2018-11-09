@@ -1,0 +1,21 @@
+.button-start {
+    width: 100%;
+    background-color: $green;
+    font-size: 2rem;
+
+    &:hover {
+        background-color: darkgreen;
+    }
+}
+
+.button-info {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+}
+
+.button-clear {
+    width: 100%;
+}
