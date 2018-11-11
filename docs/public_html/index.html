@@ -65,12 +65,15 @@
                     <a href="#start" class="button">tempStart</a>
                 </div>
             <div class="cell small-4 margin-left-auto text-align-right">
-                <a href="#end" class="button">tempEnd</a>
+                <a href="#endDefeat" class="button">tempEndDEFEAT</a>
+            </div>
+             <div class="cell small-4 margin-left-auto text-align-right">
+                <a href="#endVictory" class="button">tempEndVICTORY</a>
             </div>
         </div>
     </section>
 
-    <section id="end" class="section screen__end grid-container">
+    <section id="endVictory" class="section screen__end grid-container">
         <div class="grid-x">
             <div class="cell small-4 margin-left-auto text-align-right">
                     <a href="#start" class="button">tempStart</a>
@@ -78,6 +81,37 @@
             <div class="cell small-4 margin-left-auto text-align-right">
                 <a href="#game" class="button">tempGame</a>
             </div>
+            <div>
+                <h1>You won!</h1>
+                <p>The AI is</p>
+                <p>XX%</p>
+                <p>sure.</p>
+            </div>
+            <div class="button-start__container cell small-10 margin-auto">
+                <a href="#game" class="button button-start">Next</a>
+            </div>
+            
+            
+        </div>
+     </section>
+        
+         <section id="endDefeat" class="section screen__end grid-container">
+        <div class="grid-x">
+            <div class="cell small-4 margin-left-auto text-align-right">
+                    <a href="#start" class="button">tempStart</a>
+            </div>
+            <div class="cell small-4 margin-left-auto text-align-right">
+                <a href="#game" class="button">tempGame</a>
+            </div>
+            <div>
+                <h1>You lost!</h1>
+                <p>You were a little to slow.</p>
+            </div>
+            <div class="button-start__container cell small-10 margin-auto">
+                <a href="#game" class="button button-start">Try again!</a>
+            </div>
+            
+            
         </div>
     </section>
 
