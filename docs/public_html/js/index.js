@@ -6,6 +6,22 @@ var mousePressed = false;
 var mode;
 
 /*
+Countdown Game 
+*/
+var widthTimer = 100;
+var timeLeft = 10;
+var timer = setInterval(function(){ --timeLeft;
+widthTimer = widthTimer - 10;
+document.getElementById("timer").style.width = widthTimer + '%';
+document.getElementById("countdownNumber").textContent = timeLeft;
+if (timeLeft <= 0){
+    clearInterval(timer);
+    document.getElementById("timer").style.width = 0 + '%';
+}
+},1000);
+
+
+/*
 prepare the drawing canvas 
 */
 $(function() {

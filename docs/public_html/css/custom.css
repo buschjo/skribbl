@@ -132,10 +132,11 @@ a.button {
   left: 0;
   background-color: lightgray;
 }
-.timer__container .timer {
+.timer__container #timer {
+  transition: width 0.3s linear;
   height: 0.5rem;
-  width: 60%;
-  background-color: #7ed957;
+  width: 100%;
+  background-color: #ff5757;
 }
 
 /*# sourceMappingURL=custom.css.map */

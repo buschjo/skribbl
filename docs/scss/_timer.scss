@@ -4,9 +4,10 @@
     right: 0;
     left: 0;
     background-color: lightgray;
-    .timer {
+    #timer {
+        transition: width .3s linear;
         height: 0.5rem;
-        width: 60%;
-        background-color: $green;
+        width: 100%;
+        background-color: $red;
     }
 }
