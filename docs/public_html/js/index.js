@@ -38,7 +38,7 @@ function setTable(top5, probs) {
         let prob = document.getElementById('prob' + (i + 1));
         let temp = probs[i];
         let mr = Math.round(temp * 100);
-        sym.pseudoStyle = ('after', 'width', mr);
+        prob.style.width = mr + '%';
         prob.innerHTML = top5[i];
     }
 
