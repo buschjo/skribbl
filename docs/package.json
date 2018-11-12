@@ -6,16 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alitvina812/prototype.git"
-  },
   "author": "Anastasiia Litvina",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alitvina812/prototype/issues"
-  },
-  "homepage": "https://github.com/alitvina812/prototype#readme",
+
   "dependencies": {
     "foundation-sites": "^6.5.0"
   },
