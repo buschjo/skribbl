@@ -72,14 +72,6 @@ a.button {
 
 .bars__container {
   width: 100%;
-  /* @keyframes bar-before{
-    0%{
-      width: 0px;
-    }
-    100%{
-      width: 100%;
-    }
-  } */
 }
 .bars__container .bar__empty {
   height: 30px;
@@ -92,8 +84,10 @@ a.button {
   background-color: lightgray;
 }
 .bars__container .bar__empty .bar__full {
+  transition: width 0.3s linear;
   display: block;
   background-color: #7ed957;
+  width: 0;
   height: 100%;
 }
 

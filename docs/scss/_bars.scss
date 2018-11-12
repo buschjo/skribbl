@@ -10,21 +10,13 @@
         position: relative;
         background-color: lightgray;
         .bar__full {
+          transition: width .3s linear;
           display: block;
           background-color: $green;
-          // width: 50%;
+          width: 0;
           height: 100%;
         } 
         
       }
-    
-      /* @keyframes bar-before{
-        0%{
-          width: 0px;
-        }
-        100%{
-          width: 100%;
-        }
-      } */
 
 }
