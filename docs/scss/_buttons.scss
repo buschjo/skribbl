@@ -14,8 +14,12 @@
     border-radius: 50%;
     font-size: 1.5rem;
     padding: 0.75rem;
+    border-color: $lightgrey;
 }
 
 .button-clear {
     width: 100%;
+}
+a.button {
+    text-decoration: none;
 }

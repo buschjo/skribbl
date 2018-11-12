@@ -20,13 +20,15 @@ body {
   text-align: right;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 .section {
   padding: 0;
   position: relative;
   height: 100vh;
   padding-top: 0.5rem;
-}
-.section.screen__game {
   padding: 1rem;
 }
 .button-start {
@@ -44,10 +46,15 @@ body {
   border-radius: 50%;
   font-size: 1.5rem;
   padding: 0.75rem;
+  border-color: #a6a6a6;
 }
 
 .button-clear {
   width: 100%;
+}
+
+a.button {
+  text-decoration: none;
 }
 
 .logo--start {

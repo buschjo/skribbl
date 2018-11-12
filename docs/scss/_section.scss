@@ -3,12 +3,12 @@
     position: relative;
     height: 100vh;
     padding-top: 0.5rem;
+    padding: 1rem;
     &.screen__start {
         
     }
 
     &.screen__game {
-        padding: 1rem;
     }
 
     &.screen__end {
