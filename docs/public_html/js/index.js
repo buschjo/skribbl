@@ -7,18 +7,24 @@ var mode;
 
 /*
 Countdown Game 
+Function must start after word,3,2,1 Overlay
 */
-var widthTimer = 100;
-var timeLeft = 10;
-var timer = setInterval(function(){ --timeLeft;
-widthTimer = widthTimer - 10;
-document.getElementById("timer").style.width = widthTimer + '%';
-document.getElementById("countdownNumber").textContent = timeLeft;
+var timerWidth = 100; 
+var totalTime = 20;
+var timeLeft = totalTime;
+var timer= setInterval(function(){ 
+timeLeft=timeLeft-0.1;
+timeLeft = timeLeft.toFixed(2);
+timerWidth = timeLeft * (100/totalTime);
+document.getElementById("timer").style.width = timerWidth + '%';
+document.getElementById("timerNumber").textContent = timeLeft;
+if (timerWidth < 10){
+    document.getElementById("timer").style.backgroundColor = "#ff5757";
+}
 if (timeLeft <= 0){
     clearInterval(timer);
-    document.getElementById("timer").style.width = 0 + '%';
 }
-},1000);
+},100);
 
 
 /*
