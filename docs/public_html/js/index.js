@@ -6,26 +6,70 @@ var mousePressed = false;
 var mode;
 
 /*
-Countdown Game 
-Function must start after word,3,2,1 Overlay
+Screens
+*/
+var startScreen = document.getElementById("start");
+var gameScreen = document.getElementById("game");
+var defeatScreen = document.getElementById("endDefeat");
+var victoryScreen = document.getElementById("endVictory");
+
+/*
+Countdown word,3,2,1
+*/
+var countdownTotal = 6;
+var countdownNumber = countdownTotal;
+function countdown() {
+    document.getElementById("overlay").style.display = "block";
+    var count = setInterval(function(){ 
+        countdownNumber--;
+        if(countdownNumber <= 4 && countdownNumber > 1){
+        document.getElementById("overlay-text").textContent = countdownNumber-1;
+        }
+        if(countdownNumber == 1){
+            document.getElementById("overlay-text").textContent = "Go!";
+        }
+        if(countdownNumber <= 0){
+        clearInterval(count);
+        startTimer();
+        document.getElementById("overlay").style.display = "none";
+        //Reset
+        document.getElementById("overlay-text").textContent = "PlaceholderWord";
+        countdownNumber = countdownTotal;
+        }
+        }, 1000);  
+}
+
+/*
+Timer
 */
 var timerWidth = 100; 
 var totalTime = 20;
 var timeLeft = totalTime;
-var timer= setInterval(function(){ 
-timeLeft=timeLeft-0.1;
+function startTimer() {
+var timer = setInterval(function(){ 
+timeLeft = timeLeft-0.1;
 timeLeft = timeLeft.toFixed(2);
 timerWidth = timeLeft * (100/totalTime);
 document.getElementById("timer").style.width = timerWidth + '%';
 document.getElementById("timerNumber").textContent = timeLeft;
-if (timerWidth < 10){
+if (timerWidth <= 30 && timerWidth > 10 ){
+    document.getElementById("timer").style.backgroundColor = "#ffde59";
+}
+if (timerWidth <= 10){
     document.getElementById("timer").style.backgroundColor = "#ff5757";
 }
 if (timeLeft <= 0){
     clearInterval(timer);
+    defeatScreen.scrollIntoView();
+    //Reset
+    timerWidth = 100;
+    timeLeft = totalTime;
+    document.getElementById("timer").style.width = timerWidth + '%';
+    document.getElementById("timerNumber").textContent = timeLeft;
+    document.getElementById("timer").style.backgroundColor = "#7ed957";
 }
 },100);
-
+}
 
 /*
 prepare the drawing canvas 

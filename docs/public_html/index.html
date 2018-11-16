@@ -32,7 +32,7 @@
             <div class="cell small-12 logo--start">
                 <img src="assets/logo_big_color.png" alt="logo">
             </div>
-            <div class="button-start__container cell small-10 margin-auto">
+            <div class="button-start__container cell small-10 margin-auto" onclick="countdown()"> 
                 <a href="#game" class="button button-start">START</a>
             </div>
         </div>
@@ -46,6 +46,9 @@
 
     <section id="game" class="section screen__game grid-container">
         <div class="grid-x">
+                <div id="overlay">
+                        <div id="overlay-text">PlaceholderWord</div>
+                 </div>
             <div class="cell small-12 timer__container">
                 <div id="timer">
                     <span id="timerNumber"></span>
