@@ -8,10 +8,6 @@
   },
   "author": "Anastasiia Litvina",
   "license": "ISC",
-
-  "dependencies": {
-    "foundation-sites": "^6.5.0"
-  },
   "devDependencies": {
     "node-sass": "^4.10.0",
     "grunt": "^1.0.3",
