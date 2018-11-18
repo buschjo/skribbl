@@ -6,6 +6,7 @@ var mousePressed = false;
 var mode;
 var timer;
 var eval;
+var word;
 
 /*
 Screens
@@ -20,7 +21,7 @@ function startGame() {
     erase();
     resetTimer(timer);
     clearInterval(eval);
-    var word = classNames[getRandomInt(99)];
+    word = classNames[getRandomInt(99)];
     console.log(word);
     gameScreen.scrollIntoView();
     countdown(word);
@@ -146,6 +147,11 @@ function setTable(top5, probs) {
         let mr = Math.round(temp * 100);
         prob.style.width = mr + '%';
         prob.innerHTML = top5[i];
+        if (top5[i] == word) {
+            prob.style.backgroundColor = "#5271ff";
+        } else {
+            prob.style.backgroundColor = "#545454";
+        }
     }
 
 }
