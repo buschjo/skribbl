@@ -249,7 +249,7 @@ function getClassNames(indices) {
 load the class names 
 */
 async function loadDict() {
-    loc = 'model/class_names.txt'
+    loc = 'model2/class_names.txt'
     
     await $.ajax({
         url: loc,
@@ -326,7 +326,7 @@ async function start(cur_mode) {
     mode = cur_mode;
     
     //load the model 
-    model = await tf.loadModel('model/model.json');
+    model = await tf.loadModel('model2/model.json');
     
     //warm up 
     model.predict(tf.zeros([1, 28, 28, 1]));
