@@ -32,8 +32,8 @@
             <div class="cell small-12 logo--start">
                 <img src="assets/logo_big_color.png" alt="logo">
             </div>
-            <div class="button-start__container cell small-10 margin-auto" onclick="countdown()"> 
-                <a href="#game" class="button button-start">START</a>
+            <div class="button-start__container cell small-10 margin-auto"> 
+                <button class="button button-start start-game">START</button>
             </div>
         </div>
         <div class="info__container" onclick="hideInfo()">
@@ -47,8 +47,8 @@
     <section id="game" class="section screen__game grid-container">
         <div class="grid-x">
                 <div id="overlay">
-                        <div id="overlay-text">PlaceholderWord</div>
-                 </div>
+                    <div id="overlay-text"></div>
+                </div>
             <div class="cell small-12 timer__container">
                 <div id="timer">
                     <span id="timerNumber"></span>
@@ -81,22 +81,29 @@
                     <a href="#start" class="button">tempStart</a>
                 </div>
             <div class="cell small-2 margin-left-auto text-align-right">
-                <a href="#endDefeat" class="button">Lose</a>
+                <button class="button start-game">Skip</button>
             </div>
-             <div class="cell small-2 margin-left-auto text-align-right">
+             <!--<div class="cell small-2 margin-left-auto text-align-right">
                 <a href="#endVictory" class="button">Win</a>
+            </div> -->
+        </div>
+    </section>
+
+    <section id="end" class="section screen__end grid-container">
+        <div class="grid-x">
+            <div id="result" class="cell small-12 text-align-center">
+                <h1>You lost!</h1>
+                <p>You were a little to slow.</p>
+            </div>
+            <div class="button-start__container cell small-10 margin-auto">
+                <button id="res-button" class="button button-start start-game">Try again!</button>
             </div>
         </div>
     </section>
 
-    <section id="endVictory" class="section screen__end grid-container">
+    <!-- <section id="endVictory" class="section screen__end grid-container">
         <div class="grid-x">
-            <div class="cell small-4 margin-left-auto text-align-right">
-                    <a href="#start" class="button">tempStart</a>
-                </div>
-            <div class="cell small-4 margin-left-auto text-align-right">
-                <a href="#game" class="button">tempGame</a>
-            </div>
+
             <div class="cell small-12 text-align-center">
                 <h1>You won!</h1>
                 <p>The AI is</p>
@@ -104,32 +111,31 @@
                 <p>sure.</p>
             </div>
             <div class="button-start__container cell small-10 margin-auto">
-                <a href="#game" class="button button-start">Next</a>
+                <button class="button button-start start-game">Next</button>
             </div>
-            
+            <div class="cell small-4 margin-left-auto text-align-right">
+                <a href="#start" class="button">tempStart</a>
+            </div>
             
         </div>
      </section>
         
     <section id="endDefeat" class="section screen__end grid-container">
         <div class="grid-x">
-            <div class="cell small-4 margin-left-auto text-align-right">
-                    <a href="#start" class="button">tempStart</a>
-            </div>
-            <div class="cell small-4 margin-left-auto text-align-right">
-                <a href="#game" class="button">tempGame</a>
-            </div>
             <div class="cell small-12 text-align-center">
                 <h1>You lost!</h1>
                 <p>You were a little to slow.</p>
             </div>
             <div class="button-start__container cell small-10 margin-auto">
-                <a href="#game" class="button button-start">Try again!</a>
+                <button class="button button-start start-game">Try again!</button>
+            </div>
+            <div class="cell small-4 margin-left-auto text-align-right">
+                <a href="#start" class="button">tempStart</a>
             </div>
             
             
         </div>
-    </section>
+    </section> -->
 
     <script src="js/index.js"></script>
     <script>

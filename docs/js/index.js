@@ -4,22 +4,64 @@ var classNames = [];
 var coords = [];
 var mousePressed = false;
 var mode;
+var timer;
+var eval;
 
 /*
 Screens
 */
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("game");
-var defeatScreen = document.getElementById("endDefeat");
-var victoryScreen = document.getElementById("endVictory");
+var endScreen = document.getElementById("end");
+// var defeatScreen = document.getElementById("endDefeat");
+// var victoryScreen = document.getElementById("endVictory");
 
+function startGame() {
+    erase();
+    resetTimer(timer);
+    clearInterval(eval);
+    var word = classNames[getRandomInt(99)];
+    console.log(word);
+    gameScreen.scrollIntoView();
+    countdown(word);
+    setTimeout(function() {
+        startTimer();
+        evaluate(word);
+    }, 7000)
+}
+
+
+
+$('.start-game').on('click', startGame);
+
+function stopGame() {
+    endScreen.scrollIntoView();
+    resetTimer(timer);
+    clearInterval(eval);
+}
+
+function evaluate(word) {        
+    eval = setInterval(function() {
+        var firstWord = document.getElementById('prob1').innerText;
+        console.log(firstWord);
+        var res = document.getElementById('result');
+        var resButton = document.getElementById('res-button');
+        if (firstWord == word) {
+            var percent = document.getElementById('prob1').style.width;
+            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p>";
+            resButton.innerText = 'Next';
+            stopGame();
+        }
+    }, 1000);
+}
 /*
 Countdown word,3,2,1
 */
 var countdownTotal = 6;
 var countdownNumber = countdownTotal;
-function countdown() {
+function countdown(word) {
     document.getElementById("overlay").style.display = "block";
+    document.getElementById("overlay-text").innerText = word;
     var count = setInterval(function(){ 
         countdownNumber--;
         if(countdownNumber <= 4 && countdownNumber > 1){
@@ -30,10 +72,7 @@ function countdown() {
         }
         if(countdownNumber <= 0){
         clearInterval(count);
-        startTimer();
         document.getElementById("overlay").style.display = "none";
-        //Reset
-        document.getElementById("overlay-text").textContent = "PlaceholderWord";
         countdownNumber = countdownTotal;
         }
         }, 1000);  
@@ -46,31 +85,32 @@ var timerWidth = 100;
 var totalTime = 20;
 var timeLeft = totalTime;
 function startTimer() {
-var timer = setInterval(function(){ 
-timeLeft = timeLeft-0.1;
-timeLeft = timeLeft.toFixed(2);
-timerWidth = timeLeft * (100/totalTime);
-document.getElementById("timer").style.width = timerWidth + '%';
-document.getElementById("timerNumber").textContent = timeLeft;
-if (timerWidth <= 30 && timerWidth > 10 ){
-    document.getElementById("timer").style.backgroundColor = "#ffde59";
+    timer = setInterval(function(){ 
+        timeLeft = timeLeft-0.1;
+        timeLeft = timeLeft.toFixed(2);
+        timerWidth = timeLeft * (100/totalTime);
+        document.getElementById("timer").style.width = timerWidth + '%';
+        // document.getElementById("timerNumber").textContent = timeLeft;
+        if (timerWidth <= 30 && timerWidth > 10 ){
+            document.getElementById("timer").style.backgroundColor = "#ffde59";
+        }
+        if (timerWidth <= 10){
+            document.getElementById("timer").style.backgroundColor = "#ff5757";
+        }
+        if (timeLeft <= 0){
+            stopGame();
+        }
+    },100);
 }
-if (timerWidth <= 10){
-    document.getElementById("timer").style.backgroundColor = "#ff5757";
-}
-if (timeLeft <= 0){
+
+function resetTimer(timer) {
     clearInterval(timer);
-    defeatScreen.scrollIntoView();
-    //Reset
     timerWidth = 100;
     timeLeft = totalTime;
     document.getElementById("timer").style.width = timerWidth + '%';
-    document.getElementById("timerNumber").textContent = timeLeft;
+    // document.getElementById("timerNumber").textContent = timeLeft;
     document.getElementById("timer").style.backgroundColor = "#7ed957";
 }
-},100);
-}
-
 /*
 prepare the drawing canvas 
 */
@@ -290,6 +330,8 @@ async function start(cur_mode) {
     
     //load the class names
     await loadDict();
+    console.log('started');
+    
 }
 
 // allow drawing
@@ -307,6 +349,11 @@ function erase() {
     canvas.clear();
     canvas.backgroundColor = '#ffffff';
     coords = [];
+    var bars = document.getElementsByClassName("bar__full");
+    for (let bar of bars) {
+        bar.innerHTML = " ";
+        bar.style.width = "0%";
+    }
 }
 
 let info = document.getElementsByClassName('info__container')[0];
@@ -317,3 +364,7 @@ function showInfo() {
 function hideInfo() {
     info.classList.remove('active')
 }
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
