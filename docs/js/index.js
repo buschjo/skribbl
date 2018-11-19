@@ -28,11 +28,23 @@ function startGame() {
         startTimer();
         evaluate(word);
     }, 7000)
+}   
+
+$('.start-game').on('click', tutorial);
+
+function tutorial(){
+    gameScreen.scrollIntoView();
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("skip").style.display = "block";
+    document.getElementById("overlay-text").innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
+}
+
+function skipTutorial(){
+    document.getElementById("skip").style.display = "none";
+    startGame();
 }
 
 
-
-$('.start-game').on('click', startGame);
 
 function stopGame() {
     endScreen.scrollIntoView();
@@ -111,6 +123,7 @@ function resetTimer(timer) {
     // document.getElementById("timerNumber").textContent = timeLeft;
     document.getElementById("timer").style.backgroundColor = "#7ed957";
 }
+
 /*
 prepare the drawing canvas 
 */
