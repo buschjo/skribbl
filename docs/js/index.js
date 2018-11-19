@@ -52,6 +52,9 @@ function evaluate(word) {
             res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p>";
             resButton.innerText = 'Next';
             stopGame();
+        } else {
+            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
+            resButton.innerText = 'Try again';
         }
     }, 1000);
 }
@@ -249,7 +252,7 @@ function getClassNames(indices) {
 load the class names 
 */
 async function loadDict() {
-    loc = 'modelNew/class_names.txt'
+    loc = 'modelNew10k/class_names.txt'
     
     await $.ajax({
         url: loc,
@@ -326,7 +329,7 @@ async function start(cur_mode) {
     mode = cur_mode;
     
     //load the model 
-    model = await tf.loadModel('modelNew/model.json');
+    model = await tf.loadModel('modelNew10k/model.json');
     
     //warm up 
     model.predict(tf.zeros([1, 28, 28, 1]));
