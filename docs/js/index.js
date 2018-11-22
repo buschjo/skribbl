@@ -7,6 +7,8 @@ var mode;
 var timer;
 var eval;
 var word;
+var time;
+var start;
 
 /*
 Screens
@@ -27,6 +29,7 @@ function startGame() {
     countdown(word);
     setTimeout(function() {
         startTimer();
+        start = performance.now();
         evaluate(word);
     }, 7000)
 }
@@ -49,7 +52,8 @@ function evaluate(word) {
         var resButton = document.getElementById('res-button');
         if (firstWord == word) {
             var percent = document.getElementById('prob1').style.width;
-            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p>";
+            time = performance.now();
+            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + (time - start)*100 + "<p> seconds.</p>";
             resButton.innerText = 'Next';
             stopGame();
         } else {
