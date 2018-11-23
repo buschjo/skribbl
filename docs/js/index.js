@@ -6,6 +6,7 @@ var mousePressed = false;
 var mode;
 var timer;
 var eval;
+var word;
 
 /*
 Screens
@@ -20,7 +21,7 @@ function startGame() {
     erase();
     resetTimer(timer);
     clearInterval(eval);
-    var word = classNames[getRandomInt(99)];
+    word = classNames[getRandomInt(99)];
     console.log(word);
     gameScreen.scrollIntoView();
     countdown(word);
@@ -63,6 +64,9 @@ function evaluate(word) {
             res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p>";
             resButton.innerText = 'Next';
             stopGame();
+        } else {
+            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
+            resButton.innerText = 'Try again';
         }
     }, 1000);
 }
@@ -159,6 +163,11 @@ function setTable(top5, probs) {
         let mr = Math.round(temp * 100);
         prob.style.width = mr + '%';
         prob.innerHTML = top5[i];
+        if (top5[i] == word) {
+            prob.style.backgroundColor = "#5271ff";
+        } else {
+            prob.style.backgroundColor = "#545454";
+        }
     }
 
 }
@@ -256,7 +265,7 @@ function getClassNames(indices) {
 load the class names 
 */
 async function loadDict() {
-    loc = 'model/class_names.txt'
+    loc = 'modelNew10k/class_names.txt'
     
     await $.ajax({
         url: loc,
@@ -333,7 +342,7 @@ async function start(cur_mode) {
     mode = cur_mode;
     
     //load the model 
-    model = await tf.loadModel('model/model.json');
+    model = await tf.loadModel('modelNew10k/model.json');
     
     //warm up 
     model.predict(tf.zeros([1, 28, 28, 1]));
