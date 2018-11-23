@@ -86,7 +86,6 @@ a.button {
 .bars__container .bar__empty .bar__full {
   transition: width 0.3s linear;
   display: block;
-  background-color: #7ed957;
   width: 0;
   height: 100%;
 }
