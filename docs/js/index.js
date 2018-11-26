@@ -61,22 +61,26 @@ function evaluate(word) {
 /*
 Countdown word,3,2,1
 */
+
 var countdownTotal = 6;
 var countdownNumber = countdownTotal;
+var overlayElement = document.getElementById("overlay");
+var overlayTextElement = document.getElementById("overlay-text");
+
 function countdown(word) {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("overlay-text").innerText = word;
+    overlayElement.style.display = "block";
+    overlayTextElement.innerText = word;
     var count = setInterval(function(){ 
         countdownNumber--;
         if(countdownNumber <= 4 && countdownNumber > 1){
-        document.getElementById("overlay-text").textContent = countdownNumber-1;
+        overlayTextElement.textContent = countdownNumber-1;
         }
         if(countdownNumber == 1){
-            document.getElementById("overlay-text").textContent = "Go!";
+            overlayTextElement.textContent = "Go!";
         }
         if(countdownNumber <= 0){
         clearInterval(count);
-        document.getElementById("overlay").style.display = "none";
+        overlay.style.display = "none";
         countdownNumber = countdownTotal;
         }
         }, 1000);  
@@ -85,21 +89,28 @@ function countdown(word) {
 /*
 Timer
 */
+var getTimerElement = document.getElementById("timer");
 var timerWidth = 100; 
 var totalTime = 20;
 var timeLeft = totalTime;
+
+
 function startTimer() {
     timer = setInterval(function(){ 
         timeLeft = timeLeft-0.1;
         timeLeft = timeLeft.toFixed(2);
         timerWidth = timeLeft * (100/totalTime);
-        document.getElementById("timer").style.width = timerWidth + '%';
+
+        getTimerElement.style.width = timerWidth + '%';
         // document.getElementById("timerNumber").textContent = timeLeft;
-        if (timerWidth <= 30 && timerWidth > 10 ){
-            document.getElementById("timer").style.backgroundColor = "#ffde59";
+        if (timerWidth <= 90 && timerWidth>60){
+        getTimerElement.style.animation ="transition1 7s linear"    
+        }  
+        if (timerWidth<=60&& timerWidth>20){
+            getTimerElement.style.backgroundColor = "#ffde59"
         }
-        if (timerWidth <= 10){
-            document.getElementById("timer").style.backgroundColor = "#ff5757";
+        if (timerWidth <= 20){
+        getTimerElement.style.animation = "transition2 4s linear"
         }
         if (timeLeft <= 0){
             stopGame();
@@ -111,9 +122,9 @@ function resetTimer(timer) {
     clearInterval(timer);
     timerWidth = 100;
     timeLeft = totalTime;
-    document.getElementById("timer").style.width = timerWidth + '%';
+    getTimerElement.style.width = timerWidth + '%';
     // document.getElementById("timerNumber").textContent = timeLeft;
-    document.getElementById("timer").style.backgroundColor = "#7ed957";
+    getTimerElement.style.backgroundColor = "#7ed957";
 }
 /*
 prepare the drawing canvas 
