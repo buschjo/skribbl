@@ -2,8 +2,6 @@
 import os
 import glob
 import numpy as np
-
-# Import keras with tensorflow backend
 from tensorflow import keras
 import tensorflow.keras.layers as layers
 import tensorflow as tf
@@ -24,7 +22,9 @@ def download():
 
 
 # Load the data
-# Load 5000 images per class to memory
+# root = directory of npy files
+# vfold_ratio = percentage of validation data
+# max_items_per_class = number of training data + validation data
 def load_data(root, vfold_ratio=0.2, max_items_per_class=5000):
     all_files = glob.glob(os.path.join(root, '*.npy'))
 
@@ -54,9 +54,13 @@ def load_data(root, vfold_ratio=0.2, max_items_per_class=5000):
     # Separate into training and testing
     vfold_size = int(x.shape[0] / 100 * (vfold_ratio * 100))
 
+    # x_test = image data for validation set
+    # y_test = label of image for validation set
     x_test = x[0:vfold_size, :]
     y_test = y[0:vfold_size]
 
+    # x_train = image data for training set
+    # y_train = label of image for training set
     x_train = x[vfold_size:x.shape[0], :]
     y_train = y[vfold_size:y.shape[0]]
     return x_train, y_train, x_test, y_test, class_names
@@ -96,6 +100,7 @@ x_test /= 255.0
 
 
 # Convert class vectors to class matrices
+# to_categorical has to be used if we are going to apply categorical cross-entropy
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
@@ -144,20 +149,30 @@ model.add(layers.Dense(100, activation='softmax'))
 # Learning rate decay over each update (decay) = 0.0, amsgrad = False
 adam = tf.train.AdamOptimizer()
 # Before training the model, the learning process has to be configured, which is done via the compile().
-# This receives three arguments: optimizer, loss function, and list of metrics
-# Adam is used to optimize the loss function
-# Loss function is calculated using cross-entropy.
+# This receives three arguments: optimizer, loss, and metrics
+# Optimizers specifies the training procedure
+# optimizer = We used the Adam algorithm to optimize the loss function
+# Loss = has to be minimized during optimization
+# loss = We calculated this using categorical cross-entropy. This configures the model for categorical classification.
 # This evaluates the cross-entropy of the predicted output and the true label.
+# Metric is used to judge the performance of the model or to monitor training
 model.compile(loss='categorical_crossentropy',
               optimizer=adam,
               metrics=['top_k_categorical_accuracy'])
+# This prints a summary representation of the model.
 print(model.summary())
 
 
 # Training
 # Train the model on a dataset for 5 epochs and 256 batches with 10% validation split
-# batch_size represents the number of dataset elements we apply at the model at a time.
-# Epochs represent how many times we iterate over the current batch NOT the whole dataset
+# x = image data
+# y = labels
+# validation_split = fraction of images reserved for validation (between 0 and 1)
+# validation_split = the validation data used will be the last 10% of the data and is never shuffled
+# batch_size = number of dataset elements we apply at the model at a time.
+# The model slices the data into smaller batches and iterates over these batches during training.
+# epochs = how many times we iterate over the current batch NOT the whole dataset
+# epoch = one iteration over the entire input data, which is done in smaller batches
 # Fit the model
 model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=256, verbose=2, epochs=5)
 
@@ -186,6 +201,11 @@ print(latex)
 
 # Prepare the model for web format
 # Save the model so we can convert it
+# The Keras model is saved into a HDF5 file which contains:
+# architecture of the model, allowing to recreate the model (.json file)
+# weights of the model (shard files)
+# training configuration (loss, optimizer)
+# state of the optimizer, allowing to resume training exactly where you left off
 model.save('keras.h5')
 
 
