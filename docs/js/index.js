@@ -103,8 +103,8 @@ function startTimer() {
 
         getTimerElement.style.width = timerWidth + '%';
         // document.getElementById("timerNumber").textContent = timeLeft;
-        if (timerWidth <= 90 && timerWidth>60){
-        getTimerElement.style.animation ="transition1 7s linear"    
+        if (timerWidth <= 85 && timerWidth>60){
+        getTimerElement.style.animation ="transition1 5s linear"    
         }  
         if (timerWidth<=60&& timerWidth>20){
             getTimerElement.style.backgroundColor = "#ffde59"
