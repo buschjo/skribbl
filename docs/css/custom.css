@@ -3,6 +3,22 @@ body {
   overflow: hidden;
 }
 
+@keyframes transition1 {
+  from {
+    background-color: #7ed957;
+  }
+  to {
+    background-color: #ffde59;
+  }
+}
+@keyframes transition2 {
+  from {
+    background-color: #ffde59;
+  }
+  to {
+    background-color: red;
+  }
+}
 .margin-left-auto {
   margin-left: auto;
 }
@@ -150,15 +166,6 @@ a.button {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   cursor: pointer;
-}
-@keyframes transition1{
-  from{background-color: #7ed957}
-  to{background-color: #ffde59}
-}
-@keyframes transition2{
-  from{background-color: #ffde59}
-  to{background-color: red}
-  
 }
 
 #overlay-text {
