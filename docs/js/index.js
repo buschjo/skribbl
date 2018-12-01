@@ -16,9 +16,13 @@ Screens
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("game");
 var endScreen = document.getElementById("end");
-// var defeatScreen = document.getElementById("endDefeat");
-// var victoryScreen = document.getElementById("endVictory");
 
+//Function call after startbutton click
+$('.start-game').on('click', tutorial);
+
+/*
+Game Function
+*/
 function startGame() {
     erase();
     resetTimer(timer);
@@ -33,31 +37,41 @@ function startGame() {
         startTimer();
         start = performance.now();
         evaluate(word);
-    }, 7000)
+    }, 5000)
 }   
 
-$('.start-game').on('click', tutorial);
-
-function tutorial(){
-    gameScreen.scrollIntoView();
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("skip").style.display = "block";
-    document.getElementById("overlay-text").innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
-}
-
-function skipTutorial(){
-    document.getElementById("skip").style.display = "none";
-    startGame();
-}
-
-
-
+/*
+Stop Game
+*/
 function stopGame() {
     endScreen.scrollIntoView();
     resetTimer(timer);
     clearInterval(eval);
 }
 
+/*
+Show Tutorial
+*/
+function tutorial(){
+    gameScreen.scrollIntoView();
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("skip").style.display = "block";
+    document.getElementById("nextstep").style.display = "block";
+    document.getElementById("overlay-text").innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
+}
+
+/*
+Skip Tutorial
+*/
+function skipTutorial(){
+    document.getElementById("skip").style.display = "none";
+    document.getElementById("nextstep").style.display = "none";
+    startGame();
+}
+
+/*
+Evaluate word, Victory/DefeatScreen
+*/
 function evaluate(word) {
     eval = setInterval(function () {
         var firstWord = document.getElementById('prob1').innerText;
@@ -69,50 +83,53 @@ function evaluate(word) {
             var percent = document.getElementById('prob1').style.width;
             time = performance.now();
             res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + (time - start) * 100 + "<p> seconds.</p>";
-            resButton.innerText = 'Next';
+            resButton.innerText = 'NEXT';
             stopGame();
         } else {
             res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
-            resButton.innerText = 'Try again';
+            resButton.innerText = 'TRY AGAIN';
         }
     }, 1000);
 }
+
 /*
 Countdown word,3,2,1
 */
-
-var countdownTotal = 6;
+var countdownTotal = 4;
 var countdownNumber = countdownTotal;
 var overlayElement = document.getElementById("overlay");
-var overlayTextElement = document.getElementById("overlay-text");
+var overlayTextElementWord = document.getElementById("overlay-text");
+var overlayTextElementCountdown = document.getElementById("overlay-number");
 
 function countdown(word) {
+    countdownNumber = countdownTotal;
     overlayElement.style.display = "block";
-    overlayTextElement.innerText = word;
     var count = setInterval(function () {
-        countdownNumber--;
+        overlayTextElementWord.textContent = word;
         if (countdownNumber <= 4 && countdownNumber > 1) {
-            overlayTextElement.textContent = countdownNumber - 1;
+            overlayTextElementCountdown.textContent = countdownNumber-1;
         }
         if (countdownNumber == 1) {
-            overlayTextElement.textContent = "Go!";
+            overlayTextElementCountdown.textContent = "Draw!";
         }
         if (countdownNumber <= 0) {
             clearInterval(count);
+            overlayTextElementCountdown.textContent = "";
             overlay.style.display = "none";
             countdownNumber = countdownTotal;
         }
+        countdownNumber--;
+        
     }, 1000);
 }
 
 /*
-Timer
+Start Timer
 */
 var getTimerElement = document.getElementById("timer");
 var timerWidth = 100;
 var totalTime = 20;
 var timeLeft = totalTime;
-
 
 function startTimer() {
     timer = setInterval(function () {
@@ -137,6 +154,9 @@ function startTimer() {
     }, 100);
 }
 
+/*
+Reset Timer
+*/
 function resetTimer(timer) {
     clearInterval(timer);
     timerWidth = 100;
@@ -145,6 +165,7 @@ function resetTimer(timer) {
     // document.getElementById("timerNumber").textContent = timeLeft;
     getTimerElement.style.backgroundColor = "#7ed957";
 }
+
 
 /*
 prepare the drawing canvas 
@@ -396,6 +417,9 @@ function erase() {
     }
 }
 
+/*
+Info-Button
+*/
 let info = document.getElementsByClassName('info__container')[0];
 function showInfo() {
     info.classList.add('active');
@@ -405,6 +429,9 @@ function hideInfo() {
     info.classList.remove('active')
 }
 
+/*
+Function for random word
+*/
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
