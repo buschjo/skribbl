@@ -8,7 +8,7 @@ var timer;
 var eval;
 var word;
 var time;
-var start;
+var startingTimeForVictoryScreen;
 
 /*
 Screens
@@ -29,13 +29,11 @@ function startGame() {
     clearInterval(eval);
     word = classNames[getRandomInt(100)];
     console.log(classNames.length);
-    console.log(classNames[0]);
     console.log(word);
     gameScreen.scrollIntoView();
     countdown(word);
     setTimeout(function () {
         startTimer();
-        start = performance.now();
         evaluate(word);
     }, 5000)
 }   
@@ -47,6 +45,7 @@ function stopGame() {
     endScreen.scrollIntoView();
     resetTimer(timer);
     clearInterval(eval);
+    
 }
 
 /*
@@ -70,7 +69,7 @@ function skipTutorial(){
 }
 
 /*
-Evaluate word, Victory/DefeatScreen
+Evaluate word, Victory/DefeatScreen, Calculated time
 */
 function evaluate(word) {
     eval = setInterval(function () {
@@ -78,18 +77,23 @@ function evaluate(word) {
         console.log(firstWord);
         var res = document.getElementById('result');
         var resButton = document.getElementById('res-button');
-
-        if (firstWord == word) {
-            var percent = document.getElementById('prob1').style.width;
-            time = performance.now();
-            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + (time - start) * 100 + "<p> seconds.</p>";
+        
+        if (word == firstWord) {
+            var percent = document.getElementById('prob1').style.width;        
+            var timeElapsed = calculateTimeElapsed()/1000;
+            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + timeElapsed + "<p> seconds.</p>";
             resButton.innerText = 'NEXT';
             stopGame();
-        } else {
+        } else if(firstWord != word) {
             res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
             resButton.innerText = 'TRY AGAIN';
         }
     }, 1000);
+
+    function calculateTimeElapsed() {
+        var endTimeforVictoryScreen = Date.now();
+        return endTimeforVictoryScreen - startingTimeForVictoryScreen;
+    }
 }
 
 /*
@@ -132,26 +136,32 @@ var totalTime = 20;
 var timeLeft = totalTime;
 
 function startTimer() {
+startingTimeForVictoryScreen= Date.now();
     timer = setInterval(function () {
         timeLeft = timeLeft - 0.1;
         timeLeft = timeLeft.toFixed(2);
         timerWidth = timeLeft * (100 / totalTime);
-
         getTimerElement.style.width = timerWidth + '%';
+     
         // document.getElementById("timerNumber").textContent = timeLeft;
-        if (timerWidth <= 85 && timerWidth > 60) {
-            getTimerElement.style.animation = "transition1 5s linear"
-        }
-        if (timerWidth <= 60 && timerWidth > 20) {
-            getTimerElement.style.backgroundColor = "#ffde59"
-        }
-        if (timerWidth <= 20) {
-            getTimerElement.style.animation = "transition2 4s linear"
-        }
+        makeColorTransitionforTimer();
+        
         if (timeLeft <= 0) {
             stopGame();
         }
     }, 100);
+}
+
+function makeColorTransitionforTimer() {
+    if (timerWidth <= 85 && timerWidth > 60) {
+        getTimerElement.style.animation = "transition1 5s linear";
+    }
+    if (timerWidth <= 60 && timerWidth > 20) {
+        getTimerElement.style.backgroundColor = "#ffde59";
+    }
+    if (timerWidth <= 20) {
+        getTimerElement.style.animation = "transition2 4s linear";
+    }
 }
 
 /*
@@ -409,7 +419,6 @@ function allowDrawing() {
 function erase() {
     canvas.clear();
     canvas.backgroundColor = '#ffffff';
-    coords = [];
     var bars = document.getElementsByClassName("bar__full");
     for (let bar of bars) {
         bar.innerHTML = " ";
