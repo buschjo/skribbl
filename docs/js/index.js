@@ -36,7 +36,7 @@ function startGame() {
         startTimer();
         evaluate(word);
     }, 5000)
-}   
+}
 
 /*
 Stop Game
@@ -45,13 +45,13 @@ function stopGame() {
     endScreen.scrollIntoView();
     resetTimer(timer);
     clearInterval(eval);
-    
+
 }
 
 /*
 Show Tutorial
 */
-function tutorial(){
+function tutorial() {
     gameScreen.scrollIntoView();
     document.getElementById("overlay").style.display = "block";
     document.getElementById("skip").style.display = "block";
@@ -62,7 +62,7 @@ function tutorial(){
 /*
 Skip Tutorial
 */
-function skipTutorial(){
+function skipTutorial() {
     document.getElementById("skip").style.display = "none";
     document.getElementById("nextstep").style.display = "none";
     startGame();
@@ -77,14 +77,14 @@ function evaluate(word) {
         console.log(firstWord);
         var res = document.getElementById('result');
         var resButton = document.getElementById('res-button');
-        
+
         if (word == firstWord) {
-            var percent = document.getElementById('prob1').style.width;        
-            var timeElapsed = calculateTimeElapsed()/1000;
+            var percent = document.getElementById('prob1').style.width;
+            var timeElapsed = calculateTimeElapsed() / 1000;
             res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + timeElapsed + "<p> seconds.</p>";
             resButton.innerText = 'NEXT';
             stopGame();
-        } else if(firstWord != word) {
+        } else if (firstWord != word) {
             res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
             resButton.innerText = 'TRY AGAIN';
         }
@@ -111,7 +111,7 @@ function countdown(word) {
     var count = setInterval(function () {
         overlayTextElementWord.textContent = word;
         if (countdownNumber <= 4 && countdownNumber > 1) {
-            overlayTextElementCountdown.textContent = countdownNumber-1;
+            overlayTextElementCountdown.textContent = countdownNumber - 1;
         }
         if (countdownNumber == 1) {
             overlayTextElementCountdown.textContent = "Draw!";
@@ -123,7 +123,7 @@ function countdown(word) {
             countdownNumber = countdownTotal;
         }
         countdownNumber--;
-        
+
     }, 1000);
 }
 
@@ -136,16 +136,16 @@ var totalTime = 20;
 var timeLeft = totalTime;
 
 function startTimer() {
-startingTimeForVictoryScreen= Date.now();
+    startingTimeForVictoryScreen = Date.now();
     timer = setInterval(function () {
         timeLeft = timeLeft - 0.1;
         timeLeft = timeLeft.toFixed(2);
         timerWidth = timeLeft * (100 / totalTime);
         getTimerElement.style.width = timerWidth + '%';
-     
+
         // document.getElementById("timerNumber").textContent = timeLeft;
         makeColorTransitionforTimer();
-        
+
         if (timeLeft <= 0) {
             stopGame();
         }
@@ -187,6 +187,7 @@ $(function () {
     canvas.freeDrawingBrush.color = "black";
     canvas.freeDrawingBrush.width = 10;
     canvas.renderAll();
+
     //setup listeners 
     canvas.on('mouse:up', function (e) {
         getFrame();
@@ -196,7 +197,7 @@ $(function () {
         mousePressed = true
     });
     canvas.on('mouse:move', function (e) {
-        recordCoor(e)
+        recordCoor(e);
     });
 })
 
@@ -231,7 +232,10 @@ function recordCoor(event) {
 
     if (posX >= 0 && posY >= 0 && mousePressed) {
         coords.push(pointer)
+
     }
+
+
 }
 
 /*
@@ -423,6 +427,19 @@ function erase() {
     for (let bar of bars) {
         bar.innerHTML = " ";
         bar.style.width = "0%";
+
+    }
+}
+//undobutton 
+var h = [];
+function undo() {
+    if (canvas._objects.length > 0) {
+        h.push(canvas._objects.pop());
+        h.forEach(i => {
+            console.log(i);
+
+        });
+        canvas.renderAll();
     }
 }
 
