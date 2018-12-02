@@ -37,6 +37,7 @@ function startGame() {
 }   
 
 $('.start-game').on('click', tutorial);
+$('.button-info').on('click', showInfo);
 
 function tutorial(){
     gameScreen.scrollIntoView();
