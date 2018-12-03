@@ -1,0 +1,100 @@
+apple
+banana
+bandage
+baseball
+baseball bat
+basketball
+bed
+bench
+boomerang
+bowtie
+bucket
+chair
+circle
+cloud
+coffee cup
+crown
+donut
+envelope
+fish
+flower
+hexagon
+lollipop
+mushroom
+octagon
+scissors
+screwdriver
+shoe
+shorts
+smiley face
+spoon
+square
+star
+sun
+sword
+television
+tooth
+tree
+triangle
+umbrella
+wheel
+alarm clock
+angel
+arm
+axe
+basket
+beard
+bee
+belt
+bird
+broom
+bus
+butterfly
+camera
+car
+cat
+cell phone
+ear
+fence
+flashlight
+foot
+frying pan
+hand
+hat
+headphones
+hot dog
+hourglass
+house
+key
+knife
+laptop
+lightning
+mailbox
+mosquito
+mouse
+octopus
+palm tree
+pants
+pencil
+airplane
+bicycle
+birthday cake
+cactus
+castle
+crab
+drums
+duck
+guitar
+horse
+hospital
+keyboard
+mermaid
+penguin
+roller coaster
+scorpion
+snowflake
+tornado
+traffic light
+trumpet
+elephant
+cup
