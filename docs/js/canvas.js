@@ -23,17 +23,6 @@
         canvas.on('mouse:move', function (e) {
             recordCoor(e)
         });
-        // canvas.addEventListener("mouseup", event => {
-        //     getFrame();
-        //     mousePressed = false;
-        // });
-        // canvas.addEventListener("mousedown", event => {
-        //     mousePressed = true;
-        // });
-        // canvas.addEventListener("mousemove", event => {
-        //     recordCoor(event);
-        // });
-
     }
 
 
