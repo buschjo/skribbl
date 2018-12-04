@@ -8,7 +8,7 @@ var timer;
 var eval;
 var word;
 var time;
-var start;
+var startingTimeForVictoryScreen;
 
 /*
 Screens
@@ -16,49 +16,61 @@ Screens
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("game");
 var endScreen = document.getElementById("end");
-// var defeatScreen = document.getElementById("endDefeat");
-// var victoryScreen = document.getElementById("endVictory");
 
+//Function call after startbutton click
+$('.start-game').on('click', tutorial);
+
+/*
+Game Function
+*/
 function startGame() {
     erase();
     resetTimer(timer);
     clearInterval(eval);
     word = classNames[getRandomInt(100)];
     console.log(classNames.length);
-    console.log(classNames[0]);
     console.log(word);
     gameScreen.scrollIntoView();
     countdown(word);
     setTimeout(function () {
         startTimer();
-        start = performance.now();
         evaluate(word);
-    }, 7000)
-}   
-
-$('.start-game').on('click', tutorial);
-$('.button-info').on('click', showInfo);
-
-function tutorial(){
-    gameScreen.scrollIntoView();
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("skip").style.display = "block";
-    document.getElementById("overlay-text").innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
+    }, 5000)
 }
 
-function skipTutorial(){
-    document.getElementById("skip").style.display = "none";
-    startGame();
-}
-
-
-
+/*
+Stop Game
+*/
 function stopGame() {
     endScreen.scrollIntoView();
     resetTimer(timer);
     clearInterval(eval);
+
 }
 
+/*
+Show Tutorial
+*/
+function tutorial() {
+    gameScreen.scrollIntoView();
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("skip").style.display = "block";
+    document.getElementById("nextstep").style.display = "block";
+    document.getElementById("overlay-text").innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
+}
+
+/*
+Skip Tutorial
+*/
+function skipTutorial() {
+    document.getElementById("skip").style.display = "none";
+    document.getElementById("nextstep").style.display = "none";
+    startGame();
+}
+
+/*
+Evaluate word, Victory/DefeatScreen, Calculated time
+*/
 function evaluate(word) {
     eval = setInterval(function () {
         var firstWord = document.getElementById('prob1').innerText;
@@ -66,78 +78,95 @@ function evaluate(word) {
         var res = document.getElementById('result');
         var resButton = document.getElementById('res-button');
 
-        if (firstWord == word) {
+        if (word == firstWord) {
             var percent = document.getElementById('prob1').style.width;
-            time = performance.now();
-            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + (time - start) * 100 + "<p> seconds.</p>";
-            resButton.innerText = 'Next';
+            var timeElapsed = calculateTimeElapsed() / 1000;
+            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + timeElapsed + "<p> seconds.</p>";
+            resButton.innerText = 'NEXT';
             stopGame();
-        } else {
+        } else if (firstWord != word) {
             res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
-            resButton.innerText = 'Try again';
+            resButton.innerText = 'TRY AGAIN';
         }
     }, 1000);
+
+    function calculateTimeElapsed() {
+        var endTimeforVictoryScreen = Date.now();
+        return endTimeforVictoryScreen - startingTimeForVictoryScreen;
+    }
 }
+
 /*
 Countdown word,3,2,1
 */
-
-var countdownTotal = 6;
+var countdownTotal = 4;
 var countdownNumber = countdownTotal;
 var overlayElement = document.getElementById("overlay");
-var overlayTextElement = document.getElementById("overlay-text");
+var overlayTextElementWord = document.getElementById("overlay-text");
+var overlayTextElementCountdown = document.getElementById("overlay-number");
 
 function countdown(word) {
+    countdownNumber = countdownTotal;
     overlayElement.style.display = "block";
-    overlayTextElement.innerText = word;
     var count = setInterval(function () {
-        countdownNumber--;
+        overlayTextElementWord.textContent = word;
         if (countdownNumber <= 4 && countdownNumber > 1) {
-            overlayTextElement.textContent = countdownNumber - 1;
+            overlayTextElementCountdown.textContent = countdownNumber - 1;
         }
         if (countdownNumber == 1) {
-            overlayTextElement.textContent = "Go!";
+            overlayTextElementCountdown.textContent = "Draw!";
         }
         if (countdownNumber <= 0) {
             clearInterval(count);
+            overlayTextElementCountdown.textContent = "";
             overlay.style.display = "none";
             countdownNumber = countdownTotal;
         }
+        countdownNumber--;
+
     }, 1000);
 }
 
 /*
-Timer
+Start Timer
 */
 var getTimerElement = document.getElementById("timer");
 var timerWidth = 100;
 var totalTime = 20;
 var timeLeft = totalTime;
 
-
 function startTimer() {
+    startingTimeForVictoryScreen = Date.now();
     timer = setInterval(function () {
         timeLeft = timeLeft - 0.1;
         timeLeft = timeLeft.toFixed(2);
         timerWidth = timeLeft * (100 / totalTime);
-
         getTimerElement.style.width = timerWidth + '%';
+
         // document.getElementById("timerNumber").textContent = timeLeft;
-        if (timerWidth <= 85 && timerWidth > 60) {
-            getTimerElement.style.animation = "transition1 5s linear"
-        }
-        if (timerWidth <= 60 && timerWidth > 20) {
-            getTimerElement.style.backgroundColor = "#ffde59"
-        }
-        if (timerWidth <= 20) {
-            getTimerElement.style.animation = "transition2 4s linear"
-        }
+        makeColorTransitionforTimer();
+
         if (timeLeft <= 0) {
             stopGame();
         }
     }, 100);
 }
 
+function makeColorTransitionforTimer() {
+    if (timerWidth <= 85 && timerWidth > 60) {
+        getTimerElement.style.animation = "transition1 5s linear";
+    }
+    if (timerWidth <= 60 && timerWidth > 20) {
+        getTimerElement.style.backgroundColor = "#ffde59";
+    }
+    if (timerWidth <= 20) {
+        getTimerElement.style.animation = "transition2 4s linear";
+    }
+}
+
+/*
+Reset Timer
+*/
 function resetTimer(timer) {
     clearInterval(timer);
     timerWidth = 100;
@@ -146,6 +175,7 @@ function resetTimer(timer) {
     // document.getElementById("timerNumber").textContent = timeLeft;
     getTimerElement.style.backgroundColor = "#7ed957";
 }
+
 
 /*
 prepare the drawing canvas 
@@ -157,6 +187,7 @@ $(function () {
     canvas.freeDrawingBrush.color = "black";
     canvas.freeDrawingBrush.width = 10;
     canvas.renderAll();
+
     //setup listeners 
     canvas.on('mouse:up', function (e) {
         getFrame();
@@ -166,7 +197,7 @@ $(function () {
         mousePressed = true
     });
     canvas.on('mouse:move', function (e) {
-        recordCoor(e)
+        recordCoor(e);
     });
 })
 
@@ -201,7 +232,10 @@ function recordCoor(event) {
 
     if (posX >= 0 && posY >= 0 && mousePressed) {
         coords.push(pointer)
+
     }
+
+
 }
 
 /*
@@ -389,14 +423,29 @@ function allowDrawing() {
 function erase() {
     canvas.clear();
     canvas.backgroundColor = '#ffffff';
-    coords = [];
     var bars = document.getElementsByClassName("bar__full");
     for (let bar of bars) {
         bar.innerHTML = " ";
         bar.style.width = "0%";
+
+    }
+}
+//undobutton 
+var h = [];
+function undo() {
+    if (canvas._objects.length > 0) {
+        h.push(canvas._objects.pop());
+        h.forEach(i => {
+            console.log(i);
+
+        });
+        canvas.renderAll();
     }
 }
 
+/*
+Info-Button
+*/
 let info = document.getElementsByClassName('info__container')[0];
 function showInfo() {
     info.classList.add('active');
@@ -406,6 +455,9 @@ function hideInfo() {
     info.classList.remove('active')
 }
 
+/*
+Function for random word
+*/
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
