@@ -15,11 +15,11 @@
             var res = document.getElementById('result');
             var resButton = document.getElementById('res-button');
             if (skribbl.win) {
-                res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + skribbl.probs[0] + "</p><p>sure.</p>";
-                resButton.innerText = 'Next';
+                res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + Math.round(skribbl.probs[0] * 100) + "%</p><p>sure.</p><p> You needed </p>" + skribbl.timeElapsed + "<p> seconds.</p>"
+                resButton.innerText = 'NEXT';
             } else {
                 res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
-                resButton.innerText = 'Try again';
+                resButton.innerText = 'TRY AGAIN';
             }
 
             resButton.addEventListener("click", function() {
@@ -31,7 +31,6 @@
 
     window.addEventListener("load", event => {
         const controller = skribbl.endScreenController = new EndScreenController();
-        // event handling to display end screen
     })
 
 } ());

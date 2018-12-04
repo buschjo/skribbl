@@ -16,7 +16,8 @@
     }
     const timer = {
         width: 100,
-        totalTime: 20
+        totalTime: 20,
+        startTime: 0
     }
     
 
@@ -30,9 +31,13 @@
             elements.skipButton = document.getElementById("skip");
             elements.overlayText = document.getElementById("overlay-text");
             elements.timer = document.getElementById("timer");
-            elements.clearButton = document.getElementById("clear");            
+            elements.clearButton = document.getElementById("clear");   
+            elements.undoButton = document.getElementById("undo");          
             
             elements.clearButton.addEventListener("click", clear);
+            elements.undoButton.addEventListener("click", function () {
+                skribbl.canvasData.undo();
+            });
             if (elements.tutorialDone) {
                 startGame();
             } else {
@@ -89,6 +94,7 @@
 
     const evaluate = skribbl.evaluate = function (word) {
         if (skribbl.names[0] == word) {
+            skribbl.timeElapsed = calculateTimeElapsed() / 1000;
             skribbl.win = true;
             endGame();
         } else {
@@ -131,7 +137,8 @@
         }, 1000);
     }
 
-    function startTimer() {        
+    function startTimer() {   
+        timer.startTime = Date.now();     
         let timerWidth = timer.width;
         let totalTime = timeLeft = timer.totalTime;
         elements.timerInterval = setInterval(function () {
@@ -142,18 +149,22 @@
             elements.timer.style.width = timerWidth + '%';
             // document.getElementById("timerNumber").textContent = timeLeft;
             if (timerWidth <= 85 && timerWidth > 60) {
-                elements.timer.style.animation = "transition1 5s linear"
+                elements.timer.style.animation = "transition1 5s linear";
             }
             if (timerWidth <= 60 && timerWidth > 20) {
-                elements.timer.style.backgroundColor = "#ffde59"
+                elements.timer.style.backgroundColor = "#ffde59";
             }
             if (timerWidth <= 20) {
-                elements.timer.style.animation = "transition2 4s linear"
+                elements.timer.style.animation = "transition2 4s linear";
             }
             if (timeLeft <= 0) {
                 endGame();
             }
         }, 100);
+    }
+
+    function calculateTimeElapsed() {
+        return Date.now() - timer.startTime;
     }
 
     function getRandomInt(max) {

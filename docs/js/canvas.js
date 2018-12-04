@@ -94,4 +94,17 @@
         canvas.backgroundColor = '#ffffff';
         coords = [];
     }
+
+    // todo
+    var h = [];
+    const undo = skribbl.canvasData.undo = function () {
+        if (canvas._objects.length > 0) {
+            h.push(canvas._objects.pop());
+            h.forEach(i => {
+                console.log(i);
+
+            });
+            canvas.renderAll();
+        }
+    }
 } ());
