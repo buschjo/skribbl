@@ -32,7 +32,8 @@
             elements.overlayText = document.getElementById("overlay-text");
             elements.timer = document.getElementById("timer");
             elements.clearButton = document.getElementById("clear");   
-            elements.undoButton = document.getElementById("undo");          
+            elements.undoButton = document.getElementById("undo");
+            elements.countdownNumber = document.getElementById("overlay-number");          
             
             elements.clearButton.addEventListener("click", clear);
             elements.undoButton.addEventListener("click", function () {
@@ -120,14 +121,15 @@
 
     function startCountdown(word) {
         elements.overlay.style.display = "block";
-        elements.overlayText.innerText = word;
         var count = setInterval(function () {
+            elements.overlayText.innerText = word;
+            //todo refactor
             countdown.number--;
             if (countdown.number <= 4 && countdown.number > 1) {
-                elements.overlayText.textContent = countdown.number - 1;
+                elements.countdownNumber.textContent = countdown.number - 1;
             }
             if (countdown.number == 1) {
-                elements.overlayText.textContent = "Go!";
+                elements.countdownNumber.textContent = "Go!";
             }
             if (countdown.number <= 0) {
                 clearInterval(count);
