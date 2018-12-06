@@ -81,19 +81,32 @@ function evaluate(word) {
         if (word == firstWord) {
             var percent = document.getElementById('prob1').style.width;
             var timeElapsed = calculateTimeElapsed() / 1000;
-            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + timeElapsed + "<p> seconds.</p>";
+            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + timeElapsed + "<p> seconds.</p>"
+            "<p>Times Cleared: " + eraseCounter + " </p>"
+                + "<p>Times Undo: " + undoCounter + "</p>"
+                + "<p>Finger lifted: " + fingerUpCounter + " times</p>";
             resButton.innerText = 'NEXT';
+
             stopGame();
-        } else if (firstWord != word) {
-            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
+        } else {
+            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p> "
+                + "<p>Times Cleared: " + eraseCounter + " </p>"
+                + "<p>Times Undo: " + undoCounter + "</p>"
+                + "<p>Finger lifted: " + fingerUpCounter + " times</p>";
             resButton.innerText = 'TRY AGAIN';
+
         }
+
     }, 1000);
+
+    reset_FingerUP_Undo_Erase_Counters();
 
     function calculateTimeElapsed() {
         var endTimeforVictoryScreen = Date.now();
         return endTimeforVictoryScreen - startingTimeForVictoryScreen;
     }
+
+
 }
 
 /*
@@ -180,6 +193,8 @@ function resetTimer(timer) {
 /*
 prepare the drawing canvas 
 */
+
+var fingerUpCounter = 0;
 $(function () {
     canvas = window._canvas = new fabric.Canvas('canvas');
     canvas.backgroundColor = '#ffffff';
@@ -192,6 +207,7 @@ $(function () {
     canvas.on('mouse:up', function (e) {
         getFrame();
         mousePressed = false
+        fingerUpCounter++;
     });
     canvas.on('mouse:down', function (e) {
         mousePressed = true
@@ -420,7 +436,9 @@ function allowDrawing() {
 }
 
 // clear the canvas
+var eraseCounter = 0;
 function erase() {
+    eraseCounter++;
     canvas.clear();
     canvas.backgroundColor = '#ffffff';
     var bars = document.getElementsByClassName("bar__full");
@@ -432,17 +450,32 @@ function erase() {
 }
 //undobutton 
 var h = [];
+var undoCounter;
 function undo() {
-    if (canvas._objects.length > 0) {
+    undoCounter++;
+    if (canvas._objects.length > 1) {
+
         h.push(canvas._objects.pop());
         h.forEach(i => {
             console.log(i);
+            console.log(h.length);
 
         });
         canvas.renderAll();
+        getFrame();
+
+    } else if (canvas._objects.length == 1) {
+        h.push(canvas._objects.pop());
+        erase();
+
     }
 }
 
+function reset_FingerUP_Undo_Erase_Counters() {
+    undoCounter = 0;
+    eraseCounter = 0;
+    fingerUpCounter = 0;
+}
 /*
 Info-Button
 */
