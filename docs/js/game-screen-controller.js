@@ -1,5 +1,6 @@
 ( function () {
     const ScreenController = skribbl.ScreenController;
+    
 
     const GameScreenController = function () {
         ScreenController.call(this);
@@ -7,12 +8,14 @@
     GameScreenController.prototype = Object.create(ScreenController.prototype);
     GameScreenController.prototype.constructor = GameScreenController;
 
+    var usedClassNames = skribbl.usedClassNames= []; //Words which are already won
+    
     const elements = {
         tutorialDone: false
     }
     const countdown = {
-        total: 6,
-        number: 6
+        total: 5,
+        number: 5
     }
     const timer = {
         width: 100,
@@ -29,6 +32,7 @@
 
             elements.overlay = document.getElementById("overlay");
             elements.skipButton = document.getElementById("skip");
+            elements.nextStepButton = document.getElementById("nextstep");
             elements.overlayText = document.getElementById("overlay-text");
             elements.timer = document.getElementById("timer");
             elements.clearButton = document.getElementById("clear");   
@@ -78,13 +82,16 @@
             }
         }
     }
+
     function startGame() {
-        skribbl.word = skribbl.classNames[getRandomInt(100)];
+        var randomNumber = getRandomInt(100);
+        
+        skribbl.word = skribbl.classNames[randomNumber];
         console.log(skribbl.word);
         startCountdown(skribbl.word);
         setTimeout(function () {
             startTimer();
-        }, 6000);
+        }, 5000);
         
     }
 
@@ -96,6 +103,7 @@
     const evaluate = skribbl.evaluate = function (word) {
         if (skribbl.names[0] == word) {
             skribbl.timeElapsed = calculateTimeElapsed() / 1000;
+            //setWordAsUsed(word);
             skribbl.win = true;
             endGame();
         } else {
@@ -107,6 +115,7 @@
     function showTutorial(){
         elements.overlay.style.display = "block";
         elements.skipButton.style.display = "block";
+        elements.nextStepButton.style.display = "block";
         elements.overlayText.innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
         elements.skipButton.addEventListener("click", function() {
             skipTutorial();
@@ -115,21 +124,24 @@
     
     function skipTutorial(){
         elements.skipButton.style.display = "none";
+        elements.nextStepButton.style.display = "none";
         elements.tutorialDone = true;
         startGame();
     }
 
     function startCountdown(word) {
+        elements.skipButton.style.display = "none";
+        elements.nextStepButton.style.display = "none";
         elements.overlay.style.display = "block";
+        elements.overlayText.innerText = word;
         var count = setInterval(function () {
-            elements.overlayText.innerText = word;
             //todo refactor
             countdown.number--;
             if (countdown.number <= 4 && countdown.number > 1) {
                 elements.countdownNumber.textContent = countdown.number - 1;
             }
             if (countdown.number == 1) {
-                elements.countdownNumber.textContent = "Go!";
+                elements.countdownNumber.textContent = "Draw!";
             }
             if (countdown.number <= 0) {
                 clearInterval(count);
@@ -171,6 +183,19 @@
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
+    }
+    
+    /*
+    Set the word as already used
+    */
+    //TO DO: Unterscheidung von ClassNames für Prediction (aus ClassNames darfs nicht wegenommen werden) und UsedWords
+    function setWordAsUsed(usedWord) {
+        console.log(usedWord)
+        usedClassNames.push(usedWord); //push word
+        if(usedClassNames.length  <= classNames.length)
+        {
+            usedClassNames = []; //empty usedClassNames
+        }
     }
 
     window.addEventListener("load", event => {
