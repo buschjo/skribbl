@@ -38,7 +38,7 @@
             elements.clearButton = document.getElementById("clear");   
             elements.undoButton = document.getElementById("undo");
             elements.countdownNumber = document.getElementById("overlay-number");          
-            
+            // skribbl.canvasData.responsive();
             elements.clearButton.addEventListener("click", clear);
             elements.undoButton.addEventListener("click", function () {
                 skribbl.canvasData.undo();
@@ -90,7 +90,7 @@
         console.log(skribbl.word);
         startCountdown(skribbl.word);
         setTimeout(function () {
-            startTimer();
+            // startTimer();
         }, 5000);
         
     }

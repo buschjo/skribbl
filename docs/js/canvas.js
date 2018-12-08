@@ -11,6 +11,7 @@
         canvas.freeDrawingBrush.color = "black";
         canvas.freeDrawingBrush.width = 10;
         canvas.renderAll();
+        responsive();
         //setup listeners 
         canvas.on('mouse:up', function (e) {
             skribbl.model.getFrame();
@@ -23,6 +24,8 @@
         canvas.on('mouse:move', function (e) {
             recordCoor(e)
         });
+
+        window.addEventListener("resize", responsive);
     }
 
 
@@ -107,4 +110,20 @@
             canvas.renderAll();
         }
     }
+
+    const responsive = skribbl.canvasData.responsive = function () {
+        let container = document.getElementsByClassName("canvas__container")[0];
+        // let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        // let height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+        let width = container.offsetWidth;
+        let height = container.offsetHeight;
+        let widthn = width;
+        let heightn = height;
+        canvas.setDimensions({
+            width: widthn,
+            height: heightn
+        });
+    }
+
+    
 } ());
