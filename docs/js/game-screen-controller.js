@@ -76,8 +76,12 @@
             prob.innerHTML = top5[i];
             if (top5[i] == skribbl.word) {
                 prob.style.backgroundColor = "#5271ff";
+                prob.style.font = "bold 18px arial, serif";
+                prob.style.textShadow = "0 0 5px yellow";
             } else {
                 prob.style.backgroundColor = "#545454";
+                prob.style.font = "";
+                prob.style.textShadow = "";
             }
         }
     }
@@ -109,7 +113,7 @@
         elements.overlay.style.display = "block";
         elements.skipButton.style.display = "block";
         elements.nextStepButton.style.display = "block";
-        elements.overlayText.innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
+        elements.overlayText.innerText = "Tutorial: Draw the word! Get it to the top before the time runs out!";
         elements.skipButton.addEventListener("click", function () {
             skipTutorial();
         });
