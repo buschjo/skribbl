@@ -1,6 +1,6 @@
-( function () {
+(function () {
     const ScreenController = skribbl.ScreenController;
-    
+
 
     const GameScreenController = function () {
         ScreenController.call(this);
@@ -8,8 +8,8 @@
     GameScreenController.prototype = Object.create(ScreenController.prototype);
     GameScreenController.prototype.constructor = GameScreenController;
 
-    var usedClassNames = skribbl.usedClassNames= []; //Words which are already won
-    
+    var usedClassNames = skribbl.usedClassNames = []; //Words which are already won
+
     const elements = {
         tutorialDone: false
     }
@@ -22,7 +22,7 @@
         totalTime: 20,
         startTime: 0
     }
-    
+
 
     Object.defineProperty(GameScreenController.prototype, "display", {
         value: function () {
@@ -35,14 +35,12 @@
             elements.nextStepButton = document.getElementById("nextstep");
             elements.overlayText = document.getElementById("overlay-text");
             elements.timer = document.getElementById("timer");
-            elements.clearButton = document.getElementById("clear");   
+            elements.clearButton = document.getElementById("clear");
             elements.undoButton = document.getElementById("undo");
-            elements.countdownNumber = document.getElementById("overlay-number");          
+            elements.countdownNumber = document.getElementById("overlay-number");
             // skribbl.canvasData.responsive();
             elements.clearButton.addEventListener("click", clear);
-            elements.undoButton.addEventListener("click", function () {
-                skribbl.canvasData.undo();
-            });
+            elements.undoButton.addEventListener("click", undo);
             if (elements.tutorialDone) {
                 startGame();
             } else {
@@ -56,8 +54,10 @@
             skribbl.canvasData.setup();
         }
     });
-
-    function clear() {        
+    function undo() {
+        skribbl.canvasData.undo();
+    }
+    function clear() {
         skribbl.canvasData.erase();
         var bars = document.getElementsByClassName("bar__full");
         for (let bar of bars) {
@@ -65,7 +65,6 @@
             bar.style.width = "0%";
         }
     }
-
     const drawBars = skribbl.drawBars = function (top5, probs) {
         //loop over the predictions 
         for (var i = 0; i < top5.length; i++) {
@@ -82,27 +81,22 @@
             }
         }
     }
-
     function startGame() {
         var randomNumber = getRandomInt(100);
-        
         skribbl.word = skribbl.classNames[randomNumber];
         console.log(skribbl.word);
         startCountdown(skribbl.word);
         setTimeout(function () {
-            // startTimer();
+            startTimer();
         }, 5000);
-        
     }
-
     function endGame() {
         skribbl.endScreenController.display();
         clearInterval(elements.timerInterval);
     }
-
     const evaluate = skribbl.evaluate = function (word) {
         if (skribbl.names[0] == word) {
-            skribbl.timeElapsed = calculateTimeElapsed() / 1000;
+            skribbl.timeElapsed = calculateTimeElapsed();
             //setWordAsUsed(word);
             skribbl.win = true;
             endGame();
@@ -111,18 +105,16 @@
         }
         console.log("win: " + skribbl.win);
     }
-
-    function showTutorial(){
+    function showTutorial() {
         elements.overlay.style.display = "block";
         elements.skipButton.style.display = "block";
         elements.nextStepButton.style.display = "block";
         elements.overlayText.innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
-        elements.skipButton.addEventListener("click", function() {
+        elements.skipButton.addEventListener("click", function () {
             skipTutorial();
         });
     }
-    
-    function skipTutorial(){
+    function skipTutorial() {
         elements.skipButton.style.display = "none";
         elements.nextStepButton.style.display = "none";
         elements.tutorialDone = true;
@@ -150,16 +142,14 @@
             }
         }, 1000);
     }
-
-    function startTimer() {   
-        timer.startTime = Date.now();     
+    function startTimer() {
+        timer.startTime = Date.now();
         let timerWidth = timer.width;
         let totalTime = timeLeft = timer.totalTime;
         elements.timerInterval = setInterval(function () {
             timeLeft = timeLeft - 0.1;
             timeLeft = timeLeft.toFixed(2);
             timerWidth = timeLeft * (100 / totalTime);
-    
             elements.timer.style.width = timerWidth + '%';
             // document.getElementById("timerNumber").textContent = timeLeft;
             if (timerWidth <= 85 && timerWidth > 60) {
@@ -176,15 +166,12 @@
             }
         }, 100);
     }
-
     function calculateTimeElapsed() {
-        return Date.now() - timer.startTime;
+        return (Date.now() - timer.startTime) / 1000;
     }
-
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
-    
     /*
     Set the word as already used
     */
@@ -192,12 +179,10 @@
     function setWordAsUsed(usedWord) {
         console.log(usedWord)
         usedClassNames.push(usedWord); //push word
-        if(usedClassNames.length  <= classNames.length)
-        {
+        if (usedClassNames.length <= classNames.length) {
             usedClassNames = []; //empty usedClassNames
         }
     }
-
     window.addEventListener("load", event => {
         const controller = skribbl.gameScreenController = new GameScreenController();
         for (const startGameButton of document.getElementsByClassName("start-game")) {
@@ -205,7 +190,6 @@
                 controller.display();
                 controller.setup();
             });
-        }        
+        }
     });
-
-} ());
+}());

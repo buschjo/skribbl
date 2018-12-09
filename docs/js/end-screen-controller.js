@@ -1,4 +1,4 @@
-( function () {
+(function () {
     const ScreenController = skribbl.ScreenController;
 
     const EndScreenController = function () {
@@ -15,22 +15,37 @@
             var res = document.getElementById('result');
             var resButton = document.getElementById('res-button');
             if (skribbl.win) {
-                res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + Math.round(skribbl.probs[0] * 100) + "%</p><p>sure.</p><p> You needed </p>" + skribbl.timeElapsed.toFixed(2) + "<p> seconds.</p>"
-                resButton.innerText = 'NEXT';
+                callVictoryScreen(res, resButton);
             } else {
-                res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
-                resButton.innerText = 'TRY AGAIN';
+                callDefeatScreen(res, resButton);
             }
-
-            resButton.addEventListener("click", function() {
+            skribbl.canvasData.resetAllCounters();
+            resButton.addEventListener("click", function () {
                 skribbl.gameScreenController.display();
                 skribbl.gameScreenController.setup();
             })
         }
     });
 
+    function callDefeatScreen(res, resButton) {
+        res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>"
+            + "<p>Clear-Button used :" + skribbl.canvasData.clearCounter + " </p>"
+            + "<p>Finger lifted : " + skribbl.canvasData.fingerLiftedCounter + "</p>"
+            + "<p>Undo-Button used : " + skribbl.canvasData.undoCounter + "</p>"
+
+        resButton.innerText = 'TRY AGAIN';
+    }
+    function callVictoryScreen(res, resButton) {
+        res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + Math.round(skribbl.probs[0] * 100) + "%</p><p>sure."
+            + "<p> You needed " + skribbl.timeElapsed.toFixed(2) + " seconds.</p>"
+            + "<p>Clear-Button used :" + skribbl.canvasData.clearCounter + " </p>"
+            + "<p>Finger lifted : " + skribbl.canvasData.fingerLiftedCounter + "</p>"
+            + "<p>Undo-Button used :" + skribbl.canvasData.undoCounter + "</p>";
+        resButton.innerText = 'NEXT';
+    }
+
     window.addEventListener("load", event => {
         const controller = skribbl.endScreenController = new EndScreenController();
     })
 
-} ());
+}());

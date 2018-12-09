@@ -3,9 +3,13 @@
     var coords = skribbl.canvasData.coords = [];
     var canvas;
     var mousePressed = false;
+    var fingerLiftedCounter = skribbl.canvasData.fingerLiftedCounter = 0
+    var undoCounter = skribbl.canvasData.undoCounter = 0
+    var clearCounter = skribbl.canvasData.clearCounter = 0
 
     const setup = skribbl.canvasData.setup = function () {
         canvas = window._canvas = new fabric.Canvas('canvas');
+
         canvas.backgroundColor = '#ffffff';
         canvas.isDrawingMode = 1;
         canvas.freeDrawingBrush.color = "black";
@@ -13,7 +17,9 @@
         canvas.renderAll();
         responsive();
         //setup listeners 
+
         canvas.on('mouse:up', function (e) {
+            skribbl.canvasData.fingerLiftedCounter++;
             skribbl.model.getFrame();
             skribbl.evaluate(skribbl.word);
             mousePressed = false
@@ -93,6 +99,7 @@
     }
 
     const erase = skribbl.canvasData.erase = function () {
+        skribbl.canvasData.clearCounter++;
         canvas.clear();
         canvas.backgroundColor = '#ffffff';
         coords = [];
@@ -101,16 +108,31 @@
     // todo
     var h = [];
     const undo = skribbl.canvasData.undo = function () {
-        if (canvas._objects.length > 0) {
+        skribbl.canvasData.undoCounter++;
+
+        if (canvas._objects.length > 1) {
             h.push(canvas._objects.pop());
             h.forEach(i => {
                 console.log(i);
-
             });
             canvas.renderAll();
+            skribbl.model.getFrame();
+        }
+        else if (canvas._objects.length == 1) {
+            skribbl.canvasData.erase();
+            var bars = document.getElementsByClassName("bar__full");
+            for (let bar of bars) {
+                bar.innerHTML = " ";
+                bar.style.width = "0%";
+            }
         }
     }
 
+    const resetAllCounters = skribbl.canvasData.resetAllCounters = function () {
+        skribbl.canvasData.clearCounter = 0;
+        skribbl.canvasData.fingerLiftedCounter = 0;
+        skribbl.canvasData.undoCounter = 0;
+    }
     const responsive = skribbl.canvasData.responsive = function () {
         let container = document.getElementsByClassName("canvas__container")[0];
         // let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -125,5 +147,5 @@
         });
     }
 
-    
-} ());
+
+}());
