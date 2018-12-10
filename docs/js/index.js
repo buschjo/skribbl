@@ -7,6 +7,8 @@ var mode;
 var timer;
 var eval;
 var word;
+var time;
+var startingTimeForVictoryScreen;
 
 /*
 Screens
@@ -14,140 +16,204 @@ Screens
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("game");
 var endScreen = document.getElementById("end");
-// var defeatScreen = document.getElementById("endDefeat");
-// var victoryScreen = document.getElementById("endVictory");
 
+//Function call after startbutton click
+$('.start-game').on('click', tutorial);
+
+/*
+Game Function
+*/
 function startGame() {
     erase();
     resetTimer(timer);
     clearInterval(eval);
-    word = classNames[getRandomInt(99)];
+    word = classNames[getRandomInt(100)];
+    console.log(classNames.length);
     console.log(word);
     gameScreen.scrollIntoView();
     countdown(word);
-    setTimeout(function() {
+    setTimeout(function () {
         startTimer();
         evaluate(word);
-    }, 7000)
-}   
-
-$('.start-game').on('click', tutorial);
-
-function tutorial(){
-    gameScreen.scrollIntoView();
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("skip").style.display = "block";
-    document.getElementById("overlay-text").innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
+    }, 5000)
 }
 
-function skipTutorial(){
-    document.getElementById("skip").style.display = "none";
-    startGame();
-}
-
-
-
+/*
+Stop Game
+*/
 function stopGame() {
     endScreen.scrollIntoView();
     resetTimer(timer);
     clearInterval(eval);
+
 }
 
-function evaluate(word) {        
-    eval = setInterval(function() {
+/*
+Show Tutorial
+*/
+function tutorial() {
+    gameScreen.scrollIntoView();
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("skip").style.display = "block";
+    document.getElementById("nextstep").style.display = "block";
+    document.getElementById("overlay-text").innerText = "Tutorial: Draw the word! Get it to the top before the times runs out!";
+}
+
+/*
+Skip Tutorial
+*/
+function skipTutorial() {
+    document.getElementById("skip").style.display = "none";
+    document.getElementById("nextstep").style.display = "none";
+    startGame();
+}
+
+/*
+Evaluate word, Victory/DefeatScreen, Calculated time
+*/
+function evaluate(word) {
+    eval = setInterval(function () {
         var firstWord = document.getElementById('prob1').innerText;
         console.log(firstWord);
         var res = document.getElementById('result');
         var resButton = document.getElementById('res-button');
-        if (firstWord == word) {
+
+        if (word == firstWord) {
             var percent = document.getElementById('prob1').style.width;
-            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p>";
-            resButton.innerText = 'Next';
+            var timeElapsed = calculateTimeElapsed() / 1000;
+            res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + timeElapsed + "<p> seconds.</p>"
+            "<p>Times Cleared: " + eraseCounter + " </p>"
+                + "<p>Times Undo: " + undoCounter + "</p>"
+                + "<p>Finger lifted: " + fingerUpCounter + " times</p>";
+            resButton.innerText = 'NEXT';
+
             stopGame();
         } else {
-            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>";
-            resButton.innerText = 'Try again';
+            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p> "
+                + "<p>Times Cleared: " + eraseCounter + " </p>"
+                + "<p>Times Undo: " + undoCounter + "</p>"
+                + "<p>Finger lifted: " + fingerUpCounter + " times</p>";
+            resButton.innerText = 'TRY AGAIN';
+
         }
+
     }, 1000);
+
+    reset_FingerUP_Undo_Erase_Counters();
+
+    function calculateTimeElapsed() {
+        var endTimeforVictoryScreen = Date.now();
+        return endTimeforVictoryScreen - startingTimeForVictoryScreen;
+    }
+
+
 }
+
 /*
 Countdown word,3,2,1
 */
-var countdownTotal = 6;
+var countdownTotal = 4;
 var countdownNumber = countdownTotal;
+var overlayElement = document.getElementById("overlay");
+var overlayTextElementWord = document.getElementById("overlay-text");
+var overlayTextElementCountdown = document.getElementById("overlay-number");
+
 function countdown(word) {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("overlay-text").innerText = word;
-    var count = setInterval(function(){ 
+    countdownNumber = countdownTotal;
+    overlayElement.style.display = "block";
+    var count = setInterval(function () {
+        overlayTextElementWord.textContent = word;
+        if (countdownNumber <= 4 && countdownNumber > 1) {
+            overlayTextElementCountdown.textContent = countdownNumber - 1;
+        }
+        if (countdownNumber == 1) {
+            overlayTextElementCountdown.textContent = "Draw!";
+        }
+        if (countdownNumber <= 0) {
+            clearInterval(count);
+            overlayTextElementCountdown.textContent = "";
+            overlay.style.display = "none";
+            countdownNumber = countdownTotal;
+        }
         countdownNumber--;
-        if(countdownNumber <= 4 && countdownNumber > 1){
-        document.getElementById("overlay-text").textContent = countdownNumber-1;
-        }
-        if(countdownNumber == 1){
-            document.getElementById("overlay-text").textContent = "Go!";
-        }
-        if(countdownNumber <= 0){
-        clearInterval(count);
-        document.getElementById("overlay").style.display = "none";
-        countdownNumber = countdownTotal;
-        }
-        }, 1000);  
+
+    }, 1000);
 }
 
 /*
-Timer
+Start Timer
 */
-var timerWidth = 100; 
+var getTimerElement = document.getElementById("timer");
+var timerWidth = 100;
 var totalTime = 20;
 var timeLeft = totalTime;
+
 function startTimer() {
-    timer = setInterval(function(){ 
-        timeLeft = timeLeft-0.1;
+    startingTimeForVictoryScreen = Date.now();
+    timer = setInterval(function () {
+        timeLeft = timeLeft - 0.1;
         timeLeft = timeLeft.toFixed(2);
-        timerWidth = timeLeft * (100/totalTime);
-        document.getElementById("timer").style.width = timerWidth + '%';
+        timerWidth = timeLeft * (100 / totalTime);
+        getTimerElement.style.width = timerWidth + '%';
+
         // document.getElementById("timerNumber").textContent = timeLeft;
-        if (timerWidth <= 30 && timerWidth > 10 ){
-            document.getElementById("timer").style.backgroundColor = "#ffde59";
-        }
-        if (timerWidth <= 10){
-            document.getElementById("timer").style.backgroundColor = "#ff5757";
-        }
-        if (timeLeft <= 0){
+        makeColorTransitionforTimer();
+
+        if (timeLeft <= 0) {
             stopGame();
         }
-    },100);
+    }, 100);
 }
 
+function makeColorTransitionforTimer() {
+    if (timerWidth <= 85 && timerWidth > 60) {
+        getTimerElement.style.animation = "transition1 5s linear";
+    }
+    if (timerWidth <= 60 && timerWidth > 20) {
+        getTimerElement.style.backgroundColor = "#ffde59";
+    }
+    if (timerWidth <= 20) {
+        getTimerElement.style.animation = "transition2 4s linear";
+    }
+}
+
+/*
+Reset Timer
+*/
 function resetTimer(timer) {
     clearInterval(timer);
     timerWidth = 100;
     timeLeft = totalTime;
-    document.getElementById("timer").style.width = timerWidth + '%';
+    getTimerElement.style.width = timerWidth + '%';
     // document.getElementById("timerNumber").textContent = timeLeft;
-    document.getElementById("timer").style.backgroundColor = "#7ed957";
+    getTimerElement.style.backgroundColor = "#7ed957";
 }
+
 
 /*
 prepare the drawing canvas 
 */
-$(function() {
+
+var fingerUpCounter = 0;
+$(function () {
     canvas = window._canvas = new fabric.Canvas('canvas');
     canvas.backgroundColor = '#ffffff';
     canvas.isDrawingMode = 0;
     canvas.freeDrawingBrush.color = "black";
     canvas.freeDrawingBrush.width = 10;
     canvas.renderAll();
+
     //setup listeners 
-    canvas.on('mouse:up', function(e) {
+    canvas.on('mouse:up', function (e) {
         getFrame();
         mousePressed = false
+        fingerUpCounter++;
     });
-    canvas.on('mouse:down', function(e) {
+    canvas.on('mouse:down', function (e) {
         mousePressed = true
     });
-    canvas.on('mouse:move', function(e) {
-        recordCoor(e)
+    canvas.on('mouse:move', function (e) {
+        recordCoor(e);
     });
 })
 
@@ -182,7 +248,10 @@ function recordCoor(event) {
 
     if (posX >= 0 && posY >= 0 && mousePressed) {
         coords.push(pointer)
+
     }
+
+
 }
 
 /*
@@ -190,10 +259,10 @@ get the best bounding box by trimming around the drawing
 */
 function getMinBox() {
     //get coordinates 
-    var coorX = coords.map(function(p) {
+    var coorX = coords.map(function (p) {
         return p.x
     });
-    var coorY = coords.map(function(p) {
+    var coorY = coords.map(function (p) {
         return p.y
     });
 
@@ -218,15 +287,15 @@ function getMinBox() {
 get the current image data 
 */
 function getImageData() {
-        //get the minimum bounding box around the drawing 
-        const mbb = getMinBox()
+    //get the minimum bounding box around the drawing 
+    const mbb = getMinBox()
 
-        //get image data according to dpi 
-        const dpi = window.devicePixelRatio
-        const imgData = canvas.contextContainer.getImageData(mbb.min.x * dpi, mbb.min.y * dpi,
-                                                      (mbb.max.x - mbb.min.x) * dpi, (mbb.max.y - mbb.min.y) * dpi);
-        return imgData
-    }
+    //get image data according to dpi 
+    const dpi = window.devicePixelRatio
+    const imgData = canvas.contextContainer.getImageData(mbb.min.x * dpi, mbb.min.y * dpi,
+        (mbb.max.x - mbb.min.x) * dpi, (mbb.max.y - mbb.min.y) * dpi);
+    return imgData
+}
 
 /*
 get the prediction 
@@ -266,7 +335,7 @@ load the class names
 */
 async function loadDict() {
     loc = 'modelNew10k/class_names.txt'
-    
+
     await $.ajax({
         url: loc,
         dataType: 'text',
@@ -292,7 +361,7 @@ function findIndicesOfMax(inp, count) {
     for (var i = 0; i < inp.length; i++) {
         outp.push(i); // add index to output array
         if (outp.length > count) {
-            outp.sort(function(a, b) {
+            outp.sort(function (a, b) {
                 return inp[b] - inp[a];
             }); // descending sort the output array
             outp.pop(); // remove the last index (index of smallest element in output array)
@@ -320,10 +389,10 @@ function preprocess(imgData) {
     return tf.tidy(() => {
         //convert to a tensor 
         let tensor = tf.fromPixels(imgData, numChannels = 1)
-        
+
         //resize 
         const resized = tf.image.resizeBilinear(tensor, [28, 28]).toFloat()
-        
+
         //normalize 
         const offset = tf.scalar(255.0);
         const normalized = tf.scalar(1.0).sub(resized.div(offset));
@@ -340,20 +409,20 @@ load the model
 async function start(cur_mode) {
     //arabic or english
     mode = cur_mode;
-    
+
     //load the model 
     model = await tf.loadModel('modelNew10k/model.json');
-    
+
     //warm up 
     model.predict(tf.zeros([1, 28, 28, 1]));
-    
+
     //allow drawing on the canvas 
     allowDrawing();
-    
+
     //load the class names
     await loadDict();
     console.log('started');
-    
+
 }
 
 // allow drawing
@@ -367,17 +436,49 @@ function allowDrawing() {
 }
 
 // clear the canvas
+var eraseCounter = 0;
 function erase() {
+    eraseCounter++;
     canvas.clear();
     canvas.backgroundColor = '#ffffff';
-    coords = [];
     var bars = document.getElementsByClassName("bar__full");
     for (let bar of bars) {
         bar.innerHTML = " ";
         bar.style.width = "0%";
+
+    }
+}
+//undobutton 
+var h = [];
+var undoCounter;
+function undo() {
+    undoCounter++;
+    if (canvas._objects.length > 1) {
+
+        h.push(canvas._objects.pop());
+        h.forEach(i => {
+            console.log(i);
+            console.log(h.length);
+
+        });
+        canvas.renderAll();
+        getFrame();
+
+    } else if (canvas._objects.length == 1) {
+        h.push(canvas._objects.pop());
+        erase();
+
     }
 }
 
+function reset_FingerUP_Undo_Erase_Counters() {
+    undoCounter = 0;
+    eraseCounter = 0;
+    fingerUpCounter = 0;
+}
+/*
+Info-Button
+*/
 let info = document.getElementsByClassName('info__container')[0];
 function showInfo() {
     info.classList.add('active');
@@ -387,6 +488,9 @@ function hideInfo() {
     info.classList.remove('active')
 }
 
+/*
+Function for random word
+*/
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-  }
+}

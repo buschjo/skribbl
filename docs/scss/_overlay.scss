@@ -12,11 +12,23 @@
     cursor: pointer;
 }
 
-#overlay-text{
+#overlay-text  {
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 50%;
-    font-size: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+#overlay-number {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    
+    font-size: 2rem;
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
