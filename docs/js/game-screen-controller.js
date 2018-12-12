@@ -50,7 +50,8 @@
             elements.undoButton.addEventListener("click", undo);
 
             tutorial.currentTutorialStepIndex = 0;
-            tutorial.tutorailSteps = [new tutorialStep("You have 3 seconds to memorize the word."),
+            tutorial.tutorailSteps = [new tutorialStep("First you will see a word here."),
+                                 new tutorialStep("You have 3 seconds to memorize the word."),
                                  new tutorialStep("You can draw here.", elements.canvasArea,"thick solid #ff5757"),
                                  new tutorialStep("You can see here, which words the AI thinks you are drawing.", elements.barsArea,"thick solid #ff5757"),
                                  new tutorialStep("When the timer reaches the left side, your time is up.", elements.timerArea,"thick solid #ff5757"),
@@ -152,11 +153,11 @@
             currentTutorialStep.htmlArea.style.border = currentTutorialStep.highlightStyle;
             removeTutorialStyleChange(tutorial.tutorailSteps[tutorial.currentTutorialStepIndex-1]);
         }else{
-            removeTutorialStyleChanges();
+            removeAllTutorialStyleChanges();
             startGame();
         }
     }
-    function removeTutorialStyleChanges(){
+    function removeAllTutorialStyleChanges(){
         for (var i = 0; i < tutorial.tutorailSteps.length; i++) {
             removeTutorialStyleChange(tutorial.tutorailSteps[i]);
         }
@@ -168,7 +169,7 @@
         elements.skipButton.style.display = "none";
         elements.nextStepButton.style.display = "none";
         elements.tutorialDone = true;
-        removeTutorialStyleChanges();
+        removeAllTutorialStyleChanges();
         startGame();
     }
 
