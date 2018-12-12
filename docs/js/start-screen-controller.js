@@ -7,6 +7,7 @@
     StartScreenController.prototype = Object.create(ScreenController.prototype);
     StartScreenController.prototype.constructor = StartScreenController;
 
+    //This is a public instance method (with const it is private)
     Object.defineProperty(StartScreenController.prototype, "display", {
         value: function () {
             const mainEl = document.querySelector("main");
@@ -20,6 +21,7 @@
         }
     })
 
+    //this method is private
     function showInfo() {
         let info = document.getElementsByClassName('info__container')[0];
         info.classList.add('active');

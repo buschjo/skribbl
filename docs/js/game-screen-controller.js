@@ -73,6 +73,33 @@
             skribbl.canvasData.setup();
         }
     });
+
+    //refactored function
+    function setTimerInterval(timer){
+        let timerWidth = timer.width;
+        let totalTime = timeLeft = timer.totalTime;
+        elements.timerInterval = setInterval(function () {
+            timeLeft = timeLeft - 0.1;
+            timeLeft = timeLeft.toFixed(2);
+            timerWidth = timeLeft * (100 / totalTime);
+            elements.timer.style.width = timerWidth + '%';
+            // document.getElementById("timerNumber").textContent = timeLeft;
+            //Nastja will evtl. was ausprobieren
+            if (timerWidth <= 85 && timerWidth > 60) {
+                elements.timer.style.animation = "transition1 5s linear";
+            }
+            if (timerWidth <= 60 && timerWidth > 20) {
+                elements.timer.style.backgroundColor = "#ffde59";
+            }
+            if (timerWidth <= 20) {
+                elements.timer.style.animation = "transition2 4s linear";
+            }
+            if (timeLeft <= 0) {
+                endGame();
+            }
+        }, 100);
+    }
+
     function undo() {
         skribbl.canvasData.undo();
     }
@@ -91,8 +118,10 @@
             let prob = document.getElementById('prob' + (i + 1));
             let temp = probs[i];
             let mr = Math.round(temp * 100);
+            //Extract Method
             prob.style.width = mr + '%';
             prob.innerHTML = top5[i];
+            //CSS auslagern in classes
             if (top5[i] == skribbl.word) {
                 prob.style.backgroundColor = "#5271ff";
                 prob.style.font = "bold 18px arial, serif";
@@ -113,10 +142,14 @@
             startTimer();
         }, 5000);
     }
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }    
     function endGame() {
         skribbl.endScreenController.display();
         clearInterval(elements.timerInterval);
     }
+    //can we put this whole thing only in skribble not in game-screen-controller?
     const evaluate = skribbl.evaluate = function (word) {
         if (skribbl.names[0] == word) {
             skribbl.timeElapsed = calculateTimeElapsed();
@@ -128,12 +161,29 @@
         }
         console.log("win: " + skribbl.win);
     }
+    //UMGEZOGEN
+    function calculateTimeElapsed() {
+        //replace by min and max and threshold 20
+        return (Date.now() - timer.startTime) / 1000;
+    }
+        /*UMGEZOGEN in app-controller
+    Set the word as already used
+    */
+    //TO DO: Unterscheidung von ClassNames für Prediction (aus ClassNames darfs nicht wegenommen werden) und UsedWords
+    function setWordAsUsed(usedWord) {
+        console.log(usedWord)
+        usedClassNames.push(usedWord); //push word
+        if (usedClassNames.length <= classNames.length) {
+            usedClassNames = []; //empty usedClassNames
+        }
+    }
     function tutorialStep(tutorialText, htmlArea, highlightStyle) {
         this.tutorialText = tutorialText;
         this.htmlArea = htmlArea;
         this.highlightStyle = highlightStyle;
     }
     function showTutorial() {
+        //is it enough to say overlay.display = none?
         elements.overlay.style.display = "block";
         elements.skipButton.style.display = "block";
         elements.nextStepButton.style.display = "block";
@@ -172,8 +222,9 @@
         removeAllTutorialStyleChanges();
         startGame();
     }
-
+    //can these two methods be more similar1?? O.O
     function startCountdown(word) {
+        //same as line 140
         elements.skipButton.style.display = "none";
         elements.nextStepButton.style.display = "none";
         elements.overlay.style.display = "block";
@@ -194,6 +245,7 @@
             }
         }, 1000);
     }
+    //UMGEZOGEN
     function startTimer() {
         timer.startTime = Date.now();
         let timerWidth = timer.width;
@@ -204,6 +256,7 @@
             timerWidth = timeLeft * (100 / totalTime);
             elements.timer.style.width = timerWidth + '%';
             // document.getElementById("timerNumber").textContent = timeLeft;
+            //Nastja will evtl. was ausprobieren
             if (timerWidth <= 85 && timerWidth > 60) {
                 elements.timer.style.animation = "transition1 5s linear";
             }
@@ -218,23 +271,7 @@
             }
         }, 100);
     }
-    function calculateTimeElapsed() {
-        return (Date.now() - timer.startTime) / 1000;
-    }
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-    }
-    /*
-    Set the word as already used
-    */
-    //TO DO: Unterscheidung von ClassNames für Prediction (aus ClassNames darfs nicht wegenommen werden) und UsedWords
-    function setWordAsUsed(usedWord) {
-        console.log(usedWord)
-        usedClassNames.push(usedWord); //push word
-        if (usedClassNames.length <= classNames.length) {
-            usedClassNames = []; //empty usedClassNames
-        }
-    }
+    //Can we put this into the start screen controller?
     window.addEventListener("load", event => {
         const controller = skribbl.gameScreenController = new GameScreenController();
         for (const startGameButton of document.getElementsByClassName("start-game")) {

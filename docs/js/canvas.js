@@ -16,9 +16,10 @@
         canvas.freeDrawingBrush.width = 10;
         canvas.renderAll();
         responsive();
+        
         //setup listeners 
-
         canvas.on('mouse:up', function (e) {
+            //can we just write fingerLiftedCounter++ because of the field
             skribbl.canvasData.fingerLiftedCounter++;
             skribbl.model.getFrame();
             skribbl.evaluate(skribbl.word);
@@ -81,6 +82,7 @@
     /*
     get the current image data 
     */
+    //can we access getImageData without storing it specifically in skribbl.canvasData (defineProperty??)
     const getImageData = skribbl.canvasData.getImageData = function () {
         //get the minimum bounding box around the drawing 
         const mbb = getMinBox()
@@ -105,7 +107,7 @@
         coords = [];
     }
 
-    // todo
+    // todo can h have a better name and be up with the other fields?
     var h = [];
     const undo = skribbl.canvasData.undo = function () {
         skribbl.canvasData.undoCounter++;

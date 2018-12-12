@@ -119,6 +119,7 @@
             const pred = model.predict(preprocess(imgData)).dataSync()
             //find the top 5 predictions 
             const indices = findIndicesOfMax(pred, 5)
+            //instead of skribbl.probs and skribbl.names --> model.probs and model.names
             const probs = skribbl.probs = findTopValues(pred, 5)
             const names = skribbl.names = getClassNames(indices)
             //set the table 
