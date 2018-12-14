@@ -8,8 +8,7 @@
     GameScreenController.prototype = Object.create(ScreenController.prototype);
     GameScreenController.prototype.constructor = GameScreenController;
 
-    var usedClassNames = skribbl.usedClassNames = []; //Words which are already won
-
+  
     const elements = {
         tutorialDone: false
     }
@@ -92,10 +91,10 @@
             let temp = probs[i];
             let mr = Math.round(temp * 100);
             prob.style.width = mr + '%';
-            prob.innerHTML = top5[i];
+            prob.innerHTML = '&nbsp;' + top5[i];
             if (top5[i] == skribbl.word) {
-                prob.style.backgroundColor = "#5271ff";
-                prob.style.font = "bold 18px arial, serif";
+                prob.style.backgroundColor = "#ff5757";
+                //prob.style.font = "bold 18px arial, serif";
                 prob.style.textShadow = "0 0 5px yellow";
             } else {
                 prob.style.backgroundColor = "#545454";
@@ -120,7 +119,6 @@
     const evaluate = skribbl.evaluate = function (word) {
         if (skribbl.names[0] == word) {
             skribbl.timeElapsed = calculateTimeElapsed();
-            //setWordAsUsed(word);
             skribbl.win = true;
             endGame();
         } else {
@@ -224,17 +222,7 @@
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
-    /*
-    Set the word as already used
-    */
-    //TO DO: Unterscheidung von ClassNames für Prediction (aus ClassNames darfs nicht wegenommen werden) und UsedWords
-    function setWordAsUsed(usedWord) {
-        console.log(usedWord)
-        usedClassNames.push(usedWord); //push word
-        if (usedClassNames.length <= classNames.length) {
-            usedClassNames = []; //empty usedClassNames
-        }
-    }
+   
     window.addEventListener("load", event => {
         const controller = skribbl.gameScreenController = new GameScreenController();
         for (const startGameButton of document.getElementsByClassName("start-game")) {

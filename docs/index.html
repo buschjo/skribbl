@@ -19,17 +19,26 @@
     <link rel="stylesheet" href="css/vendor/foundation.min.css">
     <link rel="stylesheet" href="css/custom.css">
 
+    <!-- STARTSCREEN -->
     <template id="start-template">
         <section id="start" class="section screen__start">
+
+            <!-- start Infobutton -->
             <button type="button"class="button hollow secondary button-info">i</button>
+            <!-- end Infobutton -->
             <div class="content__container-flex">
+                <!-- start Logo -->
                 <div class="logo--start big">
                     <!-- <img src="assets/logo_big_color.png" alt="logo"> -->
                 </div>
+                <!-- end Logo -->
+                <!-- start Startbutton -->
                 <div class="button-start__container  margin-auto">
-                    <button class="button button-start start-game js-clear-screen">START</button>
+                    <button class="button button-start start-game js-clear-screen">PLAY</button>
                 </div>
+                <!-- end Startbutton -->
             </div>
+            <!-- start Infotext-->
             <div class="info__container">
                 <div class="info">
                     <h2>Spiel-Info</h2>
@@ -38,12 +47,32 @@
                     Beobachte wie Strich für Strich der Computer andere Formen und Wörter erkennt und dein Gewinnwort somit Stufe für Stufe auf dem Gewinnertreppchen nach oben klettert.</p>
                 </div>
             </div>
+            <!-- end Infotext-->
         </section>
     </template>
+    
+    <!-- MODESCREEN -->
+    <template id="playmode-template">
+            <section id="playmode" class="section screen__playmode">
+                    <h1>CHOOSE YOUR PLAYMODE</h1>             
+                    <div class="button-start__container  margin-auto">
+                        <button class="button button-start start-game js-clear-screen">Modus 1</button>
+                    </div>
+                    <div class="button-start__container  margin-auto">
+                            <button class="button button-start start-game js-clear-screen">Modus 2</button>
+                    </div>
+                    <div class="button-start__container  margin-auto">
+                             <button class="button button-start start-game js-clear-screen">Modus 3</button>
+                    </div> 
+            </section>
+    </template>
 
+
+    <!-- GAMESCREEN -->
     <template id="game-template">
             <section id="game" class="section screen__game">
                 <div class="">
+                  <!-- start Tutorial -->
                     <div id="overlay" class=" grid-container">
                         <div id="overlay-text"></div>
                         <div id="overlay-number"></div>
@@ -56,11 +85,15 @@
                             </div>                    
                         </div>
                     </div>
+                    <!-- end Tutorial -->
+                    <!-- start Timer -->
                     <div class="cell small-12 timer__container">
                         <div id="timer">
                             <span id="timerNumber"></span>
                         </div>
                     </div>
+                    <!-- end Timer -->
+                    <!-- start Balkenanzeigen -->
                     <div class="content__container-flex change-orientation">
                         <div class="bars__container" id="bars__area">
                             <div class="bar__empty" id="sym1">
@@ -79,23 +112,32 @@
                                 <div id="prob5" class="bar__full"></div>
                             </div>
                         </div>
+                        <!-- end Balkenanzeigen -->
+
+                        <!-- start Canvas -->
+
                         <!-- <div class="big"> -->
                             <div class="canvas__container big">
                                 <canvas id="canvas" class="canvas" width="290px" height="300px"></canvas>
                             </div>
+                        <!-- end Canvas -->
+
+                             <!-- start Buttons -->
                             <div class="button__container grid-containder">
                                 <div class="grid-x">
-                                    <div class="cell small-4 button-clear__container">
-                                        <button id="clear" class="button button-clear">CLEAR</button>
+                                    <div class="cell small-4 text-align-right">
+                                        <button id="clear" class="button-clear">CLEAR</button>
                                     </div>
-                                    <div class="cell small-2 margin-left-auto text-align-right">
-                                        <button id="undo" class="button undo">UNDO</button>
+                                    <div class="cell small-4 margin-left-auto text-align-right">
+                                        <button id="undo" class="button-undo">UNDO</button>
                                     </div>
-                                    <div class="cell small-2 margin-left-auto text-align-right">
-                                        <button class="button start-game" id="skip__tool">SKIP</button>
+                                    <div class="cell small-3 margin-left-auto text-align-right">
+                                        <button id="skip__tool" class="button-skip">SKIP</button>
                                     </div>
                                 </div>
-                            <!-- </div> -->
+                            <!-- end Buttons -->
+                            
+                         <!-- </div> -->
 
                         </div>
                     </div>
@@ -103,16 +145,29 @@
             </section>
     </template>
 
+
+    <!-- ENDSCREEN -->
     <template id="end-template">
         <section id="end" class="section screen__end">
             <div class="content__container-flex">
+                <!-- start Text -->
                 <div id="result" class="text-align-center big">
-                    <h1>You lost!</h1>
-                    <p>You were a little to slow.</p>
+                    <h1>TIME'S UP!</h1>
+                    <p>Oh no, I couldn't guess it!</p>
+                    <p>I was only ...% sure.</p>
+                    <p>Next word, please!</p>
                 </div>
-                <div class="button-start__container margin-auto">
-                    <button id="res-button" class="js-clear-screen button button-start start-game">TRY AGAIN</button>
+                <!-- end Text -->
+                <!-- start Buttons-->
+                <div class="grid-x">
+                <div class="cell small-5 button-start__container margin-auto">
+                    <button id="backToStart" class="js-clear-screen button-backToStart">MENU</button>
                 </div>
+                <div class="cell small-5 button-start__container margin-auto">
+                    <button id="res-button" class="js-clear-screen  button-next start-game">NEXT</button>
+                </div>
+                </div>
+                <!-- end Buttons-->
             </div>
         </section>
     </template>
