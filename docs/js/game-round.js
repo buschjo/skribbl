@@ -1,16 +1,15 @@
 class GameRound {
-    // appController
-    // canvasData
-    // modelData
-    // targetWord
-    // timer = {
-    //     width: 100,
-    //     totalTime: 20,
-    //     startTime: 0
-    // }
+
     constructor() {
         this.appController = AppController.getInstance();
-        this.canvasData = new CanvasData("test");
+        this.canvasData = new CanvasData();
+        this.modelData = new ModelData();
+        // this.targetWord = modelData.getTargetWord();
+        this.timer = {
+            width: 100,
+            totalTime: 20,
+            startTime: 0
+        }
     }
     calculateTimeElapsed() {
         //replace by min and max and threshold 20

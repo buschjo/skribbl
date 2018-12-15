@@ -1,15 +1,17 @@
-(function () {
-    skribbl.canvasData = {};
-    var coords = skribbl.canvasData.coords = [];
-    var canvas;
-    var mousePressed = false;
-    var fingerLiftedCounter = skribbl.canvasData.fingerLiftedCounter = 0
-    var undoCounter = skribbl.canvasData.undoCounter = 0
-    var clearCounter = skribbl.canvasData.clearCounter = 0
+class CanvasData {
 
-    const setup = skribbl.canvasData.setup = function () {
-        canvas = window._canvas = new fabric.Canvas('canvas');
+    constructor() {
+        this.coords = [];
+        this.canvas = window._canvas = new fabric.Canvas('canvas');
+        this.mousePressed = false;
+        this.fingerLiftedCounter = 0;
+        this.undoCounter = 0;
+        this.clearCounter = 0;
+        this.h = [];
+        // this.frame // from viewController
+    }
 
+    setup() {
         canvas.backgroundColor = '#ffffff';
         canvas.isDrawingMode = 1;
         canvas.freeDrawingBrush.color = "black";
@@ -19,10 +21,10 @@
         
         //setup listeners 
         canvas.on('mouse:up', function (e) {
-            //can we just write fingerLiftedCounter++ because of the field
-            skribbl.canvasData.fingerLiftedCounter++;
-            skribbl.model.getFrame();
-            skribbl.evaluate(skribbl.word);
+            fingerLiftedCounter++;
+            // move to viewcontroller
+            // skribbl.model.getFrame(); 
+            // skribbl.evaluate(skribbl.word); 
             mousePressed = false
         });
         canvas.on('mouse:down', function (e) {
@@ -35,12 +37,10 @@
         window.addEventListener("resize", responsive);
     }
 
-
-
     /*
     record the current drawing coordinates
     */
-    function recordCoor(event) {
+    recordCoor(event) {
         var pointer = canvas.getPointer(event.e);
         var posX = pointer.x;
         var posY = pointer.y;
@@ -53,7 +53,7 @@
     /*
     get the best bounding box by trimming around the drawing
     */
-    function getMinBox() {
+    getMinBox() {
         //get coordinates 
         var coorX = coords.map(function (p) {
             return p.x
@@ -61,7 +61,6 @@
         var coorY = coords.map(function (p) {
             return p.y
         });
-
         //find top left and bottom right corners 
         var min_coords = {
             x: Math.min.apply(null, coorX),
@@ -83,7 +82,7 @@
     get the current image data 
     */
     //can we access getImageData without storing it specifically in skribbl.canvasData (defineProperty??)
-    const getImageData = skribbl.canvasData.getImageData = function () {
+    getImageData() {
         //get the minimum bounding box around the drawing 
         const mbb = getMinBox()
 
@@ -95,22 +94,23 @@
     }
 
     // allow drawing
-    const allowDrawing = skribbl.canvasData.allowDrawing = function () {
+    allowDrawing() {
         canvas.isDrawingMode = 1;
         // $('button').prop('disabled', false);
     }
 
-    const erase = skribbl.canvasData.erase = function () {
-        skribbl.canvasData.clearCounter++;
+    erase() {
+        clearCounter++;
         canvas.clear();
         canvas.backgroundColor = '#ffffff';
         coords = [];
     }
 
+
     // todo can h have a better name and be up with the other fields?
-    var h = [];
-    const undo = skribbl.canvasData.undo = function () {
-        skribbl.canvasData.undoCounter++;
+    // var h = []; moved to constructor
+    undo() {
+        undoCounter++;
 
         if (canvas._objects.length > 1) {
             h.push(canvas._objects.pop());
@@ -118,10 +118,10 @@
                 console.log(i);
             });
             canvas.renderAll();
-            skribbl.model.getFrame();
+            skribbl.model.getFrame(); //todo
         }
         else if (canvas._objects.length == 1) {
-            skribbl.canvasData.erase();
+            erase();
             var bars = document.getElementsByClassName("bar__full");
             for (let bar of bars) {
                 bar.innerHTML = " ";
@@ -130,15 +130,14 @@
         }
     }
 
-    const resetAllCounters = skribbl.canvasData.resetAllCounters = function () {
-        skribbl.canvasData.clearCounter = 0;
-        skribbl.canvasData.fingerLiftedCounter = 0;
-        skribbl.canvasData.undoCounter = 0;
+    resetAllCounters() {
+        clearCounter = 0;
+        fingerLiftedCounter = 0;
+        undoCounter = 0;
     }
-    const responsive = skribbl.canvasData.responsive = function () {
+
+    responsive() {
         let container = document.getElementsByClassName("canvas__container")[0];
-        // let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-        // let height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
         let width = container.offsetWidth;
         let height = container.offsetHeight;
         let widthn = width;
@@ -149,5 +148,4 @@
         });
     }
 
-
-}());
+}
