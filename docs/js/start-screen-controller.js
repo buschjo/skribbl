@@ -12,7 +12,9 @@ class StartScreenController extends ViewController {
 
     //rename startModel?
     setup() {
-        appController.modelData.start("en");
+        // this.appController.modelData.start("en");
+        console.log("Start model");
+        
     }
 
     showInfo() {
@@ -21,6 +23,8 @@ class StartScreenController extends ViewController {
         this.elements.info.addEventListener("click", () => {
             this.hideInfo();
         });
+        console.log(this.elements);
+        
     }    
     hideInfo() {
         this.elements.info.classList.remove('active')
@@ -32,6 +36,10 @@ class StartScreenController extends ViewController {
             this.showInfo();
         });
 
+        this.elements.startButton = document.getElementsByClassName("button-start")[0];
+        // this.elements.startButton.addEventListener("click", () => {
+        //     this.appController.gameScreenController.display();
+        // });
     }
 
 
@@ -39,6 +47,8 @@ class StartScreenController extends ViewController {
 
 window.addEventListener("load", () => {
     let ssc = new StartScreenController();
+    ssc.appController.startScreenController = ssc;
     ssc.display();
     ssc.bindUI();
+    ssc.setup();
 });
