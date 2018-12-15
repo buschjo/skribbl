@@ -14,7 +14,7 @@ class StartScreenController extends ViewController {
     setup() {
         // this.appController.modelData.start("en");
         console.log("Start model");
-        
+
     }
 
     showInfo() {
@@ -24,8 +24,8 @@ class StartScreenController extends ViewController {
             this.hideInfo();
         });
         console.log(this.elements);
-        
-    }    
+
+    }
     hideInfo() {
         this.elements.info.classList.remove('active')
     }

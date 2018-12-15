@@ -50,16 +50,16 @@
             elements.undoButton.addEventListener("click", undo);
 
             tutorial.currentTutorialStepIndex = 0;
-            tutorial.tutorailSteps = [new tutorialStep("First you will see a word here."),
-                                 new tutorialStep("You have 3 seconds to memorize the word."),
-                                 new tutorialStep("You can draw here.", elements.canvasArea,"thick solid #ff5757"),
-                                 new tutorialStep("You can see here, which words the AI thinks you are drawing.", elements.barsArea,"thick solid #ff5757"),
-                                 new tutorialStep("When the timer reaches the left side, your time is up.", elements.timerArea,"thick solid #ff5757"),
-                                 new tutorialStep("Use 'clear' to wipe your drawing.", elements.undoTool,"thick solid #ff5757"),
-                                 new tutorialStep("Use 'undo' to remove your last line.", elements.clearTool,"thick solid #ff5757"),
-                                 new tutorialStep("Use 'skip' to skip a word.", elements.skipTool,"thick solid #ff5757"),
-                                 new tutorialStep("Get your word to the top of the list to win.", elements.barsArea,"thick solid #ff5757"),
-                                 new tutorialStep("Let's go!")];
+            // tutorial.tutorailSteps = [new tutorialStep("First you will see a word here."),
+            //                      new tutorialStep("You have 3 seconds to memorize the word."),
+            //                      new tutorialStep("You can draw here.", elements.canvasArea,"thick solid #ff5757"),
+            //                      new tutorialStep("You can see here, which words the AI thinks you are drawing.", elements.barsArea,"thick solid #ff5757"),
+            //                      new tutorialStep("When the timer reaches the left side, your time is up.", elements.timerArea,"thick solid #ff5757"),
+            //                      new tutorialStep("Use 'clear' to wipe your drawing.", elements.undoTool,"thick solid #ff5757"),
+            //                      new tutorialStep("Use 'undo' to remove your last line.", elements.clearTool,"thick solid #ff5757"),
+            //                      new tutorialStep("Use 'skip' to skip a word.", elements.skipTool,"thick solid #ff5757"),
+            //                      new tutorialStep("Get your word to the top of the list to win.", elements.barsArea,"thick solid #ff5757"),
+            //                      new tutorialStep("Let's go!")];
             if (elements.tutorialDone) {
                 startGame();
             } else {
@@ -133,6 +133,7 @@
             }
         }
     }
+    //Umgezogen
     function startGame() {
         var randomNumber = getRandomInt(100);
         skribbl.word = skribbl.classNames[randomNumber];
@@ -142,9 +143,11 @@
             startTimer();
         }, 5000);
     }
+    //Umgezogen
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
-    }    
+    }   
+    //Umgezogen 
     function endGame() {
         skribbl.endScreenController.display();
         clearInterval(elements.timerInterval);
@@ -177,51 +180,53 @@
             usedClassNames = []; //empty usedClassNames
         }
     }
-    function tutorialStep(tutorialText, htmlArea, highlightStyle) {
-        this.tutorialText = tutorialText;
-        this.htmlArea = htmlArea;
-        this.highlightStyle = highlightStyle;
-    }
+    // function tutorialStep(tutorialText, htmlArea, highlightStyle) {
+    //     this.tutorialText = tutorialText;
+    //     this.htmlArea = htmlArea;
+    //     this.highlightStyle = highlightStyle;
+    // }
     function showTutorial() {
+        appController = SingletonAppController.getInstance();
+        appController.showTutorial();
         //is it enough to say overlay.display = none?
-        elements.overlay.style.display = "block";
-        elements.skipButton.style.display = "block";
-        elements.nextStepButton.style.display = "block";
-        elements.overlayText.innerText = tutorial.tutorailSteps[tutorial.currentTutorialStepIndex].tutorialText;
-        elements.skipButton.addEventListener("click", function () {
-            skipTutorial();
-        });
-        elements.nextStepButton.addEventListener("click", function (){
-            walkThroughTutorial();
-        })
+        // elements.overlay.style.display = "block";
+        // elements.skipButton.style.display = "block";
+        // elements.nextStepButton.style.display = "block";
+        // elements.overlayText.innerText = tutorial.tutorailSteps[tutorial.currentTutorialStepIndex].tutorialText;
+        // elements.skipButton.addEventListener("click", function () {
+        //     skipTutorial();
+        // });
+        // elements.nextStepButton.addEventListener("click", function (){
+        //     walkThroughTutorial();
+        // })
     }
-    function walkThroughTutorial() {
-        tutorial.currentTutorialStepIndex++;
-        if (tutorial.currentTutorialStepIndex < tutorial.tutorailSteps.length) {
-            currentTutorialStep = tutorial.tutorailSteps[tutorial.currentTutorialStepIndex];
-            elements.overlayText.innerText = currentTutorialStep.tutorialText;
-            currentTutorialStep.htmlArea.style.border = currentTutorialStep.highlightStyle;
-            removeTutorialStyleChange(tutorial.tutorailSteps[tutorial.currentTutorialStepIndex-1]);
-        }else{
-            removeAllTutorialStyleChanges();
-            startGame();
-        }
-    }
-    function removeAllTutorialStyleChanges(){
-        for (var i = 0; i < tutorial.tutorailSteps.length; i++) {
-            removeTutorialStyleChange(tutorial.tutorailSteps[i]);
-        }
-    }
-    function removeTutorialStyleChange(tutorialStyleStep){
-        if(typeof tutorialStyleStep.htmlArea != "undefined"){tutorialStyleStep.htmlArea.style.border = "none";}
-    }
-    function skipTutorial() {
-        elements.skipButton.style.display = "none";
-        elements.nextStepButton.style.display = "none";
-        elements.tutorialDone = true;
-        removeAllTutorialStyleChanges();
-        startGame();
-    }
+    // function walkThroughTutorial() {
+    //     tutorial.currentTutorialStepIndex++;
+    //     if (tutorial.currentTutorialStepIndex < tutorial.tutorailSteps.length) {
+    //         currentTutorialStep = tutorial.tutorailSteps[tutorial.currentTutorialStepIndex];
+    //         elements.overlayText.innerText = currentTutorialStep.tutorialText;
+    //         currentTutorialStep.htmlArea.style.border = currentTutorialStep.highlightStyle;
+    //         removeTutorialStyleChange(tutorial.tutorailSteps[tutorial.currentTutorialStepIndex-1]);
+    //     }else{
+    //         removeAllTutorialStyleChanges();
+    //         startGame();
+    //     }
+    // }
+    // function removeAllTutorialStyleChanges(){
+    //     for (var i = 0; i < tutorial.tutorailSteps.length; i++) {
+    //         removeTutorialStyleChange(tutorial.tutorailSteps[i]);
+    //     }
+    // }
+    // function removeTutorialStyleChange(tutorialStyleStep){
+    //     if(typeof tutorialStyleStep.htmlArea != "undefined"){tutorialStyleStep.htmlArea.style.border = "none";}
+    // }
+    // function skipTutorial() {
+    //     elements.skipButton.style.display = "none";
+    //     elements.nextStepButton.style.display = "none";
+    //     elements.tutorialDone = true;
+    //     removeAllTutorialStyleChanges();
+    //     startGame();
+    // }
     //can these two methods be more similar1?? O.O
     function startCountdown(word) {
         //same as line 140

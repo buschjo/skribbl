@@ -1,7 +1,7 @@
 class GameRound {
 
     constructor() {
-        this.appController = AppController.getInstance();
+        this.appController = SingletonAppController.getInstance();
         this.canvasData = new CanvasData();
         this.modelData = new ModelData();
         // this.targetWord = modelData.getTargetWord();
@@ -20,7 +20,7 @@ class GameRound {
         appController.setTimerInterval(timer);
     }
     startGame() {
-        var randomNumber = getRandomInt(100);
+        var randomNumber = this.getRandomInt(100);
         word = modelData.classNames[randomNumber];
         console.log(skribbl.word);
         startCountdown(skribbl.word);
@@ -28,6 +28,11 @@ class GameRound {
             startTimer();
         }, 5000);
     }
-
+    getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+	endGame() {
+        skribbl.endScreenController.display();
+        clearInterval(elements.timerInterval);
+    }
 }
-

@@ -4,17 +4,18 @@ class AppController  {
 		console.log("AppController created");
 		this.gameRound = undefined;
 			//TODO Initialize Controllers
-		this.startScreenController= undefined;;
-		this.gameScreenController= undefined;;
-		this.endScreenController= undefined;;
-		this.usedClassNames= undefined;;
-		this.scores= undefined;;
+		this.startScreenController= undefined;
+		this.gameScreenController= undefined;
+		this.endScreenController= undefined;
+		this.usedClassNames= undefined;
+		this.scores= undefined;
+		this.tutorial = new Tutorial();
 	}
 
 	createNewGameRound() {
-		if(this.gameRound){
+		if (typeof this.gameRound == 'undefined'){
 			this.gameRound = new GameRound();	
-		}		
+		}
 	}
 
 	setWordAsUsed(usedWord) {
@@ -29,10 +30,20 @@ class AppController  {
     	gameScreenController.setTimerInterval(timer);
     }
 
+    skipTutorial() {
+    	this.tutorial.skip();
+        this.gameRound.startGame();
+    }
 
+    showTutorial(){
+    	this.createNewGameRound();
+    	this.tutorial.prepare();
+    	this.tutorial.show();
+    	this.gameRound.startGame();
+    }
 }
 
-var SAppController = (function () {
+var SingletonAppController = (function () {
     let instance; 
 
     function createInstance() {
@@ -44,6 +55,7 @@ var SAppController = (function () {
         getInstance: function () {
             if (!instance) {
                 instance = createInstance();
+                // Object.freeze(instance);
             }
             return instance;
         }
