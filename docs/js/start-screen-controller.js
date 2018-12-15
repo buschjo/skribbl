@@ -1,4 +1,7 @@
 ( function () {
+    appController = SAppController.getInstance();
+    appController.createNewGameRound();
+
     const ScreenController = skribbl.ScreenController;
 
     const StartScreenController = function () {
