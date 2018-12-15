@@ -1,49 +1,44 @@
-( function () {
-    appController = SAppController.getInstance();
-    appController.createNewGameRound();
+class StartScreenController extends ViewController {
 
-    const ScreenController = skribbl.ScreenController;
-
-    const StartScreenController = function () {
-        ScreenController.call(this);
+    constructor() {
+        super();
+        this.elements = {};
     }
-    StartScreenController.prototype = Object.create(ScreenController.prototype);
-    StartScreenController.prototype.constructor = StartScreenController;
 
-    //This is a public instance method (with const it is private)
-    Object.defineProperty(StartScreenController.prototype, "display", {
-        value: function () {
-            const mainEl = document.querySelector("main");
-            mainEl.appendChild(document.getElementById("start-template").content.cloneNode(true).firstElementChild);
-        }
-    });
+    display() {
+        this.elements.mainEl = document.querySelector("main");
+        this.elements.mainEl.appendChild(document.getElementById("start-template").content.cloneNode(true).firstElementChild);
+    }
 
-    Object.defineProperty(StartScreenController.prototype, "setup", {
-        value: function () {
-            skribbl.model.start("en");
-        }
-    })
+    //rename startModel?
+    setup() {
+        appController.modelData.start("en");
+    }
 
-    //this method is private
-    function showInfo() {
-        let info = document.getElementsByClassName('info__container')[0];
-        info.classList.add('active');
+    showInfo() {
+        this.elements.info = document.getElementsByClassName('info__container')[0];
+        this.elements.info.classList.add('active');
+        this.elements.info.addEventListener("click", () => {
+            this.hideInfo();
+        });
     }    
-    function hideInfo() {
-        let info = document.getElementsByClassName('info__container')[0];
-        info.classList.remove('active')
+    hideInfo() {
+        this.elements.info.classList.remove('active')
     }
 
-    window.addEventListener("load", event => {
-        const controller = new StartScreenController();
-        controller.display();
-        controller.setup();
+    bindUI() {
+        this.elements.infoButton = document.getElementsByClassName('button-info')[0];
+        this.elements.infoButton.addEventListener("click", () => {
+            this.showInfo();
+        });
 
-        const infoButton = document.getElementsByClassName('button-info')[0];
-        infoButton.addEventListener("click", showInfo);
-        const infoContainer = document.getElementsByClassName('info__container')[0];
-        infoContainer.addEventListener("click", hideInfo);
+    }
 
-    })
 
-} ());
+}
+
+window.addEventListener("load", () => {
+    let ssc = new StartScreenController();
+    ssc.display();
+    ssc.bindUI();
+});
