@@ -1,26 +1,26 @@
-var GameRound = function () {
-	let appController = AppController.getInstance();
-	let canvasData;
-	let modelData;
-	let targetWord = modelData.getNextWord();
-
-    const timer = {
-        width: 100,
-        totalTime: 20,
-        startTime: 0
+class GameRound {
+    // appController
+    // canvasData
+    // modelData
+    // targetWord
+    // timer = {
+    //     width: 100,
+    //     totalTime: 20,
+    //     startTime: 0
+    // }
+    constructor() {
+        this.appController = AppController.getInstance();
+        this.canvasData = new CanvasData("test");
     }
-
-	function calculateTimeElapsed() {
+    calculateTimeElapsed() {
         //replace by min and max and threshold 20
         return (Date.now() - timer.startTime) / 1000;
     }
-
-    function startTimer() {
+    startTimer() {
         timer.startTime = Date.now();
         appController.setTimerInterval(timer);
     }
-
-    function startGame() {
+    startGame() {
         var randomNumber = getRandomInt(100);
         word = modelData.classNames[randomNumber];
         console.log(skribbl.word);
@@ -30,4 +30,5 @@ var GameRound = function () {
         }, 5000);
     }
 
-} ();
+}
+
