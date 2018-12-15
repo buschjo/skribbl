@@ -1,20 +1,23 @@
-var AppController = (function () {
-    let instance;
- 	let gameRound;
- 	//TODO Initialize Controllersd
-	let startScreenController;
-	let gameScreenController;
-	let endScreenController;
-	let usedClassNames;
-	let scores;
+class AppController  {
 
-    function createNewGameRound() {
-		if(gameRound){
-			gameRound = new GameRound();	
+	constructor() {
+		console.log("AppController created");
+		this.gameRound = undefined;
+			//TODO Initialize Controllers
+		this.startScreenController= undefined;;
+		this.gameScreenController= undefined;;
+		this.endScreenController= undefined;;
+		this.usedClassNames= undefined;;
+		this.scores= undefined;;
+	}
+
+	createNewGameRound() {
+		if(this.gameRound){
+			this.gameRound = new GameRound();	
 		}		
 	}
 
-	function setWordAsUsed(usedWord) {
+	setWordAsUsed(usedWord) {
         console.log(usedWord)
         usedClassNames.push(usedWord); //push word
         if (usedClassNames.length <= classNames.length) {
@@ -22,12 +25,18 @@ var AppController = (function () {
         }
     }
 
-    function setTimerInterval(timer){
+    setTimerInterval(timer){
     	gameScreenController.setTimerInterval(timer);
     }
 
+
+}
+
+var SAppController = (function () {
+    let instance; 
+
     function createInstance() {
-        var object = new Object("I am the instance");
+        var object = new AppController("I am the instance");
         return object;
     }
  
