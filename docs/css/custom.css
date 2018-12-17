@@ -186,7 +186,7 @@ a.button {
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
   color: white;
   position: relative;
-  background-color: lightgray;
+  background-color: #737373;
 }
 .bars__container .bar__empty .bar__full {
   transition: width 0.3s linear;
@@ -258,6 +258,7 @@ a.button {
 }
 
 #overlay-text {
+  text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
   position: absolute;
   top: 47%;
   left: 50%;
@@ -269,6 +270,7 @@ a.button {
 }
 
 #overlay-number {
+  text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
   position: absolute;
   top: 53%;
   left: 50%;

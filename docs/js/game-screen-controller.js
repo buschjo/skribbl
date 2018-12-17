@@ -8,6 +8,7 @@
     GameScreenController.prototype = Object.create(ScreenController.prototype);
     GameScreenController.prototype.constructor = GameScreenController;
 
+
   
     const elements = {
         tutorialDone: false
@@ -91,13 +92,13 @@
             let temp = probs[i];
             let mr = Math.round(temp * 100);
             prob.style.width = mr + '%';
-            prob.innerHTML = '&nbsp;' + top5[i];
+            prob.innerHTML = '&nbsp;' + (Math.round(skribbl.probs[i] * 100) < 10 ? '0' : "") + Math.round(skribbl.probs[i] * 100) + '%' + '&nbsp;' + top5[i];
             if (top5[i] == skribbl.word) {
                 prob.style.backgroundColor = "#ff5757";
                 //prob.style.font = "bold 18px arial, serif";
                 prob.style.textShadow = "0 0 5px yellow";
             } else {
-                prob.style.backgroundColor = "#545454";
+                prob.style.backgroundColor = "#1c1c1c";
                 prob.style.font = "";
                 prob.style.textShadow = "";
             }
@@ -219,9 +220,32 @@
     function calculateTimeElapsed() {
         return (Date.now() - timer.startTime) / 1000;
     }
+
     function getRandomInt(max) {
+        /*
+        if (skribbl.counterOfRandomNumbers == 0 || skribbl.counterOfRandomNumbers <= max) {
+
+        skribbl.listOfNumbers =  new Array(max - 0 + 1). 
+        console.log(skribbl.listOfNumbers);
+        skribbl.listOfRandomNumbers = shuffle(skribbl.listOfNumbers);
+        console.logs(skribbl.listOFfRandomNumbers);
+        }
+        randNumb = skribbl.listOfRandomNumbers[skribbl.counterOfRandomNumbers];
+        console.log(skribbl.randNumb);
+        skribbl.counterOfRandomNumbers++;
+        console.log(skribbl.counterOfRandomNumbers);
+        return randNumb;
+        */
         return Math.floor(Math.random() * Math.floor(max));
     }
+
+   
+    /*
+    function shuffle(list) {
+        for(var j, x, i = list.length; i; j = parseInt(Math.random() * i), x = list[--i], list[i] = list[j], list[j] = x);
+        return list;
+    };
+   */
    
     window.addEventListener("load", event => {
         const controller = skribbl.gameScreenController = new GameScreenController();

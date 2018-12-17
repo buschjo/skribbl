@@ -28,20 +28,19 @@
     });
 
     function callDefeatScreen(res, resButton) {
-        res.innerHTML = " <h1>TIME'S UP!</h1><p>Oh no, I couldn't guess it!</p><p>I was only " + Math.round(skribbl.probs[0] * 100) + "% sure.</p><p>Next word, please!</p>"
-            + "<p>Clear-Button used :" + skribbl.canvasData.clearCounter + " </p>"
-            + "<p>Finger lifted : " + skribbl.canvasData.fingerLiftedCounter + "</p>"
-            + "<p>Undo-Button used : " + skribbl.canvasData.undoCounter + "</p>"
+        res.innerHTML = " <h1>TIME'S UP!</h1><p>Oh no, I couldn't guess it!</p><p>I was only ...% sure.</p><p>Next word, please!</p>"
+            + "<p>Clear-Button used: " + skribbl.canvasData.clearCounter + "</p>"
+            + "<p>Finger lifted: " + skribbl.canvasData.fingerLiftedCounter + "</p>"
+            + "<p>Undo-Button used: " + skribbl.canvasData.undoCounter + "</p>"
             + skribbl.word; 
-
         resButton.innerText = 'NEXT';
     }
     function callVictoryScreen(res, resButton) {
         res.innerHTML = "<p>Yeah, I guess it! Good Draw!</p><p>I was " + Math.round(skribbl.probs[0] * 100) + "% sure!</p>"
             + "<p> You needed " + skribbl.timeElapsed.toFixed(2) + " seconds.</p>"
-            + "<p>Clear-Button used :" + skribbl.canvasData.clearCounter + " </p>"
-            + "<p>Finger lifted : " + skribbl.canvasData.fingerLiftedCounter + "</p>"
-            + "<p>Undo-Button used :" + skribbl.canvasData.undoCounter + "</p>"
+            + "<p>Clear-Button used: " + skribbl.canvasData.clearCounter + "</p>"
+            + "<p>Finger lifted: " + skribbl.canvasData.fingerLiftedCounter + "</p>"
+            + "<p>Undo-Button used: " + skribbl.canvasData.undoCounter + "</p>"
             + skribbl.word; 
         resButton.innerText = 'NEXT';
     }
