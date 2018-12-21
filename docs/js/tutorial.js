@@ -33,24 +33,8 @@ class Tutorial{
     }
 
     prepare(){
-        console.log('prepare tutorial...');
         this.initializeScreenElements();
         this.initializeTutorialSteps();
-        console.log('tutorial prepared');
-    }
-
-    show() {
-        //is it enough to say overlay.display = none?
-        this.screenElements.overlay.style.display = "block";
-        this.screenElements.skipButton.style.display = "block";
-        this.screenElements.nextStepButton.style.display = "block";
-        this.screenElements.overlayText.innerText = this.tutorailSteps[this.currentTutorialStepIndex].tutorialText;
-        this.screenElements.skipButton.addEventListener("click", function () {
-            this.skip();
-        });
-        this.screenElements.nextStepButton.addEventListener("click", function (){
-            this.walkThrough();
-        })
     }
 
     skip(){
@@ -60,7 +44,7 @@ class Tutorial{
         this.removeAllStyleChanges();
     }
 
-    walkThrough() {
+    walkThrough(){
         this.currentTutorialStepIndex++;
         if (this.currentTutorialStepIndex < this.tutorailSteps.length) {
             currentTutorialStep = this.tutorailSteps[this.currentTutorialStepIndex];
@@ -70,6 +54,23 @@ class Tutorial{
         }else{
             this.removeAllStyleChanges();
         }
+    }
+
+    //TODO This is faulty
+    //in event listeners "this" is the button
+    //I don't know how to get the skip function in there
+    show() {
+        //is it enough to say overlay.display = none?
+        this.screenElements.overlay.style.display = "block";
+        this.screenElements.skipButton.style.display = "block";
+        this.screenElements.nextStepButton.style.display = "block";
+        this.screenElements.overlayText.innerText = this.tutorailSteps[this.currentTutorialStepIndex].tutorialText;
+        this.screenElements.skipButton.addEventListener("click", function (){
+            this.skip();
+        })
+        this.screenElements.nextStepButton.addEventListener("click", function (){
+            this.walkThrough();
+        })
     }
 
     removeAllStyleChanges(){

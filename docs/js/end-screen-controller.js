@@ -44,8 +44,11 @@ class EndScreenController extends ViewController {
 
 
 window.addEventListener("load", event => {
-    let esc = new EndScreenController();
-    esc.appController.EndScreenController = esc;
-    // console.log(esc);
+    let appController = SingletonAppController.getInstance();
+    if (typeof appController.endScreenController == "undefined") {
+        let esc = new EndScreenController();
+        appController.EndScreenController = esc;
+        console.log("EndScreenController created");
+    }
 });
 

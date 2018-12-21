@@ -3,7 +3,7 @@ class GameRound {
     constructor() {
         this.appController = SingletonAppController.getInstance();
         this.canvasData = new CanvasData();
-        this.modelData = new ModelData();
+        // this.modelData = new ModelData();
         // this.targetWord = modelData.getTargetWord();
         this.timer = {
             width: 100,
@@ -13,11 +13,11 @@ class GameRound {
     }
     calculateTimeElapsed() {
         //replace by min and max and threshold 20
-        return (Date.now() - timer.startTime) / 1000;
+        return (Date.now() - this.timer.startTime) / 1000;
     }
     startTimer() {
-        timer.startTime = Date.now();
-        appController.setTimerInterval(timer);
+        this.timer.startTime = Date.now();
+        this.appController.setTimerInterval(this.timer);
     }
     startGame() {
         var randomNumber = this.getRandomInt(100);
@@ -32,7 +32,7 @@ class GameRound {
         return Math.floor(Math.random() * Math.floor(max));
     }
 	endGame() {
-        skribbl.endScreenController.display();
+        this.appController.endScreenController.display();
         clearInterval(elements.timerInterval);
     }
 }

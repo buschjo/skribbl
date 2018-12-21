@@ -1,7 +1,7 @@
 class ViewController {
 
     constructor() {
-        this.appController = SAppController.getInstance();
+        this.appController = SingletonAppController.getInstance();
         this.elements = {};
     }
 

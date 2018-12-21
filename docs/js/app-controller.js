@@ -10,6 +10,7 @@ class AppController  {
 		this.usedClassNames= undefined;
 		this.scores= undefined;
 		this.tutorial = new Tutorial();
+        this.tutorialDone = false;
 	}
 
 	createNewGameRound() {
@@ -18,25 +19,28 @@ class AppController  {
 		}
 	}
 
+    startGame(){
+        this.createNewGameRound();
+        if (this.tutorialDone) {
+            this.gameRound.startGame();
+        } else {
+            this.showTutorial();
+        }
+    }
+
 	setWordAsUsed(usedWord) {
         console.log(usedWord)
-        usedClassNames.push(usedWord); //push word
-        if (usedClassNames.length <= classNames.length) {
-            usedClassNames = []; //empty usedClassNames
+        this.usedClassNames.push(usedWord); //push word
+        if (this.usedClassNames.length <= classNames.length) {
+            this.usedClassNames = []; //empty usedClassNames
         }
     }
 
     setTimerInterval(timer){
-    	gameScreenController.setTimerInterval(timer);
-    }
-
-    skipTutorial() {
-    	this.tutorial.skip();
-        this.gameRound.startGame();
+    	this.gameScreenController.setTimerInterval(timer);
     }
 
     showTutorial(){
-    	this.createNewGameRound();
     	this.tutorial.prepare();
     	this.tutorial.show();
     	this.gameRound.startGame();
