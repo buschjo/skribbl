@@ -2,8 +2,10 @@ class AppController  {
 
 	constructor() {
 		console.log("AppController created");
-		this.gameRound = undefined;
-			//TODO Initialize Controllers
+        this.gameRound = undefined;
+        this.modelData = new ModelData();
+        this.modelData.start('en');
+        //TODO Initialize Controllers
 		this.startScreenController= undefined;
 		this.gameScreenController= undefined;
 		this.endScreenController= undefined;

@@ -12,8 +12,6 @@ class StartScreenController extends ViewController {
 
     //rename startModel?
     setup() {
-        // this.appController.modelData.start("en");
-        console.log("Start model");
 
     }
 
@@ -52,5 +50,5 @@ window.addEventListener("load", () => {
     }
     appController.startScreenController.display();
     appController.startScreenController.bindUI();
-    appController.startScreenController.setup();
+   // appController.startScreenController.setup();
 });
