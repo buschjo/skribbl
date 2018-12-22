@@ -1,64 +1,105 @@
-(function () {
-    skribbl.model = {};
-    var model;
-    var classNames = skribbl.classNames= [];
+class ModelData {
 
-    const start = skribbl.model.start = async function start(cur_mode) {
+    constructor() {
+        this.model = undefined;
+        this.classnames = undefined;
+        console.log("Model starting Initialization");
+
+
+    }
+
+    async start(cur_mode) {
         //language
-        mode = cur_mode;
-    
+        console.log("from Model: current Mode : " + cur_mode)
+        this.mode = cur_mode;
+
         //load the model 
-        model = await tf.loadModel('model15k/model.json');
-    
+        this.model = await tf.loadModel('model15k/model.json');
+
         //warm up 
-        model.predict(tf.zeros([1, 28, 28, 1]));
-    
+        this.model.predict(tf.zeros([1, 28, 28, 1]));
+
         //allow drawing on the canvas 
         // skribbl.canvasData.allowDrawing();
-    
-        //load the class names
-        await loadDict();
-        console.log('model started');
-    
+
+
+        await this.loadDict();
+        console.log('model ready');
+
     }
 
-    /*
+        //load the class names
+        async loadDict() {
+            const loc = 'model15k/class_names.txt'
+    
+            await $.ajax({
+                url: loc,
+                dataType: 'text',
+            }).done(this.success);
+        }
+    
+        success(data) {
+            const lst = data.split(/\n/)
+            console.log(lst);
+            this.classNames = []
+            for (var i = 0; i < lst.length - 1; i++) {
+                const symbol = lst[i]
+    
+                this.classNames[i] = symbol
+    
+            }
+        }
+
+
+        ////TODO für GameView/ Gameround usw
+
+     /*
     preprocess the data
     */
-    function preprocess(imgData) {
-        return tf.tidy(() => {
-            //convert to a tensor 
-            let tensor = tf.fromPixels(imgData, numChannels = 1)
+    preprocess(imgData) {
+    return tf.tidy(() => {
+        //convert to a tensor 
+        let tensor = tf.fromPixels(imgData, numChannels = 1)
 
-            //resize 
-            const resized = tf.image.resizeBilinear(tensor, [28, 28]).toFloat()
+        //resize 
+        const resized = tf.image.resizeBilinear(tensor, [28, 28]).toFloat()
 
-            //normalize 
-            const offset = tf.scalar(255.0);
-            const normalized = tf.scalar(1.0).sub(resized.div(offset));
+        //normalize 
+        const offset = tf.scalar(255.0);
+        const normalized = tf.scalar(1.0).sub(resized.div(offset));
 
-            //We add a dimension to get a batch shape 
-            const batched = normalized.expandDims(0)
-            return batched
-        })
+        //We add a dimension to get a batch shape 
+        const batched = normalized.expandDims(0)
+        return batched
+    })
+}
+
+
+
+    getFrame() {
+        if (skribbl.canvasData.coords.length >= 2) {
+
+            //get the image data from the canvas 
+            const imgData = skribbl.canvasData.getImageData()
+
+            //get the prediction 
+            const pred = model.predict(this.preprocess(imgData)).dataSync()
+            //find the top 5 predictions 
+            const indices = findIndicesOfMax(pred, 5)
+            //instead of skribbl.probs and skribbl.names --> model.probs and model.names
+            const probs = skribbl.probs = this.findTopValues(pred, 5)
+            const names = skribbl.names = this.getClassNames(indices)
+            //set the table 
+            skribbl.drawBars(names, probs);
+            console.log(nsames);
+
+        }
+
+
     }
 
-    /*
-    find the top 5 predictions
-    */
-    function findTopValues(inp, count) {
-        var outp = [];
-        let indices = findIndicesOfMax(inp, count)
-        // show 5 greatest scores
-        for (var i = 0; i < indices.length; i++)
-            outp[i] = inp[indices[i]]
-        return outp
-    }
 
-    /*
-    get indices of the top probs
-    */
-    function findIndicesOfMax(inp, count) {
+    findIndicesOfMax(inp, count) {
         var outp = [];
         for (var i = 0; i < inp.length; i++) {
             outp.push(i); // add index to output array
@@ -72,65 +113,22 @@
         return outp;
     }
 
-    /*
-    get the the class names 
-    */
-    function getClassNames(indices) {
-        var outp = []
+    findTopValues(inp, count) {
+        var outp = [];
+        let indices = findIndicesOfMax(inp, count)
+        // show 5 greatest scores
         for (var i = 0; i < indices.length; i++)
-            outp[i] = classNames[indices[i]]
+            outp[i] = inp[indices[i]]
         return outp
     }
-
-    /*
-    load the class names 
+        /*
+    get the the class names 
     */
-    async function loadDict() {
-        loc = 'model15k/class_names.txt'
+    getClassNames(indices) {
+    var outp = []
+    for (var i = 0; i < indices.length; i++)
+        outp[i] = classNames[indices[i]]
+    return outp
+}
 
-        await $.ajax({
-            url: loc,
-            dataType: 'text',
-        }).done(success);
-    }
-
-    /*
-    load the class names
-    */
-    function success(data) {
-        const lst = data.split(/\n/)
-        for (var i = 0; i < lst.length - 1; i++) {
-            let symbol = lst[i]
-            classNames[i] = symbol
-        }
-    }
-
-    /*
-    get the prediction 
-    */
-    const getFrame = skribbl.model.getFrame = function () {
-        //make sure we have at least two recorded coordinates 
-        if (skribbl.canvasData.coords.length >= 2) {
-
-            //get the image data from the canvas 
-            const imgData = skribbl.canvasData.getImageData()
-
-            //get the prediction 
-            const pred = model.predict(preprocess(imgData)).dataSync()
-            //find the top 5 predictions 
-            const indices = findIndicesOfMax(pred, 5)
-            //instead of skribbl.probs and skribbl.names --> model.probs and model.names
-            const probs = skribbl.probs = findTopValues(pred, 5)
-            const names = skribbl.names = getClassNames(indices)
-            //set the table 
-            skribbl.drawBars(names, probs);
-            console.log(names);
-            
-            
-            
-        }
-
-    }
-
-
-} ());
+}
