@@ -48,7 +48,6 @@ window.addEventListener("load", event => {
     if (typeof appController.endScreenController == "undefined") {
         let esc = new EndScreenController();
         appController.EndScreenController = esc;
-        console.log("EndScreenController created");
     }
 });
 

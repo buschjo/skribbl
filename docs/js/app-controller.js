@@ -1,7 +1,6 @@
 class AppController  {
 
 	constructor() {
-		console.log("AppController created");
         this.gameRound = undefined;
         this.modelData = new ModelData();
         this.modelData.start('en');
@@ -11,23 +10,33 @@ class AppController  {
 		this.endScreenController= undefined;
 		this.usedClassNames= undefined;
 		this.scores= undefined;
-		this.tutorial = new Tutorial();
+		this.tutorial = undefined;
         this.tutorialDone = false;
 	}
 
 	createNewGameRound() {
 		if (typeof this.gameRound == 'undefined'){
-			this.gameRound = new GameRound();	
+			this.gameRound = new GameRound(this.modelData);
+            this.tutorial = new Tutorial(this.gameRound);
 		}
 	}
 
     startGame(){
         this.createNewGameRound();
-        if (this.tutorialDone) {
-            this.gameRound.startGame();
-        } else {
+        if (!this.tutorialDone) {
             this.showTutorial();
+            this.tutorialDone = true;
+        }else{
+            this.gameRound.startGame();
         }
+    }
+
+    endGame(){
+        this.endScreenController.display();
+    }
+
+    startCountdown(word){
+        this.gameScreenController.startCountdown(word);
     }
 
 	setWordAsUsed(usedWord) {
@@ -43,9 +52,9 @@ class AppController  {
     }
 
     showTutorial(){
+        console.log("showing tutorial");
     	this.tutorial.prepare();
     	this.tutorial.show();
-    	this.gameRound.startGame();
     }
 }
 

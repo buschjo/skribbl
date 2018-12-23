@@ -1,12 +1,13 @@
 class Tutorial{
-    constructor(){
-        this.tutorailSteps={};
+    constructor(gameRound){
+        this.tutorialSteps={};
         this.screenElements={};
         this.currentTutorialStepIndex = 0;
+        this.gameRound = gameRound;
     }
 
     initializeTutorialSteps(){
-        this.tutorailSteps = [new TutorialStep("First you will see a word here."),
+        this.tutorialSteps = [new TutorialStep("First you will see a word here."),
         new TutorialStep("You have 3 seconds to memorize the word."),
         new TutorialStep("You can draw here.", this.screenElements.canvasArea,"thick solid #ff5757"),
         new TutorialStep("You can see here, which words the AI thinks you are drawing.", this.screenElements.barsArea,"thick solid #ff5757"),
@@ -42,17 +43,19 @@ class Tutorial{
         this.screenElements.nextStepButton.style.display = "none";
         this.screenElements.tutorialDone = true;
         this.removeAllStyleChanges();
+        this.gameRound.startGame();
     }
 
     walkThrough(){
         this.currentTutorialStepIndex++;
-        if (this.currentTutorialStepIndex < this.tutorailSteps.length) {
-            currentTutorialStep = this.tutorailSteps[this.currentTutorialStepIndex];
+        if (this.currentTutorialStepIndex < this.tutorialSteps.length) {
+            var currentTutorialStep = this.tutorialSteps[this.currentTutorialStepIndex];
             this.screenElements.overlayText.innerText = currentTutorialStep.tutorialText;
             currentTutorialStep.setStyleChange();
             this.tutorialSteps[this.currentTutorialStepIndex-1].removeStyleChange();
         }else{
             this.removeAllStyleChanges();
+            this.gameRound.startGame();
         }
     }
 
@@ -64,18 +67,19 @@ class Tutorial{
         this.screenElements.overlay.style.display = "block";
         this.screenElements.skipButton.style.display = "block";
         this.screenElements.nextStepButton.style.display = "block";
-        this.screenElements.overlayText.innerText = this.tutorailSteps[this.currentTutorialStepIndex].tutorialText;
+        this.screenElements.overlayText.innerText = this.tutorialSteps[this.currentTutorialStepIndex].tutorialText;
+        var that = this;
         this.screenElements.skipButton.addEventListener("click", function (){
-            this.skip();
+            that.skip();
         })
         this.screenElements.nextStepButton.addEventListener("click", function (){
-            this.walkThrough();
+            that.walkThrough();
         })
     }
 
     removeAllStyleChanges(){
-        for (var i = 0; i < this.tutorailSteps.length; i++) {
-            this.tutorailSteps[i].removeStyleChange();
+        for (var i = 0; i < this.tutorialSteps.length; i++) {
+            this.tutorialSteps[i].removeStyleChange();
         }
     }
 }
@@ -88,7 +92,7 @@ class TutorialStep{
     }
 
     setStyleChange(){
-        this.htmlArea.style.border = currentTutorialStep.highlightStyle;
+        if(typeof this.htmlArea != "undefined"){ this.htmlArea.style.border = this.highlightStyle;}
     }
 
     removeStyleChange(){

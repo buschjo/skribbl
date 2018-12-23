@@ -4,8 +4,6 @@ class ModelData {
         this.model = undefined;
         this.classnames = undefined;
         console.log("Model starting Initialization");
-
-
     }
 
     async start(cur_mode) {
@@ -22,34 +20,22 @@ class ModelData {
         //allow drawing on the canvas 
         // skribbl.canvasData.allowDrawing();
 
-
         await this.loadDict();
         console.log('model ready');
-
     }
 
-        //load the class names
-        async loadDict() {
-            const loc = 'model15k/class_names.txt'
+    //load the class names
+    async loadDict() {
+        const loc = 'model15k/class_names.txt'
+        await $.ajax({
+            url: loc,
+            dataType: 'text',
+        }).done(this.success);
+    }
     
-            await $.ajax({
-                url: loc,
-                dataType: 'text',
-            }).done(this.success);
-        }
-    
-        success(data) {
-            const lst = data.split(/\n/)
-            console.log(lst);
-            this.classNames = []
-            for (var i = 0; i < lst.length - 1; i++) {
-                const symbol = lst[i]
-    
-                this.classNames[i] = symbol
-    
-            }
-        }
-
+    success(data) {
+        SingletonAppController.getInstance().modelData.classnames = data.split(/\n/);
+    }
 
         ////TODO für GameView/ Gameround usw
 
@@ -57,45 +43,38 @@ class ModelData {
     preprocess the data
     */
     preprocess(imgData) {
-    return tf.tidy(() => {
-        //convert to a tensor 
-        let tensor = tf.fromPixels(imgData, numChannels = 1)
+        return tf.tidy(() => {
+            //convert to a tensor 
+            let tensor = tf.fromPixels(imgData, numChannels = 1)
 
-        //resize 
-        const resized = tf.image.resizeBilinear(tensor, [28, 28]).toFloat()
+            //resize 
+            const resized = tf.image.resizeBilinear(tensor, [28, 28]).toFloat()
 
-        //normalize 
-        const offset = tf.scalar(255.0);
-        const normalized = tf.scalar(1.0).sub(resized.div(offset));
+            //normalize 
+            const offset = tf.scalar(255.0);
+            const normalized = tf.scalar(1.0).sub(resized.div(offset));
 
-        //We add a dimension to get a batch shape 
-        const batched = normalized.expandDims(0)
-        return batched
-    })
-}
-
-
+            //We add a dimension to get a batch shape 
+            const batched = normalized.expandDims(0)
+            return batched
+        })
+    }
 
     getFrame() {
         if (skribbl.canvasData.coords.length >= 2) {
-
             //get the image data from the canvas 
             const imgData = skribbl.canvasData.getImageData()
-
             //get the prediction 
             const pred = model.predict(this.preprocess(imgData)).dataSync()
             //find the top 5 predictions 
             const indices = findIndicesOfMax(pred, 5)
             //instead of skribbl.probs and skribbl.names --> model.probs and model.names
             const probs = skribbl.probs = this.findTopValues(pred, 5)
-            const names = skribbl.names = this.getClassNames(indices)
+            const names = skribbl.names = this.getClassnames(indices)
             //set the table 
             skribbl.drawBars(names, probs);
             console.log(nsames);
-
         }
-
-
     }
 
 
@@ -121,14 +100,11 @@ class ModelData {
             outp[i] = inp[indices[i]]
         return outp
     }
-        /*
-    get the the class names 
-    */
-    getClassNames(indices) {
-    var outp = []
-    for (var i = 0; i < indices.length; i++)
-        outp[i] = classNames[indices[i]]
-    return outp
-}
 
+    getClassnames(indices) {
+        var outp = []
+        for (var i = 0; i < indices.length; i++)
+            outp[i] = classnames[indices[i]]
+        return outp
+    }
 }

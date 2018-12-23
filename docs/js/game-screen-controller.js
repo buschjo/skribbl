@@ -39,48 +39,51 @@ class GameScreenController extends ViewController {
 
     startCountdown(word) {
         //same as line 140
-        this.this.elements.skipButton.style.display = "none";
-        this.this.elements.nextStepButton.style.display = "none";
-        this.this.elements.overlay.style.display = "block";
-        this.this.elements.overlayText.innerText = word;
+        this.elements.skipButton.style.display = "none";
+        this.elements.nextStepButton.style.display = "none";
+        this.elements.overlay.style.display = "block";
+        this.elements.overlayText.innerText = word;
+        var that = this;
         var count = setInterval(function () {
             //todo refactor
-            this.countdown.number--;
-            if (this.countdown.number <= 4 && this.countdown.number > 1) {
-                this.elements.countdownNumber.textContent = this.countdown.number - 1;
+            that.countdown.number--;
+            if (that.countdown.number <= 4 && that.countdown.number > 1) {
+                that.elements.countdownNumber.textContent = that.countdown.number - 1;
             }
-            if (this.countdown.number == 1) {
-                this.elements.countdownNumber.textContent = "Draw!";
+            if (that.countdown.number == 1) {
+                that.elements.countdownNumber.textContent = "Draw!";
             }
-            if (this.countdown.number <= 0) {
+            if (that.countdown.number <= 0) {
                 clearInterval(count);
-                this.elements.overlay.style.display = "none";
-                this.countdown.number = countdown.total;
+                that.elements.overlay.style.display = "none";
+                that.countdown.number = that.countdown.total;
             }
         }, 1000);
     }
 
     setTimerInterval(timer){
-        let timerWidth = timer.width;
-        let totalTime = timeLeft = timer.totalTime;
+        let timerWidth = this.timer.width;
+        let totalTime = this.timer.totalTime;
+        let timeLeft = this.timer.totalTime;
+        var that = this;
         this.elements.timerInterval = setInterval(function () {
             timeLeft = timeLeft - 0.1;
             timeLeft = timeLeft.toFixed(2);
             timerWidth = timeLeft * (100 / totalTime);
-            this.elements.timer.style.width = timerWidth + '%';
+            that.elements.timer.style.width = timerWidth + '%';
             // document.getElementById("timerNumber").textContent = timeLeft;
             //Nastja will evtl. was ausprobieren
             if (timerWidth <= 85 && timerWidth > 60) {
-                this.elements.timer.style.animation = "transition1 5s linear";
+                that.elements.timer.style.animation = "transition1 5s linear";
             }
             if (timerWidth <= 60 && timerWidth > 20) {
-                this.elements.timer.style.backgroundColor = "#ffde59";
+                that.elements.timer.style.backgroundColor = "#ffde59";
             }
             if (timerWidth <= 20) {
-                this.elements.timer.style.animation = "transition2 4s linear";
+                that.elements.timer.style.animation = "transition2 4s linear";
             }
             if (timeLeft <= 0) {
-                this.appController.endGame();
+                that.appController.endGame();
             }
         }, 100);
     }
@@ -140,7 +143,6 @@ window.addEventListener("load", () => {
     let appController = SingletonAppController.getInstance();
     if (typeof appController.gameScreenController == "undefined") {
         appController.gameScreenController = new GameScreenController();
-        console.log("GameScreenController created");
     }
 
     for (const startGameButton of document.getElementsByClassName("start-game")) {
