@@ -14,6 +14,7 @@ class GameScreenController extends ViewController {
     }
 
     display(){
+        this.clearScreen();
         const mainEl = document.querySelector("main");
         mainEl.appendChild(document.getElementById("game-template").content.cloneNode(true).firstElementChild);
 
@@ -147,8 +148,8 @@ window.addEventListener("load", () => {
 
     for (const startGameButton of document.getElementsByClassName("start-game")) {
         startGameButton.addEventListener("click", () => {
-            controller.display();
-            controller.setup();
+            appController.gameScreenController.display();
+            appController.gameScreenController.setup();
         });
     }
 });

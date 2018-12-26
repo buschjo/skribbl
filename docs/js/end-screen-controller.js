@@ -17,7 +17,7 @@ class EndScreenController extends ViewController {
             callDefeatScreen(res, resButton);
         }
         this.appController.canvasData.resetAllCounters();
-        this.elements.resButton.addEventListener("click", function () {
+        this.elements.resButton.addEventListener("click", () => {
             this.appController.gameScreenController.display();
             this.appController.gameScreenController.setup();
         });
@@ -47,7 +47,7 @@ window.addEventListener("load", event => {
     let appController = SingletonAppController.getInstance();
     if (typeof appController.endScreenController == "undefined") {
         let esc = new EndScreenController();
-        appController.EndScreenController = esc;
+        appController.endScreenController = esc;
     }
 });
 
