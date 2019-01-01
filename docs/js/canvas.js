@@ -71,10 +71,24 @@
             y: Math.max.apply(null, coorY)
         }
 
-        //return as strucut 
+        //get the longest side of box
+        var length = Math.max((max_coords.x - min_coords.x), (max_coords.y - min_coords.y))
+
+        //get the center
+        var min_coords_square = {
+            x : min_coords.x + ((max_coords.x - min_coords.x) / 2.0) - (length/2.0) -5,
+            y : min_coords.y + ((max_coords.y - min_coords.y) / 2.0) - (length/2.0) -5
+        }
+
+        var max_coords_square = {
+            x : min_coords.x + ((max_coords.x - min_coords.x) / 2.0) + (length/2.0) +5,
+            y : min_coords.y + ((max_coords.y - min_coords.y) / 2.0) + (length/2.0) +5
+        }
+
+        //return as struct 
         return {
-            min: min_coords,
-            max: max_coords
+            min: min_coords_square,
+            max: max_coords_square
         }
     }
 
