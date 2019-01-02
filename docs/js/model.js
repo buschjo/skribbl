@@ -8,7 +8,7 @@
         mode = cur_mode;
     
         //load the model 
-        model = await tf.loadModel('model15k/model.json');
+        model = await tf.loadModel('model20k15e/model.json');
     
         //warm up 
         model.predict(tf.zeros([1, 28, 28, 1]));
@@ -86,7 +86,7 @@
     load the class names 
     */
     async function loadDict() {
-        loc = 'model15k/class_names.txt'
+        loc = 'model20k15e/class_names.txt'
 
         await $.ajax({
             url: loc,
