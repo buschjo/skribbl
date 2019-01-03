@@ -37,9 +37,10 @@ class GameRound {
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
+
     //Move to Appcontroller because auf timerInterval?
 	endGame() {
-        //send scores to appcontroller
-        clearInterval(elements.timerInterval);
+        this.appController.clearTimerInterval();
+        this.appController.scores = new Score(false);
     }
 }

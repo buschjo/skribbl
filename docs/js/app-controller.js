@@ -32,6 +32,7 @@ class AppController  {
     }
 
     endGame(){
+        this.gameRound.endGame();
         this.endScreenController.display();
     }
 
@@ -49,6 +50,10 @@ class AppController  {
 
     setTimerInterval(timer){
     	this.gameScreenController.setTimerInterval(timer);
+    }
+
+    clearTimerInterval(){
+        this.gameScreenController.clearTimerInterval();
     }
 
     showTutorial(){

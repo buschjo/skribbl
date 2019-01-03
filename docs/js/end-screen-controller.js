@@ -12,11 +12,11 @@ class EndScreenController extends ViewController {
         this.elements.res = document.getElementById('result');
         this.elements.resButton = document.getElementById('res-button');
         if (this.appController.scores.win) {
-            callVictoryScreen(res, resButton);
+            this.callVictoryScreen(this.elements.res, this.elements.resButton);
         } else {
-            callDefeatScreen(res, resButton);
+            this.callDefeatScreen(this.elements.res, this.elements.resButton);
         }
-        this.appController.canvasData.resetAllCounters();
+        this.appController.gameRound.canvasData.resetAllCounters();
         this.elements.resButton.addEventListener("click", () => {
             this.appController.gameScreenController.display();
             this.appController.gameScreenController.setup();
@@ -25,9 +25,9 @@ class EndScreenController extends ViewController {
 
     callDefeatScreen(res, resButton) {
         res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p>"
-            + "<p>Clear-Button used :" + this.appController.canvasData.clearCounter + " </p>"
-            + "<p>Finger lifted : " + this.appController.canvasData.fingerLiftedCounter + "</p>"
-            + "<p>Undo-Button used : " + this.appController.canvasData.undoCounter + "</p>"
+            + "<p>Clear-Button used :" + this.appController.gameRound.canvasData.clearCounter + " </p>"
+            + "<p>Finger lifted : " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>"
+            + "<p>Undo-Button used : " + this.appController.gameRound.canvasData.undoCounter + "</p>"
 
         resButton.innerText = 'TRY AGAIN';
     }

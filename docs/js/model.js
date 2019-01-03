@@ -77,7 +77,6 @@ class ModelData {
         }
     }
 
-
     findIndicesOfMax(inp, count) {
         var outp = [];
         for (var i = 0; i < inp.length; i++) {

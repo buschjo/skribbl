@@ -28,13 +28,15 @@ class GameScreenController extends ViewController {
         this.elements.countdownNumber = document.getElementById("overlay-number");
         
         // skribbl.canvasData.responsive();
-        this.elements.clearButton.addEventListener("click", clear);
-        this.elements.undoButton.addEventListener("click", undo);
+        var that = this;
+        this.elements.clearButton.addEventListener("click", that.clear);
+        this.elements.undoButton.addEventListener("click", that.undo);
 
         this.appController.startGame();
     }
 
     setup(){
+        console.log('setup');
         this.appController.gameRound.canvasData.setup();
     }
 
@@ -89,12 +91,18 @@ class GameScreenController extends ViewController {
         }, 100);
     }
 
+    clearTimerInterval(){
+        clearInterval(this.elements.timerInterval);
+    }
+
     undo() {
-        this.appController.gameRound.canvasData.undo();
+        var appController = SingletonAppController.getInstance();
+        appController.gameRound.canvasData.undo();
     }
 
     clear() {
-        this.appController.gameRound.canvasData.erase();
+        var appController = SingletonAppController.getInstance();
+        appController.gameRound.canvasData.erase();
         var bars = document.getElementsByClassName("bar__full");
         for (let bar of bars) {
             bar.innerHTML = " ";

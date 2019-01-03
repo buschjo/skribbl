@@ -8,45 +8,48 @@ class CanvasData {
         this.undoCounter = 0;
         this.clearCounter = 0;
         this.h = [];
+        this.setup();
         // this.frame // from viewController
     }
 
     setup() {
-        canvas.backgroundColor = '#ffffff';
-        canvas.isDrawingMode = 1;
-        canvas.freeDrawingBrush.color = "black";
-        canvas.freeDrawingBrush.width = 10;
-        canvas.renderAll();
-        responsive();
+        console.log('setup canvas');
+        this.canvas.backgroundColor = '#ffffff';
+        this.canvas.isDrawingMode = 1;
+        this.canvas.freeDrawingBrush.color = "black";
+        this.canvas.freeDrawingBrush.width = 10;
+        this.canvas.renderAll();
+        this.responsive();
         
         //setup listeners 
-        canvas.on('mouse:up', function (e) {
-            fingerLiftedCounter++;
+        this.canvas.on('mouse:up', function (e) {
+            this.fingerLiftedCounter++;
             // move to viewcontroller
             // skribbl.model.getFrame(); 
             // skribbl.evaluate(skribbl.word); 
-            mousePressed = false
+            this.mousePressed = false
         });
-        canvas.on('mouse:down', function (e) {
-            mousePressed = true
+        this.canvas.on('mouse:down', function (e) {
+            this.mousePressed = true
         });
-        canvas.on('mouse:move', function (e) {
-            recordCoor(e)
+        var that = this;
+        this.canvas.on('mouse:move', function (e) {
+            that.recordCoor(e)
         });
 
-        window.addEventListener("resize", responsive);
+        window.addEventListener("resize", this.responsive);
     }
 
     /*
     record the current drawing coordinates
     */
     recordCoor(event) {
-        var pointer = canvas.getPointer(event.e);
+        var pointer = this.canvas.getPointer(event.e);
         var posX = pointer.x;
         var posY = pointer.y;
 
-        if (posX >= 0 && posY >= 0 && mousePressed) {
-            coords.push(pointer)
+        if (posX >= 0 && posY >= 0 && this.mousePressed) {
+            this.coords.push(pointer)
         }
     }
 
@@ -55,10 +58,10 @@ class CanvasData {
     */
     getMinBox() {
         //get coordinates 
-        var coorX = coords.map(function (p) {
+        var coorX = this.coords.map(function (p) {
             return p.x
         });
-        var coorY = coords.map(function (p) {
+        var coorY = this.coords.map(function (p) {
             return p.y
         });
         //find top left and bottom right corners 
@@ -84,44 +87,44 @@ class CanvasData {
     //can we access getImageData without storing it specifically in skribbl.canvasData (defineProperty??)
     getImageData() {
         //get the minimum bounding box around the drawing 
-        const mbb = getMinBox()
+        const mbb = this.getMinBox()
 
         //get image data according to dpi 
         const dpi = window.devicePixelRatio
-        const imgData = canvas.contextContainer.getImageData(mbb.min.x * dpi, mbb.min.y * dpi,
+        const imgData = this.canvas.contextContainer.getImageData(mbb.min.x * dpi, mbb.min.y * dpi,
             (mbb.max.x - mbb.min.x) * dpi, (mbb.max.y - mbb.min.y) * dpi);
         return imgData
     }
 
     // allow drawing
     allowDrawing() {
-        canvas.isDrawingMode = 1;
+        this.canvas.isDrawingMode = 1;
         // $('button').prop('disabled', false);
     }
 
     erase() {
-        clearCounter++;
-        canvas.clear();
-        canvas.backgroundColor = '#ffffff';
-        coords = [];
+        this.clearCounter++;
+        this.canvas.clear();
+        this.canvas.backgroundColor = '#ffffff';
+        this.coords = [];
     }
 
 
     // todo can h have a better name and be up with the other fields?
     // var h = []; moved to constructor
     undo() {
-        undoCounter++;
+        this.undoCounter++;
 
-        if (canvas._objects.length > 1) {
-            h.push(canvas._objects.pop());
+        if (this.canvas._objects.length > 1) {
+            h.push(this.canvas._objects.pop());
             h.forEach(i => {
                 console.log(i);
             });
-            canvas.renderAll();
+            this.canvas.renderAll();
             skribbl.model.getFrame(); //todo
         }
-        else if (canvas._objects.length == 1) {
-            erase();
+        else if (this.canvas._objects.length == 1) {
+            this.erase();
             var bars = document.getElementsByClassName("bar__full");
             for (let bar of bars) {
                 bar.innerHTML = " ";
@@ -131,9 +134,9 @@ class CanvasData {
     }
 
     resetAllCounters() {
-        clearCounter = 0;
-        fingerLiftedCounter = 0;
-        undoCounter = 0;
+        this.clearCounter = 0;
+        this.fingerLiftedCounter = 0;
+        this.undoCounter = 0;
     }
 
     responsive() {
@@ -142,7 +145,7 @@ class CanvasData {
         let height = container.offsetHeight;
         let widthn = width;
         let heightn = height;
-        canvas.setDimensions({
+        this.canvas.setDimensions({
             width: widthn,
             height: heightn
         });
