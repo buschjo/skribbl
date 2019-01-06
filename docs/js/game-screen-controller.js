@@ -8,7 +8,6 @@
     GameScreenController.prototype = Object.create(ScreenController.prototype);
     GameScreenController.prototype.constructor = GameScreenController;
 
-
   
     const elements = {
         tutorialDone: false
@@ -246,7 +245,7 @@
         return list;
     };
    */
-   
+ 
     window.addEventListener("load", event => {
         const controller = skribbl.gameScreenController = new GameScreenController();
         for (const startGameButton of document.getElementsByClassName("start-game")) {

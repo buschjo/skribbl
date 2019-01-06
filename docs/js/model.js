@@ -19,7 +19,6 @@
         //load the class names
         await loadDict();
         console.log('model started');
-    
     }
 
     /*
@@ -86,7 +85,15 @@
     load the class names 
     */
     async function loadDict() {
-        loc = 'model20k15e/class_names.txt'
+        console.log(mode);
+        if (mode == 'de'){
+            loc = 'model20k15e/class_names_de.txt';
+            console.log("load german");
+        }
+        else{
+            loc = 'model20k15e/class_names.txt';
+            console.log("load english");
+        }
 
         await $.ajax({
             url: loc,
@@ -123,13 +130,7 @@
             const names = skribbl.names = getClassNames(indices)
             //set the table 
             skribbl.drawBars(names, probs);
-            console.log(names);
-            
-            
-            
+            console.log(names); 
         }
-
     }
-
-
 } ());
