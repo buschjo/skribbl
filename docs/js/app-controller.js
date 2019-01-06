@@ -31,9 +31,13 @@ class AppController  {
         }
     }
 
+    evaluate(word) {
+        this.gameRound.evaluate(word);
+    }
+
     endGame(){
         this.gameRound.endGame();
-        this.endScreenController.display();
+        // this.endScreenController.display();
     }
 
     startCountdown(word){
@@ -75,7 +79,6 @@ var SingletonAppController = (function () {
         getInstance: function () {
             if (!instance) {
                 instance = createInstance();
-                // Object.freeze(instance);
             }
             return instance;
         }

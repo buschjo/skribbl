@@ -112,6 +112,7 @@ class GameScreenController extends ViewController {
 
     drawBars(top5, probs) {
         //loop over the predictions
+        var appController = SingletonAppController.getInstance();
         for (var i = 0; i < top5.length; i++) {
             let sym = document.getElementById('sym' + (i + 1));
             let prob = document.getElementById('prob' + (i + 1));
@@ -121,7 +122,7 @@ class GameScreenController extends ViewController {
             prob.style.width = mr + '%';
             prob.innerHTML = top5[i];
             //CSS auslagern in classes
-            if (top5[i] == skribbl.word) {
+            if (top5[i] == appController.gameRound.word) {
                 prob.style.backgroundColor = "#5271ff";
                 prob.style.font = "bold 18px arial, serif";
                 prob.style.textShadow = "0 0 5px yellow";
@@ -131,19 +132,6 @@ class GameScreenController extends ViewController {
                 prob.style.textShadow = "";
             }
         }
-    }
-
-    //can we put this whole thing only in skribble not in game-screen-controller?
-    evaluate(word) {
-        if (skribbl.names[0] == word) {
-            skribbl.timeElapsed = calculateTimeElapsed();
-            //setWordAsUsed(word);
-            skribbl.win = true;
-            endGame();
-        } else {
-            skribbl.win = false;
-        }
-        console.log("win: " + skribbl.win);
     }
 }
 
@@ -156,6 +144,7 @@ window.addEventListener("load", () => {
 
     for (const startGameButton of document.getElementsByClassName("start-game")) {
         startGameButton.addEventListener("click", () => {
+            console.log('gameScreenController');
             appController.gameScreenController.display();
             appController.gameScreenController.setup();
         });

@@ -36,6 +36,7 @@ class StartScreenController extends ViewController {
 
         this.elements.startButton = document.getElementsByClassName("button-start")[0];
         this.elements.startButton.addEventListener("click", () => {
+            console.log('startScreenController');
             this.appController.gameScreenController.display();
         });
     }

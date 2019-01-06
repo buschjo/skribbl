@@ -3,6 +3,8 @@ class ModelData {
     constructor() {
         this.model = undefined;
         this.classnames = undefined;
+        this.names = undefined;
+        this.probs = undefined;
         console.log("Model starting Initialization");
     }
 
@@ -45,7 +47,8 @@ class ModelData {
     preprocess(imgData) {
         return tf.tidy(() => {
             //convert to a tensor 
-            let tensor = tf.fromPixels(imgData, numChannels = 1)
+            var numChannels = 1;
+            let tensor = tf.fromPixels(imgData, numChannels)
 
             //resize 
             const resized = tf.image.resizeBilinear(tensor, [28, 28]).toFloat()
@@ -61,19 +64,19 @@ class ModelData {
     }
 
     getFrame() {
-        if (skribbl.canvasData.coords.length >= 2) {
+        var appController = SingletonAppController.getInstance();
+        if (appController.gameRound.canvasData.coords.length >= 2) {
             //get the image data from the canvas 
-            const imgData = skribbl.canvasData.getImageData()
+            const imgData = appController.gameRound.canvasData.getImageData()
             //get the prediction 
-            const pred = model.predict(this.preprocess(imgData)).dataSync()
+            const pred = this.model.predict(this.preprocess(imgData)).dataSync()
             //find the top 5 predictions 
-            const indices = findIndicesOfMax(pred, 5)
+            const indices = this.findIndicesOfMax(pred, 5)
             //instead of skribbl.probs and skribbl.names --> model.probs and model.names
-            const probs = skribbl.probs = this.findTopValues(pred, 5)
-            const names = skribbl.names = this.getClassnames(indices)
+            this.probs = this.findTopValues(pred, 5)
+            this.names = this.getClassnames(indices)
             //set the table 
-            skribbl.drawBars(names, probs);
-            console.log(nsames);
+            appController.gameScreenController.drawBars(this.names, this.probs);
         }
     }
 
@@ -93,7 +96,7 @@ class ModelData {
 
     findTopValues(inp, count) {
         var outp = [];
-        let indices = findIndicesOfMax(inp, count)
+        let indices = this.findIndicesOfMax(inp, count)
         // show 5 greatest scores
         for (var i = 0; i < indices.length; i++)
             outp[i] = inp[indices[i]]
@@ -103,7 +106,7 @@ class ModelData {
     getClassnames(indices) {
         var outp = []
         for (var i = 0; i < indices.length; i++)
-            outp[i] = classnames[indices[i]]
+            outp[i] = this.classnames[indices[i]]
         return outp
     }
 }

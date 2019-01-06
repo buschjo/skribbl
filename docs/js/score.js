@@ -1,5 +1,6 @@
 class Score{
-    constructor(didWin){
+    constructor(didWin, time){
         this.win=didWin;
+        this.timeElapsed = time;
     }
 }

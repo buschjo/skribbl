@@ -3,7 +3,7 @@ class CanvasData {
     constructor() {
         this.coords = [];
         this.canvas = window._canvas = new fabric.Canvas('canvas');
-        this.mousePressed = false;
+        this.mousePressed = undefined;
         this.fingerLiftedCounter = 0;
         this.undoCounter = 0;
         this.clearCounter = 0;
@@ -22,19 +22,20 @@ class CanvasData {
         this.responsive();
         
         //setup listeners 
+        var that = this;
         this.canvas.on('mouse:up', function (e) {
-            this.fingerLiftedCounter++;
+            that.fingerLiftedCounter++;
             // move to viewcontroller
-            // skribbl.model.getFrame(); 
-            // skribbl.evaluate(skribbl.word); 
-            this.mousePressed = false
+            var appController = SingletonAppController.getInstance();
+            appController.modelData.getFrame();
+            appController.evaluate(appController.gameRound.word);
+            that.mousePressed = false
         });
         this.canvas.on('mouse:down', function (e) {
-            this.mousePressed = true
+            that.mousePressed = true
         });
-        var that = this;
         this.canvas.on('mouse:move', function (e) {
-            that.recordCoor(e)
+            that.recordCoor(e);
         });
 
         window.addEventListener("resize", this.responsive);
@@ -47,7 +48,6 @@ class CanvasData {
         var pointer = this.canvas.getPointer(event.e);
         var posX = pointer.x;
         var posY = pointer.y;
-
         if (posX >= 0 && posY >= 0 && this.mousePressed) {
             this.coords.push(pointer)
         }
@@ -116,12 +116,13 @@ class CanvasData {
         this.undoCounter++;
 
         if (this.canvas._objects.length > 1) {
-            h.push(this.canvas._objects.pop());
-            h.forEach(i => {
+            this.h.push(this.canvas._objects.pop());
+            this.h.forEach(i => {
                 console.log(i);
             });
             this.canvas.renderAll();
-            skribbl.model.getFrame(); //todo
+            var appController = SingletonAppController.getInstance();
+            appController.modelData.getFrame(); //todo
         }
         else if (this.canvas._objects.length == 1) {
             this.erase();

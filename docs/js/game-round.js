@@ -10,7 +10,21 @@ class GameRound {
             totalTime: 20,
             startTime: 0
         }
+        this.timeElapsed = undefined;
         this.word = undefined;
+        this.win = undefined;
+    }
+
+    evaluate(word){
+        if (this.modelData.names[0] == word) {
+            this.timeElapsed = this.calculateTimeElapsed();
+            //setWordAsUsed(word);
+            this.win = true;
+            this.endGame();
+        } else {
+            this.win = false;
+        }
+        console.log("win: " + this.win);
     }
     
     calculateTimeElapsed() {
@@ -41,6 +55,7 @@ class GameRound {
     //Move to Appcontroller because auf timerInterval?
 	endGame() {
         this.appController.clearTimerInterval();
-        this.appController.scores = new Score(false);
+        this.appController.scores = new Score(this.win, this.timeElapsed);
+        this.appController.endScreenController.display();
     }
 }

@@ -17,9 +17,10 @@ class EndScreenController extends ViewController {
             this.callDefeatScreen(this.elements.res, this.elements.resButton);
         }
         this.appController.gameRound.canvasData.resetAllCounters();
+        var that = this;
         this.elements.resButton.addEventListener("click", () => {
-            this.appController.gameScreenController.display();
-            this.appController.gameScreenController.setup();
+            that.appController.gameScreenController.display();
+            that.appController.gameScreenController.setup();
         });
     }
 
@@ -33,11 +34,11 @@ class EndScreenController extends ViewController {
     }
 
     callVictoryScreen(res, resButton) {
-        res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + Math.round(skribbl.probs[0] * 100) + "%</p><p>sure."
-            + "<p> You needed " + this.appController.timeElapsed.toFixed(2) + " seconds.</p>"
-            + "<p>Clear-Button used :" + this.appController.canvasData.clearCounter + " </p>"
-            + "<p>Finger lifted : " + this.appController.canvasData.fingerLiftedCounter + "</p>"
-            + "<p>Undo-Button used :" + this.appController.canvasData.undoCounter + "</p>";
+        res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + Math.round(this.appController.modelData.probs[0] * 100) + "%</p><p>sure."
+            + "<p> You needed " + this.appController.scores.timeElapsed.toFixed(2) + " seconds.</p>"
+            + "<p>Clear-Button used :" + this.appController.gameRound.canvasData.clearCounter + " </p>"
+            + "<p>Finger lifted : " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>"
+            + "<p>Undo-Button used :" + this.appController.gameRound.canvasData.undoCounter + "</p>";
         resButton.innerText = 'NEXT';
     }
 }
@@ -46,8 +47,7 @@ class EndScreenController extends ViewController {
 window.addEventListener("load", event => {
     let appController = SingletonAppController.getInstance();
     if (typeof appController.endScreenController == "undefined") {
-        let esc = new EndScreenController();
-        appController.endScreenController = esc;
+        appController.endScreenController = new EndScreenController();
     }
 });
 
