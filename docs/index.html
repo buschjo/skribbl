@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>skribbl.ai</title>
+
+    <title>skribbl.AI</title>
 
     <!-- start favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -14,7 +16,7 @@
     <link rel="mask-icon" href="assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-     <!-- end favicon  -->
+    <!-- end favicon  -->
 
     <link rel="stylesheet" href="css/vendor/foundation.min.css">
     <link rel="stylesheet" href="css/custom.css">
@@ -45,108 +47,88 @@
             <!-- start Infotext-->
             <div class="info__container">
                 <div class="info">
-                    <h2>Spiel-Info</h2>
-                    <p>Schlage die Zeit indem du das angezeigte Wort für den Computer so deutlich wie möglich zeichnest.
-                    <br>
-                    Beobachte wie Strich für Strich der Computer andere Formen und Wörter erkennt und dein Gewinnwort somit Stufe für Stufe auf dem Gewinnertreppchen nach oben klettert.</p>
+                    <h2>INFO</h2>
+                    <p>Schlage die Zeit indem du das angezeigte Wort für den Computer so deutlich wie möglich
+                        zeichnest.
+                        <br>
+                        Beobachte wie Strich für Strich der Computer andere Formen und Wörter erkennt und dein
+                        Gewinnwort somit Stufe für Stufe auf dem Gewinnertreppchen nach oben klettert.</p>
                 </div>
             </div>
             <!-- end Infotext-->
         </section>
     </template>
-    
-    <!-- MODESCREEN -->
-    <template id="playmode-template">
-            <section id="playmode" class="section screen__playmode">
-                    <h1>CHOOSE YOUR PLAYMODE</h1>             
-                    <div class="button-start__container  margin-auto">
-                        <button class="button button-start start-game js-clear-screen">Modus 1</button>
-                    </div>
-                    <div class="button-start__container  margin-auto">
-                            <button class="button button-start start-game js-clear-screen">Modus 2</button>
-                    </div>
-                    <div class="button-start__container  margin-auto">
-                             <button class="button button-start start-game js-clear-screen">Modus 3</button>
-                    </div> 
-            </section>
-    </template>
-
 
     <!-- GAMESCREEN -->
     <template id="game-template">
-            <section id="game" class="section screen__game">
-                <div class="">
-                  <!-- start Tutorial -->
-                    <div id="overlay" class=" grid-container">
-                        <div id="overlay-text"></div>
-                        <div id="overlay-number"></div>
-                        <div class="grid-x">
-                            <div class="cell small-4">
-                                <button class="button" id="nextstep">NEXT STEP</button>
-                            </div>
-                            <div class="cell small-4">
-                                <button class="button" id="skip">SKIP</button>
-                            </div>                    
+        <section id="game" class="section screen__game">
+            <div class="">
+                <!-- start Tutorial -->
+                <div id="overlay" class=" grid-container">
+                    <div id="overlay-text"></div>
+                    <div id="overlay-number"></div>
+                    <div class="grid-x">
+                        <div class="cell small-4">
+                            <button class="button" id="nextstep">NEXT STEP</button>
                         </div>
-                    </div>
-                    <!-- end Tutorial -->
-                    <!-- start Timer -->
-                    <div class="cell small-12 timer__container">
-                        <div id="timer">
-                            <span id="timerNumber"></span>
-                        </div>
-                    </div>
-                    <!-- end Timer -->
-                    <!-- start Balkenanzeigen -->
-                    <div class="content__container-flex change-orientation">
-                        <div class="bars__container" id="bars__area">
-                            <div class="bar__empty" id="sym1">
-                                <div id="prob1" class="bar__full"></div>
-                            </div>
-                            <div class="bar__empty" id="sym2">
-                                <div id="prob2" class="bar__full"></div>
-                            </div>
-                            <div class="bar__empty" id="sym3">
-                                <div id="prob3" class="bar__full"></div>
-                            </div>
-                            <div class="bar__empty" id="sym4">
-                                <div id="prob4" class="bar__full"></div>
-                            </div>
-                            <div class="bar__empty" id="sym5">
-                                <div id="prob5" class="bar__full"></div>
-                            </div>
-                        </div>
-                        <!-- end Balkenanzeigen -->
-
-                        <!-- start Canvas -->
-
-                        <!-- <div class="big"> -->
-                            <div class="canvas__container big">
-                                <canvas id="canvas" class="canvas" width="290px" height="300px"></canvas>
-                            </div>
-                        <!-- end Canvas -->
-
-                             <!-- start Buttons -->
-                            <div class="button__container grid-containder">
-                                <div class="grid-x">
-                                    <div class="cell small-4 text-align-right">
-                                        <button id="clear" class="button-clear">CLEAR</button>
-                                    </div>
-                                    <div class="cell small-4 margin-left-auto text-align-right">
-                                        <button id="undo" class="button-undo">UNDO</button>
-                                    </div>
-                                    <div class="cell small-3 margin-left-auto text-align-right">
-                                        <button id="skip__tool" class="button-skip">SKIP</button>
-                                    </div>
-                                </div>
-                            <!-- end Buttons -->
-                            
-                         <!-- </div> -->
-
+                        <div class="cell small-4">
+                            <button class="button" id="skip">SKIP</button>
                         </div>
                     </div>
                 </div>
-            </section>
+                <!-- end Tutorial -->
+                <!-- start Timer -->
+                <div class="cell small-12 timer__container">
+                    <div id="timer">
+                        <span id="timerNumber"></span>
+                    </div>
+                </div>
+                <!-- end Timer -->
+                <!-- start Balkenanzeigen -->
+                <div class="content__container-flex change-orientation">
+                    <div class="bars__container" id="bars__area">
+                        <div class="bar__empty" id="sym1">
+                            <div id="prob1" class="bar__full"></div>
+                        </div>
+                        <div class="bar__empty" id="sym2">
+                            <div id="prob2" class="bar__full"></div>
+                        </div>
+                        <div class="bar__empty" id="sym3">
+                            <div id="prob3" class="bar__full"></div>
+                        </div>
+                        <div class="bar__empty" id="sym4">
+                            <div id="prob4" class="bar__full"></div>
+                        </div>
+                        <div class="bar__empty" id="sym5">
+                            <div id="prob5" class="bar__full"></div>
+                        </div>
+                    </div>
+                    <!-- end Balkenanzeigen -->
+
+                    <!-- start Canvas -->
+                    <div class="canvas__container big">
+                        <canvas id="canvas" class="canvas" width="290px" height="300px"></canvas>
+                    </div>
+                    <!-- end Canvas -->
+
+                    <!-- start Buttons -->
+                    <div class="button__container grid-containder">
+                        <div class="grid-x">
+                            <div class="cell small-4 text-align-right">
+                                <button id="clear" class="button-clear">CLEAR</button>
+                            </div>
+                            <div class="cell small-4 margin-left-auto text-align-right">
+                                <button id="undo" class="button-undo">UNDO</button>
+                            </div>
+                            <div class="cell small-3 margin-left-auto text-align-right">
+                                <button id="skip__tool" class="button-skip">SKIP</button>
+                            </div>
+                        </div>
+                        <!-- end Buttons -->                  
+                    </div>
+                </div>
+            </div>
+        </section>
     </template>
 
 
@@ -164,12 +146,12 @@
                 <!-- end Text -->
                 <!-- start Buttons-->
                 <div class="grid-x">
-                <div class="cell small-5 button-start__container margin-auto">
-                    <button id="backToStart" class="js-clear-screen button-backToStart">MENU</button>
-                </div>
-                <div class="cell small-5 button-start__container margin-auto">
-                    <button id="res-button" class="js-clear-screen  button-next start-game">NEXT</button>
-                </div>
+                    <div class="cell small-5 button-start__container margin-auto">
+                        <button id="backToStart" class="js-clear-screen button-backToStart">MENU</button>
+                    </div>
+                    <div class="cell small-5 button-start__container margin-auto">
+                        <button id="res-button" class="js-clear-screen  button-next start-game">NEXT</button>
+                    </div>
                 </div>
                 <!-- end Buttons-->
             </div>
@@ -187,10 +169,12 @@
     <script src="js/game-screen-controller.js"></script>
     <script src="js/end-screen-controller.js"></script>
 </head>
+
 <body>
     <main>
 
     </main>
     <!-- <script src="js/index.js"></script> -->
 </body>
+
 </html>
