@@ -6,26 +6,32 @@ from tensorflow import keras
 import tensorflow.keras.layers as layers
 import tensorflow as tf
 
+
+import urllib.request
 import matplotlib.pyplot as plt
 from random import randint
 
 
+# change calues only here
+__max_item_per_class__ = 30000
+__epoch__ = 15
+
+
 # Download the dataset
-import urllib.request
 def download():
     base = 'https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/'
     for c in classes:
         cls_url = c.replace('_', '%20')
         path = base+cls_url+'.npy'
         print(path)
-        urllib.request.urlretrieve(path, 'c:/quickdraw_dataset/'+c+'.npy')
+        urllib.request.urlretrieve(path, './data/'+c+'.npy')
 
 
 # Load the data
 # root = directory of npy files
 # vfold_ratio = percentage of validation data
 # max_items_per_class = number of training data + validation data
-def load_data(root, vfold_ratio=0.2, max_items_per_class=5000):
+def load_data(root, vfold_ratio=0.2, max_items_per_class=__max_item_per_class__):
     all_files = glob.glob(os.path.join(root, '*.npy'))
 
     # Initialize variables
@@ -35,7 +41,7 @@ def load_data(root, vfold_ratio=0.2, max_items_per_class=5000):
 
     # Load each data file
     for idx, file in enumerate(all_files):
-        print("reading file: ", file)
+        # print("reading file: ", idx, " ", file)
         data = np.load(file)
         data = data[0: max_items_per_class, :]
         labels = np.full(data.shape[0], idx)
@@ -67,7 +73,8 @@ def load_data(root, vfold_ratio=0.2, max_items_per_class=5000):
 
 
 # Read class names
-f = open("skribbl_classes.txt", "r")
+# f = open("skribbl_classes.txt", "r")
+f = open("mini_classes.txt", "r")
 classes = f.readlines()
 f.close()
 
@@ -79,15 +86,15 @@ classes = [c.replace('\n', '').replace(' ', '_') for c in classes]
 
 
 # Read in the data
-x_train, y_train, x_test, y_test, class_names = load_data('c:/quickdraw_dataset')
+x_train, y_train, x_test, y_test, class_names = load_data('data')
 num_classes = len(class_names)
 image_size = 28
 
-print(len(x_train))
+# print(len(x_train))
 
 idx = randint(0, len(x_train))
-plt.imshow(x_train[idx].reshape(28, 28))
-print(class_names[int(y_train[idx].item())])
+# plt.imshow(x_train[idx].reshape(28, 28))
+# print(class_names[int(y_train[idx].item())])
 
 
 # Preprocess the data to prepare it for training
@@ -147,7 +154,9 @@ model.add(layers.Dense(100, activation='softmax'))
 # Default arguments of optimizer:
 # Learning rate = 0.001, beta_1 = 0.9, beta_2 = 0.999, epsilon = None,
 # Learning rate decay over each update (decay) = 0.0, amsgrad = False
-adam = tf.train.AdamOptimizer()
+#adam = tf.train.AdamOptimizer()
+adam = tf.keras.optimizers.Adam()  # use a keras optimizer to prevent the warning during saving the model
+
 # Before training the model, the learning process has to be configured, which is done via the compile().
 # This receives three arguments: optimizer, loss, and metrics
 # Optimizers specifies the training procedure
@@ -159,6 +168,10 @@ adam = tf.train.AdamOptimizer()
 model.compile(loss='categorical_crossentropy',
               optimizer=adam,
               metrics=['top_k_categorical_accuracy'])
+# model.compile(loss='categorical_crossentropy',
+#               optimizer=adam,
+#               metrics=['accuracy'])
+
 # This prints a summary representation of the model.
 print(model.summary())
 
@@ -174,12 +187,58 @@ print(model.summary())
 # epochs = how many times we iterate over the current batch NOT the whole dataset
 # epoch = one iteration over the entire input data, which is done in smaller batches
 # Fit the model
-model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=256, verbose=2, epochs=5)
+history = model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=256, verbose=2, epochs=__epoch__)
+
+
+# https://machinelearningmastery.com/display-deep-learning-model-training-history-in-keras/
+# list all data in history
+print(history.history.keys())
+# for compile with 'accuracy'
+# summarize history for accuracy
+# plt.plot(history.history['acc'])
+# plt.plot(history.history['val_acc'])
+# plt.title('model accuracy')
+# plt.ylabel('accuracy')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'test'], loc='upper left')
+# # plt.show()
+# plt.savefig('acc.png')
+# plt.close()
+# # summarize history for loss
+# plt.plot(history.history['loss'])
+# plt.plot(history.history['val_loss'])
+# plt.title('model loss')
+# plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'test'], loc='upper left')
+# plt.savefig('loss.png')
+# # plt.show()
+
+# for compile with 'top_k_categorical_accuracy'
+# summarize history for accuracy
+plt.plot(history.history['top_k_categorical_accuracy'])
+plt.plot(history.history['val_top_k_categorical_accuracy'])
+plt.title('model top_k_categorical_accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+# plt.show()
+plt.savefig('top_k_cat_acc.png')
+plt.close()
+# summarize history for loss
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.savefig('loss.png')
+# plt.show()
 
 
 # Testing
 # Evaluate on unseen data
-score = model.evaluate(x_test, y_test, verbose=0)
+score = model.evaluate(x_test, y_test, verbose=2)
 print('Test accuracy: {:0.2f}%'.format(score[1] * 100))
 
 
@@ -191,6 +250,7 @@ pred = model.predict(np.expand_dims(img, axis=0))[0]
 ind = (-pred).argsort()[:5]
 latex = [class_names[x] for x in ind]
 print(latex)
+
 
 
 # Store the classes

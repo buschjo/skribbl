@@ -51,12 +51,10 @@ broom
 bus
 butterfly
 camera
-candle
 car
 cat
 cell phone
 ear
-eye
 fence
 flashlight
 foot
@@ -98,3 +96,5 @@ snowflake
 tornado
 traffic light
 trumpet
+elephant
+cup

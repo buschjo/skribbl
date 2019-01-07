@@ -263,6 +263,22 @@ a.button {
   background-color: #7ed957;
 }
 
+@keyframes translation1 {
+  from {
+    background-color: #7ed957;
+  }
+  to {
+    background-color: #ffde59;
+  }
+}
+@keyframes translation2 {
+  from {
+    background-color: #ffde59;
+  }
+  to {
+    background-color: #ff5757;
+  }
+}
 #overlay {
   position: fixed;
   display: none;
