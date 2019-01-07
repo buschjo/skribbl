@@ -17,9 +17,9 @@ body {
     padding: 1.5rem;
 
     &.change-orientation {
-        @media (orientation: landscape) and (max-width: 1080px){
+        @media (orientation: landscape) and (max-width: 1080px) {
             // flex-direction: row;
-    
+
             .button-start__container {
                 // width: 30%;
             }
