@@ -1,30 +1,27 @@
 .button-start__container {
-    width: 80%; 
+    width: 80%;
+
     .button-start {
         width: 100%;
         background-color: $red;
         font-size: 1.5rem;
         font-weight: bold;
 
-
         border-radius: 10px;
         border-width: 4px;
         border-color: $red;
-    
+
         &:hover {
             color: $red;
             background-color: white;
         }
+
         &:active {
             color: $red;
             background-color: white;
         }
     }
 }
-
-
-
-
 
 .button-info {
     position: absolute;
@@ -39,78 +36,83 @@
     z-index: 2;
 }
 
-.button-undo, .button-clear, .button-backToStart{
+#nextstep,
+.button-undo,
+.button-clear,
+.button-backToStart {
     font-weight: bold;
     font-size: 14px;
     color: white;
     background-color: $blue;
     width: 100%;
-    
 
-    display:inline-block;
-    vertical-align:middle;
-    margin:0 0 1rem 0;
-    font-family:inherit;
-    padding:.85em 1em;
-    font-size:.9rem;
-    line-height:1;
-    text-align:center;
-    cursor:pointer;
-  
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+    font-family: inherit;
+    padding: .85em 1em;
+    font-size: .9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
 
     border-radius: 10px;
-    border-width: 2px;
-    border-color: $blue;
+    //border-width: 2px;
+    //border-color: $blue;
 
-    
     &:hover {
-        color: $blue;
-        background-color: white;
+        background-color: $darkgrey;
     }
+
     &:active {
-        color: $blue;
-        background-color: white;
+        color: white;
+        background-color: $grey;
     }
 }
 
-
-.button-skip, .button-next {
+#skip,
+.button-skip,
+.button-next {
     font-weight: bold;
-    color: $red;
-    background-color: white;
+    color: white;
+    background-color: $red;
 
     width: 100%;
     border-radius: 10px;
-    border-width: 2px;
-    border-color: $red;
+    //order-width: 2px;
+    // border-color: $red;
 
-    display:inline-block;
-    vertical-align:middle;
-    margin:0 0 1rem 0;
-    font-family:inherit;
-    padding:.85em 1em;
-    font-size:.9rem;
-    line-height:1;
-    text-align:center;
-    cursor:pointer;
-   
-  
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+    font-family: inherit;
+    padding: .85em 1em;
+    font-size: .9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
 
     &:hover {
-        color: white;
-        background-color: $red;
-      
+        background-color: $darkgrey;
     }
+
     &:active {
         color: white;
-        background-color: $red;
-       
+        background-color: $grey;
     }
 }
 
-
-
-
 a.button {
     text-decoration: none;
+}
+
+.button-en,
+.button-de {
+    position: sticky;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    border-color: #a6a6a6;
+    z-index: 2;
 }

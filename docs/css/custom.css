@@ -85,16 +85,6 @@ body {
   background-color: white;
 }
 
-.button-en, .button-de {
-  position: sticky;
-  top: 15px;
-  right: 15px;
-  width: 50px;
-  height: 50px;
-  border-color: #a6a6a6;
-  z-index: 2;
-}
-
 .button-info {
   position: absolute;
   top: 15px;
@@ -108,7 +98,10 @@ body {
   z-index: 2;
 }
 
-.button-undo, .button-clear, .button-backToStart {
+#nextstep,
+.button-undo,
+.button-clear,
+.button-backToStart {
   font-weight: bold;
   font-size: 14px;
   color: white;
@@ -124,26 +117,29 @@ body {
   text-align: center;
   cursor: pointer;
   border-radius: 10px;
-  border-width: 2px;
-  border-color: #5271ff;
 }
-.button-undo:hover, .button-clear:hover, .button-backToStart:hover {
-  color: #5271ff;
-  background-color: white;
+#nextstep:hover,
+.button-undo:hover,
+.button-clear:hover,
+.button-backToStart:hover {
+  background-color: #545454;
 }
-.button-undo:active, .button-clear:active, .button-backToStart:active {
-  color: #5271ff;
-  background-color: white;
+#nextstep:active,
+.button-undo:active,
+.button-clear:active,
+.button-backToStart:active {
+  color: white;
+  background-color: #737373;
 }
 
-.button-skip, .button-next {
+#skip,
+.button-skip,
+.button-next {
   font-weight: bold;
-  color: #ff5757;
-  background-color: white;
+  color: white;
+  background-color: #ff5757;
   width: 100%;
   border-radius: 10px;
-  border-width: 2px;
-  border-color: #ff5757;
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 1rem 0;
@@ -154,17 +150,31 @@ body {
   text-align: center;
   cursor: pointer;
 }
-.button-skip:hover, .button-next:hover {
-  color: white;
-  background-color: #ff5757;
+#skip:hover,
+.button-skip:hover,
+.button-next:hover {
+  background-color: #545454;
 }
-.button-skip:active, .button-next:active {
+#skip:active,
+.button-skip:active,
+.button-next:active {
   color: white;
-  background-color: #ff5757;
+  background-color: #737373;
 }
 
 a.button {
   text-decoration: none;
+}
+
+.button-en,
+.button-de {
+  position: sticky;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-color: #a6a6a6;
+  z-index: 2;
 }
 
 .logo--start {
@@ -268,6 +278,8 @@ a.button {
 }
 
 #overlay-text {
+  text-align: center;
+  padding: 20px;
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
   position: absolute;
   top: 47%;
