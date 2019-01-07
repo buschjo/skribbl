@@ -24,7 +24,7 @@ class GameRound {
         } else {
             this.win = false;
         }
-        console.log("win: " + this.win);
+        console.log("win: " + this.win+ ": "+this.modelData.names[0]);
     }
     
     calculateTimeElapsed() {

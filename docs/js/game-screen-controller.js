@@ -119,18 +119,21 @@ class GameScreenController extends ViewController {
             let temp = probs[i];
             let mr = Math.round(temp * 100);
             //Extract Method
-            prob.style.width = mr + '%';
-            prob.innerHTML = top5[i];
-            //CSS auslagern in classes
-            if (top5[i] == appController.gameRound.word) {
-                prob.style.backgroundColor = "#5271ff";
-                prob.style.font = "bold 18px arial, serif";
-                prob.style.textShadow = "0 0 5px yellow";
-            } else {
-                prob.style.backgroundColor = "#545454";
-                prob.style.font = "";
-                prob.style.textShadow = "";
+            if(prob != null){
+                prob.style.width = mr + '%';
+                prob.innerHTML = top5[i];
+                //CSS auslagern in classes
+                if (top5[i] == appController.gameRound.word) {
+                    prob.style.backgroundColor = "#5271ff";
+                    prob.style.font = "bold 18px arial, serif";
+                    prob.style.textShadow = "0 0 5px yellow";
+                } else {
+                    prob.style.backgroundColor = "#545454";
+                    prob.style.font = "";
+                    prob.style.textShadow = "";
+                }
             }
+
         }
     }
 }

@@ -15,14 +15,15 @@ class AppController  {
 	}
 
 	createNewGameRound() {
-		if (typeof this.gameRound == 'undefined'){
+		// if (typeof this.gameRound == 'undefined'){
 			this.gameRound = new GameRound(this.modelData);
             this.tutorial = new Tutorial(this.gameRound);
-		}
+		// }
 	}
 
     startGame(){
         this.createNewGameRound();
+        this.scores = undefined;
         if (!this.tutorialDone) {
             this.showTutorial();
             this.tutorialDone = true;
