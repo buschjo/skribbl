@@ -25,7 +25,7 @@ class EndScreenController extends ViewController {
     }
 
     callDefeatScreen(res, resButton) {
-        res.innerHTML = " <h1>TIME'S UP!</h1><p>Oh no, I couldn't guess it!</p><p>I was only ...% sure.</p><p>Next word, please!</p>"
+        res.innerHTML = " <h1>TIME'S UP!</h1><p>Oh no, I couldn't guess it!</p><p>I was only " + Math.round(this.appController.modelData.probs[0] * 100) + "% sure.</p><p>Next word, please!</p>"
             + "<p>Clear-Button used :" + this.appController.gameRound.canvasData.clearCounter + " </p>"
             + "<p>Finger lifted : " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>"
             + "<p>Undo-Button used : " + this.appController.gameRound.canvasData.undoCounter + "</p>"

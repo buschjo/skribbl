@@ -26,14 +26,14 @@ class ModelData {
         console.log('model ready');
     }
 
-    async function loadDict() {
-        console.log(mode);
-        if (mode == 'de'){
-            loc = 'model20k15e/class_names_de.txt';
+    async loadDict() {
+        console.log(this.mode);
+        if (this.mode == 'de'){
+            var loc = 'model20k15e/class_names_de.txt';
             console.log("load german");
         }
         else{
-            loc = 'model20k15e/class_names.txt';
+            var loc = 'model20k15e/class_names.txt';
             console.log("load english");
         }
 

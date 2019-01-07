@@ -14,20 +14,8 @@ class StartScreenController extends ViewController {
     //rename startModel?
     setup() {
       //this has to go somewhere else
-      skribbl.model.start(language);
+      this.appController.modelData.start(this.language);
       console.log(this.language);
-    }
-
-    setEnglish() {  //this has to go somewhere else
-        this.language = "en";
-        skribbl.model.start(this.language);
-        console.log("English");
-    }
-
-    setDeutsch() {  //this has to go somewhere else
-        this.language = "de";
-        skribbl.model.start(this.language);
-        console.log("Deutsch");
     }
 
     showInfo() {
@@ -45,10 +33,20 @@ class StartScreenController extends ViewController {
 
     bindUI() {
         var that = this;
+        console.log("Bind UI Appcontroller:");
+        console.log(this.appController);
         this.elements.langButtonEN = document.getElementsByClassName('button-en')[0];
-        this.elements.langButtonEN.addEventListener("click", that.setEnglish);
+        this.elements.langButtonEN.addEventListener("click", () => {
+            that.language = "en";
+            that.appController.modelData.start(that.language);
+            console.log("English");
+        });
         this.elements.langButtonDE = document.getElementsByClassName('button-de')[0];
-        this.elements.langButtonDE.addEventListener("click", that.setDeutsch);
+        this.elements.langButtonDE.addEventListener("click", () => {
+            that.language = "de";
+            that.appController.modelData.start(that.language);
+            console.log("Deutsch");
+        });
         this.elements.infoButton = document.getElementsByClassName('button-info')[0];
         this.elements.infoButton.addEventListener("click", () => {
             this.showInfo();
