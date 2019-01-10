@@ -28,8 +28,8 @@ class GameRound {
     }
 
     calculateTimeElapsed() {
-        //replace by min and max and threshold 20
-        return (Date.now() - this.timer.startTime) / 1000;
+        let time = (Date.now() - this.timer.startTime) / 1000
+        return Math.max(0, Math.min(time, 20));
     }
 
     startTimer() {
