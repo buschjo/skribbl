@@ -60,15 +60,25 @@
     //border-width: 2px;
     //border-color: $blue;
 
-    &:hover {
-        background-color: $darkgrey;
-    }
 
     &:active {
         color: white;
         background-color: $grey;
     }
+
+    @media screen and (min-width: 1200px) {
+        &:hover {
+            color: white;
+            background-color: $darkgrey;
+        }
+
+        &:active {
+            color: white;
+            background-color: $grey;
+        }
+    }
 }
+
 
 #skip,
 .button-skip,
@@ -92,14 +102,23 @@
     text-align: center;
     cursor: pointer;
 
-    &:hover {
-        background-color: $darkgrey;
-    }
-
     &:active {
         color: white;
         background-color: $grey;
     }
+
+    @media screen and (min-width: 1200px) {
+        &:hover {
+            color: white;
+            background-color: $darkgrey;
+        }
+
+        &:active {
+            color: white;
+            background-color: $grey;
+        }
+    }
+
 }
 
 a.button {
@@ -115,4 +134,5 @@ a.button {
     height: 50px;
     border-color: #a6a6a6;
     z-index: 2;
+
 }

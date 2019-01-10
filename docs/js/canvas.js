@@ -20,7 +20,7 @@ class CanvasData {
         this.canvas.freeDrawingBrush.width = 10;
         this.canvas.renderAll();
         this.responsive();
-        
+
         //setup listeners 
         var that = this;
         this.canvas.on('mouse:up', function (e) {
@@ -79,13 +79,13 @@ class CanvasData {
 
         //get the center
         var min_coords_square = {
-            x : min_coords.x + ((max_coords.x - min_coords.x) / 2.0) - (length/2.0) -5,
-            y : min_coords.y + ((max_coords.y - min_coords.y) / 2.0) - (length/2.0) -5
+            x: min_coords.x + ((max_coords.x - min_coords.x) / 2.0) - (length / 2.0) - 5,
+            y: min_coords.y + ((max_coords.y - min_coords.y) / 2.0) - (length / 2.0) - 5
         }
 
         var max_coords_square = {
-            x : min_coords.x + ((max_coords.x - min_coords.x) / 2.0) + (length/2.0) +5,
-            y : min_coords.y + ((max_coords.y - min_coords.y) / 2.0) + (length/2.0) +5
+            x: min_coords.x + ((max_coords.x - min_coords.x) / 2.0) + (length / 2.0) + 5,
+            y: min_coords.y + ((max_coords.y - min_coords.y) / 2.0) + (length / 2.0) + 5
         }
 
         //return as struct 
@@ -137,8 +137,7 @@ class CanvasData {
             this.canvas.renderAll();
             var appController = SingletonAppController.getInstance();
             appController.modelData.getFrame(); //todo
-        }
-        else if (this.canvas._objects.length == 1) {
+        } else if (this.canvas._objects.length == 1) {
             this.erase();
             var bars = document.getElementsByClassName("bar__full");
             for (let bar of bars) {
