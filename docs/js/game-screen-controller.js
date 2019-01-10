@@ -26,11 +26,16 @@ class GameScreenController extends ViewController {
         this.elements.clearButton = document.getElementById("clear");
         this.elements.undoButton = document.getElementById("undo");
         this.elements.countdownNumber = document.getElementById("overlay-number");
+        this.elements.skipWordButton = document.getElementById("skip__tool");
 
         // skribbl.canvasData.responsive();
         var that = this;
         this.elements.clearButton.addEventListener("click", that.clear);
         this.elements.undoButton.addEventListener("click", that.undo);
+        this.elements.skipWordButton.addEventListener("click", () => {
+            that.clearTimerInterval();
+            that.display();
+        })
 
         this.appController.startGame();
     }
@@ -108,6 +113,10 @@ class GameScreenController extends ViewController {
             bar.innerHTML = " ";
             bar.style.width = "0%";
         }
+    }
+
+    skipWord() {
+
     }
 
     drawBars(top5, probs) {
