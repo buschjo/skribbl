@@ -19,7 +19,7 @@ class CanvasData {
         this.canvas.freeDrawingBrush.color = "black";
         this.canvas.freeDrawingBrush.width = 10;
         this.canvas.renderAll();
-        this.responsive();
+        this.responsive(this.canvas);
 
         //setup listeners 
         var that = this;
@@ -38,7 +38,9 @@ class CanvasData {
             that.recordCoor(e);
         });
 
-        window.addEventListener("resize", this.responsive);
+        window.addEventListener("resize", () => {
+            that.responsive(that.canvas);
+        });
     }
 
     /*
@@ -153,13 +155,13 @@ class CanvasData {
         this.undoCounter = 0;
     }
 
-    responsive() {
+    responsive(canvas) {
         let container = document.getElementsByClassName("canvas__container")[0];
         let width = container.offsetWidth;
         let height = container.offsetHeight;
         let widthn = width;
         let heightn = height;
-        this.canvas.setDimensions({
+        canvas.setDimensions({
             width: widthn,
             height: heightn
         });
