@@ -28,11 +28,10 @@ class ModelData {
 
     async loadDict() {
         console.log(this.mode);
-        if (this.mode == 'de'){
+        if (this.mode == 'de') {
             var loc = 'model20k15e/class_names_de.txt';
             console.log("load german");
-        }
-        else{
+        } else {
             var loc = 'model20k15e/class_names.txt';
             console.log("load english");
         }
@@ -55,9 +54,9 @@ class ModelData {
     //         classNames[i] = symbol
     //     }
     // }
-        ////TODO für GameView/ Gameround usw
+    ////TODO für GameView/ Gameround usw
 
-     /*
+    /*
     preprocess the data
     */
     preprocess(imgData) {

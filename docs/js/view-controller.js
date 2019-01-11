@@ -7,9 +7,9 @@ class ViewController {
 
     clearScreen() {
         const mainElement = document.querySelector("main");
-		while (mainElement.lastChild) {
-			mainElement.removeChild(mainElement.lastChild);
-		}
+        while (mainElement.lastChild) {
+            mainElement.removeChild(mainElement.lastChild);
+        }
     }
 }
 

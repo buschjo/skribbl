@@ -118,18 +118,28 @@ body {
   cursor: pointer;
   border-radius: 10px;
 }
-#nextstep:hover,
-.button-undo:hover,
-.button-clear:hover,
-.button-backToStart:hover {
-  background-color: #545454;
-}
 #nextstep:active,
 .button-undo:active,
 .button-clear:active,
 .button-backToStart:active {
   color: white;
   background-color: #737373;
+}
+@media screen and (min-width: 1200px) {
+  #nextstep:hover,
+.button-undo:hover,
+.button-clear:hover,
+.button-backToStart:hover {
+    color: white;
+    background-color: #545454;
+  }
+  #nextstep:active,
+.button-undo:active,
+.button-clear:active,
+.button-backToStart:active {
+    color: white;
+    background-color: #737373;
+  }
 }
 
 #skip,
@@ -150,16 +160,25 @@ body {
   text-align: center;
   cursor: pointer;
 }
-#skip:hover,
-.button-skip:hover,
-.button-next:hover {
-  background-color: #545454;
-}
 #skip:active,
 .button-skip:active,
 .button-next:active {
   color: white;
   background-color: #737373;
+}
+@media screen and (min-width: 1200px) {
+  #skip:hover,
+.button-skip:hover,
+.button-next:hover {
+    color: white;
+    background-color: #545454;
+  }
+  #skip:active,
+.button-skip:active,
+.button-next:active {
+    color: white;
+    background-color: #737373;
+  }
 }
 
 a.button {

@@ -13,9 +13,9 @@ class StartScreenController extends ViewController {
 
     //rename startModel?
     setup() {
-      //this has to go somewhere else
-      this.appController.modelData.start(this.language);
-      console.log(this.language);
+        //this has to go somewhere else
+        this.appController.modelData.start(this.language);
+        console.log(this.language);
     }
 
     showInfo() {
