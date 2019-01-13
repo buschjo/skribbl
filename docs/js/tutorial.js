@@ -83,13 +83,10 @@ class Tutorial {
     }
 
     removeAllStyleChanges() {
-<<<<<<< HEAD
-            this.screenElements.overlayText.style.fontSize = "2em";
-            this.screenElements.overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-            this.screenElements.overlayText.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
-            this.screenElements.overlayText.style.textShadow = "1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black,-1px -1px 1px black";
-=======
->>>>>>> 5a0fa26e0a6dacb0f0ff1d85f38c09da446a1071
+        this.screenElements.overlayText.style.fontSize = "2em";
+        this.screenElements.overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+        this.screenElements.overlayText.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
+        this.screenElements.overlayText.style.textShadow = "1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black,-1px -1px 1px black";
         for (var i = 0; i < this.tutorialSteps.length; i++) {
             this.tutorialSteps[i].removeStyleChange();
         }
