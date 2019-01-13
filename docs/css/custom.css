@@ -60,9 +60,14 @@ body {
 .section {
   padding: 0;
   position: relative;
-  height: 100vh;
+  height: 90vh;
   padding-top: 0.5rem;
   padding: 1rem;
+}
+@media screen and (min-width: 720px) {
+  .section {
+    height: 100vh;
+  }
 }
 .section.screen__start .content__container-flex {
   margin-top: 3rem;
