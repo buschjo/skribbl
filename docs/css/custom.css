@@ -64,6 +64,9 @@ body {
   padding-top: 0.5rem;
   padding: 1rem;
 }
+.section.screen__start .content__container-flex {
+  margin-top: 3rem;
+}
 .button-start__container {
   width: 80%;
 }
@@ -196,6 +199,12 @@ a.button {
   z-index: 2;
 }
 
+.button-undo,
+.button-clear,
+.button-skip {
+  margin-bottom: 0;
+}
+
 .logo--start {
   background-image: url(../assets/logo_big_color.png);
   background-size: contain;
@@ -216,10 +225,9 @@ a.button {
   width: 100%;
 }
 .bars__container .bar__empty {
-  height: 25px;
+  height: 22px;
   width: 100%;
-  margin: 0 auto 10px auto;
-  line-height: 30px;
+  margin: 0 auto 3px auto;
   font-size: 16px;
   font-weight: bold;
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;

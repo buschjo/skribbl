@@ -5,7 +5,12 @@
     padding-top: 0.5rem;
     padding: 1rem;
 
-    &.screen__start {}
+    &.screen__start {
+
+        .content__container-flex {
+            margin-top: 3rem;
+        }
+    }
 
     &.screen__game {}
 

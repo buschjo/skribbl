@@ -35,7 +35,7 @@ class EndScreenController extends ViewController {
     }
 
     callVictoryScreen(res, resButton) {
-        res.innerHTML = "<p>Yeah, I guessed it! Good Draw!</p><p>I was " + Math.round(this.appController.modelData.probs[0] * 100) + "%</p><p>sure and it was on the first place!" +
+        res.innerHTML = "<p>Yeah, I guessed it! Good Draw!</p><p>I was " + Math.round(this.appController.modelData.probs[0] * 100) + "% sure and it was on the first place!" +
             "<p> You needed " + this.appController.scores.timeElapsed.toFixed(2) + " seconds.</p>" +
             "<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
             "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>" +
