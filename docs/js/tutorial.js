@@ -7,14 +7,14 @@ class Tutorial {
     }
 
     initializeTutorialSteps() {
-        this.tutorialSteps = [new TutorialStep("First you will see a word here."),
-            new TutorialStep("You have 3 seconds to memorize the word."),
+        this.tutorialSteps = [new TutorialStep("First you will see a word here. You have 5 seconds to memorize it."),       
+            new TutorialStep("When the overlay disappears, the game starts."),
             new TutorialStep("You can draw here.", this.screenElements.canvasArea, "thick solid #ff5757"),
             new TutorialStep("You can see here, which words the AI thinks you are drawing.", this.screenElements.barsArea, "thick solid #ff5757"),
             new TutorialStep("When the timer reaches the left side, your time is up.", this.screenElements.timerArea, "thick solid #ff5757"),
             new TutorialStep("Use 'clear' to wipe your drawing.", this.screenElements.clearTool, "thick solid #ff5757"),
             new TutorialStep("Use 'undo' to remove your last line.", this.screenElements.undoTool, "thick solid #ff5757"),
-            new TutorialStep("Use 'skip' to skip a word.", this.screenElements.skipTool, "thick solid #ff5757"),
+            new TutorialStep("Use 'skip' to skip a word.", this.screenElements.skipTool, "thick solid #ffde59"),
             new TutorialStep("Get your word to the top of the list to win.", this.screenElements.barsArea, "thick solid #ff5757"),
             new TutorialStep("Let's go!")
         ];
@@ -48,12 +48,12 @@ class Tutorial {
     }
 
     walkThrough() {
+        
         this.currentTutorialStepIndex++;
         if (this.currentTutorialStepIndex < this.tutorialSteps.length) {
             this.screenElements.overlay.style.backgroundColor = "rgba(255, 255, 255, 0.0)";
             this.screenElements.overlayText.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
             this.screenElements.overlayText.style.textShadow = "none";
-            this.screenElements.overlayText.style.fontSize = "1.5em";
             var currentTutorialStep = this.tutorialSteps[this.currentTutorialStepIndex];
             this.screenElements.overlayText.innerText = currentTutorialStep.tutorialText;
             currentTutorialStep.setStyleChange();
@@ -72,6 +72,7 @@ class Tutorial {
         this.screenElements.overlay.style.display = "block";
         this.screenElements.skipButton.style.display = "block";
         this.screenElements.nextStepButton.style.display = "block";
+        this.screenElements.overlayText.style.fontSize = "1.5em";
         this.screenElements.overlayText.innerText = this.tutorialSteps[this.currentTutorialStepIndex].tutorialText;
         var that = this;
         this.screenElements.skipButton.addEventListener("click", function () {
