@@ -41,6 +41,13 @@ class EndScreenController extends ViewController {
             "<p>Your word was '" + this.appController.gameRound.word + "' .</p>";
 
         resButton.innerText = 'NEXT';
+
+        const canvas = document.getElementById('endcanvas');
+        canvas.width = endscreenimage.width;
+        canvas.height = endscreenimage.height;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+        ctx.putImageData(endscreenimage, 0, 0);
     }
 
     callVictoryScreen(res, resButton) {
@@ -52,6 +59,13 @@ class EndScreenController extends ViewController {
             "<p>Your word was '" + this.appController.gameRound.word + "' .</p>";
 
         resButton.innerText = 'NEXT';
+
+        const canvas = document.getElementById('endcanvas');
+        canvas.width = endscreenimage.width;
+        canvas.height = endscreenimage.height;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+        ctx.putImageData(endscreenimage, 0, 0);
     }
 }
 
