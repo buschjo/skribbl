@@ -93,6 +93,9 @@ class ModelData {
             //set the table
             appController.gameScreenController.drawBars(this.names, this.probs);
             console.log(this.names);
+
+            //show image to end screen
+            endscreenimage = imgData;
         }
     }
 

@@ -11,6 +11,7 @@ class EndScreenController extends ViewController {
         this.elements.mainEl.appendChild(document.getElementById("end-template").content.cloneNode(true).firstElementChild);
         this.elements.res = document.getElementById('result');
         this.elements.resButton = document.getElementById('res-button');
+        this.elements.backToStart = document.getElementById("backToStart");
         if (this.appController.scores.win) {
             this.callVictoryScreen(this.elements.res, this.elements.resButton);
         } else {
@@ -22,6 +23,14 @@ class EndScreenController extends ViewController {
             that.appController.gameScreenController.display();
             that.appController.gameScreenController.setup();
         });
+
+        this.elements.backToStart.addEventListener("click", () => {
+            console.log(that.appController);
+            
+            that.appController.startScreenController.display();
+            that.appController.startScreenController.bindUI();
+            that.appController.startScreenController.setup();
+        });
     }
 
     callDefeatScreen(res, resButton) {
@@ -32,6 +41,13 @@ class EndScreenController extends ViewController {
             "<p>Your word was '" + this.appController.gameRound.word + "' .</p>";
 
         resButton.innerText = 'NEXT';
+
+        const canvas = document.getElementById('endcanvas');
+        canvas.width = endscreenimage.width;
+        canvas.height = endscreenimage.height;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+        ctx.putImageData(endscreenimage, 0, 0);
     }
 
     callVictoryScreen(res, resButton) {
@@ -43,6 +59,13 @@ class EndScreenController extends ViewController {
             "<p>Your word was '" + this.appController.gameRound.word + "' .</p>";
 
         resButton.innerText = 'NEXT';
+
+        const canvas = document.getElementById('endcanvas');
+        canvas.width = endscreenimage.width;
+        canvas.height = endscreenimage.height;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+        ctx.putImageData(endscreenimage, 0, 0);
     }
 }
 
