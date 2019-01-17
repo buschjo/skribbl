@@ -7,7 +7,7 @@ class Tutorial {
     }
 
     initializeTutorialSteps() {
-        this.tutorialSteps = [new TutorialStep("First you will see a word here. You have 5 seconds to memorize it."),       
+        this.tutorialSteps = [new TutorialStep("First you will see a word here. You have 5 seconds to memorize it."),
             new TutorialStep("When the overlay disappears, the game starts."),
             new TutorialStep("You can draw here.", this.screenElements.canvasArea, "thick solid #ff5757"),
             new TutorialStep("You can see here, which words the AI thinks you are drawing.", this.screenElements.barsArea, "thick solid #ff5757"),
@@ -48,7 +48,7 @@ class Tutorial {
     }
 
     walkThrough() {
-        
+
         this.currentTutorialStepIndex++;
         if (this.currentTutorialStepIndex < this.tutorialSteps.length) {
             this.screenElements.overlay.style.backgroundColor = "rgba(255, 255, 255, 0.0)";

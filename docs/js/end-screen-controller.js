@@ -26,7 +26,7 @@ class EndScreenController extends ViewController {
 
         this.elements.backToStart.addEventListener("click", () => {
             console.log(that.appController);
-            
+
             that.appController.startScreenController.display();
             that.appController.startScreenController.bindUI();
             that.appController.startScreenController.setup();

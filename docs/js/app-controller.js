@@ -1,6 +1,6 @@
 class AppController {
 
-    
+
     constructor() {
         this.gameRound = undefined;
         this.modelData = new ModelData();
