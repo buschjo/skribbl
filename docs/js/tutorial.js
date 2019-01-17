@@ -103,13 +103,13 @@ class TutorialStep {
 
     setStyleChange() {
         if (typeof this.htmlArea != "undefined") {
-            this.htmlArea.style.border = this.highlightStyle;
+            this.htmlArea.style.outline = this.highlightStyle;
         }
     }
 
     removeStyleChange() {
         if (typeof this.htmlArea != "undefined") {
-            this.htmlArea.style.border = "none";
+            this.htmlArea.style.outline = "none";
         }
     }
 }
