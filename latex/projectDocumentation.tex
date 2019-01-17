@@ -12,6 +12,8 @@
 
 \usepackage{graphicx}
 \usepackage[section]{placeins}
+\usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
 
 \PassOptionsToPackage{
 style=apa,
@@ -20,7 +22,7 @@ isbn=false,
 eprint=false
 }{biblatex}
 \usepackage[backend=biber]{biblatex}
-\addbibresource{library.bib}
+\addbibresource{ws1819_skribbl.bib}
 
 \PassOptionsToPackage{hyphens}{url}
 
@@ -82,13 +84,15 @@ eprint=false
 
 \section{Einleitung}
 \subsection{Leitfaden}
+\begin{wrapfigure}{R}{0.3\textwidth}
+\centering
+\includegraphics[width=0.25\textwidth]{images/skribbl_logo.png}
+\caption{\label{fig:skribblLogo}Skribbl.AI Logo}
+\end{wrapfigure}
+Die Idee begann mit IQ gegen KI. Mit dem Einfall, was würde eigentlich passieren, wenn eine künstliche Intelligenz ein von einem Menschen gemaltes Bild  erkennen sollte? Neuronale Netzwerke erbringen beeindruckende Leistungen bei der Erkennung fotorealistischer Aufnahmen. Sie helfen sogar Pathologen bei der Erkennung von Krebszellen \parencite{ElizabethDougherty2018}. Was also würde also passieren, wenn wir eine künstliche Intelligenz mit den Kritzeleien einer Student*in konfrontieren?
+
  (Was ist das Projekt, wie ist es zustande gekommen, was ist das Ziel)
  \ref{fig:skribblLogo}
-\begin{figure}[h]
-	\includegraphics[width=0.25\textwidth]{images/skribbl_logo.png}
-	\caption[Skribbl.AI Logo]{Skribbl.AI Logo}
-	\label{fig:skribblLogo}
-\end{figure}
 
 \subsection{Aufbau des Projektes}
     (Wir haben uns für agile, Scrum usw. entschieden)    1.2.1. Trello, Slack
