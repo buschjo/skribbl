@@ -82,17 +82,17 @@ function evaluate(word) {
             var percent = document.getElementById('prob1').style.width;
             var timeElapsed = calculateTimeElapsed() / 1000;
             res.innerHTML = "<h1>You won!</h1><p>The AI is</p><p>" + percent + "</p><p>sure.</p><p> You needed </p>" + timeElapsed + "<p> seconds.</p>"
-            "<p>Times Cleared: " + eraseCounter + " </p>"
-                + "<p>Times Undo: " + undoCounter + "</p>"
-                + "<p>Finger lifted: " + fingerUpCounter + " times</p>";
+            "<p>Times Cleared: " + eraseCounter + " </p>" +
+                "<p>Times Undo: " + undoCounter + "</p>" +
+                "<p>Finger lifted: " + fingerUpCounter + " times</p>";
             resButton.innerText = 'NEXT';
 
             stopGame();
         } else {
-            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p> "
-                + "<p>Times Cleared: " + eraseCounter + " </p>"
-                + "<p>Times Undo: " + undoCounter + "</p>"
-                + "<p>Finger lifted: " + fingerUpCounter + " times</p>";
+            res.innerHTML = "<h1>You lost!</h1><p>You were a little to slow.</p> " +
+                "<p>Times Cleared: " + eraseCounter + " </p>" +
+                "<p>Times Undo: " + undoCounter + "</p>" +
+                "<p>Finger lifted: " + fingerUpCounter + " times</p>";
             resButton.innerText = 'TRY AGAIN';
 
         }
@@ -437,6 +437,7 @@ function allowDrawing() {
 
 // clear the canvas
 var eraseCounter = 0;
+
 function erase() {
     eraseCounter++;
     canvas.clear();
@@ -451,6 +452,7 @@ function erase() {
 //undobutton 
 var h = [];
 var undoCounter;
+
 function undo() {
     undoCounter++;
     if (canvas._objects.length > 1) {
@@ -480,6 +482,7 @@ function reset_FingerUP_Undo_Erase_Counters() {
 Info-Button
 */
 let info = document.getElementsByClassName('info__container')[0];
+
 function showInfo() {
     info.classList.add('active');
 }

@@ -7,13 +7,13 @@ class GameScreenController extends ViewController {
             number: 5
         };
         this.timer = {
-           width: 100,
-           totalTime: 20,
-           startTime: 0
+            width: 100,
+            totalTime: 20,
+            startTime: 0
         }
     }
 
-    display(){
+    display() {
         this.clearScreen();
         const mainEl = document.querySelector("main");
         mainEl.appendChild(document.getElementById("game-template").content.cloneNode(true).firstElementChild);
@@ -26,16 +26,21 @@ class GameScreenController extends ViewController {
         this.elements.clearButton = document.getElementById("clear");
         this.elements.undoButton = document.getElementById("undo");
         this.elements.countdownNumber = document.getElementById("overlay-number");
+        this.elements.skipWordButton = document.getElementById("skip__tool");
 
         // skribbl.canvasData.responsive();
         var that = this;
         this.elements.clearButton.addEventListener("click", that.clear);
         this.elements.undoButton.addEventListener("click", that.undo);
+        this.elements.skipWordButton.addEventListener("click", () => {
+            that.clearTimerInterval();
+            that.display();
+        })
 
         this.appController.startGame();
     }
 
-    setup(){
+    setup() {
         console.log('setup');
         this.appController.gameRound.canvasData.setup();
     }
@@ -64,7 +69,7 @@ class GameScreenController extends ViewController {
         }, 1000);
     }
 
-    setTimerInterval(timer){
+    setTimerInterval(timer) {
         let timerWidth = this.timer.width;
         let totalTime = this.timer.totalTime;
         let timeLeft = this.timer.totalTime;
@@ -91,7 +96,7 @@ class GameScreenController extends ViewController {
         }, 100);
     }
 
-    clearTimerInterval(){
+    clearTimerInterval() {
         clearInterval(this.elements.timerInterval);
     }
 
@@ -110,6 +115,10 @@ class GameScreenController extends ViewController {
         }
     }
 
+    skipWord() {
+
+    }
+
     drawBars(top5, probs) {
         //loop over the predictions
         var appController = SingletonAppController.getInstance();
@@ -119,16 +128,15 @@ class GameScreenController extends ViewController {
             let temp = probs[i];
             let mr = Math.round(temp * 100);
             //Extract Method
-            if(prob != null){
+            if (prob != null) {
                 prob.style.width = mr + '%';
-                prob.innerHTML = top5[i];
+                prob.innerHTML = '&nbsp;' + (Math.round(probs[i] * 100) < 10 ? '0' : "") + Math.round(probs[i] * 100) + '%' + '&nbsp;' + top5[i];
                 //CSS auslagern in classes
                 if (top5[i] == appController.gameRound.word) {
-                    prob.style.backgroundColor = "#5271ff";
-                    prob.style.font = "bold 18px arial, serif";
-                    prob.style.textShadow = "0 0 5px yellow";
+                    prob.style.backgroundColor = "#ff5757";
+                    //prob.style.textShadow = "0 0 5px yellow";
                 } else {
-                    prob.style.backgroundColor = "#545454";
+                    prob.style.backgroundColor = "#1c1c1c";
                     prob.style.font = "";
                     prob.style.textShadow = "";
                 }

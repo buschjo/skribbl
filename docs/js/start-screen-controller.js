@@ -7,15 +7,16 @@ class StartScreenController extends ViewController {
     }
 
     display() {
+        this.clearScreen();
         this.elements.mainEl = document.querySelector("main");
         this.elements.mainEl.appendChild(document.getElementById("start-template").content.cloneNode(true).firstElementChild);
     }
 
     //rename startModel?
     setup() {
-      //this has to go somewhere else
-      this.appController.modelData.start(this.language);
-      console.log(this.language);
+        //this has to go somewhere else
+        this.appController.modelData.start(this.language);
+        console.log(this.language);
     }
 
     showInfo() {

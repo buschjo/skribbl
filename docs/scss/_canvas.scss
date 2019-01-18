@@ -1,7 +1,7 @@
 .canvas__container {
     width: 100%;
     max-height: 60%;
-
+    text-align: center;
     // height: 75vh;
 
     .canvas {
@@ -9,4 +9,11 @@
         height: 95%;
         border: 3px solid $blue;
     }
+
+
+}
+
+.endscreencanvas {
+    width: 50%;
+    border: 3px solid $blue;
 }

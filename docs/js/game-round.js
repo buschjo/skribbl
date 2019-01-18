@@ -15,7 +15,7 @@ class GameRound {
         this.win = undefined;
     }
 
-    evaluate(word){
+    evaluate(word) {
         if (this.modelData.names[0] == word) {
             this.timeElapsed = this.calculateTimeElapsed();
             //setWordAsUsed(word);
@@ -24,12 +24,12 @@ class GameRound {
         } else {
             this.win = false;
         }
-        console.log("win: " + this.win+ ": "+this.modelData.names[0]);
+        console.log("win: " + this.win + ": " + this.modelData.names[0]);
     }
-    
+
     calculateTimeElapsed() {
-        //replace by min and max and threshold 20
-        return (Date.now() - this.timer.startTime) / 1000;
+        let time = (Date.now() - this.timer.startTime) / 1000
+        return Math.max(0, Math.min(time, 20));
     }
 
     startTimer() {
@@ -53,7 +53,7 @@ class GameRound {
     }
 
     //Move to Appcontroller because auf timerInterval?
-	endGame() {
+    endGame() {
         this.appController.clearTimerInterval();
         this.appController.scores = new Score(this.win, this.timeElapsed);
         this.appController.endScreenController.display();
