@@ -73,7 +73,7 @@ body {
   margin-top: 3rem;
 }
 .button-start__container {
-  width: 80%;
+  width: 95%;
 }
 .button-start__container .button-start {
   width: 100%;
@@ -102,7 +102,7 @@ body {
   border-radius: 50%;
   font-size: 1.5rem;
   padding: 0.75rem;
-  border-color: #a6a6a6;
+  border-color: #5271ff;
   z-index: 2;
 }
 
@@ -200,7 +200,7 @@ a.button {
   right: 15px;
   width: 50px;
   height: 50px;
-  border-color: #a6a6a6;
+  border-color: #5271ff;
   z-index: 2;
 }
 
@@ -208,6 +208,18 @@ a.button {
 .button-clear,
 .button-skip {
   margin-bottom: 0;
+}
+
+.button.hollow.secondary {
+  border: 2px solid #a6a6a6;
+  color: #a6a6a6;
+  font-weight: bold;
+}
+
+.button.hollow.secondary:focus,
+.button.hollow.secondary:hover {
+  border-color: #5271ff;
+  color: #5271ff;
 }
 
 .logo--start {
@@ -274,6 +286,8 @@ a.button {
   bottom: 0;
   right: 0;
   left: 0;
+  z-index: 2;
+  cursor: pointer;
 }
 .info__container.active {
   display: block;
@@ -285,6 +299,7 @@ a.button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .timer__container {
@@ -313,7 +328,6 @@ a.button {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
-  cursor: pointer;
 }
 
 #overlay-text {
