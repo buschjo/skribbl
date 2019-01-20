@@ -55,10 +55,10 @@ eprint=false
        Skribbl.AI Projektdokumentation (IQ vs. KI)
        \vspace{1.5cm}
 
-       \includegraphics[width=0.4\textwidth]{images/htw_logo.jpg}
+       \includegraphics[width=0.4\textwidth]{images/logo_htw.jpg}
 
        \vspace{1.0cm}
-       \includegraphics[width=0.2\textwidth]{images/skribbl_logo.png}
+       \includegraphics[width=0.2\textwidth]{images/logo_skribbl.png}
        \vspace{1.0cm}
        \LARGE
 
@@ -90,12 +90,11 @@ eprint=false
 \subsection{Leitfaden}
 \begin{wrapfigure}{R}{0.3\textwidth}
 \centering
-\includegraphics[width=0.25\textwidth]{images/skribbl_logo.png}
+\includegraphics[width=0.25\textwidth]{images/logo_skribbl.png}
 \caption{\label{fig:skribblLogo}Skribbl.AI Logo}
 \end{wrapfigure}
 Die Idee begann mit IQ gegen KI. Mit dem Einfall, was würde eigentlich passieren, wenn eine künstliche Intelligenz ein von einem Menschen gemaltes Bild  erkennen sollte? Neuronale Netzwerke erbringen beeindruckende Leistungen bei der Erkennung fotorealistischer Aufnahmen. Sie helfen sogar Pathologen bei der Erkennung von Krebszellen \parencite{ElizabethDougherty2018}. Was also würde  passieren, wenn wir eine künstliche Intelligenz mit den Kritzeleien einer Student*in konfrontieren?
 
-<<<<<<< HEAD
 \begin{comment}
  (Was ist das Projekt, wie ist es zustande gekommen, was ist das Ziel)
  
@@ -129,7 +128,6 @@ Die IMI Showtime Messe, auf welcher die Gruppen ihre Ergebnisse präsentieren, b
 
 Das Projekt ist, wie unter \autoref{chap: Einleitung} 1.1 Leitfaden schon erwähnt, in drei Bereiche unterteilt, welche im folgenden genauer und im Kontext unseres Projektes erläutert werden.
 
-<<<<<<< HEAD
 \subsubsection{ Themenvergabe/Konzeptausarbeitung }
 \label{chap: Themenvergabe}
 
@@ -147,7 +145,6 @@ Die Durchführungsphase setzt sich dann konkret mit der 					Entwicklung der Anw
 Wir entschieden uns dafür eine Website zu bauen, auf welcher 			unser Spiel dann läuft.\\
 Wir haben HTML, CSS und Javascript für das entwickeln der 			Webumgebung und des Spieles genutzt und Python für das 				Trainieren des neuronalen Netzwerkes.\\
 Mehr dazu im \autoref{chap: Anforderungen}
-=======
 1. Themenvergabe/Konzeptausarbeitung
 	Wir haben das Projekt KI vs IQ erhalten, welches von Prof. Jung 		betreut wurde.
 	Die Vorgabe war, eine spielerische Anwendung zu entwickeln, 			in der Mensch gegen neuronales Netz antritt, welches dazu 				trainiert wurde, Strichzeichnungen zu erkennen.
@@ -163,7 +160,6 @@ Mehr dazu im \autoref{chap: Anforderungen}
 	Die Durchführungsphase setzt sich dann konkret mit der 					Entwicklung der Anwendung zusammen.
 	Wir haben HTML, CSS und Javascript für das entwickeln der 			Webumgebung und des Spieles genutzt und Python für das 				entwickeln des neuronalen Netzwerkes.
 	Mehr dazu im \autoref{chap: Anforderungen}
->>>>>>> ff307526e75a28a2eea227c63efa5c05c7dc577f
 
 \section{Grundlagen}
 \label{chap: Grundlagen}
@@ -197,6 +193,7 @@ Gleichzeitig wurden noch andere Details beachtet, wie zum Beispiel welche Coding
 \section{Anforderungen}
 \label{chap: Anforderungen}
 \subsection{Produdt Vision}
+\label{sec:productVision}
 Unsere Produkt Vision ist, bis zum Ende des Wintersemesters 2018/2019 ein kurzweiliges Mini-Malspiel mit einem Einzelspielermodus entwickelt zu haben. Es soll speziell für mobile Endnutzer aller Altersklassen konzipiert sein.
 \subsubsection{Die Kurzweiligkeit}
 Die Kurzweiligkeit unseres Spiels ist offensichtlich eine der Eigenschaften, die am schwierigsten einzuschätzen sind. Um dennoch dieses Ziel nicht aus den Augen zu verlieren, einigten wir uns darauf, alle Tickets, Erweiterungen und Ideen, die sich mit dem Spielkonzept beschäftigen würden, auf ihren Unterhaltungswert zu prüfen.
@@ -212,7 +209,18 @@ Um Skribbl.AI auf vielen verschiedenen mobilen Endgeräten spielen zu können oh
 Das Spiel sollte für alle Alterklassen interessant und spielbar sein. Neben der Eigenschaft, dass eine Runde nur eine bestimmte Dauer haben sollte, würden hier hauptsächlich die Begriffe, die der Spieler malen sollte, ausschlaggebend sein. Siehe hierzu Kapitel~ref{sec:spielkonzept}.
 \subsection{Spielkonzept}
 \label{sec:spielkonzept}
-Genauere Productvision, Detailierter
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/blindtesting.png}
+	\caption{\label{fig:blindtestingtable}Ausschnitt der Ergebnisse der Zeittests}
+\end{figure}
+Um die, in Kapitel~ref{sec:productVision} genannten Eigenschaften in unserem Spiel umzusetzen entwarfen wir verschiedene Spielkonzepte. Das Konzept, auf welches wir uns letzendlich einigten sieht wie folgt aus.
+
+Die Spieler*in sollte zu Beginn einer Spielrunde für wenige Sekunden ein Wort aus einem Pool von Wörtern gezeigt bekommen. Dieses Wort ist dann innerhalb eines festgelegten Zeitraums zu Zeichnen. Die optimale Zeit, die eine Runde dauert, sollte im späteren Verlauf des Projekts ermittelt werden. Hierzu haben alle Teammitglieder 24 verschiedene Begriffe gezeichnet. Mit Hilfe der Ergebnisse, ein Ausschnitt dieser ist zu sehen in Abbildung \ref{fig:blindtestingtable}, bestimmten wir eine angebrachte Zeit.
+Jedesmal wenn die Spieler*in den "Stift absetzt", das bedeutet in unserem Fall, den Finger hebt um neu anzusetzen, soll das gezeichnete an das neuronale Netzwerk übergeben werden. Dieses berechnet dann die Ergebnisse. Die fünf Ergebnisse mit den höchsten Vorhersagewahrscheinlichkeiten sollen auf dem Spielbildschirm angezeigt werden. Für die Anzeige der fünf wahrscheinlichsten Wörter soll ein Balkendiagramm verwendet werden, welches das Wort und die zugehörige Wahrscheinlichkeit in Prozent zeigt. Außerdem soll, falls das korrekte Wort in der Auswahl enthalten ist, dieses farblich hervorgehoben werden. Am oberen Rand des Spielbildschirms soll ein farblich hervorgehobener Balken anzeigen, wie viel Zeit schon vergangen ist.
+Wenn die Spieler*in es schafft, eine Zeichnung innerhalb der vorgegebenen Zeit zu erstellen, die das neuronale Netzwerk als das vorgegebene Wort erkennt, dann ist die Runde gewonnen. Das bedeutet, dass das gesuchte Wort in den Vorhersagen des neuronalen Netzwerks die höchste Wahrscheinlichkeit im Vergleich mit den anderen Wörtern haben muss.
+Verloren ist das Spiel, wenn dies der Spieler*in nicht in der vorgegebenen Zeit gelingt.
+In beiden Fällen hat die Spieler*in dann die Möglichkeit eine neue Runde mit einem neuen Wort zu starten.
 \section{Umsetzung, Implementierung, Ausarbeitung}
 \section{Spielbeschreibung, Ziel}
 \section{Bewertung}
