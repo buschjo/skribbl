@@ -9,13 +9,13 @@ class Tutorial {
     initializeTutorialSteps() {
         this.tutorialSteps = [new TutorialStep("First you will see a word here. You have 5 seconds to memorize it."),
             new TutorialStep("When the overlay disappears, the game starts."),
-            new TutorialStep("You can draw here.", this.screenElements.canvasArea, "thick solid #ff5757"),
-            new TutorialStep("You can see here, which words the AI thinks you are drawing.", this.screenElements.barsArea, "thick solid #ff5757"),
-            new TutorialStep("When the timer reaches the left side, your time is up.", this.screenElements.timerArea, "thick solid #ff5757"),
-            new TutorialStep("Use 'clear' to wipe your drawing.", this.screenElements.clearTool, "thick solid #ff5757"),
-            new TutorialStep("Use 'undo' to remove your last line.", this.screenElements.undoTool, "thick solid #ff5757"),
-            new TutorialStep("Use 'skip' to skip a word.", this.screenElements.skipTool, "thick solid #ffde59"),
-            new TutorialStep("Get your word to the top of the list to win.", this.screenElements.barsArea, "thick solid #ff5757"),
+            new TutorialStep("You can draw here.", this.screenElements.canvasArea, "thick dashed #ff7e00"),
+            new TutorialStep("You can see here, which words the AI thinks you are drawing.", this.screenElements.barsArea, "thick dashed #ff7e00"),
+            new TutorialStep("When the timer reaches the left side, your time is up.", this.screenElements.timerArea, "thick dashed #ff7e00"),
+            new TutorialStep("Use 'clear' to wipe your drawing.", this.screenElements.clearTool, "thick dashed #ff7e00"),
+            new TutorialStep("Use 'undo' to remove your last line.", this.screenElements.undoTool, "thick dashed #ff7e00"),
+            new TutorialStep("Use 'skip' to skip a word.", this.screenElements.skipTool, "thick dashed #ff7e00"),
+            new TutorialStep("Get your word to the top of the list to win.", this.screenElements.barsArea, "thick dashed #ff7e00"),
             new TutorialStep("Let's go!")
         ];
     }

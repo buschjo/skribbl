@@ -32,6 +32,35 @@ class StartScreenController extends ViewController {
         this.elements.info.classList.remove('active')
     }
 
+
+    showDE() {
+        this.elements.info = document.getElementsByClassName('de__container')[0];
+        this.elements.info.classList.add('active');
+        document.getElementById("de-button").style.borderColor = "#5271ff";
+        document.getElementById("de-button").style.color = "#5271ff";
+        document.getElementById("en-button").style.borderColor = "#a6a6a6";
+        document.getElementById("en-button").style.color = "#a6a6a6";
+        this.elements.info.addEventListener("click", () => {
+            this.hideInfo();
+        });
+        console.log(this.elements);
+
+    }
+
+    showEN() {
+        this.elements.info = document.getElementsByClassName('en__container')[0];
+        this.elements.info.classList.add('active');
+        document.getElementById("en-button").style.borderColor = "#5271ff";
+        document.getElementById("en-button").style.color = "#5271ff";
+        document.getElementById("de-button").style.borderColor = "#a6a6a6";
+        document.getElementById("de-button").style.color = "#a6a6a6";
+        this.elements.info.addEventListener("click", () => {
+            this.hideInfo();
+        });
+        console.log(this.elements);
+
+    }
+
     bindUI() {
         var that = this;
         console.log("Bind UI Appcontroller:");
@@ -40,12 +69,14 @@ class StartScreenController extends ViewController {
         this.elements.langButtonEN.addEventListener("click", () => {
             that.language = "en";
             that.appController.modelData.start(that.language);
+            this.showEN();
             console.log("English");
         });
         this.elements.langButtonDE = document.getElementsByClassName('button-de')[0];
         this.elements.langButtonDE.addEventListener("click", () => {
             that.language = "de";
             that.appController.modelData.start(that.language);
+            this.showDE();
             console.log("Deutsch");
         });
         this.elements.infoButton = document.getElementsByClassName('button-info')[0];
