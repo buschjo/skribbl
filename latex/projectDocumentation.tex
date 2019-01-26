@@ -169,6 +169,9 @@ Ein Styleguide (Styleguide anhängen?) wurde erstellt, in welchem jede Farbe und
 \subsection{Frontend}
 \subsection{Neuronales Netzwerk}
 \subsubsection{Dataset}
+Das Datenset mit dem wir unser neuronales Netzwerk trainiert haben ist das "Quick, Draw!" Datenset, welches von Google zur Verfügung gestellt wird. Die Daten wurden durch Googles Spiel "Quick, Draw!" gesammelt, in welchem Spieler Strichzeichnung von verschiedensten Dingen anfertigen müssen. Das Datenset in seiner Gänze besteht aus 345 Kategorien, mit mehr als 59 Millionen Zeichnungen. 
+Wir haben uns dafür entschieden, die Daten im .npy Format zu nutzen, welche bereits auch so im Google-Bucket zur Verfügung standen. Das .npy Format stellt die Bilder in 28x28 Pixeln zur Verfügung. 
+Für unser Modell haben wir uns für 100 ausgewählte Kategorien entschieden, mit jeweils 20.000 Bildern.
 \section{Anforderungen}
 \label{chap: Anforderungen}
 \subsection{Produkt Vision}
