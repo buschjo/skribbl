@@ -34,29 +34,36 @@ class EndScreenController extends ViewController {
     }
 
     callDefeatScreen(res, resButton) {
-        res.innerHTML = " <h1>TIME'S UP!</h1><p>Oh no, I couldn't guess it!</p><p>I was " + Math.round(this.appController.modelData.probs[0] * 100) + "% sure and it wasn't in first place.</p><p>Next word, please!</p>" +
-            "<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
-            "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>" +
-            "<p>Undo-Button used: " + this.appController.gameRound.canvasData.undoCounter + "</p>" +
-            "<p>Your word was '" + this.appController.gameRound.word + "' .</p>";
+        if (typeof this.appController.modelData.probs === "undefined") {
+            console.log("no canvas draw");
+        } else {
+            res.innerHTML = "<h1>TIME'S UP!</h1>" +
+                '<img src="assets/defeat_logo.png" alt="defeat logo">' +
+                "<p>Oh no, I couldn't guess it!</p><p>I was " + Math.round(this.appController.modelData.probs[0] * 100) + '% sure that the word was " ' + this.appController.modelData.names[0] + '" Sorry.</p><p>Next word, please!</p>' +
+                "<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
+                "<p>Undo-Button used: " + this.appController.gameRound.canvasData.undoCounter + "</p>" +
+                "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>" +
+                "<p>" + this.appController.gameRound.word + "</p>";
 
-        resButton.innerText = 'NEXT';
+            resButton.innerText = 'NEXT';
 
-        const canvas = document.getElementById('endcanvas');
-        canvas.width = endscreenimage.width;
-        canvas.height = endscreenimage.height;
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
-        ctx.putImageData(endscreenimage, 0, 0);
+            const canvas = document.getElementById('endcanvas');
+            canvas.width = endscreenimage.width;
+            canvas.height = endscreenimage.height;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+            ctx.putImageData(endscreenimage, 0, 0);
+        }
     }
 
     callVictoryScreen(res, resButton) {
-        res.innerHTML = "<p>Yeah, I guessed it! Good Draw!</p><p>I was " + Math.round(this.appController.modelData.probs[0] * 100) + "% sure and it was on the first place!" +
-            "<p> You needed " + this.appController.scores.timeElapsed.toFixed(2) + " seconds.</p>" +
+        res.innerHTML = '<img src="assets/win_logo.png" alt="victory logo">' +
+            '<p>Yeah, I guessed it! Good Draw! </p><p> I was <span id="word-score">' + Math.round(this.appController.modelData.probs[0] * 100) + '%</span> sure and it was on the first place!</p>' +
+            "<p>You needed " + this.appController.scores.timeElapsed.toFixed(2) + " seconds.</p>" +
             "<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
-            "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>" +
             "<p>Undo-Button used: " + this.appController.gameRound.canvasData.undoCounter + "</p>" +
-            "<p>Your word was '" + this.appController.gameRound.word + "' .</p>";
+            "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>" +
+            "<p>" + this.appController.gameRound.word + "</p>";
 
         resButton.innerText = 'NEXT';
 
@@ -69,7 +76,6 @@ class EndScreenController extends ViewController {
         ctx.putImageData(endscreenimage, 0, 0);
     }
 }
-
 
 window.addEventListener("load", event => {
     let appController = SingletonAppController.getInstance();

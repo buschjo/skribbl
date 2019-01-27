@@ -282,6 +282,7 @@ a.button {
 .info__container,
 .en__container,
 .de__container {
+  color: #545454;
   display: none;
   position: fixed;
   width: 100vw;
@@ -364,6 +365,30 @@ a.button {
   color: white;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+#word-score {
+  color: #ff5757;
+}
+
+#result img {
+  width: 25%;
+  float: left;
+}
+@media screen and (min-width: 1200px) {
+  #result img {
+    width: 20%;
+  }
+}
+
+#result p {
+  color: #545454;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#result h1 {
+  color: #ff5757;
 }
 
 /*# sourceMappingURL=custom.css.map */
