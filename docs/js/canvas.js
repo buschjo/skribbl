@@ -19,8 +19,8 @@ class CanvasData {
         this.canvas.freeDrawingBrush.color = "black";
         this.canvas.freeDrawingBrush.width = 10;
         this.canvas.renderAll();
-        this.responsive();
-        
+        this.responsive(this.canvas);
+
         //setup listeners 
         var that = this;
         this.canvas.on('mouse:up', function (e) {
@@ -38,7 +38,9 @@ class CanvasData {
             that.recordCoor(e);
         });
 
-        window.addEventListener("resize", this.responsive);
+        window.addEventListener("resize", () => {
+            that.responsive(that.canvas);
+        });
     }
 
     /*
@@ -79,13 +81,13 @@ class CanvasData {
 
         //get the center
         var min_coords_square = {
-            x : min_coords.x + ((max_coords.x - min_coords.x) / 2.0) - (length/2.0) -5,
-            y : min_coords.y + ((max_coords.y - min_coords.y) / 2.0) - (length/2.0) -5
+            x: min_coords.x + ((max_coords.x - min_coords.x) / 2.0) - (length / 2.0) - 5,
+            y: min_coords.y + ((max_coords.y - min_coords.y) / 2.0) - (length / 2.0) - 5
         }
 
         var max_coords_square = {
-            x : min_coords.x + ((max_coords.x - min_coords.x) / 2.0) + (length/2.0) +5,
-            y : min_coords.y + ((max_coords.y - min_coords.y) / 2.0) + (length/2.0) +5
+            x: min_coords.x + ((max_coords.x - min_coords.x) / 2.0) + (length / 2.0) + 5,
+            y: min_coords.y + ((max_coords.y - min_coords.y) / 2.0) + (length / 2.0) + 5
         }
 
         //return as struct 
@@ -137,8 +139,7 @@ class CanvasData {
             this.canvas.renderAll();
             var appController = SingletonAppController.getInstance();
             appController.modelData.getFrame(); //todo
-        }
-        else if (this.canvas._objects.length == 1) {
+        } else if (this.canvas._objects.length == 1) {
             this.erase();
             var bars = document.getElementsByClassName("bar__full");
             for (let bar of bars) {
@@ -154,13 +155,13 @@ class CanvasData {
         this.undoCounter = 0;
     }
 
-    responsive() {
+    responsive(canvas) {
         let container = document.getElementsByClassName("canvas__container")[0];
         let width = container.offsetWidth;
         let height = container.offsetHeight;
         let widthn = width;
         let heightn = height;
-        this.canvas.setDimensions({
+        canvas.setDimensions({
             width: widthn,
             height: heightn
         });

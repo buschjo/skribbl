@@ -60,12 +60,20 @@ body {
 .section {
   padding: 0;
   position: relative;
-  height: 100vh;
+  height: 90vh;
   padding-top: 0.5rem;
   padding: 1rem;
 }
+@media screen and (min-width: 720px) {
+  .section {
+    height: 100vh;
+  }
+}
+.section.screen__start .content__container-flex {
+  margin-top: 3rem;
+}
 .button-start__container {
-  width: 80%;
+  width: 95%;
 }
 .button-start__container .button-start {
   width: 100%;
@@ -94,7 +102,7 @@ body {
   border-radius: 50%;
   font-size: 1.5rem;
   padding: 0.75rem;
-  border-color: #a6a6a6;
+  border-color: #5271ff;
   z-index: 2;
 }
 
@@ -118,18 +126,28 @@ body {
   cursor: pointer;
   border-radius: 10px;
 }
-#nextstep:hover,
-.button-undo:hover,
-.button-clear:hover,
-.button-backToStart:hover {
-  background-color: #545454;
-}
 #nextstep:active,
 .button-undo:active,
 .button-clear:active,
 .button-backToStart:active {
   color: white;
   background-color: #737373;
+}
+@media screen and (min-width: 1200px) {
+  #nextstep:hover,
+.button-undo:hover,
+.button-clear:hover,
+.button-backToStart:hover {
+    color: white;
+    background-color: #545454;
+  }
+  #nextstep:active,
+.button-undo:active,
+.button-clear:active,
+.button-backToStart:active {
+    color: white;
+    background-color: #737373;
+  }
 }
 
 #skip,
@@ -150,16 +168,25 @@ body {
   text-align: center;
   cursor: pointer;
 }
-#skip:hover,
-.button-skip:hover,
-.button-next:hover {
-  background-color: #545454;
-}
 #skip:active,
 .button-skip:active,
 .button-next:active {
   color: white;
   background-color: #737373;
+}
+@media screen and (min-width: 1200px) {
+  #skip:hover,
+.button-skip:hover,
+.button-next:hover {
+    color: white;
+    background-color: #545454;
+  }
+  #skip:active,
+.button-skip:active,
+.button-next:active {
+    color: white;
+    background-color: #737373;
+  }
 }
 
 a.button {
@@ -173,8 +200,26 @@ a.button {
   right: 15px;
   width: 50px;
   height: 50px;
-  border-color: #a6a6a6;
+  border-color: #5271ff;
   z-index: 2;
+}
+
+.button-undo,
+.button-clear,
+.button-skip {
+  margin-bottom: 0;
+}
+
+.button.hollow.secondary {
+  border: 2px solid #a6a6a6;
+  color: #a6a6a6;
+  font-weight: bold;
+}
+
+.button.hollow.secondary:focus,
+.button.hollow.secondary:hover {
+  border-color: #5271ff;
+  color: #5271ff;
 }
 
 .logo--start {
@@ -197,10 +242,9 @@ a.button {
   width: 100%;
 }
 .bars__container .bar__empty {
-  height: 25px;
+  height: 22px;
   width: 100%;
-  margin: 0 auto 10px auto;
-  line-height: 30px;
+  margin: 0 auto 3px auto;
   font-size: 16px;
   font-weight: bold;
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
@@ -225,7 +269,20 @@ a.button {
   border: 3px solid #5271ff;
 }
 
-.info__container {
+.canvas__container_endscreen {
+  width: 100%;
+  height: 40%;
+  text-align: center;
+}
+.canvas__container_endscreen .endscreencanvas {
+  height: 80%;
+  border: 3px solid #5271ff;
+}
+
+.info__container,
+.en__container,
+.de__container {
+  color: #545454;
   display: none;
   position: fixed;
   width: 100vw;
@@ -236,17 +293,24 @@ a.button {
   bottom: 0;
   right: 0;
   left: 0;
+  z-index: 2;
+  cursor: pointer;
 }
-.info__container.active {
+.info__container.active,
+.en__container.active,
+.de__container.active {
   display: block;
 }
-.info__container .info {
+.info__container .info,
+.en__container .info,
+.de__container .info {
   background-color: white;
   padding: 1rem;
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .timer__container {
@@ -283,6 +347,7 @@ a.button {
   position: fixed;
   display: none;
   width: 100%;
+  max-width: 100%;
   height: 100%;
   top: 0;
   left: 0;
@@ -290,10 +355,10 @@ a.button {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
-  cursor: pointer;
 }
 
 #overlay-text {
+  width: 70%;
   text-align: center;
   padding: 20px;
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
@@ -316,6 +381,30 @@ a.button {
   color: white;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+#word-score {
+  color: #ff5757;
+}
+
+#result img {
+  width: 25%;
+  float: left;
+}
+@media screen and (min-width: 1200px) {
+  #result img {
+    width: 20%;
+  }
+}
+
+#result p {
+  color: #545454;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#result h1 {
+  color: #ff5757;
 }
 
 /*# sourceMappingURL=custom.css.map */

@@ -1,5 +1,5 @@
 .button-start__container {
-    width: 80%;
+    width: 95%;
 
     .button-start {
         width: 100%;
@@ -32,7 +32,7 @@
     border-radius: 50%;
     font-size: 1.5rem;
     padding: 0.75rem;
-    border-color: $lightgrey;
+    border-color: $blue;
     z-index: 2;
 }
 
@@ -60,15 +60,25 @@
     //border-width: 2px;
     //border-color: $blue;
 
-    &:hover {
-        background-color: $darkgrey;
-    }
 
     &:active {
         color: white;
         background-color: $grey;
     }
+
+    @media screen and (min-width: 1200px) {
+        &:hover {
+            color: white;
+            background-color: $darkgrey;
+        }
+
+        &:active {
+            color: white;
+            background-color: $grey;
+        }
+    }
 }
+
 
 #skip,
 .button-skip,
@@ -92,14 +102,23 @@
     text-align: center;
     cursor: pointer;
 
-    &:hover {
-        background-color: $darkgrey;
-    }
-
     &:active {
         color: white;
         background-color: $grey;
     }
+
+    @media screen and (min-width: 1200px) {
+        &:hover {
+            color: white;
+            background-color: $darkgrey;
+        }
+
+        &:active {
+            color: white;
+            background-color: $grey;
+        }
+    }
+
 }
 
 a.button {
@@ -113,6 +132,27 @@ a.button {
     right: 15px;
     width: 50px;
     height: 50px;
-    border-color: #a6a6a6;
+    border-color: $blue;
     z-index: 2;
+
+}
+
+.button-undo,
+.button-clear,
+.button-skip {
+    margin-bottom: 0;
+}
+
+
+.button.hollow.secondary {
+    border: 2px solid $lightgrey;
+    color: $lightgrey;
+    font-weight: bold;
+}
+
+.button.hollow.secondary:focus,
+.button.hollow.secondary:hover {
+    border-color: $blue;
+    color: $blue;
+
 }

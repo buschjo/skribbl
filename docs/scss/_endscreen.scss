@@ -1,0 +1,22 @@
+#word-score {
+    color: $red;
+}
+
+#result img {
+    width: 25%;
+    float: left;
+
+    @media screen and (min-width: 1200px) {
+        width: 20%;
+    }
+}
+
+#result p {
+    color: $darkgrey;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#result h1 {
+    color: $red;
+}

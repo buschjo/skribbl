@@ -18,16 +18,18 @@
     <meta name="theme-color" content="#ffffff">
     <!-- end favicon  -->
 
+    <!-- prevent landscape -->
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
     <link rel="stylesheet" href="css/vendor/foundation.min.css">
     <link rel="stylesheet" href="css/custom.css">
 
     <!-- STARTSCREEN -->
     <template id="start-template">
         <section id="start" class="section screen__start">
-
             <!-- start Language button -->
-            <button type="button" class="button hollow secondary button-en">EN</button>
-            <button type="button" class="button hollow secondary button-de">DE</button>
+            <button type="button" id="en-button" class="button hollow secondary button-en">EN</button>
+            <button type="button" id="de-button" class="button hollow secondary button-de">DE</button>
             <!-- end Language button -->
             <!-- start Infobutton -->
             <button type="button" class="button hollow secondary button-info">i</button>
@@ -47,15 +49,29 @@
             <!-- start Infotext-->
             <div class="info__container">
                 <div class="info">
-                    <h2>INFO</h2>
-                    <p>Schlage die Zeit indem du das angezeigte Wort für den Computer so deutlich wie möglich
-                        zeichnest.
-                        <br>
-                        Beobachte wie Strich für Strich der Computer andere Formen und Wörter erkennt und dein
-                        Gewinnwort somit Stufe für Stufe auf dem Gewinnertreppchen nach oben klettert.</p>
+                    <h2>What is Skribbl.AI?</h2>
+                    <p>Skribbl.AI is a drawing game, in which you have to draw the given word before the time runs out
+                        in order to win.
+                        <br>Watch and learn how the AI reacts to every line you draw and try to bring the right word to
+                        the top of the ladder.
+                    </p>
                 </div>
             </div>
             <!-- end Infotext-->
+            <!-- start DEtext -->
+            <div class="de__container">
+                <div class="info">
+                    <h2>Wörterliste ist nun auf Deutsch.</h2>
+                </div>
+            </div>
+            <!-- end DEtext-->
+            <!-- start ENtext-->
+            <div class="en__container">
+                <div class="info">
+                    <h2>Word list is now in English.</h2>
+                </div>
+            </div>
+            <!-- end ENtext-->
         </section>
     </template>
 
@@ -64,16 +80,19 @@
         <section id="game" class="section screen__game">
             <div class="">
                 <!-- start Tutorial -->
-                <div id="overlay" class=" grid-container">
-                    <div id="overlay-text"></div>
-                    <div id="overlay-number"></div>
-                    <div class="grid-x" id=tutorial-buttons>
-                        <div class="cell small-5 margin-auto text-align-center">
-                            <button class="button tutorial-buttons" id="nextstep">NEXT STEP</button>
+                <div id="overlay" class="">
+                    <div class=" grid-container">
+                        <div id="overlay-text"></div>
+                        <div id="overlay-number"></div>
+                        <div class="grid-x" id=tutorial-buttons>
+                            <div class="cell small-5 margin-auto text-align-center">
+                                <button class="button tutorial-buttons" id="nextstep">NEXT STEP</button>
+                            </div>
+                            <div class="cell small-4 margin-auto text-align-center">
+                                <button class="button tutorial-buttons" id="skip">SKIP</button>
+                            </div>
                         </div>
-                        <div class="cell small-4 margin-auto text-align-center">
-                            <button class="button tutorial-buttons" id="skip">SKIP</button>
-                        </div>
+
                     </div>
                 </div>
                 <!-- end Tutorial -->
@@ -139,11 +158,14 @@
                 <!-- start Text -->
                 <div id="result" class="text-align-center big">
                     <h1>TIME'S UP!</h1>
-                    <p>Oh no, I couldn't guess it!</p>
-                    <p>I was only ...% sure.</p>
-                    <p>Next word, please!</p>
+                    <p>You draw nothing.</p>
                 </div>
                 <!-- end Text -->
+                <!-- start End Screen Canvas -->
+                <div class="canvas__container_endscreen">
+                    <canvas id="endcanvas" class="endscreencanvas" width="500px" height="500px"></canvas>
+                </div>
+                <!-- end  End Screen Canvas -->
                 <!-- start Buttons-->
                 <div class="grid-x">
                     <div class="cell small-5 button-start__container margin-auto">

@@ -1,33 +1,34 @@
-class AppController  {
+class AppController {
 
-	constructor() {
+
+    constructor() {
         this.gameRound = undefined;
         this.modelData = new ModelData();
         this.modelData.start('en');
         //TODO Initialize Controllers
-		this.startScreenController= undefined;
-		this.gameScreenController= undefined;
-		this.endScreenController= undefined;
-		this.usedClassNames= undefined;
-		this.scores= undefined;
-		this.tutorial = undefined;
+        this.startScreenController = undefined;
+        this.gameScreenController = undefined;
+        this.endScreenController = undefined;
+        this.usedClassNames = undefined;
+        this.scores = undefined;
+        this.tutorial = undefined;
         this.tutorialDone = false;
-	}
+    }
 
-	createNewGameRound() {
-		// if (typeof this.gameRound == 'undefined'){
-			this.gameRound = new GameRound(this.modelData);
-            this.tutorial = new Tutorial(this.gameRound);
-		// }
-	}
+    createNewGameRound() {
+        // if (typeof this.gameRound == 'undefined'){
+        this.gameRound = new GameRound(this.modelData);
+        this.tutorial = new Tutorial(this.gameRound);
+        // }
+    }
 
-    startGame(){
+    startGame() {
         this.createNewGameRound();
         this.scores = undefined;
         if (!this.tutorialDone) {
             this.showTutorial();
             this.tutorialDone = true;
-        }else{
+        } else {
             this.gameRound.startGame();
         }
     }
@@ -36,16 +37,16 @@ class AppController  {
         this.gameRound.evaluate(word);
     }
 
-    endGame(){
+    endGame() {
         this.gameRound.endGame();
         // this.endScreenController.display();
     }
 
-    startCountdown(word){
+    startCountdown(word) {
         this.gameScreenController.startCountdown(word);
     }
 
-	setWordAsUsed(usedWord) {
+    setWordAsUsed(usedWord) {
         console.log(usedWord)
         this.usedClassNames.push(usedWord); //push word
         if (this.usedClassNames.length <= classNames.length) {
@@ -53,29 +54,31 @@ class AppController  {
         }
     }
 
-    setTimerInterval(timer){
-    	this.gameScreenController.setTimerInterval(timer);
+    setTimerInterval(timer) {
+        this.gameScreenController.setTimerInterval(timer);
     }
 
-    clearTimerInterval(){
+    clearTimerInterval() {
         this.gameScreenController.clearTimerInterval();
     }
 
-    showTutorial(){
+    showTutorial() {
         console.log("showing tutorial");
-    	this.tutorial.prepare();
-    	this.tutorial.show();
+        this.tutorial.prepare();
+        this.tutorial.show();
     }
 }
 
+var endscreenimage = undefined;
+
 var SingletonAppController = (function () {
-    let instance; 
+    let instance;
 
     function createInstance() {
         var object = new AppController("I am the instance");
         return object;
     }
- 
+
     return {
         getInstance: function () {
             if (!instance) {

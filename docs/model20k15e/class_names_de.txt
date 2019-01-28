@@ -19,7 +19,7 @@ Fahrrad
 Vogel
 Geburtstagskuchen
 Bumerang
-Bowtie
+Schleife
 Besen
 Eimer
 Bus
@@ -42,7 +42,7 @@ Trommeln
 Ente
 Ohr
 Elefant
-Umschlag
+Briefumschlag
 Zaun
 Fisch
 Taschenlampe
@@ -71,7 +71,7 @@ Muecke
 Maus
 Pilz
 Achteck
-Kranken
+Kraken
 Palme
 Hose
 Stift
