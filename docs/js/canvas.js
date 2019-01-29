@@ -7,7 +7,7 @@ class CanvasData {
         this.fingerLiftedCounter = 0;
         this.undoCounter = 0;
         this.clearCounter = 0;
-        this.h = [];
+        this.lastLines = [];
         this.setup();
         // this.frame // from viewController
     }
@@ -132,8 +132,8 @@ class CanvasData {
         this.undoCounter++;
 
         if (this.canvas._objects.length > 1) {
-            this.h.push(this.canvas._objects.pop());
-            this.h.forEach(i => {
+            this.lastLines.push(this.canvas._objects.pop());
+            this.lastLines.forEach(i => {
                 console.log(i);
             });
             this.canvas.renderAll();
