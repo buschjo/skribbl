@@ -107,19 +107,7 @@ Das Semesterprojekt ist ein Pflichtmodul des Studiengang Internationale Medienin
 In einer Gruppe von fünf bis acht zufällig gewählten Studierenden werden Konzepte entwickelt und dann in Anwendungen umgesetzt. Dabei stehen Themen aus Bereichen der Wirtschaft oder aus einem der verschiedenen Forschungsbereiche des Studienganges zur Wahl, an denen die Studierenden arbeiten können.
 
 Die Studierenden werden dabei von einer Lehrkraft bzw. einer verantwortlichen Person aus dem wirtschaftlichen Unternehmen betreut.
-Das Projekt ist in drei Bereiche unterteilt: 
-\begin{enumerate}
-	\item Themenvergabe und Konzeptausarbeitung (\autoref{chap: Themenvergabe})
-	\item Projektmanagement (\autoref{chap: Projektmanagement})
-	\item Durchführung (\autoref{chap: durchfuhrung})
-\end{enumerate}
-dazu mehr in den nachfolgenden Kapiteln.
-
-Die IMI Showtime Messe, auf welcher die Gruppen ihre Ergebnisse präsentieren, bildet den Abschluss des Semesterprojektes.
-
-\subsection{Aufbau des Projektes}
-
-Das Projekt ist, wie unter \autoref{chap: leitfaden} schon erwähnt, in drei Bereiche unterteilt, welche im Folgenden genauer und im Kontext unseres Projektes erläutert werden.
+Das Projekt ist in drei Bereiche unterteilt.
 
 \subsubsection{ Themenvergabe und Konzeptausarbeitung }
 \label{chap: Themenvergabe}
@@ -169,7 +157,7 @@ Ein Styleguide (Styleguide anhängen?) wurde erstellt, in welchem jede Farbe und
 \subsection{Frontend}
 \subsection{Neuronales Netzwerk}
 \subsubsection{Dataset}
-Das Datenset mit dem wir unser neuronales Netzwerk trainiert haben ist das "Quick, Draw!" Datenset, welches von Google zur Verfügung gestellt wird. Die Daten wurden durch Googles Spiel "Quick, Draw!" gesammelt, in welchem Spieler Strichzeichnung von verschiedensten Dingen anfertigen müssen. Das Datenset in seiner Gänze besteht aus 345 Kategorien, mit mehr als 59 Millionen Zeichnungen. 
+Das Datenset mit dem wir unser neuronales Netzwerk trainiert haben ist das "Quick, Draw!" \parencite{quickDraw} Datenset, welches von Google zur Verfügung gestellt wird. Die Daten wurden durch Googles "Quick, Draw!" \parencite{quickDraw} gesammelt, in welchem Spieler Strichzeichnung von verschiedensten Dingen anfertigen müssen. Das Datenset in seiner Gänze besteht aus 345 Kategorien, mit mehr als 59 Millionen Zeichnungen. 
 Wir haben uns dafür entschieden, die Daten im .npy Format zu nutzen, welche bereits auch so im Google-Bucket zur Verfügung standen. Das .npy Format stellt die Bilder in 28x28 Pixeln zur Verfügung. 
 Für unser Modell haben wir uns für 100 ausgewählte Kategorien entschieden, mit jeweils 20.000 Bildern.
 \section{Anforderungen}
@@ -180,7 +168,7 @@ Unsere Produkt Vision ist, bis zum Ende des Wintersemesters 2018/2019 ein kurzwe
 \subsubsection{Die Kurzweiligkeit}
 Die Kurzweiligkeit unseres Spiels ist offensichtlich eine der Eigenschaften, die am schwierigsten einzuschätzen sind. Um dennoch dieses Ziel nicht aus den Augen zu verlieren, einigten wir uns darauf, alle Tickets, Erweiterungen und Ideen, die sich mit dem Spielkonzept beschäftigen würden, auf ihren Unterhaltungswert zu prüfen.
 \subsubsection{Das Mini-Spiel}
-Das Spiel sollte runden basiert sein und jede Runde sollte nur wenige Minuten dauern. Damit wollen wir gewährleisten, dass es gut als Zeitvertreib während beispielsweise dem Fahren öffentlicher Verkehrsmittel oder dem Warten in der Schlange im Coffeeshop gespielt werden kann. Konkret sollte eine Runde nicht länger als 2-3 Minuten dauern.
+Das Spiel sollte runden basiert sein und jede Runde sollte nur wenige Minuten dauern. Damit wollen wir gewährleisten, dass es gut als Zeitvertreib während beispielsweise dem Fahren öffentlicher Verkehrsmittel oder dem Warten in der Schlange im Coffeeshop gespielt werden kann. Konkret sollte eine Runde nicht länger als zwei bis drei Minuten dauern.
 \subsubsection{Das Mal-Spiel}
 Um das Spiel zu spielen, wird die Spieler*in als Hauptaufgabe Zeichnen. Dabei sollen übliche Werkzeuge wie ein \textit{undo} Knopf, zum Entfernen des zuletzt gemalten Strichs und ein \textit{clear} Knopf, zum Entfernen der gesamten Zeichnung, implementiert werden. Weiter wird die Spieler*in direkt mit dem Finger auf dem Bildschirm beziehungsweise mit Hilfe der Maus Zeichnen können. Mehr dazu in Kapitel \ref{chap:spielkonzept}.
 \subsubsection{Der Einzelspielermodus}
@@ -208,24 +196,35 @@ Jedesmal wenn die Spieler*in "den Stift absetzt", das bedeutet in unserem Fall, 
 \subsection{Architektur: JavaScript}
 Für die Architektur orientieren wir uns grob am Model View Controller Design Pattern.
 \subsubsection{Methodik}
-Um eine sinnvolle Architektur für Skribbl.Ai zu entwerfen wurde die Class-Responsibility-Collaboration Card Methode verwendet. Zunächst wurden mit Hilfe des bereits existierenden Programmcodes Klassen definiert und anschließend die jeweiligen Verantwortlichkeiten und Kollaborationen mit anderen Klassen notiert. Das Resultat dieser Überlegung wurde daraufhin in Programmcode übersetzt und ist in der folgenden Abbildung zu sehen.
+Um eine sinnvolle Architektur für Skribbl.Ai zu entwerfen wurde die Class-Responsibility-Collaboration Card Methode verwendet. Zu sehen in Abbildung \ref{fig:crcCard}. Zunächst wurden mit Hilfe des bereits existierenden Programmcodes Klassen definiert und anschließend die jeweiligen Verantwortlichkeiten und Kollaborationen mit anderen Klassen notiert. Das Resultat dieser Überlegung wurde daraufhin in Programmcode übersetzt und ist in der folgenden Abbildung zu sehen.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.75\textwidth]{images/crc.png}
-\caption{\label{fig:crcCard}Class Responsibility Collaborator Karten}
+\caption{\label{fig:crcCard}\textit{Class Responsibility Collaborator} Karten}
 \end{figure}
 
 \subsubsection{Das Model}
-Das Model hat drei Klassen. Die CanvasData Klasse ist zuständig für die Speicherung und Verarbeitung der Daten die auf dem Canvas entstehen. Dazu gehören beispielsweise die Mouse Koordinaten und das Zuschneiden des gemalten Bildes auf die passende Größe. Die ModelData Klasse bindet das neuronale Netzwerk ein und berechnet die Vorhersagen. Die GameRound Klasse wiederrum speichert alle Informationen zur aktuellen Spielrunde wie die übrige Zeit und das aktuelle Wort.
+Die Klassen des \textit{Model} sind in Abbildung \ref{fig:classDiagram} blau hinterlegt. Die \textit{CanvasData} Klasse ist zuständig für die Speicherung und Verarbeitung der Daten die auf dem \textit{Canvas} entstehen. Dazu gehören beispielsweise die Maus Koordinaten und das Zuschneiden des gemalten Bildes auf die passende Größe. Die \textit{ModelData} Klasse bindet das neuronale Netzwerk ein und berechnet die Vorhersagen. Die \textit{GameRound} Klasse wiederrum speichert alle Informationen zur aktuellen Spielrunde wie die übrige Zeit und das aktuelle Wort. Die Klassen \textit{Tutorial} und \textit{TutorialStep} sind für die Steuerung durch das Tutorial und die Hervorhebung der betreffenden Bildschirmbereiche verantwortlich. Die \textit{Score} Klasse speichert die Gewinninformationen der Runde.
 
-\subsubsection{Der Applikations Controller}
-Die Klasse AppController steuert den Verlauf des Spiels. Sie weiß in welchem Status das Spiel sich befindet, welche Wörter schon benutzt wurden und kann neue Runden starten.Da wir für unsere Applikation immer nur einen AppController benötigen ist dieser ein Singleton. Die Klasse SingletonAppController ist nur dafür zuständig zu prüfen, ob bereits eine Instanz von AppController existiert und gegebenenfalls eine Neue zu erstellen oder die existierenden zurück zu geben.
+\subsubsection{Der Applikation Controller}
+Die Klasse \textit{AppController} steuert den Verlauf des Spiels. Sie weiß in welchem Status das Spiel sich befindet, welche Wörter schon benutzt wurden und kann neue Runden starten. Da wir für unsere Applikation immer nur einen \textit{AppController} benötigen ist dieser als \textit{Singleton} implementiert. Hierfür wird eine Instanz der Klasse \textit{AppController} in der Klasse \textit{SingletonAppController} gekapselt. Die Klasse \textit{SingletonAppController} ist nur dafür zuständig zu prüfen, ob bereits eine Instanz von \textit{AppController} existiert und gegebenenfalls eine Neue zu erstellen oder die Existierende zurück zu geben. \textit{AppController} und \textit{SingletonAppController} sind in Abbildung \ref{fig:classDiagram} grün hinterlegt.
 
 \subsubsection{Der View Controller}
-Es gibt eine ViewController Klasse, diese initialisiert den AppController als Feld. Von dieser Klasse erben die Klassen StartScreenController, GameScreenController und EndScreenController. Die Kindklassen repräsentieren jeweils einen Spielstatus und sind zuständig die korrekten Bildschirmbereiche anzuzeigen und Funktionalitäten zur Verfügung zu stellen. Das betrifft beispielsweise die Funktionalität des Info Knopfs auf dem Startbildschirm.
+Es gibt eine \textit{ViewController} Klasse, diese initialisiert den \textit{AppController} als Feld. Von dieser Klasse erben die Klassen \textit{StartScreenController}, \textit{GameScreenController} und \textit{EndScreenController}, alle vier Klassen sind in Abbildung \ref{fig:classDiagram} rot hinterlegt. Die Kindklassen repräsentieren jeweils einen Spielstatus und sind zuständig die korrekten Bildschirmbereiche anzuzeigen und die dazugehörigen Funktionalitäten zur Verfügung zu stellen. Hierzu gehören die Spracheinstellung auf dem Startbildschirm oder \textit{undo} und \textit{clear} auf dem Bildschirm des Hauptspiels.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{images/classDiagramSkribbl.png}
+\caption{\label{fig:classDiagram}Klassen Diagramm}
+\end{figure}
 
 \section{Spielbeschreibung, Ziel}
+
+\iffalse
+Spielkonzept ist bereits beschrieben in Anforderung, Spielkonzept
+\fi
+
 \section{Bewertung}
 vgl. Anforderungen mit Ergebnis
 
