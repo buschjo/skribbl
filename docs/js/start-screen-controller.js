@@ -6,19 +6,20 @@ class StartScreenController extends ViewController {
         this.elements = {};
     }
 
+    //display screen elements
     display() {
         this.clearScreen();
         this.elements.mainEl = document.querySelector("main");
         this.elements.mainEl.appendChild(document.getElementById("start-template").content.cloneNode(true).firstElementChild);
     }
 
-    //rename startModel?
+    //start the model, needs to be early, because it needs some time
     setup() {
-        //this has to go somewhere else
         this.appController.modelData.start(this.language);
         console.log(this.language);
     }
 
+    //show the game info from the info button
     showInfo() {
         this.elements.info = document.getElementsByClassName('info__container')[0];
         this.elements.info.classList.add('active');
@@ -28,11 +29,12 @@ class StartScreenController extends ViewController {
         console.log(this.elements);
 
     }
+
     hideInfo() {
         this.elements.info.classList.remove('active')
     }
 
-
+    //change the language of the category names to german
     showDE() {
         this.elements.info = document.getElementsByClassName('de__container')[0];
         this.elements.info.classList.add('active');
@@ -47,6 +49,7 @@ class StartScreenController extends ViewController {
 
     }
 
+    //change the language of the category names to english
     showEN() {
         this.elements.info = document.getElementsByClassName('en__container')[0];
         this.elements.info.classList.add('active');
@@ -61,10 +64,10 @@ class StartScreenController extends ViewController {
 
     }
 
+    //add event listeners
     bindUI() {
         var that = this;
         console.log("Bind UI Appcontroller:");
-        console.log(this.appController);
         this.elements.langButtonEN = document.getElementsByClassName('button-en')[0];
         this.elements.langButtonEN.addEventListener("click", () => {
             that.language = "en";

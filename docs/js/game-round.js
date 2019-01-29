@@ -4,7 +4,6 @@ class GameRound {
         this.appController = SingletonAppController.getInstance();
         this.canvasData = new CanvasData();
         this.modelData = modelData;
-        // this.targetWord = modelData.getTargetWord();
         this.timer = {
             width: 100,
             totalTime: 20,
@@ -15,10 +14,11 @@ class GameRound {
         this.win = undefined;
     }
 
+    //check whether the word is already on top of the list and end the game in that case
     evaluate(word) {
         if (this.modelData.names[0] == word) {
             this.timeElapsed = this.calculateTimeElapsed();
-            //setWordAsUsed(word);
+            this.appController.setWordAsUsed(word);
             this.win = true;
             this.endGame();
         } else {
@@ -32,11 +32,13 @@ class GameRound {
         return Math.max(0, Math.min(time, 20));
     }
 
+    //start timer with current time
     startTimer() {
         this.timer.startTime = Date.now();
         this.appController.setTimerInterval(this.timer);
     }
 
+    //start the game, get random word and start the countdown
     startGame() {
         var randomNumber = this.getRandomInt(100);
         this.word = this.modelData.classnames[randomNumber];

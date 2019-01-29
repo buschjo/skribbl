@@ -5,23 +5,21 @@ class AppController {
         this.gameRound = undefined;
         this.modelData = new ModelData();
         this.modelData.start('en');
-        //TODO Initialize Controllers
         this.startScreenController = undefined;
         this.gameScreenController = undefined;
         this.endScreenController = undefined;
-        this.usedClassNames = undefined;
+        this.usedClassNames = [];
         this.scores = undefined;
         this.tutorial = undefined;
         this.tutorialDone = false;
     }
 
     createNewGameRound() {
-        // if (typeof this.gameRound == 'undefined'){
         this.gameRound = new GameRound(this.modelData);
         this.tutorial = new Tutorial(this.gameRound);
-        // }
     }
 
+    //start game and check whether the tutorial was already played
     startGame() {
         this.createNewGameRound();
         this.scores = undefined;
@@ -33,23 +31,24 @@ class AppController {
         }
     }
 
+    //check with gameRound if word is already on top of the predictions
     evaluate(word) {
         this.gameRound.evaluate(word);
     }
 
     endGame() {
         this.gameRound.endGame();
-        // this.endScreenController.display();
     }
 
     startCountdown(word) {
         this.gameScreenController.startCountdown(word);
     }
 
+    //add words that have been used to array, so they can be skipped in upcoming rounds
     setWordAsUsed(usedWord) {
         console.log(usedWord)
         this.usedClassNames.push(usedWord); //push word
-        if (this.usedClassNames.length <= classNames.length) {
+        if (this.usedClassNames.length <= this.modelData.classnames.length) {
             this.usedClassNames = []; //empty usedClassNames
         }
     }
@@ -63,7 +62,6 @@ class AppController {
     }
 
     showTutorial() {
-        console.log("showing tutorial");
         this.tutorial.prepare();
         this.tutorial.show();
     }

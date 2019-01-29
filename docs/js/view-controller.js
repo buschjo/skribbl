@@ -12,12 +12,3 @@ class ViewController {
         }
     }
 }
-
-
-
-
-// window.addEventListener("load", event => {
-//     for (const clearScreen of document.getElementsByClassName("js-clear-screen")) {
-//         clearScreen.addEventListener("click", clearScreen);
-//     }
-// });

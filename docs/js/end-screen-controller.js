@@ -5,6 +5,7 @@ class EndScreenController extends ViewController {
         this.elements = {};
     }
 
+    //display page elements and add Eventlisteners
     display() {
         this.clearScreen();
         this.elements.mainEl = document.querySelector("main");
@@ -33,6 +34,7 @@ class EndScreenController extends ViewController {
         });
     }
 
+    //show defeat screen with defeat specific information
     callDefeatScreen(res, resButton) {
         if (typeof this.appController.modelData.probs === "undefined") {
             console.log("no canvas draw");
@@ -56,6 +58,7 @@ class EndScreenController extends ViewController {
         }
     }
 
+    //show victory screen with victory specific information
     callVictoryScreen(res, resButton) {
         res.innerHTML = '<img src="assets/win_logo.png" alt="victory logo">' +
             '<p>Yeah, I guessed it! Good Draw! </p><p> I was <span id="word-score">' + Math.round(this.appController.modelData.probs[0] * 100) + '%</span> sure and it was on the first place!</p>' +
