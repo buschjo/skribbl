@@ -130,7 +130,7 @@ Mehr dazu in \autoref{chap: Anforderungen}
 \section{Grundlagen}
 \label{chap: Grundlagen}
 \subsection{Design}
-\subsubsection{Findung Und Sketcher}
+\subsubsection{Findung und Sketcher}
 
 Wissend, dass wir ein Spiel kreieren wollten, welches sowohl Bilderkennung durch ein neuronales Netzwerk garantiert als auch den Spielspaß für den Spieler, galten unsere ersten Überlegungen dem Namen sowie Konzept des Spiels.
 Abgeleitet von dem englischen Verb 'to scribble' mit ein paar Änderungen um den Namen für das deutsche Publikum besser aussprechbar zu machen, wurde 'Skribbl'. Das Kürzel '.AI' hingegen war für uns als Team sehr offensichtlich. Nicht nur wäre es eine wundervolle URL, sollte das Projekt zu einem späteren Zeitpunkt veröffentlicht werden, sondern sie zeigt ebenfalls die nahe Verbindung zu unserem neuronalen Netzwerk.
@@ -148,11 +148,8 @@ Dabei mussten mögliche Hürden mit dem Touchscreen, den unterschiedlichen Bilds
 
 Accessibility war ein Punkt, der zwar erst ein wenig später in unserem Projekt angesprochen wurde, aber dennoch von hoher Bedeutung für uns war. Mit dem sehr visuellen Thema des Zeichnens und der heutigen Einstellung zu Accessibility Themen, war uns schnell klar, dass wir unser Spiel so zugänglich wie möglich für alle Nutzer machen wollten.
 
-\iffalse
-Das mit dem Styleguide bitte klären
-\fi
-
-Ein Styleguide (Styleguide anhängen?) wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf.
+Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf.\\
+Mehr dazu in \autoref{chap: Anlagen} 
 
 \subsection{Frontend}
 \subsection{Neuronales Netzwerk}
@@ -227,6 +224,63 @@ Spielkonzept ist bereits beschrieben in Anforderung, Spielkonzept
 
 \section{Bewertung}
 vgl. Anforderungen mit Ergebnis
+\pagebreak
+
+\section{Anlangen}
+\label{chap: Anlagen}
+\subsection{Styleguide}
+
+
+\textbf{General Rules}
+\begin{itemize}
+\item Daten sollten so gut wie möglich und so oft wie möglich in Diagrammen und Bildern dargestellt werden
+\item Text sollte bis auf 200\% herangezoomt werden können \item Bilder sollten einen Alt-Data Text haben\\
+\end{itemize}
+
+\textbf{Buttons}
+\begin{itemize}
+\item sollten einen ausreichenden Farb-Kontrast haben
+\item Kurz angebunden
+\item Abkürzungen gerne, aber sie sollten entweder aus einem Idiom bestehen oder einmal erklärt worden sein\\
+\end{itemize}
+
+\textbf{Formattierung}
+\begin{itemize}
+\item Klammer-Paare sollten vertikal immer Matching Braces should always line up vertically in the same column as their constructall if, while and for statements must be written with parentheses, even if they only carry one condition
+Binary operators should have one space on each side
+\item Parenthesis' should be used in expressions not only to clarify but also to simplify
+\item Klassennamen starten mit einem Großbuchstaben (Camelcase ist erlaubt wenn notwendig)
+\item Alle anderen identifiers starten klein geschrieben und benutzen daraufhin Camelcase (keine Leerzeichen)\\
+\end{itemize}
+
+\textbf{Coding}
+\begin{itemize}
+\item Jede Methode sollte etwas zurück geben
+\item Es wird kein Continue benutztbreak wird nicht außerhalb eines switch-cases benutzt
+\item Variablen werden so nahe wie möglich am Ort ihrer Benutzung initialisiert
+\item Public Variablen so wenig wie nötig benutzen\\
+\end{itemize}
+
+\textbf{Farben}
+
+\begin{tabular}{llll}
+\#7ed957    grün & \#FF2E2E    rot & \#4265ff    blau & \#ffde59    gelb \\
+\#545454    dunkleres grau & \#737373    dunkelgrau & \#a6a6a6    hellgrau & \#d9d9d9    sehr helles grau\\
+\end{tabular}
+\pagebreak
+
+\begin{large}\textbf{Schrift}\end{large}
+\begin{itemize}
+\item Schriftgröße: Entweder 18 px oder 14 px und fett (Je nach Media Queries und Layout)
+\item Schriftstyle: non-serif, non-monospace
+\item Schriftart: Standard Browser Schriftart (Norwester für das Logo-font)\\
+\end{itemize}
+
+\textbf{Sprache}
+\begin{itemize}
+\item Einfache Sprache
+\item English/Deutsch(Wörter)\\
+\end{itemize}
 
 \pagebreak
 \printbibliography
