@@ -1,5 +1,6 @@
 #word-score {
     color: $red;
+    font-weight: bold;
 }
 
 #result img {
@@ -12,11 +13,18 @@
 }
 
 #result p {
-    color: $darkgrey;
+    color: #424242;
     margin-top: 0;
     margin-bottom: 0;
+    text-align: left;
 }
 
 #result h1 {
+    margin: 0%;
+    padding: 0%;
     color: $red;
+}
+
+.bold {
+    font-weight: bold;
 }

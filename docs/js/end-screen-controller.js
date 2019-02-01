@@ -41,11 +41,13 @@ class EndScreenController extends ViewController {
         } else {
             res.innerHTML = "<h1>TIME'S UP!</h1>" +
                 '<img src="assets/defeat_logo.png" alt="defeat logo">' +
-                "<p>Oh no, I couldn't guess it!</p><p>I was " + Math.round(this.appController.modelData.probs[0] * 100) + '% sure that the word was " ' + this.appController.modelData.names[0] + '" Sorry.</p><p>Next word, please!</p>' +
-                "<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
-                "<p>Undo-Button used: " + this.appController.gameRound.canvasData.undoCounter + "</p>" +
-                "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>" +
-                "<p>" + this.appController.gameRound.word + "</p>";
+                "<p>Oh no, I couldn't guess it!</p>" + '<p>I was <span class="bold">' + Math.round(this.appController.modelData.probs[0] * 100) + '%</span> sure that the word was <span class="bold">' + this.appController.modelData.names[0] + '</span></p>';
+            //"<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
+            //"<p>Undo-Button used: " + this.appController.gameRound.canvasData.undoCounter + "</p>" +
+            //"<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>";
+
+
+            //"<p>" + this.appController.gameRound.word + "</p>";
 
             resButton.innerText = 'NEXT';
 
@@ -65,8 +67,8 @@ class EndScreenController extends ViewController {
             "<p>You needed " + this.appController.scores.timeElapsed.toFixed(2) + " seconds.</p>" +
             "<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
             "<p>Undo-Button used: " + this.appController.gameRound.canvasData.undoCounter + "</p>" +
-            "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>" +
-            "<p>" + this.appController.gameRound.word + "</p>";
+            "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>";
+        //"<p>" + this.appController.gameRound.word + "</p>";
 
         resButton.innerText = 'NEXT';
 
