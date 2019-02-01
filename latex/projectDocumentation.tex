@@ -64,7 +64,7 @@ eprint=false
 
        \LARGE
 
-       Josefine Sophie Busch, Malin Dulkies, Rachel Escueta, Tim-Niklas Heise, Ninoslav Kjireski, Anastasia Litvina, Anh Quang Vu-Tuyen
+       Josefine Sophie Busch, Malin Dulkies, Rachel Escueta, Tim-Niklas Heise, Ninoslav Kjireski, Anastasiia Litvina, Anh Quang Vu-Tuyen
 
        \vfill
 
@@ -107,26 +107,13 @@ Das Semesterprojekt ist ein Pflichtmodul des Studiengang Internationale Medienin
 In einer Gruppe von fünf bis acht zufällig gewählten Studierenden werden Konzepte entwickelt und dann in Anwendungen umgesetzt. Dabei stehen Themen aus Bereichen der Wirtschaft oder aus einem der verschiedenen Forschungsbereiche des Studienganges zur Wahl, an denen die Studierenden arbeiten können.
 
 Die Studierenden werden dabei von einer Lehrkraft bzw. einer verantwortlichen Person aus dem wirtschaftlichen Unternehmen betreut.
-Das Projekt ist in drei Bereiche unterteilt: 
-\begin{enumerate}
-	\item Themenvergabe und Konzeptausarbeitung (\autoref{chap: Themenvergabe})
-	\item Projektmanagement (\autoref{chap: Projektmanagement})
-	\item Durchführung (\autoref{chap: durchfuhrung})
-\end{enumerate}
-dazu mehr in den nachfolgenden Kapiteln.
-
-Die IMI Showtime Messe, auf welcher die Gruppen ihre Ergebnisse präsentieren, bildet den Abschluss des Semesterprojektes.
-
-\subsection{Aufbau des Projektes}
-
-Das Projekt ist, wie unter \autoref{chap: leitfaden} schon erwähnt, in drei Bereiche unterteilt, welche im Folgenden genauer und im Kontext unseres Projektes erläutert werden.
+Das Projekt ist in drei Bereiche unterteilt.
 
 \subsubsection{ Themenvergabe und Konzeptausarbeitung }
 \label{chap: Themenvergabe}
 
 Unser Projekt ist das Projekt KI vs IQ, welches von Prof. Jung betreut wurde.
-Die Vorgabe war, eine spielerische Anwendung zu entwickeln, in der ein Mensch gegen ein neuronales Netz antritt, welches dazu trainiert wurde, Bilder zu erkennen.
-
+Die Vorgabe war, eine spielerische Anwendung zu entwickeln, in der ein Mensch gegen ein neuronales Netz antritt, welches dazu trainiert wurde, Bilder zu erkennen.\\
 Mehr dazu in \autoref{chap: Grundlagen}
 	
 \subsubsection{  Projektmanagement }
@@ -136,13 +123,13 @@ Als unterstützende Werkzeuge für das Projektmanagement haben wir Trello und zu
 
 \subsubsection{ Durchführung }
 \label{chap: durchfuhrung}
-Die Durchführungsphase setzt sich dann konkret mit der Entwicklung der Anwendung auseinander. Wir entschieden uns dafür eine Website für unser Spiel zu bauen. Wir haben HTML 5, CSS 3, Sass 1.16.1 und Javascript Ecmascript 3 für das entwickeln der Webumgebung und des Spieles genutzt. Das neuronale Netzwerk ist ein TensorFlow 1.12.0 Model mit Keras 2.2.2, welches wir mit TensorFlow.js in unsere Webseite einbinden und mit Python 3 trainieren.\\
+Die Durchführungsphase setzt sich dann konkret mit der Entwicklung der Anwendung auseinander. Wir entschieden uns dafür eine Website für unser Spiel zu bauen. Wir haben HTML 5, CSS 3, Sass 1.16.1 und Javascript (ECMAScript 6) für das entwickeln der Webumgebung und des Spieles genutzt. Das neuronale Netzwerk ist ein TensorFlow 1.12.0 Model mit Keras 2.2.2, welches wir mit TensorFlow.js in unsere Webseite einbinden und mit Python 3 trainieren.\\
 Mehr dazu in \autoref{chap: Anforderungen}
 
 \section{Grundlagen}
 \label{chap: Grundlagen}
 \subsection{Design}
-\subsubsection{Findung Und Sketcher}
+\subsubsection{Findung und Sketcher}
 
 Wissend, dass wir ein Spiel kreieren wollten, welches sowohl Bilderkennung durch ein neuronales Netzwerk garantiert als auch den Spielspaß für den Spieler, galten unsere ersten Überlegungen dem Namen sowie Konzept des Spiels.
 Abgeleitet von dem englischen Verb 'to scribble' mit ein paar Änderungen um den Namen für das deutsche Publikum besser aussprechbar zu machen, wurde 'Skribbl'. Das Kürzel '.AI' hingegen war für uns als Team sehr offensichtlich. Nicht nur wäre es eine wundervolle URL, sollte das Projekt zu einem späteren Zeitpunkt veröffentlicht werden, sondern sie zeigt ebenfalls die nahe Verbindung zu unserem neuronalen Netzwerk.
@@ -160,40 +147,69 @@ Dabei mussten mögliche Hürden mit dem Touchscreen, den unterschiedlichen Bilds
 
 Accessibility war ein Punkt, der zwar erst ein wenig später in unserem Projekt angesprochen wurde, aber dennoch von hoher Bedeutung für uns war. Mit dem sehr visuellen Thema des Zeichnens und der heutigen Einstellung zu Accessibility Themen, war uns schnell klar, dass wir unser Spiel so zugänglich wie möglich für alle Nutzer machen wollten.
 
-\iffalse
-Das mit dem Styleguide bitte klären
-\fi
-
-Ein Styleguide (Styleguide anhängen?) wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf.
+Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf.\\
+Mehr dazu in \autoref{chap: Anlagen} 
 
 \subsection{Frontend}
-\subsection{Neuronales Netzwerk}
-\subsubsection{Dataset}
-Das Datenset mit dem wir unser neuronales Netzwerk trainiert haben ist das "Quick, Draw!" Datenset, welches von Google zur Verfügung gestellt wird. Die Daten wurden durch Googles Spiel "Quick, Draw!" gesammelt, in welchem Spieler Strichzeichnung von verschiedensten Dingen anfertigen müssen. Das Datenset in seiner Gänze besteht aus 345 Kategorien, mit mehr als 59 Millionen Zeichnungen. 
-Wir haben uns dafür entschieden, die Daten im .npy Format zu nutzen, welche bereits auch so im Google-Bucket zur Verfügung standen. Das .npy Format stellt die Bilder in 28x28 Pixeln zur Verfügung. 
-Für unser Modell haben wir uns für 100 ausgewählte Kategorien entschieden, mit jeweils 20.000 Bildern.
+\subsection{Künstliches neuronales Netzwerk}
+
+Künstliche Intelligenz beschäftigt sich mit den Möglichkeiten Aufgaben zu lösen und zu automatisieren, die normalerweise von Menschen bearbeitet werden. Dabei ist maschinelles Lernen eine Untermenge der künstlichen Intelligenz. Künstliche neuronale Netze stellen wiederum eine Teilmenge des maschinellen Lernens dar. Künstlichen neuronale Netze versuchen auf einfacher Weise das menschliche Gehirn abzubilden. Dabei werden die Strukturen dem biologischen Vorbild nachempfunden. Einzelne Nervenzellen werden als Knoten abstrahiert, die Verbindungen der Nervenzellen (Axon) werden durch Verbindungen/Kanten der Knoten realisiert. Künstliche neuronale Netze sind in der meisten Fällen so aufgebaut, dass es einen Eingangslayer, bestehend aus ein oder mehreren Knoten, gibt, sowie einen oder mehreren versteckten Layern. Nach den versteckten Layer/n folgt der Ausgangslayer. Diese beinhaltet die Ausgangsknoten. Die einzelnen Knoten und Layer sind durch Kanten miteinander verbunden. Jede dieser Kanten wird ein Gewicht zugewiesen und jedem Knoten im Netzwerk eine Aktivierungsfunktion. Entsprechend der biologischen Vorbild leitet ein Knoten das Eingangssignal weiter, wenn die Eingangssignale eine entsprechende Schwellwert (Aktivierungsfunktion) überschreiten.
+
+Künstliche neuronale Netze werden meist für Klassifizierungsaufgaben verwendet. Demnach enthält der Ausgangslayer für jede Klasse einen entsprechenden Knoten der für die entsprechende Klasse steht. Die Aktivierungslevel der Ausgangsknoten geben Auskunft über das Ergebnis der Klassifizierung.  Damit ein KNN eine Aufgabe lösen kann, gilt es die Gewichte der Kanten und die Parameter der Aktivierungsfunktionen dahingegen zu optimieren, dass die Ausgangswerte möglichst nahe an die Vorgaben kommen. Dieser Vorgang wird als Lernen bezeichnet.
+
+Ziel des KNN ist es, ein Modell zu schaffen, welche die Beziehung zwischen den Eingangs- und den Ausgangsdaten eines Systems möglichst genau beschreibt. Um diesen Prozess zu ermöglichen und das Lernen des KNN durchzuführen ist eine entsprechende Menge an Daten erforderlich.
+
+\subsubsection{Trainieren eines Netzwerkes}
+
+Damit das Netzwerk die Beziehungen zwischen Eingangs- und Ausgangsdaten beschreiben kann, wird das Netz mit dem vorhandenen Daten trainiert. Für das Trainieren/Lernen eines KNNs gibt es verschiedene Vorgehensweisen. Zum einen gibt es das sogenannte \textit{Supervised Learning}, bei dem der Datensatz für das Training bereits klassifiziert vorliegt. Dem gegenüber steht die Methode des \textit{Unsupervised Learning}.
+
+\textbf{Supervised Learning}\newline
+Beim \textit{Supervised Learning} ist jedem Datensatz ein Label (Klasse) zugewiesen. Das Netzwerk wird mit zufälligen Parametern initialisiert und es wird versucht die Parameter so anzupassen, dass die Ausgangsneuron das entsprechende Ergebnis liefern. Während des Lernens, werden die Parameter des Netzes dahingehend optimiert, dass die Abweichung der Ausgangsneuron zu dem gewünschten Ergebnis minimiert wird.
+
+\textbf{Unsupervised Learning}\newline
+Beim \textit{Unsupervised Learning} sind dem Lerndatensatz keine Labels oder Klassen zugewiesen. Algorithmen dieser Kategorie zielen auf Strukturen innerhalb des Lerndatensatzes ab. Während des Lernens entstehen Cluster, die eine Klassifizierung entsprechen.
+
+\subsubsection{Aktivierungsfunktionen}
+Der Gedanke hinter Aktivierungsfunktionen ist die Nachbildung des Verhaltens menschlicher Nervenzellen. Ab einem bestimmten Schwellwert, auch Aktivierungspotential  genannt, wird das Neuron aktiv, das heißt es beginnt zu feuern. Das bedeutet, das Neuron leitet sein Signal weiter. Aktivierungsfunktionen sollen die Ausgabe in einem kleinen Wertebereich (meist -1 bis 1) halten.
+
+\textbf{ReLU Aktivierungsfunktion}\newline
+Die \textit{Rectified Linear Unit} (ReLU) ist eine Aktivierungsfunktion, die aufgrund ihrer Einfachheit und Leistungsfähigkeit, immer beliebter wird. Für negative Eingangswerte wird die Funktion null, für alle positive Werte nimmt die Funktion die Eingangswert an.
+
+\textbf{SoftMax Aktivierungsfunktion}\newline
+Bei Klassifizierungsproblemen sollte das Ergebnis für die entsprechende Klasse stehen beziehungsweise für die Wahrscheinlichkeit der Zugehörigkeit zu einer Klasse. Bei Verwendung der SoftMax Funktion im Ausgabelayer, ermöglicht es, dem neuronalen Netz die Ausgabe in dem Bereich von null bis eins zu liefern, dies kann entsprechend als Klassenwahrscheinlichkeit interpretiert werden.
+
+\subsubsection{Convolutional Neural Network}
+Ein \textit{Convolutional Neural Network} nutzt Faltungsoperatoren beziehungsweise Faltungsschichten (\textit{Convolution Layer}) um Merkmale aus Bildern zu extrahieren. Im Rahmen des Projektes kommen sogenannte 2D-Convolution Layern zum Einsatz. Diese nutzen 2D Faltungsoperatoren zur Merkmalsextraktion. Durch das Training werden diese Operatoren gelernt. Beispielsweise können so bekannte Filter, wie Kantendetektoren oder Weichzeichner enstehen. Somit lernt das neuronale Netz Bildverarbeitungsfilter die bekannten Filtern ähneln oder sie stark von denen unterscheiden. Im Allgemeinen lernt die erste Convolution Layer einfache Merkmale (beispielsweise Kanten) zu erkennen. Darauffolgende Schichten lernen darauf aufbauend immer komplexer werdende Merkmale zu extrahieren. Ein Vorteil von CNNs ist die geringe Anzahl an Parametern.
+
+\textbf{Fully Connected Layer}\newline
+In einem sogenannten \textit{Fully Connected Layer} (auch \textit{Dense Layer} genannt), sind alle Neuronen oder Knoten mit den Neuronen des entweder im vorhergehenden oder nachfolgenden Layer verbunden.
+
+\textbf{Pooling Layer}\newline
+\textit{Pooling Layer} dienen der Verdichtung von Daten. Dies tun sie indem sie Bereiche von Ausgabedaten mit Hilfe von statistische Operationen zusammenfassen. Dies dient der Reduktion von Parametern und der Vereinfachung von Berechnungen.  Max Pooling Layern sind eine der am häufigsten eingesetzten Art von \textit{Pooling Layer} und kommen auch im Rahmen dieses Projektes zum Einsatz. Sie reduzieren eine Region, indem sie nur den Maximalwert der Region erhalten. \textit{Pooling Layer} folgen meist auf \textit{Convolution Layer}.
+
+
 \section{Anforderungen}
 \label{chap: Anforderungen}
 \subsection{Produkt Vision}
 \label{chap: productVision}
-Unsere Produkt Vision ist, bis zum Ende des Wintersemesters 2018/2019 ein kurzweiliges Mini-Malspiel mit einem Einzelspielermodus entwickelt zu haben. Es soll speziell für mobile Endnutzer aller Altersklassen konzipiert sein.
+Unsere Produkt Vision ist es, bis zum Ende des Wintersemesters 2018/2019 ein kurzweiliges Mini-Malspiel mit einem Einzelspielermodus entwickelt zu haben. Es soll speziell für mobile Endnutzer aller Altersklassen konzipiert sein.
 \subsubsection{Die Kurzweiligkeit}
 Die Kurzweiligkeit unseres Spiels ist offensichtlich eine der Eigenschaften, die am schwierigsten einzuschätzen sind. Um dennoch dieses Ziel nicht aus den Augen zu verlieren, einigten wir uns darauf, alle Tickets, Erweiterungen und Ideen, die sich mit dem Spielkonzept beschäftigen würden, auf ihren Unterhaltungswert zu prüfen.
 \subsubsection{Das Mini-Spiel}
-Das Spiel sollte runden basiert sein und jede Runde sollte nur wenige Minuten dauern. Damit wollen wir gewährleisten, dass es gut als Zeitvertreib während beispielsweise dem Fahren öffentlicher Verkehrsmittel oder dem Warten in der Schlange im Coffeeshop gespielt werden kann. Konkret sollte eine Runde nicht länger als 2-3 Minuten dauern.
+Das Spiel sollte rundenbasiert sein und jede Runde sollte nur wenige Minuten dauern. Damit wollen wir gewährleisten, dass es gut als Zeitvertreib während beispielsweise dem Fahren öffentlicher Verkehrsmittel oder dem Warten in der Schlange eines Coffeeshop gespielt werden kann. Konkret sollte eine Runde nicht länger als zwei bis drei Minuten dauern.
 \subsubsection{Das Mal-Spiel}
-Um das Spiel zu spielen, wird die Spieler*in als Hauptaufgabe Zeichnen. Dabei sollen übliche Werkzeuge wie ein \textit{undo} Knopf, zum Entfernen des zuletzt gemalten Strichs und ein \textit{clear} Knopf, zum Entfernen der gesamten Zeichnung, implementiert werden. Weiter wird die Spieler*in direkt mit dem Finger auf dem Bildschirm beziehungsweise mit Hilfe der Maus Zeichnen können. Mehr dazu in Kapitel \ref{chap:spielkonzept}.
+Um das Spiel zu spielen, wird die Spieler*in als Hauptaufgabe Zeichnen. Dabei sollen übliche Werkzeuge wie ein \textit{undo}-Knopf, zum Entfernen des zuletzt gemalten Strichs und ein \textit{clear}-Knopf, zum Entfernen der gesamten Zeichnung, implementiert werden. Weiter wird die Spieler*in direkt mit dem Finger auf dem Bildschirm beziehungsweise mit Hilfe der Maus Zeichnen können. Mehr dazu in Kapitel \ref{chap:spielkonzept}.
 \subsubsection{Der Einzelspielermodus}
-Skribbl.AI soll von einer Person einzeln gespielt werden können. Über Gewinn oder Verlust soll die vergangene Zeit entscheiden, welche die Spieler*in benötigt haben wird, um das Geforderte zu zeichnen. Mehr hierzu ebenfalls in Kapitel \ref{chap:spielkonzept}.
+Skribbl.AI soll von einer einzelnen Person gespielt werden können. Über Gewinn oder Verlust soll die vergangene Zeit entscheiden, welche die Spieler*in benötigt haben wird, um das geforderte Wort zeichnerisch darzustellen. Mehr hierzu ebenfalls in Kapitel \ref{chap:spielkonzept}.
 \subsubsection{Für mobile Geräte}
-Um Skribbl.AI auf vielen verschiedenen mobilen Endgeräten spielen zu können ohne verschiedene Programme für unterschiedliche Betriebssysteme entwickeln zu müssen, entschieden wir uns für eine webbasierte Anwendung. Das Spiel sollte dann auf einem, über das Internet erreichbaren Host, veröffentlicht werden, sodass es umstandslos mit übliche Browsern gespielt werden kann.
+Um Skribbl.AI auf vielen verschiedenen mobilen Endgeräten spielen zu können ohne verschiedene Programme für unterschiedliche Betriebssysteme entwickeln zu müssen, entschieden wir uns für eine webbasierte Anwendung. Das Spiel sollte dann auf einem, über das Internet erreichbaren Host, veröffentlicht werden, sodass es umstandslos mit üblichen Browsern gespielt werden kann.
 \subsubsection{Für alle Altersklassen}
-Das Spiel sollte für alle Alterklassen interessant und spielbar sein. Neben der Eigenschaft, dass eine Runde nur eine bestimmte Dauer haben sollte, würden hier hauptsächlich die Begriffe, die der Spieler malen sollte, ausschlaggebend sein. Siehe hierzu Kapitel \ref{chap:spielkonzept}.
+Das Spiel sollte für alle Alterklassen interessant und spielbar sein. Neben der Eigenschaft, dass eine Runde nur eine bestimmte Dauer haben sollte, würden hier hauptsächlich die Begriffe, die die Spieler*in malen sollte, ausschlaggebend sein. Siehe hierzu Kapitel \ref{chap:spielkonzept}.
 \subsection{Spielkonzept}
 Um die, in Kapitel \ref{chap: productVision} genannten Eigenschaften in unserem Spiel umzusetzen entwarfen wir verschiedene Spielkonzepte. Das Konzept, auf welches wir uns letzendlich einigten sieht wie folgt aus.
 Die Spieler*in sollte zu Beginn einer Spielrunde für wenige Sekunden ein Wort aus einem Pool von Wörtern gezeigt bekommen. Dieses Wort ist dann innerhalb eines festgelegten Zeitraums zu Zeichnen.
 
-Die optimale Zeit, die eine Runde dauert, sollte im späteren Verlauf des Projekts ermittelt werden. Hierzu haben alle Teammitglieder 24 verschiedene Begriffe gezeichnet. Mit Hilfe der Ergebnisse, ein Ausschnitt dieser ist zu sehen in Abbildung \ref{fig:testResults}, bestimmten wir eine angebrachte Zeit. 
+Die optimale Zeit, die eine Runde andauern sollte, würde im späteren Verlauf des Projekts ermittelt werden. Hierzu haben alle Teammitglieder insgesamt 24 verschiedene Begriffe gezeichnet und dabei die Zeit, die gebraucht wurde bis das Wort erkannt wurde (oder das Teammitglied aufgab) festgehalten. Mit Hilfe der Ergebnisse, ein Ausschnitt dieser ist zu sehen in Abbildung \ref{fig:testResults}, bestimmten wir einen Durchschnitt, der angebrachte Zeit darstellte. 
 
 \label{chap:spielkonzept}
 \begin{figure}[ht]
@@ -202,32 +218,121 @@ Die optimale Zeit, die eine Runde dauert, sollte im späteren Verlauf des Projek
 \caption{\label{fig:testResults}Ergebnisse des Testzeichnen}
 \end{figure}
 
-Jedesmal wenn die Spieler*in "den Stift absetzt", das bedeutet in unserem Fall, den Finger hebt um neu anzusetzen, soll das gezeichnete an das neuronale Netzwerk übergebenwerden. Dieses berechnet dann die Ergebnisse. Die fünf Ergebnisse mit den höchsten Vorhersagewahrscheinlichkeiten sollen auf dem Spielbildschirm angezeigt werden. Für die Anzeige der fünf wahrscheinlichsten Wörter soll ein Balkendiagramm verwendet werden, welches das Wort und die zugehörige Wahrscheinlichkeit in Prozent zeigt. Außerdem soll, falls das korrekte Wort in der Auswahl enthalten ist, dieses farblich hervorgehoben werden. Am oberen Rand des Spielbildschirms soll ein farblich hervorgehobener Balken anzeigen, wie viel Zeit schon vergangen ist. Wenn die Spieler*in es schafft, eine Zeichnung innerhalb der vorgegebenen Zeit zu erstellen, die das neuronale Netzwerk als das vorgegebene Wort erkennt, dann ist die Runde gewonnen. Das bedeutet, dass das gesuchte Wort in den Vorhersagen des neuronalen Netzwerks die höchste Wahrscheinlichkeit im Vergleich mit den anderen Wörtern haben muss. Verloren ist das Spiel, wenn dies der Spieler*in nicht in der vorgegebenen Zeit gelingt. In beiden Fällen hat die Spieler*in dann die Möglichkeit eine neue Runde mit einem neuen Wort zu starten.
+Jedes Mal wenn die Spieler*in "den Stift absetzt", das bedeutet in unserem Fall, den Finger hebt um neu anzusetzen, soll das gezeichnete Bild an das neuronale Netzwerk übergeben werden. Dieses berechnet dann die Ergebnisse. Die fünf Ergebnisse mit den höchsten Vorhersagewahrscheinlichkeiten sollen auf dem Spielbildschirm angezeigt werden. Für die Anzeige eben jener fünf wahrscheinlichsten Wörter soll ein Balkendiagramm verwendet werden, welches das Wort und die zugehörige Wahrscheinlichkeit in Prozent zeigt. Außerdem soll, falls das korrekte Wort in der Auswahl enthalten ist, dieses farblich hervorgehoben werden. Am oberen Rand des Spielbildschirms soll ein farblich gestalteter Balken anzeigen, wie viel Zeit schon vergangen ist. Wenn die Spieler*in es schafft, eine  Zeichnung innerhalb der vorgegebenen Zeit zu erstellen und das neuronale Netzwerk diese als das vorgegebene Wort erkennt, dann ist die Runde gewonnen. Dies bedeutet, dass das gesuchte Wort in den Vorhersagen des neuronalen Netzwerks die höchste Wahrscheinlichkeit verglichen mit allen anderen Möglichkeiten haben muss. Verloren ist das Spiel, wenn dies der Spieler*in nicht in der vorgegebenen Zeit gelingt. 
+In beiden Fällen hat die Spieler*in schließlich die Möglichkeit eine neue Runde mit einem neuen Wort zu starten.
 
 \section{Implementierung}
 \subsection{Architektur: JavaScript}
-Für die Architektur orientieren wir uns grob am Model View Controller Design Pattern.
+Für die Architektur orientierten wir uns grob am Model View Controller Design Pattern.
 \subsubsection{Methodik}
-Um eine sinnvolle Architektur für Skribbl.Ai zu entwerfen wurde die Class-Responsibility-Collaboration Card Methode verwendet. Zunächst wurden mit Hilfe des bereits existierenden Programmcodes Klassen definiert und anschließend die jeweiligen Verantwortlichkeiten und Kollaborationen mit anderen Klassen notiert. Das Resultat dieser Überlegung wurde daraufhin in Programmcode übersetzt und ist in der folgenden Abbildung zu sehen.
+Um eine sinnvolle Architektur für Skribbl.Ai zu entwerfen wurde die Class-Responsibility-Collaboration Card Methode verwendet. Zu sehen in Abbildung \ref{fig:crcCard}. Zunächst wurden mit Hilfe des bereits existierenden Programmcodes Klassen definiert und anschließend die jeweiligen Verantwortlichkeiten und Kollaborationen mit anderen Klassen notiert. Das Resultat dieser Überlegung wurde daraufhin in Programmcode übersetzt und ist in der folgenden Abbildung zu sehen.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.75\textwidth]{images/crc.png}
-\caption{\label{fig:crcCard}Class Responsibility Collaborator Karten}
+\caption{\label{fig:crcCard}\textit{Class Responsibility Collaborator} Karten}
 \end{figure}
 
 \subsubsection{Das Model}
-Das Model hat drei Klassen. Die CanvasData Klasse ist zuständig für die Speicherung und Verarbeitung der Daten die auf dem Canvas entstehen. Dazu gehören beispielsweise die Mouse Koordinaten und das Zuschneiden des gemalten Bildes auf die passende Größe. Die ModelData Klasse bindet das neuronale Netzwerk ein und berechnet die Vorhersagen. Die GameRound Klasse wiederrum speichert alle Informationen zur aktuellen Spielrunde wie die übrige Zeit und das aktuelle Wort.
+Die Klassen des \textit{Model} sind in Abbildung \ref{fig:classDiagram} blau hinterlegt. Die \textit{CanvasData} Klasse ist zuständig für die Speicherung und Verarbeitung der Daten die auf dem \textit{Canvas} entstehen. Dazu gehören beispielsweise die Maus Koordinaten und das Zuschneiden des gemalten Bildes auf die passende Größe. Die \textit{ModelData} Klasse bindet das neuronale Netzwerk ein und berechnet die Vorhersagen. Die \textit{GameRound} Klasse wiederum speichert alle Informationen zur aktuellen Spielrunde wie die übrige Zeit und das aktuelle Wort. Die Klassen \textit{Tutorial} und \textit{TutorialStep} sind für die Steuerung durch das Tutorial und die Hervorhebung der betreffenden Bildschirmbereiche verantwortlich. Die \textit{Score} Klasse speichert die Gewinninformationen der Runde.
 
-\subsubsection{Der Applikations Controller}
-Die Klasse AppController steuert den Verlauf des Spiels. Sie weiß in welchem Status das Spiel sich befindet, welche Wörter schon benutzt wurden und kann neue Runden starten.Da wir für unsere Applikation immer nur einen AppController benötigen ist dieser ein Singleton. Die Klasse SingletonAppController ist nur dafür zuständig zu prüfen, ob bereits eine Instanz von AppController existiert und gegebenenfalls eine Neue zu erstellen oder die existierenden zurück zu geben.
+\subsubsection{Der Applikation Controller}
+Die Klasse \textit{AppController} steuert den Verlauf des Spiels. Sie weiß in welchem Status das Spiel sich befindet, welche Wörter bereits benutzt wurden und kann neue Runden starten. Da wir für unsere Applikation immer nur einen \textit{AppController} benötigen ist dieser als \textit{Singleton} implementiert. Hierfür wird eine Instanz der Klasse \textit{AppController} in der Klasse \textit{SingletonAppController} gekapselt. Die Klasse \textit{SingletonAppController} ist nur dafür zuständig zu prüfen, ob bereits eine Instanz von \textit{AppController} existiert und gegebenenfalls eine Neue zu erstellen oder die Existierende zurück zu geben. \textit{AppController} und \textit{SingletonAppController} sind in Abbildung \ref{fig:classDiagram} grün hinterlegt.
 
 \subsubsection{Der View Controller}
-Es gibt eine ViewController Klasse, diese initialisiert den AppController als Feld. Von dieser Klasse erben die Klassen StartScreenController, GameScreenController und EndScreenController. Die Kindklassen repräsentieren jeweils einen Spielstatus und sind zuständig die korrekten Bildschirmbereiche anzuzeigen und Funktionalitäten zur Verfügung zu stellen. Das betrifft beispielsweise die Funktionalität des Info Knopfs auf dem Startbildschirm.
+Es gibt eine \textit{ViewController} Klasse, diese initialisiert den \textit{AppController} als Feld. Von dieser Klasse erben die Klassen \textit{StartScreenController}, \textit{GameScreenController} und \textit{EndScreenController}, alle vier Klassen sind in Abbildung \ref{fig:classDiagram} rot hinterlegt. Die Kindklassen repräsentieren jeweils einen Spielstatus und sind zuständig die korrekten Bildschirmbereiche anzuzeigen und die dazugehörigen Funktionalitäten zur Verfügung zu stellen. Hierzu gehören die Spracheinstellung auf dem Startbildschirm oder \textit{undo} und \textit{clear} auf dem Bildschirm des Hauptspiels.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{images/classDiagramSkribbl.png}
+\caption{\label{fig:classDiagram}Klassen Diagramm}
+\end{figure}
+
+\newpage
+\subsection{Neuronales Netz}
+\subsubsection{Datensatz}
+Der Datensatz mit dem das künstliche neuronale Netz trainiert wurde, wird von \textit{Google} bereit gestellt. Dieser basiert auf dem Spiel \textit{Quick, Draw!} und beinhaltet eine Vielzahl verschiedener Klassen.  Zudem wurden im Rahmen dieses Spiels weitere Daten gesammelt. Der Datensatz beinhaltet viele verschiedene Skizzen zu verschiedenen Begriffen. Es sind meist einfache Strichzeichnungen die von Spielern im Rahmen dieses Spiels angefertigt wurden. Bei dem Spiel geht es darum, einen vorgegebenen Begriff durch einer Skizze darzustellen. Aktuell beinhaltet der Datensatz 345 Kategorien, mit mehr als 50 Millionen Zeichnungen. Der Datensatz steht im verschiedenen Formaten zur Verfügung.
+Für die Projektarbeit wurden der Datensatz im Form der .npy Dateien verwendet. Das .npy-Format liefert die Skizzen mittig ausgerichtet und in der Größe von 28x28 Pixeln als Graustufenbilder.
+Im Rahmen dieser Projektarbeit wurden 100 Kategorien mit jeweils 20.000 Bildern für das Modell ausgewählt.
+
+\subsubsection{Aufbau des Netzes}
+Für die Umsetzung des KNNs wurde die Open-Source-Softwarebibliothek \textit{Tensorflow} verwendet. Zusätzlich wurde \textit{Keras} als API für den Zugriff auf \textit{Tensorflow} in Python 3.0 verwendet. Dabei stellt \textit{Keras} eine \textit{high level} API, da die \textit{Tensorflow} im Hintergrund verwendet. \textit{Keras} bietet verschiedene Typen von Layern, Aktivierungsfunktion, vortrainerte Modelle und weitere Funktionen an.
+
+Der Trainingsdatensatz für das Modell besteht aus 100 Klassen mit je 20.000 Skizzen. Dieser wurde aufgeteilt in Trainingsdaten (80\%) und Testdaten (20\%).
+
+Für die Lösung der Aufgabe innerhalb dieser Projektarbeit sollte  ein \textit{Convolutional Neural Network} (CNN) verwendet werden. Dieser besondere Typ eines KNNs nutzt sogenannte Faltungsschichten (\textit{Convolution Layers}) zur Vorverarbeitung der Daten innerhalb des Netzes.
+Das Design des verwendeten Netzes enthält drei 2D-Convolutional Layern, die alle die ReLU Aktivierungsfunktion verwenden. Auf jeden \textit{Convolutional Layer} folgt ein \textit{Max Pooling Layer}. Aufgabe dieser Layer ist die Reduktion der Parameter. Anschließend folgt ein \textit{Fully Connected Layer} mit 128 Knoten und der ReLU Aktivierungsfunktion als \textit{Hidden Layer}. Zum Abschluss folgt der Ausgabelayer mit 100 Knoten und SoftMax Aktivierungsfunktion.
+
+Das Modellieren eines neuronales Netzes stellt sich in der Regel als sehr komplexes Thema dar. Zudem existieren bereits viele Modelle für verschiedenste Aufgaben als Ergebnisse unterschiedlichste Studien. Viele von diesen sind im Internet frei verfügbar. Nachdem wir verschiedene einfache Modelle probiert und getestet haben, haben wir uns schließlich für das Modell von Zaid Alyafeai entschieden. Alyafeai erreichte in seinem Versuchen mit diesem Aufbau eine Genauigkeit von ca. 92,20\%. Dabei verwendete er 5.000 Datensätze pro Klasse. Wir konnten eine Genauigkeit von   94,69\% erreichen unter Verwendung von 20.000 Datensätze pro Klasse.
+
+Für die Verbesserung der Genauigkeit wurden verschiedene Parameter variiert. Zuerst wurde die Anzahl der Trainingsdaten schrittweise von 5.000 auf 20.000 erhöht. Anschließend wurden die Epochen während des Trainings weiter angehoben (von 5 auf 15). 
+Zusätzlich zu dem automatischen Tests nach dem Lernprozess, wurden die einzelnen entstandenen Netze auch manuellen Tests unterzogen.
 
 \section{Spielbeschreibung, Ziel}
+
+\iffalse
+Spielkonzept ist bereits beschrieben in Anforderung, Spielkonzept
+\fi
+
 \section{Bewertung}
 vgl. Anforderungen mit Ergebnis
+\pagebreak
+
+\section{Anlangen}
+\label{chap: Anlagen}
+\subsection{Styleguide}
+
+
+\textbf{General Rules}
+\begin{itemize}
+\item Daten sollten so gut wie möglich und so oft wie möglich in Diagrammen und Bildern dargestellt werden
+\item Text sollte bis auf 200\% herangezoomt werden können \item Bilder sollten einen Alt-Data Text haben\\
+\end{itemize}
+
+\textbf{Buttons}
+\begin{itemize}
+\item sollten einen ausreichenden Farb-Kontrast haben
+\item Kurz angebunden
+\item Abkürzungen gerne, aber sie sollten entweder aus einem Idiom bestehen oder einmal erklärt worden sein\\
+\end{itemize}
+
+\textbf{Formattierung}
+\begin{itemize}
+\item Klammer-Paare sollten vertikal immer Matching Braces should always line up vertically in the same column as their constructall if, while and for statements must be written with parentheses, even if they only carry one condition
+Binary operators should have one space on each side
+\item Parenthesis' should be used in expressions not only to clarify but also to simplify
+\item Klassennamen starten mit einem Großbuchstaben (Camelcase ist erlaubt wenn notwendig)
+\item Alle anderen identifiers starten klein geschrieben und benutzen daraufhin Camelcase (keine Leerzeichen)\\
+\end{itemize}
+
+\textbf{Coding}
+\begin{itemize}
+\item Jede Methode sollte etwas zurück geben
+\item Es wird kein Continue benutztbreak wird nicht außerhalb eines switch-cases benutzt
+\item Variablen werden so nahe wie möglich am Ort ihrer Benutzung initialisiert
+\item Public Variablen so wenig wie nötig benutzen\\
+\end{itemize}
+
+\textbf{Farben}
+
+\begin{tabular}{llll}
+\#7ed957    grün & \#FF2E2E    rot & \#4265ff    blau & \#ffde59    gelb \\
+\#545454    dunkleres grau & \#737373    dunkelgrau & \#a6a6a6    hellgrau & \#d9d9d9    sehr helles grau\\
+\end{tabular}
+\pagebreak
+
+\begin{large}\textbf{Schrift}\end{large}
+\begin{itemize}
+\item Schriftgröße: Entweder 18 px oder 14 px und fett (Je nach Media Queries und Layout)
+\item Schriftstyle: non-serif, non-monospace
+\item Schriftart: Standard Browser Schriftart (Norwester für das Logo-font)\\
+\end{itemize}
+
+\textbf{Sprache}
+\begin{itemize}
+\item Einfache Sprache
+\item English/Deutsch(Wörter)\\
+\end{itemize}
 
 \pagebreak
 \printbibliography

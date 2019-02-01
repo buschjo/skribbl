@@ -7,11 +7,13 @@ class CanvasData {
         this.fingerLiftedCounter = 0;
         this.undoCounter = 0;
         this.clearCounter = 0;
-        this.h = [];
+        this.lastLines = [];
         this.setup();
-        // this.frame // from viewController
     }
 
+    /*
+    prepare eventListeners and canvas
+    */
     setup() {
         console.log('setup canvas');
         this.canvas.backgroundColor = '#ffffff';
@@ -100,7 +102,6 @@ class CanvasData {
     /*
     get the current image data 
     */
-    //can we access getImageData without storing it specifically in skribbl.canvasData (defineProperty??)
     getImageData() {
         //get the minimum bounding box around the drawing 
         const mbb = this.getMinBox()
@@ -112,12 +113,12 @@ class CanvasData {
         return imgData
     }
 
-    // allow drawing
+    // set drawing mode
     allowDrawing() {
         this.canvas.isDrawingMode = 1;
-        // $('button').prop('disabled', false);
     }
 
+    //clear the canvas
     erase() {
         this.clearCounter++;
         this.canvas.clear();
@@ -125,15 +126,13 @@ class CanvasData {
         this.coords = [];
     }
 
-
-    // todo can h have a better name and be up with the other fields?
-    // var h = []; moved to constructor
+    //remove the line that was painted last
     undo() {
         this.undoCounter++;
 
         if (this.canvas._objects.length > 1) {
-            this.h.push(this.canvas._objects.pop());
-            this.h.forEach(i => {
+            this.lastLines.push(this.canvas._objects.pop());
+            this.lastLines.forEach(i => {
                 console.log(i);
             });
             this.canvas.renderAll();
@@ -155,6 +154,7 @@ class CanvasData {
         this.undoCounter = 0;
     }
 
+    //adapt canvas width and height to the available space
     responsive(canvas) {
         let container = document.getElementsByClassName("canvas__container")[0];
         let width = container.offsetWidth;

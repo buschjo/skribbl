@@ -6,6 +6,7 @@ class Tutorial {
         this.gameRound = gameRound;
     }
 
+    //initialze all steps for the tutorial with text, style and element
     initializeTutorialSteps() {
         this.tutorialSteps = [new TutorialStep("First you will see a word here. You have 5 seconds to memorize it."),
             new TutorialStep("When the overlay disappears, the game starts."),
@@ -20,7 +21,7 @@ class Tutorial {
         ];
     }
 
-
+    //initialize the screen elements which should be emphasized during tutorial
     initializeScreenElements() {
         this.screenElements.overlay = document.getElementById("overlay");
         this.screenElements.skipButton = document.getElementById("skip");
@@ -34,11 +35,13 @@ class Tutorial {
         this.screenElements.skipTool = document.getElementById("skip__tool");
     }
 
+    //initialize the screen elements and tutorial steps
     prepare() {
         this.initializeScreenElements();
         this.initializeTutorialSteps();
     }
 
+    //skip the rest of the tutorial
     skip() {
         this.screenElements.skipButton.style.display = "none";
         this.screenElements.nextStepButton.style.display = "none";
@@ -47,8 +50,8 @@ class Tutorial {
         this.gameRound.startGame();
     }
 
+    //normal walkthrough of the tutorial
     walkThrough() {
-
         this.currentTutorialStepIndex++;
         if (this.currentTutorialStepIndex < this.tutorialSteps.length) {
             this.screenElements.overlay.style.backgroundColor = "rgba(255, 255, 255, 0.0)";
@@ -64,11 +67,8 @@ class Tutorial {
         }
     }
 
-    //TODO This is faulty
-    //in event listeners "this" is the button
-    //I don't know how to get the skip function in there
+    //show the tutorial, add eventlisteners for tutorial controls
     show() {
-        //is it enough to say overlay.display = none?
         this.screenElements.overlay.style.display = "block";
         this.screenElements.skipButton.style.display = "block";
         this.screenElements.nextStepButton.style.display = "block";
@@ -83,6 +83,7 @@ class Tutorial {
         })
     }
 
+    //remove the style changes of all tutorial steps and general tutorial style
     removeAllStyleChanges() {
         this.screenElements.overlayText.style.fontSize = "2em";
         this.screenElements.overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
@@ -101,12 +102,14 @@ class TutorialStep {
         this.highlightStyle = highlightStyle;
     }
 
+    //activate the emphasis for this tutorial step
     setStyleChange() {
         if (typeof this.htmlArea != "undefined") {
             this.htmlArea.style.outline = this.highlightStyle;
         }
     }
 
+    //remove style changes for this tutorial step
     removeStyleChange() {
         if (typeof this.htmlArea != "undefined") {
             this.htmlArea.style.outline = "none";

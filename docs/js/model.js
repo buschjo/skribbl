@@ -26,6 +26,7 @@ class ModelData {
         console.log('model ready');
     }
 
+    //load german and english category names
     async loadDict() {
         console.log(this.mode);
         if (this.mode == 'de') {
@@ -42,22 +43,13 @@ class ModelData {
         }).done(this.success);
     }
 
+    //split the data names in to an array
     success(data) {
         SingletonAppController.getInstance().modelData.classnames = data.split(/\n/);
     }
 
-
-    // function success(data) {
-    //     const lst = data.split(/\n/)
-    //     for (var i = 0; i < lst.length - 1; i++) {
-    //         let symbol = lst[i]
-    //         classNames[i] = symbol
-    //     }
-    // }
-    ////TODO für GameView/ Gameround usw
-
     /*
-    preprocess the data
+    preprocess image data
     */
     preprocess(imgData) {
         return tf.tidy(() => {
@@ -78,6 +70,7 @@ class ModelData {
         })
     }
 
+    //get the Frame from the canvas
     getFrame() {
         var appController = SingletonAppController.getInstance();
         if (appController.gameRound.canvasData.coords.length >= 2) {
@@ -99,6 +92,7 @@ class ModelData {
         }
     }
 
+    //find the maximums of the prediction probabilities from the neural network model
     findIndicesOfMax(inp, count) {
         var outp = [];
         for (var i = 0; i < inp.length; i++) {
@@ -113,6 +107,7 @@ class ModelData {
         return outp;
     }
 
+    //find the correct categorie names for the top prediction probabilities
     findTopValues(inp, count) {
         var outp = [];
         let indices = this.findIndicesOfMax(inp, count)
