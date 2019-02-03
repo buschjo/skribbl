@@ -20,22 +20,6 @@ body {
   flex-grow: 2;
 }
 
-@keyframes transition1 {
-  from {
-    background-color: #7ed957;
-  }
-  to {
-    background-color: #ffde59;
-  }
-}
-@keyframes transition2 {
-  from {
-    background-color: #ffde59;
-  }
-  to {
-    background-color: red;
-  }
-}
 .margin-left-auto {
   margin-left: auto;
 }
@@ -200,8 +184,14 @@ a.button {
   right: 15px;
   width: 50px;
   height: 50px;
-  border-color: #5271ff;
   z-index: 2;
+  border-color: #a6a6a6;
+  color: #a6a6a6;
+}
+.button-en.active,
+.button-de.active {
+  border-color: #5271ff !important;
+  color: #5271ff !important;
 }
 
 .button-undo,
@@ -255,8 +245,12 @@ a.button {
 .bars__container .bar__empty .bar__full {
   transition: width 0.3s linear;
   display: block;
+  background-color: #1c1c1c;
   width: 0;
   height: 100%;
+}
+.bars__container .bar__empty .bar__full.word {
+  background-color: #ff5757;
 }
 
 .canvas__container {
@@ -318,7 +312,7 @@ a.button {
   top: 0;
   right: 0;
   left: 0;
-  background-color: lightgray;
+  background-color: #d9d9d9;
 }
 .timer__container #timer {
   transition: width 0.3s linear;

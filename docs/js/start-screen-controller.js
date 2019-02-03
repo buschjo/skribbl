@@ -38,10 +38,8 @@ class StartScreenController extends ViewController {
     showDE() {
         this.elements.info = document.getElementsByClassName('de__container')[0];
         this.elements.info.classList.add('active');
-        document.getElementById("de-button").style.borderColor = "#5271ff";
-        document.getElementById("de-button").style.color = "#5271ff";
-        document.getElementById("en-button").style.borderColor = "#a6a6a6";
-        document.getElementById("en-button").style.color = "#a6a6a6";
+        document.getElementById("de-button").classList.add("active");
+        document.getElementById("en-button").classList.remove("active");
         this.elements.info.addEventListener("click", () => {
             this.hideInfo();
         });
@@ -53,10 +51,8 @@ class StartScreenController extends ViewController {
     showEN() {
         this.elements.info = document.getElementsByClassName('en__container')[0];
         this.elements.info.classList.add('active');
-        document.getElementById("en-button").style.borderColor = "#5271ff";
-        document.getElementById("en-button").style.color = "#5271ff";
-        document.getElementById("de-button").style.borderColor = "#a6a6a6";
-        document.getElementById("de-button").style.color = "#a6a6a6";
+        document.getElementById("en-button").classList.add("active");
+        document.getElementById("de-button").classList.remove("active");
         this.elements.info.addEventListener("click", () => {
             this.hideInfo();
         });

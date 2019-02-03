@@ -132,9 +132,14 @@ a.button {
     right: 15px;
     width: 50px;
     height: 50px;
-    border-color: $blue;
     z-index: 2;
+    border-color: $lightgrey;
+    color: $lightgrey;
 
+    &.active {
+        border-color: $blue !important;
+        color: $blue !important;
+    }
 }
 
 .button-undo,

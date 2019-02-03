@@ -80,7 +80,6 @@ class GameScreenController extends ViewController {
             timerWidth = timeLeft * (100 / totalTime);
             that.elements.timer.style.width = timerWidth + '%';
             // document.getElementById("timerNumber").textContent = timeLeft;
-            //Nastja will evtl. was ausprobieren
             if (timerWidth <= 85 && timerWidth > 60) {
                 that.elements.timer.style.animation = "transition1 5s linear";
             }
@@ -131,14 +130,10 @@ class GameScreenController extends ViewController {
             if (prob != null) {
                 prob.style.width = mr + '%';
                 prob.innerHTML = '&nbsp;' + (Math.round(probs[i] * 100) < 10 ? '0' : "") + Math.round(probs[i] * 100) + '%' + '&nbsp;' + top5[i];
-                //CSS auslagern in classes
                 if (top5[i] == appController.gameRound.word) {
-                    prob.style.backgroundColor = "#ff5757";
-                    //prob.style.textShadow = "0 0 5px yellow";
+                    prob.classList.add("word");
                 } else {
-                    prob.style.backgroundColor = "#1c1c1c";
-                    prob.style.font = "";
-                    prob.style.textShadow = "";
+                    prob.classList.remove("word");
                 }
             }
 

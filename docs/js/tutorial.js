@@ -10,13 +10,13 @@ class Tutorial {
     initializeTutorialSteps() {
         this.tutorialSteps = [new TutorialStep("First you will see a word here. You have 5 seconds to memorize it."),
             new TutorialStep("When the overlay disappears, the game starts."),
-            new TutorialStep("You can draw here.", this.screenElements.canvasArea, "thick dashed #ff7e00"),
-            new TutorialStep("You can see here, which words the AI thinks you are drawing.", this.screenElements.barsArea, "thick dashed #ff7e00"),
-            new TutorialStep("When the timer reaches the left side, your time is up.", this.screenElements.timerArea, "thick dashed #ff7e00"),
-            new TutorialStep("Use 'clear' to wipe your drawing.", this.screenElements.clearTool, "thick dashed #ff7e00"),
-            new TutorialStep("Use 'undo' to remove your last line.", this.screenElements.undoTool, "thick dashed #ff7e00"),
-            new TutorialStep("Use 'skip' to skip a word.", this.screenElements.skipTool, "thick dashed #ff7e00"),
-            new TutorialStep("Get your word to the top of the list to win.", this.screenElements.barsArea, "thick dashed #ff7e00"),
+            new TutorialStep("You can draw here.", this.screenElements.canvasArea),
+            new TutorialStep("You can see here, which words the AI thinks you are drawing.", this.screenElements.barsArea),
+            new TutorialStep("When the timer reaches the left side, your time is up.", this.screenElements.timerArea),
+            new TutorialStep("Use 'clear' to wipe your drawing.", this.screenElements.clearTool),
+            new TutorialStep("Use 'undo' to remove your last line.", this.screenElements.undoTool),
+            new TutorialStep("Use 'skip' to skip a word.", this.screenElements.skipTool),
+            new TutorialStep("Get your word to the top of the list to win.", this.screenElements.barsArea),
             new TutorialStep("Let's go!")
         ];
     }
@@ -96,22 +96,21 @@ class Tutorial {
 }
 
 class TutorialStep {
-    constructor(tutorialText, htmlArea, highlightStyle) {
+    constructor(tutorialText, htmlArea) {
         this.tutorialText = tutorialText;
         this.htmlArea = htmlArea;
-        this.highlightStyle = highlightStyle;
     }
 
     //activate the emphasis for this tutorial step
     setStyleChange() {
-        if (typeof this.htmlArea != "undefined") {
-            this.htmlArea.style.outline = this.highlightStyle;
+        if (this.htmlArea) {
+            this.htmlArea.style.outline = "thick dashed #ff7e00";
         }
     }
 
     //remove style changes for this tutorial step
     removeStyleChange() {
-        if (typeof this.htmlArea != "undefined") {
+        if (this.htmlArea) {
             this.htmlArea.style.outline = "none";
         }
     }

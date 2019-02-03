@@ -22,9 +22,13 @@
       transition: width .3s linear;
       display: block;
 
-      // background-color: $green;
+      background-color: $verydarkgrey;
       width: 0;
       height: 100%;
+
+      &.word {
+        background-color: $red;
+      }
     }
 
 

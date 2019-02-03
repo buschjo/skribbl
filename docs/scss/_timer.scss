@@ -3,7 +3,7 @@
     top: 0;
     right: 0;
     left: 0;
-    background-color: lightgray;
+    background-color: $verylightgrey;
 
     #timer {
         transition: width .3s linear;
@@ -14,21 +14,21 @@
 }
 @keyframes translation1{
     from{
-        background-color: #7ed957
+        background-color: $green;
     }
     to{
         
-        background-color: #ffde59
+        background-color: $yellow;
     }
 }
 
 @keyframes translation2{
  from{  
-     background-color: #ffde59
+     background-color: $yellow;
 
  }
 
  to{
-background-color: #ff5757
+background-color: $red;
  }
 }
