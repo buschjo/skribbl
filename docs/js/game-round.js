@@ -12,6 +12,11 @@ class GameRound {
         this.timeElapsed = undefined;
         this.word = undefined;
         this.win = undefined;
+        this.stats = {
+            fingerLifted: 0,
+            undo: 0,
+            clear: 0
+        }
     }
 
     //check whether the word is already on top of the list and end the game in that case
@@ -56,8 +61,13 @@ class GameRound {
 
     //Move to Appcontroller because auf timerInterval?
     endGame() {
+        this.stats.fingerLifted = this.canvasData.fingerLiftedCounter;
+        this.stats.undo = this.canvasData.undoCounter;
+        this.stats.clear = this.canvasData.clearCounter;
+        console.log(this.stats);
+        
         this.appController.clearTimerInterval();
-        this.appController.scores = new Score(this.win, this.timeElapsed);
+        this.appController.scores = new Score(this.win, this.timeElapsed, this.stats);
         this.appController.endScreenController.display();
     }
 }

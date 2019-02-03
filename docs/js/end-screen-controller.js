@@ -65,9 +65,9 @@ class EndScreenController extends ViewController {
         res.innerHTML = '<img src="assets/win_logo.png" alt="victory logo">' +
             '<p>Yeah, I guessed it! Good Draw! </p><p> I was <span id="word-score">' + Math.round(this.appController.modelData.probs[0] * 100) + '%</span> sure and it was on the first place!</p>' +
             "<p>You needed " + this.appController.scores.timeElapsed.toFixed(2) + " seconds.</p>" +
-            "<p>Clear-Button used: " + this.appController.gameRound.canvasData.clearCounter + "</p>" +
-            "<p>Undo-Button used: " + this.appController.gameRound.canvasData.undoCounter + "</p>" +
-            "<p>Finger lifted: " + this.appController.gameRound.canvasData.fingerLiftedCounter + "</p>";
+            "<p>Clear-Button used: " + this.appController.scores.stats.clear + "</p>" +
+            "<p>Undo-Button used: " + this.appController.scores.stats.undo + "</p>" +
+            "<p>Finger lifted: " + this.appController.scores.stats.fingerLifted + "</p>";
         //"<p>" + this.appController.gameRound.word + "</p>";
 
         resButton.innerText = 'NEXT';

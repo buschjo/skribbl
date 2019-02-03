@@ -27,6 +27,8 @@ class CanvasData {
         var that = this;
         this.canvas.on('mouse:up', function (e) {
             that.fingerLiftedCounter++;
+            console.log("fingerLiftedCounter: " + that.fingerLiftedCounter);
+            
             // move to viewcontroller
             var appController = SingletonAppController.getInstance();
             appController.modelData.getFrame();
@@ -121,6 +123,8 @@ class CanvasData {
     //clear the canvas
     erase() {
         this.clearCounter++;
+        console.log("clearCounter: " + this.clearCounter);
+        
         this.canvas.clear();
         this.canvas.backgroundColor = '#ffffff';
         this.coords = [];
@@ -129,6 +133,8 @@ class CanvasData {
     //remove the line that was painted last
     undo() {
         this.undoCounter++;
+        console.log("undoCounter: " + this.undoCounter);
+        
 
         if (this.canvas._objects.length > 1) {
             this.lastLines.push(this.canvas._objects.pop());
@@ -140,6 +146,7 @@ class CanvasData {
             appController.modelData.getFrame(); //todo
         } else if (this.canvas._objects.length == 1) {
             this.erase();
+            this.clearCounter--
             var bars = document.getElementsByClassName("bar__full");
             for (let bar of bars) {
                 bar.innerHTML = " ";
