@@ -321,7 +321,7 @@ a.button {
   background-color: #7ed957;
 }
 
-@keyframes translation1 {
+@keyframes transition1 {
   from {
     background-color: #7ed957;
   }
@@ -329,7 +329,7 @@ a.button {
     background-color: #ffde59;
   }
 }
-@keyframes translation2 {
+@keyframes transition2 {
   from {
     background-color: #ffde59;
   }
