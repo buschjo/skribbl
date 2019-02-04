@@ -409,4 +409,8 @@ a.button {
   font-weight: bold;
 }
 
+#result div {
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=custom.css.map */
