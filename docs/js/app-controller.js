@@ -1,6 +1,5 @@
 class AppController {
 
-
     constructor() {
         this.gameRound = undefined;
         this.modelData = new ModelData();
@@ -12,6 +11,7 @@ class AppController {
         this.scores = undefined;
         this.tutorial = undefined;
         this.tutorialDone = false;
+        this.endscreenimage = undefined;
     }
 
     createNewGameRound() {
@@ -66,8 +66,6 @@ class AppController {
         this.tutorial.show();
     }
 }
-
-var endscreenimage = undefined;
 
 var SingletonAppController = (function () {
     let instance;

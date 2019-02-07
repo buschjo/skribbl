@@ -1,3 +1,6 @@
+//Basiert auf Tutorial und Code von Zaid Alyafeai
+//https://medium.com/tensorflow/train-on-google-colab-and-run-on-the-browser-a-case-study-8a45f9b1474e
+
 class ModelData {
 
     constructor() {
@@ -88,7 +91,7 @@ class ModelData {
             console.log(this.names);
 
             //show image to end screen
-            endscreenimage = imgData;
+            appController.endscreenimage = imgData;
         }
     }
 
