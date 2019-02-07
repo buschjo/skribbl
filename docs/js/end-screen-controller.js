@@ -37,7 +37,7 @@ class EndScreenController extends ViewController {
     //show defeat screen with defeat specific information
     callDefeatScreen(res, resButton) {
         if (typeof this.appController.modelData.probs === "undefined") {
-            console.log("no canvas draw");
+            console.log("nothing was drawn");
         } else {
             res.innerHTML = "<h1>TIME'S UP!</h1>" +
                 '<img src="assets/defeat_logo.png" alt="defeat logo">' +
