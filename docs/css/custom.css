@@ -306,6 +306,17 @@ a.button {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+.info__container .info .datenschutz,
+.en__container .info .datenschutz,
+.de__container .info .datenschutz {
+  font-size: 12px;
+  color: #a6a6a6;
+}
+.info__container .info .datenschutz a,
+.en__container .info .datenschutz a,
+.de__container .info .datenschutz a {
+  color: #a6a6a6;
+}
 
 .timer__container {
   position: absolute;
