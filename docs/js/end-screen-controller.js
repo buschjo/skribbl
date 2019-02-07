@@ -52,11 +52,11 @@ class EndScreenController extends ViewController {
             resButton.innerText = 'NEXT';
 
             const canvas = document.getElementById('endcanvas');
-            canvas.width = endscreenimage.width;
-            canvas.height = endscreenimage.height;
+            canvas.width = this.appController.endscreenimage.width;
+            canvas.height = this.appController.endscreenimage.height;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
-            ctx.putImageData(endscreenimage, 0, 0);
+            ctx.putImageData(this.appController.endscreenimage, 0, 0);
         }
     }
 
@@ -73,12 +73,12 @@ class EndScreenController extends ViewController {
         resButton.innerText = 'NEXT';
 
         const canvas = document.getElementById('endcanvas');
-        canvas.width = endscreenimage.width;
-        canvas.height = endscreenimage.height;
+        canvas.width = this.appController.endscreenimage.width;
+        canvas.height = this.appController.endscreenimage.height;
 
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
-        ctx.putImageData(endscreenimage, 0, 0);
+        ctx.putImageData(this.appController.endscreenimage, 0, 0);
     }
 }
 
