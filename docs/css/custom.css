@@ -282,7 +282,7 @@ a.button {
 .info__container,
 .en__container,
 .de__container {
-  color: #545454;
+  color: #424242;
   display: none;
   position: fixed;
   width: 100vw;
@@ -369,6 +369,7 @@ a.button {
 
 #word-score {
   color: #ff5757;
+  font-weight: bold;
 }
 
 #result img {
@@ -382,13 +383,20 @@ a.button {
 }
 
 #result p {
-  color: #545454;
+  color: #424242;
   margin-top: 0;
   margin-bottom: 0;
+  text-align: left;
 }
 
 #result h1 {
+  margin: 0%;
+  padding: 0%;
   color: #ff5757;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=custom.css.map */
