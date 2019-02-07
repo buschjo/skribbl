@@ -75,11 +75,11 @@ eprint=false
        Hochschule für Technik und Wirtschaft\\
        Berlin\\
 
-   \end{center}
-\end{titlepage}
-
        Prof. Dr. Klaus Jung\\
        Wintersemester 2018/2019\\
+       
+          \end{center}
+\end{titlepage}
 \pagebreak
 \tableofcontents
 \pagebreak
@@ -150,7 +150,7 @@ Accessibility war ein Punkt, der zwar erst ein wenig später in unserem Projekt 
 Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf.\\
 Mehr dazu in \autoref{chap: Anlagen} 
 
-\subsection{Frontend}
+\subsection{Layout}
 \subsection{Künstliches neuronales Netzwerk}
 
 Künstliche Intelligenz beschäftigt sich mit den Möglichkeiten Aufgaben zu lösen und zu automatisieren, die normalerweise von Menschen bearbeitet werden. Dabei ist maschinelles Lernen eine Untermenge der künstlichen Intelligenz. Künstliche neuronale Netze stellen wiederum eine Teilmenge des maschinellen Lernens dar. Künstlichen neuronale Netze versuchen auf einfacher Weise das menschliche Gehirn abzubilden. Dabei werden die Strukturen dem biologischen Vorbild nachempfunden. Einzelne Nervenzellen werden als Knoten abstrahiert, die Verbindungen der Nervenzellen (Axon) werden durch Verbindungen/Kanten der Knoten realisiert. Künstliche neuronale Netze sind in der meisten Fällen so aufgebaut, dass es einen Eingangslayer, bestehend aus ein oder mehreren Knoten, gibt, sowie einen oder mehreren versteckten Layern. Nach den versteckten Layer/n folgt der Ausgangslayer. Diese beinhaltet die Ausgangsknoten. Die einzelnen Knoten und Layer sind durch Kanten miteinander verbunden. Jede dieser Kanten wird ein Gewicht zugewiesen und jedem Knoten im Netzwerk eine Aktivierungsfunktion. Entsprechend der biologischen Vorbild leitet ein Knoten das Eingangssignal weiter, wenn die Eingangssignale eine entsprechende Schwellwert (Aktivierungsfunktion) überschreiten.
@@ -222,10 +222,10 @@ Jedes Mal wenn die Spieler*in "den Stift absetzt", das bedeutet in unserem Fall,
 In beiden Fällen hat die Spieler*in schließlich die Möglichkeit eine neue Runde mit einem neuen Wort zu starten.
 
 \section{Implementierung}
-\subsection{Architektur: JavaScript}
+\subsection{JavaScript}
 Für die Architektur orientierten wir uns grob am Model View Controller Design Pattern.
 \subsubsection{Methodik}
-Um eine sinnvolle Architektur für Skribbl.Ai zu entwerfen wurde die Class-Responsibility-Collaboration Card Methode verwendet. Zu sehen in Abbildung \ref{fig:crcCard}. Zunächst wurden mit Hilfe des bereits existierenden Programmcodes Klassen definiert und anschließend die jeweiligen Verantwortlichkeiten und Kollaborationen mit anderen Klassen notiert. Das Resultat dieser Überlegung wurde daraufhin in Programmcode übersetzt und ist in der folgenden Abbildung zu sehen.
+Um eine sinnvolle Architektur für Skribbl.AI zu entwerfen wurde die Class-Responsibility-Collaboration Card Methode verwendet. Zu sehen in Abbildung \ref{fig:crcCard}. Zunächst wurden mit Hilfe des bereits existierenden Programmcodes Klassen definiert und anschließend die jeweiligen Verantwortlichkeiten und Kollaborationen mit anderen Klassen notiert. Das Resultat dieser Überlegung wurde daraufhin in Programmcode übersetzt und ist in der folgenden Abbildung zu sehen.
 
 \begin{figure}[ht]
 \centering
