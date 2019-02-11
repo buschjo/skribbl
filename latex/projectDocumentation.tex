@@ -16,6 +16,7 @@
 \usepackage[section]{placeins}
 \usepackage[justification=centering]{caption}
 \usepackage{wrapfig}
+\usepackage{subfigure}
 
 \usepackage{authblk}
 \usepackage{hyperref}
@@ -151,6 +152,58 @@ Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getes
 Mehr dazu in \autoref{chap: Anlagen} 
 
 \subsection{Layout}
+Im Layout unseres Spiels haben wir möglichst minimalistisch gearbeitet und uns an die vier ausgewählten Hauptfarben gehalten. Durch das Responsive Design passt sich unser Layout an die Größe des Bildschirms / an den Viewport an. Als Hinweis dabei: Das Layout eher für mobile Geräte im Portrait-Modus geeignet ist. Durch die kleine Fläche eine Handys würde ein Landscape Modus das Zeichen-Erlebnis behindern. Bei Tablets jedoch ist je nach Größe auch ein Landscape-modus möglich.
+
+\subsubsection{Startscreen}
+
+\begin{wrapfigure}{R}{0.3\textwidth}
+\centering
+\includegraphics[width=0.25\textwidth]{images/Startscreen.jpg}
+\caption{\label{fig:Startscreen}StartScreen}
+\end{wrapfigure}
+
+Einen Großteil unseres Startscreens nimmt unserer Logo ein. Es besteht aus vier Hauptfarben (rot, grün, gelb und blau). Beim Schriftzug, der ‘Skribbl.Ai’ beschreibt, sieht man, dass das „.Ai“ sehr groß geschrieben ist um besonders hervorzuheben, dass es sich hierbei um ein Spiel mit einer künstliche Intelligenz handelt. Dabei besitzt das „A“ zwei große Augen mit welchen wir unser Logo zu einer Art Maskottchen machen und es zu personifizieren. Das „i“ ist ein Stift, der einen Hinweis darauf gibt, dass es in unseren Spiel ums zeichnen geht. 
+Über dem Logo haben wir rechts einen kleinen Info-Button, der ein PopUp öffnet, in welchem eine allgemeine Spielbeschreibung des Spiel zu lesen ist und auch der Hinweis auf GitHubs Datenschutzverordnung verlinkt ist. 
+Links oben befinden sich zwei Buttons, welche für die Auswahl zwischen der Deutschen und Englischen Sprache gedacht sind. 
+Beim auswählen wird ein PopUp geöffnet, das den User über die Umstellung informiert. Die drei Buttons wurden allesamt grau gehalten um sie nicht zu sehr hervorzuheben und den Fokus vom Logo zu nehmen. Bei Auswahl einer Sprache wird der dazugehörige Button blau, damit der User weiß in welcher Sprache er das Spiel spielen wird. 
+Unter dem Logo ist ein großer roter Play-Button, der das Spiel startet.
+
+\subsubsection{Gamescreen}
+
+\begin{wrapfigure}{R}{0.3\textwidth}
+\centering
+\includegraphics[width=0.25\textwidth]{images/Gamescreen.jpg}
+\caption{\label{fig:Gamescreen}GameScreen}
+\end{wrapfigure}
+
+Der Gamescreen ist wie folgt aufgebaut: Der Timer ganz oben auf der Seite, läuft von rechts nach links ab und ändert dabei die Farbe (in einem Verlauf von Grün über Gelb zu Rot). Direkt unter dem Timer sieht man die Anzeige der Top 5 Wörter die die KI ausgewählt hat. Für die Anzeige der Top 5 haben wir uns sehr schnell für ein Balkendiagramm entschieden, da es für uns die beste Form der Darstellung war. 
+Da wir für mobile Endgeräte entwickeln, bleibt uns nur wenig Platz und die Balken erstreckten sich fast über die Hälfte des Bildschirms, aber da sie mit dem Treppchen System unserer Spielidee so ein fester Bestandteil unseres Konzeptes waren, wussten wir, dass wir den Kompromiss eingehen mussten. 
+Die Balken sind alle in grau gehalten, einzig wenn das zu erratende Wort als eine der Top 5 Möglichkeiten erscheint, so wird dieser Balken rot. Hiermit erkennt der User sehr schnell, dass er auf einem guten Weg ist die Runde zu gewinnen. In den Balken stehen jeweils das zugehörige Wort und die Prozentzahl. 
+Direkt unter dem Balkendiagramm befindet sich unsere Zeichenfläche, welche blau umrandet ist. Darunter lokalisiert sind der Clear-Button und der Undo-Button, die auch blau sind und somit zeigen, dass sie zur Zeichenfläche gehören. Rechts vom Undo-Button befindet sich der rote Skip-Button der eine neue Runde mit einem neuen Wort startet.
+
+Beim Tutorial wird ein Overlay benutzt in welchem wir einen blauen Next-Button, der den nächsten Schritt des Tutorials zeigt, und ein roten Skip-Button, der das Tutorial überspringt. Nach dem 1. Schritt des Tutorials, verkleinert sich das Overlay und die Beschreibung des Tutorials ist nur noch in einer kleinen grauen Box sichtbar. 
+Somit kann der User den Gamescreen und die jeweiligen zu erklärenden Elemente die mit einer orange gestrichelten Umrandung gekennzeichnet sind, besser sehen.
+
+Nach dem Tutorial, erscheint ein weiteres Overlay, welches erneut den gesamten Gamescreen ausgraut. Die Anzeigen des Counters und Wortes befinden sich in weißer Schrift in der Mitte des Overlays.
+
+
+\subsubsection{Endscreen}
+
+Es gibt zwei verschiedene Endscreens, ein Victoryscreen (bei Gewinn) und ein Defeatscreen (beim Verlieren). Vom Aufbau her unterscheiden sich diese Screens nicht groß. Es gibt lediglich jeweils das Logo, eine Überschrift und einen Text auf den Screens, die sich unterscheiden. Bei beiden Screens wird das Logo personalisiert. 
+Auf dem Victoryscreen erscheint unser Logo, während es sich “freut” und “feiert”. Eine große rote Überschrift informiert den Spieler, dass er gewonnen hat. Daneben steht ein Text welcher den Spieler über seine Prozentzahl und seine für die Runde benötigte Zeit informiert. 
+Der Defeatscreen hingegen zeigt unser Logo wie es “weint” und sich ärgert. Dem Spieler wird sowohl Prozentzahl als auch das dazugehörige Top Wort mitgeteilt, welches die KI in der Zeichnung fälschlicherweise erkannt hat. Die rote Überschrift informiert hier zusätzlich noch, dass die Zeit abgelaufen war. 
+
+\begin{figure}
+\centering
+    \subfigure[VictoryScreen]{\includegraphics[width=0.3\textwidth]{images/Victoryscreen.jpg}}
+    \subfigure[DefeatScreen]{\includegraphics[width=0.3\textwidth]{images/Defeatscreen.jpg}}
+\caption{EndScreen}
+\end{figure}
+
+Unter Logo und Text befindet sich das Bild welches der User gezeichnet hat. Unterhalb jenes Bildes befinden sich zwei Buttons. Rechts ist ein roter Next-Button, der zur nächsten Spielrunde führt und links blauer Menü-Button, der den Startscreen öffnet.
+
+
+
 \subsection{Künstliches neuronales Netzwerk}
 
 Künstliche Intelligenz beschäftigt sich mit den Möglichkeiten Aufgaben zu lösen und zu automatisieren, die normalerweise von Menschen bearbeitet werden. Dabei ist maschinelles Lernen eine Untermenge der künstlichen Intelligenz. Künstliche neuronale Netze stellen wiederum eine Teilmenge des maschinellen Lernens dar. Künstlichen neuronale Netze versuchen auf einfacher Weise das menschliche Gehirn abzubilden. Dabei werden die Strukturen dem biologischen Vorbild nachempfunden. Einzelne Nervenzellen werden als Knoten abstrahiert, die Verbindungen der Nervenzellen (Axon) werden durch Verbindungen/Kanten der Knoten realisiert. Künstliche neuronale Netze sind in der meisten Fällen so aufgebaut, dass es einen Eingangslayer, bestehend aus ein oder mehreren Knoten, gibt, sowie einen oder mehreren versteckten Layern. Nach den versteckten Layer/n folgt der Ausgangslayer. Diese beinhaltet die Ausgangsknoten. Die einzelnen Knoten und Layer sind durch Kanten miteinander verbunden. Jede dieser Kanten wird ein Gewicht zugewiesen und jedem Knoten im Netzwerk eine Aktivierungsfunktion. Entsprechend der biologischen Vorbild leitet ein Knoten das Eingangssignal weiter, wenn die Eingangssignale eine entsprechende Schwellwert (Aktivierungsfunktion) überschreiten.
