@@ -221,28 +221,28 @@ Ziel des Lernens ist es, ein Modell zu schaffen, welches die Beziehung zwischen 
 
 Damit das Netzwerk die Beziehungen zwischen Eingangs- und Ausgangsdaten beschreiben kann, wird das Netz mit dem vorhandenen Daten trainiert. Für das Trainieren beziehungsweise Lernen eines KNN gibt es verschiedene Vorgehensweisen. Zum Einen gibt es das sogenannte \textit{Supervised Learning}, bei dem der Datensatz für das Training bereits klassifiziert vorliegt. Dem gegenüber steht die Methode des \textit{Unsupervised Learning}.
 
-\chapter{Supervised Learning}
+\paragraph{Supervised Learning}
 Beim \textit{Supervised Learning} ist jedem Datensatz ein \textit{Label}, auch Klasse, zugewiesen. Das Netzwerk wird mit zufälligen Parametern initialisiert und es wird versucht die Parameter so anzupassen, dass die Ausgangsneuronen das erwartete Ergebnis liefern. Während des Lernens, werden die Parameter des Netzes dahingehend optimiert, dass die Abweichung der Ausgangsneuronen zu dem gewünschten Ergebnis minimiert wird.\parencite{Pattanayak2017}
 
-\chapter{Unsupervised Learning}
+\paragraph{Unsupervised Learning}
 Beim \textit{Unsupervised Learning} sind dem Lerndatensatz keine \textit{Labels} oder Klassen zugewiesen. Algorithmen dieser Kategorie zielen auf Strukturen innerhalb des Lerndatensatzes ab. Während des Lernens entstehen \textit{Cluster}, die einer Klassifizierung entsprechen.\parencite{Pattanayak2017}
 
 \subsubsection{Aktivierungsfunktionen}
 Der Gedanke hinter Aktivierungsfunktionen ist die Nachbildung des Verhaltens menschlicher Nervenzellen. Ab einem bestimmten Schwellwert, auch Aktivierungspotential  genannt, wird das Neuron aktiv, das heißt es beginnt zu feuern. Das bedeutet, das Neuron leitet sein Signal weiter. Aktivierungsfunktionen sollen die Ausgabe in einem kleinen Wertebereich (meist -1 bis 1) liegen.\parencite{Manaswi2018}
 
-\chapter{ReLU Aktivierungsfunktion}
+\paragraph{ReLU Aktivierungsfunktion}
 Die \textit{Rectified Linear Unit} (ReLU) ist eine Aktivierungsfunktion, die aufgrund ihrer Einfachheit und Leistungsfähigkeit, immer beliebter wird. Für negative Eingangswerte wird die Funktion null, für alle positiven Werte nimmt die Funktion den Eingangswert an.\parencite{M.AnderssonM.Arvola}
 
-\chapter{SoftMax Aktivierungsfunktion}
+\paragraph{SoftMax Aktivierungsfunktion}
 Bei Klassifizierungsproblemen sollte das Ergebnis für die entsprechende Klasse stehen beziehungsweise für die Wahrscheinlichkeit der Zugehörigkeit zu einer Klasse. Durch Verwendung der SoftMax Funktion im \textit{Ausgabelayer} liegen die Ausgabewerte zwischen null und eins, diese können entsprechend als Klassenwahrscheinlichkeit interpretiert werden. Hierfür haben auch wir diese Funktion verwendet. \parencite{LindholmWahlstromLindsten2019}
 
 \subsubsection{Convolutional Neural Network}
 Ein \textit{Convolutional Neural Network} nutzt Faltungsoperatoren beziehungsweise Faltungsschichten (\textit{Convolution Layer}) um Merkmale aus Bildern zu extrahieren. Im Rahmen des Projektes kommen sogenannte \textit{2D-Convolution Layern} zum Einsatz. Diese nutzen 2D Faltungsoperatoren zur Merkmalsextraktion. Durch das Training werden diese Operatoren gelernt. Beispielsweise können so bekannte Filter, wie Kantendetektoren oder Weichzeichner enstehen. Somit lernt das neuronale Netz Bildverarbeitungsfilter die bekannten Filtern ähneln oder sich stark von diesen unterscheiden. Im Allgemeinen lernt der erste \textit{Convolution Layer} einfache Merkmale, beispielsweise Kanten, zu erkennen. Darauffolgende Schichten lernen darauf aufbauend immer komplexer werdende Merkmale zu extrahieren. Ein Vorteil eines CNN ist die geringe Anzahl an Parametern.\parencite{Pattanayak2017}
 
-\chapter{Fully Connected Layer}
+\paragraph{Fully Connected Layer}
 In einem sogenannten \textit{Fully Connected Layer}, auch \textit{Dense Layer} genannt, sind alle Neuronen oder Knoten mit den Neuronen des vorhergehenden oder nachfolgenden Layer verbunden.\parencite{Pattanayak2017}
 
-\chapter{Pooling Layer}
+\paragraph{Pooling Layer}
 \textit{Pooling Layer} dienen der Verdichtung von Daten. Dies tun sie indem sie Bereiche von Ausgabedaten mit Hilfe von statistische Operationen zusammenfassen. Dies dient der Reduktion von Parametern und der Vereinfachung von Berechnungen.  \textit{Max Pooling Layer} sind eine der am häufigsten eingesetzten Arten von \textit{Pooling Layern} und kommen auch im Rahmen dieses Projektes zum Einsatz. Sie reduzieren eine Region, indem sie nur den Maximalwert der Region erhalten. \textit{Pooling Layer} folgen meist auf \textit{Convolution Layer}.\parencite{Karpathy}\parencite{IanGoodfellowYoshuaBengio2016}
 
 \section{Anforderungen}
