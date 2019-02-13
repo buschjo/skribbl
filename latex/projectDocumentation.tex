@@ -277,19 +277,19 @@ Ziel des Lernens ist es, ein Modell zu schaffen, welches die Beziehung zwischen 
 
 Damit das Netzwerk die Beziehungen zwischen Eingangs- und Ausgangsdaten beschreiben kann, wird das Netz mit dem vorhandenen Daten trainiert. Für das Trainieren beziehungsweise Lernen eines KNN gibt es verschiedene Vorgehensweisen. Zum Einen gibt es das sogenannte \textit{Supervised Learning}, bei dem der Datensatz für das Training bereits klassifiziert vorliegt. Dem gegenüber steht die Methode des \textit{Unsupervised Learning}.
 
-\chapter{Supervised Learning}
+\subsubsection*{Supervised Learning}
 Beim \textit{Supervised Learning} ist jedem Datensatz ein \textit{Label}, auch Klasse, zugewiesen. Das Netzwerk wird mit zufälligen Parametern initialisiert und es wird versucht die Parameter so anzupassen, dass die Ausgangsneuronen das erwartete Ergebnis liefern. Während des Lernens, werden die Parameter des Netzes dahingehend optimiert, dass die Abweichung der Ausgangsneuronen zu dem gewünschten Ergebnis minimiert wird.\parencite{Pattanayak2017}
 
-\chapter{Unsupervised Learning}
+\subsubsection*{Unsupervised Learning}
 Beim \textit{Unsupervised Learning} sind dem Lerndatensatz keine \textit{Labels} oder Klassen zugewiesen. Algorithmen dieser Kategorie zielen auf Strukturen innerhalb des Lerndatensatzes ab. Während des Lernens entstehen \textit{Cluster}, die einer Klassifizierung entsprechen.\parencite{Pattanayak2017}
 
 \subsubsection{Aktivierungsfunktionen}
 Der Gedanke hinter Aktivierungsfunktionen ist die Nachbildung des Verhaltens menschlicher Nervenzellen. Ab einem bestimmten Schwellwert, auch Aktivierungspotential  genannt, wird das Neuron aktiv, das heißt es beginnt zu feuern. Das bedeutet, das Neuron leitet sein Signal weiter. Aktivierungsfunktionen sollen die Ausgabe in einem kleinen Wertebereich (meist -1 bis 1) liegen.\parencite{Manaswi2018}
 
-\chapter{ReLU Aktivierungsfunktion}
+\subsubsection*{ReLU Aktivierungsfunktion}
 Die \textit{Rectified Linear Unit} (ReLU) ist eine Aktivierungsfunktion, die aufgrund ihrer Einfachheit und Leistungsfähigkeit, immer beliebter wird. Für negative Eingangswerte wird die Funktion null, für alle positiven Werte nimmt die Funktion den Eingangswert an.\parencite{M.AnderssonM.Arvola}
 
-\chapter{SoftMax Aktivierungsfunktion}
+\subsubsection*{SoftMax Aktivierungsfunktion}
 Bei Klassifizierungsproblemen sollte das Ergebnis für die entsprechende Klasse stehen beziehungsweise für die Wahrscheinlichkeit der Zugehörigkeit zu einer Klasse. Durch Verwendung der SoftMax Funktion im \textit{Ausgabelayer} liegen die Ausgabewerte zwischen null und eins, diese können entsprechend als Klassenwahrscheinlichkeit interpretiert werden. Hierfür haben auch wir diese Funktion verwendet. \parencite{AndreasLindholmNiklasWahlstromFredrikLindsten2019}
 
 \subsubsection{Convolutional Neural Network}
