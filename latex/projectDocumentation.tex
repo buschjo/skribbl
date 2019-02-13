@@ -364,6 +364,17 @@ Es gibt eine \textit{ViewController} Klasse, diese initialisiert den \textit{App
 \newpage
 \subsection{Neuronales Netz}
 \subsubsection{Datensatz}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{images/QuickDrawData.jpg}
+\caption{\label{fig:classDiagram}Quick, Draw! Dataset}
+\end{figure}
+
+\begin{comment}
+https://img.microsiervos.com/images2017/QuickDrawData.jpg
+\end{comment}
+
 Der Datensatz mit dem das künstliche neuronale Netz trainiert wurde, wird von \textit{Google} bereit gestellt. Dieser basiert auf dem Spiel \textit{Quick, Draw!} und beinhaltet eine Vielzahl verschiedener Klassen.  Zudem wurden im Rahmen dieses Spiels weitere Daten gesammelt. Der Datensatz beinhaltet viele verschiedene Skizzen zu verschiedenen Begriffen. Es sind meist einfache Strichzeichnungen die von Spielern im Rahmen dieses Spiels angefertigt wurden. Bei dem Spiel geht es darum, einen vorgegebenen Begriff durch einer Skizze darzustellen. Aktuell beinhaltet der Datensatz 345 Kategorien, mit mehr als 50 Millionen Zeichnungen. Der Datensatz steht im verschiedenen Formaten zur Verfügung.
 Für die Projektarbeit wurden der Datensatz im Form der .npy Dateien verwendet. Das .npy-Format liefert die Skizzen mittig ausgerichtet und in der Größe von 28x28 Pixeln als Graustufenbilder.\parencite{GoogleCreativeLab2018}
 Im Rahmen dieser Projektarbeit wurden 100 Kategorien mit jeweils 20.000 Bildern für das Modell ausgewählt.
