@@ -79,16 +79,15 @@ eprint=false
        Prof. Dr. Klaus Jung\\
        Wintersemester 2018/2019\\
        
-	\end{center}
+          \end{center}
 \end{titlepage}
-\pagenumbering{roman}
 \pagebreak
 \tableofcontents
 \pagebreak
 \listoftables
 \listoffigures
 \pagebreak
-\pagenumbering{arabic}
+
 \section{Einleitung}
 \label{chap: Einleitung}
 \subsection{Leitfaden}
@@ -100,12 +99,12 @@ eprint=false
 \end{wrapfigure}
 Die Idee begann mit IQ gegen KI. Mit dem Einfall, was würde eigentlich passieren, wenn eine künstliche Intelligenz ein von einem Menschen gemaltes Bild  erkennen sollte? \\
 Neuronale Netzwerke erbringen beeindruckende Leistungen bei der Erkennung fotorealistischer Aufnahmen. Sie helfen sogar Pathologen bei der Erkennung von Krebszellen \parencite{ElizabethDougherty2018}.\\
-Was also würde  passieren, wenn wir eine künstliche Intelligenz mit den Kritzeleien einer Student*in konfrontieren?
+Was also würde  passieren, wenn wir eine künstliche Intelligenz mit den Kritzeleien einer Student*in konfrontieren? Gibt es die Möglichkeit dass die Studenten sich nach einigen Versuchen der AI anpassen, herausfinden, wie sie denkt und im Endeffekt möglicherweise sogar mit ihr zusammenarbeiten?
  
 \subsection{Aufbau des Projektes}
 \label{chap: Aufbau}
 
-Das Semesterprojekt ist ein Pflichtmodul des Studiengang Internationale Medieninformatik der HTW Berlin, welches im 5. Semester angesetzt ist. \\
+Das Semesterprojekt ist ein Pflichtmodul des Studienganges 'Internationale Medieninformatik' der Hochschule für Technik und Wirtschaft Berlin (HTW Berlin), welches im 5. Semester angesetzt ist. \\
 In einer Gruppe von fünf bis acht zufällig gewählten Studierenden werden Konzepte entwickelt und dann in Anwendungen umgesetzt. Dabei stehen Themen aus Bereichen der Wirtschaft oder aus einem der verschiedenen Forschungsbereiche des Studienganges zur Wahl, an denen die Studierenden arbeiten können.
 
 Die Studierenden werden dabei von einer Lehrkraft bzw. einer verantwortlichen Person aus dem wirtschaftlichen Unternehmen betreut.
@@ -120,130 +119,130 @@ Mehr dazu in \autoref{chap: Grundlagen}
 	
 \subsubsection{  Projektmanagement }
 \label{chap: Projektmanagement}
-Die Belegung des Semesterprojektes erfolgt mit einer automatischen Belegung des Projektmanagement Moduls, welches agile Methoden im Allgemeinen und Scrum im Speziellen vermittelt. Dem entsprechend und der Tatsache zugrundeliegend, dass einige Gruppenmitglieder bereits Erfahrung mit Scrum hatten, haben wir uns dafür entschieden, im Projekt mit Scrum zu arbeiten beziehungsweise mit einer unseren Bedürfnissen und Gegebenheiten angepassten Version von Scrum.\\
-Als unterstützende Werkzeuge für das Projektmanagement haben wir Trello und zum Gruppenmanagement beziehungsweise für die Kommunikation in der Gruppe Slack genutzt.
+Die Belegung des Semesterprojektes erfolgt mit einer automatischen Belegung des Projektmanagement Moduls, welches agile Methoden im Allgemeinen und Scrum im Speziellen vermittelt. Dem entsprechend und der Tatsache zugrundeliegend, dass einige Gruppenmitglieder bereits Erfahrung mit Scrum hatten, haben wir uns dafür entschieden, im Projekt mit Scrum zu arbeiten beziehungsweise mit einer unseren Bedürfnissen und Gegebenheiten angepassten Version von Scrum.
+Hierbei gab es keine klare Rollenaufteilung in die drei von Scrum vorgegebenen Rollen, sondern unsere Gruppe leitete sich selbst.\\
+Als unterstützende Werkzeuge für das Projektmanagement haben wir Trello benutzt um nicht nur die Sprints und die dazugehörigen Tickets zu ordnen sondern auch jegliche Informationen für das Team übersichtlich zu strukturieren. Zum Gruppenmanagement beziehungsweise für die Kommunikation in der Gruppe haben wir Slack genutzt.
 
 \subsubsection{ Durchführung }
 \label{chap: durchfuhrung}
-Die Durchführungsphase setzt sich dann konkret mit der Entwicklung der Anwendung auseinander. Wir entschieden uns dafür eine Website für unser Spiel zu bauen. Wir haben HTML 5, CSS 3, Sass 1.16.1 und Javascript (ECMAScript 6) für das entwickeln der Webumgebung und des Spieles genutzt. Das neuronale Netzwerk ist ein TensorFlow 1.12.0 Model mit Keras 2.2.2, welches wir mit TensorFlow.js in unsere Webseite einbinden und mit Python 3 trainieren.\\
+Die Durchführungsphase setzt sich dann konkret mit der Entwicklung der Anwendung auseinander. Wir entschieden uns dafür eine Website für unser Spiel zu bauen. Wir haben HTML 5, CSS 3, Sass 1.16.1 und Javascript (ECMAScript 6) für das entwickeln der Webumgebung und des Spieles genutzt. Das neuronale Netzwerk ist ein TensorFlow 1.12.0 Model mit Keras 2.2.2, welches wir mit TensorFlow.js in unsere Webseite eingebunden und mit Python 3 trainiert haben.\\
 Mehr dazu in \autoref{chap: Anforderungen}
+
+\pagebreak
 
 \section{Grundlagen}
 \label{chap: Grundlagen}
 \subsection{Design}
 \subsubsection{Findung und Sketcher}
 
-Wissend, dass wir ein Spiel kreieren wollten, welches sowohl Bilderkennung durch ein neuronales Netzwerk garantiert als auch den Spielspaß für den Spieler, galten unsere ersten Überlegungen dem Namen sowie Konzept des Spiels.
-Abgeleitet von dem englischen Verb 'to scribble' mit ein paar Änderungen um den Namen für das deutsche Publikum besser aussprechbar zu machen, wurde 'Skribbl'. Das Kürzel '.AI' hingegen war für uns als Team sehr offensichtlich. Nicht nur wäre es eine wundervolle URL, sollte das Projekt zu einem späteren Zeitpunkt veröffentlicht werden, sondern sie zeigt ebenfalls die nahe Verbindung zu unserem neuronalen Netzwerk.
+Wissend, dass wir ein Spiel kreieren wollten, welches nicht nur Bilderkennung durch ein neuronales Netzwerk garantiert als auch den Spielspaß für den Spieler, galten unsere ersten Überlegungen dem Namen sowie dem Konzept des Spiels.
+Abgeleitet von dem englischen Verb 'to scribble' mit ein paar Änderungen um den Namen für das deutsche Publikum besser aussprechbar zu machen, wurde 'Skribbl' ins Leben gerufen. Das Kürzel '.AI' hingegen war für uns als Team sehr offensichtlich, da es mit dem '.' als Abtrennung eine Metapher einer URL darstellen würde. Außerdem zeigt sie durch AI (Artificial Intelligence) zusätzlich noch die nahe Verbindung zu unserem neuronalen Netzwerk.
 
-Folgend kam die Entscheidung dahingehend, was für eine Art von Spiel wir erschaffen wollten. Eine Zeichnung sollte erkannt werden. Natürlich gab es zahlreiche Konzeptideen, so mussten wir uns auf ein Konzept einigen. Dabei hatten wir von Anfang an direkt 3 verschiedene Implementierungen, die uns einfielen. Alle angelehnt an das selbe Konzept und dennoch von Grund auf verschieden, was den Spielspaß anging. Sollten die Spieler sehen, welche Ergebnisse das neuronale Netz aus der Zeichnung vorhersagte, oder sollten sie komplett im Dunklen stehen? Sollte es eine Überraschung werden oder nicht? Vielleicht etwas in der Mitte?
+Folgend kam die Entscheidung dahingehend, was für eine Art von Spiel wir erschaffen wollten. Eine Zeichnung sollte erkannt werden, das war bereits klar. Natürlich gab es viele Ideen wie das Spiel umgesetzt werden könnte, aber wir mussten uns auf ein Konzept einigen. Dabei hatten wir von Anfang an direkt 3 verschiedene Implementierungen, die uns einfielen. Alle angelehnt an das selbe Konzept und dennoch von Grund auf verschieden, was den Spielspaß anging. Sollten die Spieler sehen, welche Ergebnisse das neuronale Netz aus der Zeichnung vorhersagte, oder sollten sie komplett im Dunklen stehen? Sollte es eine Überraschung werden oder nicht? Vielleicht etwas in der Mitte?
 
-Während der Anfangsphase des Projektes und bei der Rechercher stießen wir auf ähnliche Konzepte, die ebenfalls eine Bilderkennung mit Zeichnungen implementierten. Besonders hervorzuheben wären hier Sketcher \parencite{ZaidAlyafeai2018}, welches eine große Hilfe und Inspiration für uns war. Besonders hilfreich war auch das Tutorial von Zaid Alyafeai zu Sketcher \parencite{ZaidAlyafeaia}. Außerdem gibt es auch ein Projekt von Google \parencite{Google}.
+Während der Anfangsphase des Projektes und bei der Recherche stießen wir auf ähnliche Konzepte, die ebenfalls eine Bilderkennung mit Zeichnungen implementierten. Besonders hervorzuheben wären hier Sketcher \parencite{sketcher}, welches eine große Hilfe und Inspiration für uns war. Besonders hilfreich war auch das Tutorial von Zaid Alyafeai zu Sketcher \parencite{sketcherTutorial}. Außerdem gibt es auch ein Projekt von Google \parencite{quickDraw}.
 
 \subsubsection{Mobile First}
 
-Ein solches Projekt, mit Spiel-Charakter, wie man sie aus jedem App-Store kennt; kurze Level für ein Kurzweiliges Spielerlebnis machten eines schnell klar: Unsere Priorität lag auf Mobile-First.
-Dabei mussten mögliche Hürden mit dem Touchscreen, den unterschiedlichen Bildschirmgrößen sowie Funktionen der verschiedenen Browser und Betriebssysteme erwartet werden. Dennoch war es für uns keine schwere Entscheidung den Desktop vorerst außen vor zu lassen und sicher zu stellen, dass unser Spiel optimal auf einem Smartphone spielbar ist.
+Ein solches Projekt, mit Spiel-Charakter, wie man sie aus jedem App-Store kennt; kurze Level für ein kurzweiliges Spielerlebnis, machten eines schnell klar: Unsere Priorität lag auf der Mobile-First Entwicklung.
+Dabei mussten mögliche Hürden mit dem Touchscreen, den unterschiedlichen Bildschirmgrößen sowie Funktionen der verschiedenen Browser und Betriebssysteme erwartet werden. Dennoch war es für uns keine schwere Entscheidung den Desktop vorerst außen vor zu lassen und sicher zu stellen, dass unser Spiel optimal auf einem Smartphone spielbar ist. Zusätzlich dazu wurde auf Grund des Layouts entschieden das Spiel vorerst für den Portrait-Modus zu entwickeln. 
 
 \subsubsection{Accessibility}
 
-Accessibility war ein Punkt, der zwar erst ein wenig später in unserem Projekt angesprochen wurde, aber dennoch von hoher Bedeutung für uns war. Mit dem sehr visuellen Thema des Zeichnens und der heutigen Einstellung zu Accessibility Themen, war uns schnell klar, dass wir unser Spiel so zugänglich wie möglich für alle Nutzer machen wollten.
+Accessibility war ein Punkt, der zwar erst ein wenig später in unserem Projekt angesprochen wurde, aber dennoch von hoher Bedeutung für uns war. Mit dem sehr visuellen Thema des Zeichnens und der heutigen Einstellung zu Accessibility Themen, war uns schnell bewusst, dass wir unser Spiel so zugänglich wie möglich für alle Nutzer machen wollten.
 
-Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf.\\
+Ein Styleguide wurde erstellt, in welchem jede Farbe und dazu gehörige Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der WCAG 2 Verordnung entsprachen. Außerdem nahmen wir noch andere Richtlinen wie die  Clean Coding Regeln in unseren Styleguide mit auf, da diese den richtigen Umgang mit den Programmiersprachen und eine einheitliche Programmierung garantieren würden.\\
 Mehr dazu in \autoref{chap: Anlagen} 
 
 \subsection{Layout}
-Im Layout unseres Spiels haben wir möglichst minimalistisch gearbeitet und uns an die vier ausgewählten Hauptfarben gehalten. Durch das Responsive Design passt sich unser Layout an die Größe des Bildschirms beziehungsweise den Viewport an. Vorrangig haben wir das Layout für mobile Geräte in vertikaler Ausrichtung entwickelt. Durch die kleine Bildschirmgröße eine Smartphones würde das Zeichenerlebnis in horizontaler Ausrichtung leiden. Bei Tablets hingegen ist je nach Größe des Geräts auch das Spielen im Landscapemodus möglich.
+Im Layout unseres Spiels haben wir möglichst minimalistisch gearbeitet und uns an die vier ausgewählten Hauptfarben gehalten. Durch das Responsive Design, welches wir implementierten, passt sich unser Layout an die Größe des Bildschirms / an den Viewport an. Wie bereits erwähnt, ein Hinweis dabei: Das Layout ist eher für mobile Geräte im Portrait-Modus geeignet. Durch die kleine Fläche eine Handys würde ein Landscape Modus das Zeichen-Erlebnis behindern vor allem auf eben jenen Geräten eher behindern als erweitern. Bei Tablets jedoch ist je nach Größe auch ein Landscape-Modus möglich, bei welchem die Spieler sich nicht mit den eigenen Händen das Zeichnen sowie die Sicht der Scores versperren.
 
-\subsubsection{Startbildschirm}
+\subsubsection{Startscreen}
 
 \begin{wrapfigure}{R}{0.3\textwidth}
 \centering
 \includegraphics[width=0.25\textwidth]{images/Startscreen.jpg}
-\caption{\label{fig:Startscreen}Start Bildschirm}
+\caption{\label{fig:Startscreen}StartScreen}
 \end{wrapfigure}
 
-Einen Großteil unseres Startscreens nimmt unser Logo ein. Es ist mit den vier Farben rot, grün, blau und gelb gestaltet. Beim Schriftzug 'Skribbl.Ai' ist das '.Ai' sehr groß geschrieben um besonders hervorzuheben, dass es sich hierbei um ein Spiel mit einer künstliche Intelligenz handelt. Dabei besitzt das „A“ zwei große Augen mit welchen wir unser Logo zu einer Art Maskottchen machen und es  personifizieren. Das „i“ ist ein Stift, der einen Hinweis darauf gibt, dass die Spieler*in in unserem Spiel hauptsächlich zeichnet. \\
-Über dem Logo haben wir rechts einen kleinen Info-Button, der ein Popup öffnet, in welchem eine allgemeine Spielbeschreibung des Spiel zu finden ist und auch der Hinweis auf GitHubs Datenschutzverordnung verlinkt ist. 
-Links oben befinden sich zwei Buttons, welche für die Auswahl zwischen der Deutschen und Englischen Sprache gedacht sind. Diese ändern die Sprache in der die Wörter zum späteren Zeichnen angegeben werden.\\
-Beim auswählen wird ein Popup geöffnet, das die Spieler*in über die Umstellung informiert. Die drei Buttons wurden alle grau gehalten um sie nicht zu sehr hervorzuheben und den Fokus auf dem Logo zu halten. Bei der Auswahl der Sprache wird der dazugehörige Button blau eingefärbt, als visuelle Rückmeldung an die Benutzer*in. 
-Unter dem Logo ist ein großer, roter Button angebracht, der das Spiel startet.
+Einen Großteil unseres Startscreens nimmt unserer selbsterstelltes Logo ein. Es besteht aus vier Hauptfarben (rot, grün, gelb und blau). Beim Schriftzug, der ‘Skribbl.Ai’ beschreibt, sieht man, dass das „.Ai“ sehr groß geschrieben ist um besonders hervorzuheben, dass es sich hierbei um ein Spiel mit einer künstlichen Intelligenz handelt. Dabei besitzt das „A“ zwei große Augen mit welchen wir unser Logo zu einer Art Maskottchen machen und es personifizierten. Das „i“ ähnelt einem Stift, der bereits auf den ersten Blick einen Hinweis darauf gibt, dass es in unseren Spiel größtenteils um den Prozess des Zeichnens geht. 
+Über dem Logo haben wir rechts einen kleinen Info-Button, der ein PopUp öffnet, in welchem sowohl eine allgemeine Spielbeschreibung des Spiel zu lesen ist und auch der Hinweis auf GitHubs Datenschutzverordnung verlinkt ist. 
+Links oben befinden sich zwei Buttons, welche für die Auswahl zwischen der Deutschen und Englischen Sprache gedacht sind. 
+Beim auswählen wird ein PopUp geöffnet, das den User über die Umstellung informiert. Die drei Buttons wurden allesamt grau gehalten um sie nicht zu sehr hervorzuheben und den Fokus vom Logo zu nehmen. Bei Auswahl einer Sprache wird der dazugehörige Button blau, damit der User weiß in welcher Sprache er das Spiel spielen wird. 
+Unter dem Logo ist ein großer roter Play-Button, der das Spiel startet.
 
-\subsubsection{Spielbildschirm}
+\subsubsection{Gamescreen}
 
 \begin{wrapfigure}{R}{0.3\textwidth}
 \centering
 \includegraphics[width=0.25\textwidth]{images/Gamescreen.jpg}
-\caption{\label{fig:Gamescreen}Spiel Bildschirm}
+\caption{\label{fig:Gamescreen}GameScreen}
 \end{wrapfigure}
 
-Der Spielbildschirm ist in vier Bereiche eingeteilt. Der obere Bereich zeigt die  Zeituhr ganz oben auf der Seite. Diese ist als Balken über die gesamte Bildschirmbreite dargestellt und schrumpft von rechts nach links während sich die Farbe ändert. Der Farbverlauf geht von Grün über Gelb zu Rot. \\
-Direkt unter dem Timer sieht man die Anzeige der Top fünf Wörter die die KI ausgewählt hat. Für die Anzeige der Top fünf haben wir uns sehr schnell für ein Balkendiagramm entschieden, da es für uns die beste Form der Darstellung war. Die Balken passen gut zu den anderen visuellen Elementen der Seite und sie lassen sich sehr einfach in eine Reihenfolge bringen, das \textit{Treppchensystem}. Das Balkendiagramm erstreckt sich über die gesamte Bildschirmbreite wodurch es sehr viel Platz einnimmt. Da wir für mobile Endgeräte entwickeln, muss mit dem begrenzten Bildschirmplatz sorgsam umgegangen werden. Aber da das \textit{Treppchensystem} unserer Spielidee so ein fester Bestandteil unseres Konzeptes war, überwogen die Argumente, die für die Balken sprechen. \\
-Die Balken sind alle in grau gehalten, einzig wenn das zu erratende Wort als eine der Top fünf Möglichkeiten erscheint, wird dieser Balken rot gefärbt. Hiermit erkennen Spieler sehr schnell, dass sie auf einem guten Weg sind die Runde zu gewinnen. In den Balken stehen jeweils das zugehörige Wort und die Wahrscheinlichkeit der Vorhersage als Prozentzahl.\\ 
-Direkt unter dem Balkendiagramm befindet sich unsere Zeichenfläche, welche blau umrandet ist.\\
-Darunter sind der \textit{Clear-Button} und der \textit{Undo-Button} zu finden. Beide sind ebenfalls blau eingefärbt um zu unterstreichen, dass sie zur Zeichenfläche gehören. Rechts des \textit{Undo-Button} befindet sich der rote \textit{Skip-Button}, der eine neue Spielrunde mit einem neuen Wort startet.
+Der Gamescreen ist wie folgt aufgebaut: Der Timer ganz oben auf der Seite, läuft von rechts nach links ab und ändert dabei die Farbe (in einem Verlauf von Grün über Gelb zu Rot). Direkt unter dem Timer sieht man die Anzeige der Top 5 Wörter die die KI ausgewählt hat. Für die Anzeige der Top 5 haben wir uns sehr schnell für ein Balkendiagramm entschieden, da es für uns die beste Form der Darstellung war. 
+Da wir für mobile Endgeräte entwickeln, bleibt uns nur wenig Platz und die Balken erstreckten sich fast über die Hälfte des Bildschirms, aber da sie mit dem Treppchen System unserer Spielidee so ein fester Bestandteil unseres Konzeptes waren, wussten wir, dass wir den Kompromiss eingehen mussten. 
+Die Balken sind alle in grau gehalten, einzig wenn das zu erratende Wort als eine der Top 5 Möglichkeiten erscheint, so wird dieser Balken rot. Hiermit erkennt der User sehr schnell, dass er auf einem guten Weg ist die Runde zu gewinnen. In den Balken stehen jeweils das zugehörige Wort und die Prozentzahl. 
+Direkt unter dem Balkendiagramm befindet sich unsere Zeichenfläche, welche blau umrandet ist. Darunter lokalisiert sind der Clear-Button und der Undo-Button, die auch blau sind und somit zeigen, dass sie zur Zeichenfläche gehören. Rechts vom Undo-Button befindet sich der rote Skip-Button der eine neue Runde mit einem neuen Wort startet.
 
-Beim Tutorial wird ein Overlay über den Spielbildschirm gelegt. Hier wird ein blauer \textit{Next-Button} angeboten, der den nächsten Schritt des Tutorials zeigt, und ein roter \textit{Skip-Button}, der das Tutorial überspringt. Nach dem ersten Schritt des Tutorials, verkleinert sich das Overlay und die Beschreibung des Tutorials ist nur noch in einer kleinen grauen Box sichtbar, zu sehen in Abbildung \ref{fig:tutorial}. Somit können Spieler den Spielbildschirm und die angezeigten Elemente, die mit einer orange gestrichelten Umrandung gekennzeichnet sind, besser sehen.
+Beim Tutorial wird ein Overlay benutzt in welchem wir einen blauen Next-Button, der den nächsten Schritt des Tutorials zeigt, und ein roten Skip-Button, der das Tutorial überspringt. Nach dem 1. Schritt des Tutorials, verkleinert sich das Overlay und die Beschreibung des Tutorials ist nur noch in einer kleinen grauen Box sichtbar. 
+Somit kann der User den Gamescreen und die jeweiligen zu erklärenden Elemente die mit einer orange gestrichelten Umrandung gekennzeichnet sind, besser sehen.
 
-\begin{figure}[ht]
-\centering
-    \subfigure[Tutorial: Erster Schritt]{\includegraphics[width=0.3\textwidth]{images/tutorial1.png}}
-    \subfigure[Tutorial: weitere Schritte]{\includegraphics[width=0.3\textwidth]{images/tutorial2.png}}
-\caption{\label{fig:tutorial}Tutorial Ansicht}
-\end{figure}
+Nach dem Tutorial, erscheint ein weiteres Overlay, welches erneut den gesamten Gamescreen ausgraut. Die Anzeigen des Counters und Wortes befinden sich in weißer Schrift in der Mitte des Overlays.
 
-Nach dem Tutorial, erscheint ein weiteres Overlay, welches erneut den gesamten Spielbildschirm ausgraut. Der \textit{Countdowns} und das zu zeichnende Wort befinden sich in weißer Schrift in der Mitte dieses Overlays.
 
-\subsubsection{Endbildschirm}
+\subsubsection{Endscreen}
 
-Es gibt zwei verschiedene Endbildschirmansichten, der \textit{Victoryscreen} wird angezeigt, wenn die Spieler*in gewonnen hat und der \textit{Defeatscreen}, wenn das Spiel verloren wurde. Siehe hierzu Abbildung \ref{fig:endscreen}.\\
-Der Aufbau dieser Ansichten unterscheidet sich nicht stark. Es wird jeweils das Logo, eine Überschrift und ein kurzer Text angezeigt. Die Texte und das Logo unterscheiden sich, je nach dem ob das Spiel gewonnen oder verloren wurde. \\
-Auf dem \textit{Victoryscreen} erscheint eine Version unseres Logo in dem es so erscheint, als würde das Maskottchen sich freuen und feiern. Eine große rote Überschrift informiert den Spieler, dass er gewonnen hat. Daneben steht ein Text welcher die Spieler*in über ihre Prozentzahl und die benötigte Zeit informiert.\\
-Der \textit{Defeatscreen} hingegen zeigt eine Version unseres Logos, auf dem es aussieht, als würde es Weinen und sich mit der Spieler*in ärgern. Hier wird angezeigt welches Wort an oberster Stelle stand und mit welcher Prozentzahl. Die rote Überschrift informiert hier zusätzlich noch, dass die Zeit abgelaufen war.\\
-Unter Logo und Text befindet sich in beiden Ansichten das Bild, welches gezeichnet wurde. Unter der Zeichung befinden sich zwei Knöpfe. Rechts ist ein roter \textit{Next-Button}, der zur nächsten Spielrunde führt und links ein blauer \textit{Menü-Button}, der zurück zur Startseite führt.
+Es gibt zwei verschiedene Endscreens, ein Victoryscreen (bei Gewinn) und ein Defeatscreen (beim Verlieren). Vom Aufbau her unterscheiden sich diese Screens nicht groß. Es gibt lediglich jeweils das Logo, eine Überschrift und einen Text auf den Screens, die sich unterscheiden. Bei beiden Screens wird das Logo personalisiert. 
+Auf dem Victoryscreen erscheint unser Logo, während es sich “freut” und “feiert”. Eine große rote Überschrift informiert den Spieler, dass er gewonnen hat. Daneben steht ein Text welcher den Spieler über seine Prozentzahl und seine für die Runde benötigte Zeit informiert. 
+Der Defeatscreen hingegen zeigt unser Logo wie es “weint” und sich ärgert. Dem Spieler wird sowohl Prozentzahl als auch das dazugehörige Top Wort mitgeteilt, welches die KI in der Zeichnung fälschlicherweise erkannt hat. Die rote Überschrift informiert hier zusätzlich noch, dass die Zeit abgelaufen war. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
     \subfigure[VictoryScreen]{\includegraphics[width=0.3\textwidth]{images/Victoryscreen.jpg}}
     \subfigure[DefeatScreen]{\includegraphics[width=0.3\textwidth]{images/Defeatscreen.jpg}}
-\caption{\label{fig:endscreen} Endbildschirm}
+\caption{EndScreen}
 \end{figure}
+
+Unter Logo und Text befindet sich das Bild welches der User gezeichnet hat. Unterhalb jenes Bildes befinden sich zwei Buttons. Rechts ist ein roter Next-Button, der zur nächsten Spielrunde führt und links blauer Menü-Button, der den Startscreen öffnet.
+
+
 
 \subsection{Künstliches neuronales Netzwerk}
 
-Künstliche Intelligenz beschäftigt sich mit den Möglichkeiten Aufgaben zu lösen und zu automatisieren, die normalerweise von Menschen bearbeitet werden. Dabei ist maschinelles Lernen eine Untermenge der künstlichen Intelligenz. Künstliche neuronale Netze stellen wiederum eine Teilmenge des maschinellen Lernens dar. Künstlichen neuronale Netze versuchen auf einfacher Weise das menschliche Gehirn abzubilden. Dabei werden die Strukturen dem biologischen Vorbild nachempfunden. Einzelne Nervenzellen werden als Knoten abstrahiert, die Verbindungen der Nervenzellen (Axon) werden durch Verbindungen beziehungsweise Kanten der Knoten realisiert. Künstliche neuronale Netze sind in der meisten Fällen so aufgebaut, dass es einen \textit{Eingangslayer}, bestehend aus ein oder mehreren Knoten, gibt, sowie einen oder mehreren versteckten \textit{Layern}. Nach den versteckten \textit{Layer(n)} folgt der \textit{Ausgangslayer}. Dieser beinhaltet die Ausgangsknoten. Die einzelnen Knoten und \textit{Layer} sind durch Kanten miteinander verbunden. Jede dieser Kanten wird ein Gewicht zugewiesen und jedem Knoten im Netzwerk eine Aktivierungsfunktion. Entsprechend dem biologischen Vorbild leitet ein Knoten das Eingangssignal weiter, wenn die Eingangssignale einen entsprechenden Schwellwert, bestimmt durch die Aktivierungsfunktion, überschreiten.
+Künstliche Intelligenz beschäftigt sich mit den Möglichkeiten Aufgaben zu lösen und zu automatisieren, die normalerweise von Menschen bearbeitet werden. Dabei ist maschinelles Lernen eine Untermenge der künstlichen Intelligenz. Künstliche neuronale Netze stellen wiederum eine Teilmenge des maschinellen Lernens dar. Künstlichen neuronale Netze versuchen auf einfacher Weise das menschliche Gehirn abzubilden. Dabei werden die Strukturen dem biologischen Vorbild nachempfunden. Einzelne Nervenzellen werden als Knoten abstrahiert, die Verbindungen der Nervenzellen (Axon) werden durch Verbindungen/Kanten der Knoten realisiert. Künstliche neuronale Netze sind in der meisten Fällen so aufgebaut, dass es einen Eingangslayer, bestehend aus ein oder mehreren Knoten, gibt, sowie einen oder mehreren versteckten Layern. Nach den versteckten Layer/n folgt der Ausgangslayer. Diese beinhaltet die Ausgangsknoten. Die einzelnen Knoten und Layer sind durch Kanten miteinander verbunden. Jede dieser Kanten wird ein Gewicht zugewiesen und jedem Knoten im Netzwerk eine Aktivierungsfunktion. Entsprechend der biologischen Vorbild leitet ein Knoten das Eingangssignal weiter, wenn die Eingangssignale eine entsprechende Schwellwert (Aktivierungsfunktion) überschreiten.
 
-Künstliche neuronale Netze werden meist für Klassifizierungsaufgaben verwendet. Demnach enthält der \textit{Ausgangslayer} für jede Klasse einen entsprechenden Knoten der für die entsprechende Klasse steht. Die Aktivierungslevel der Ausgangsknoten geben Auskunft über das Ergebnis der Klassifizierung.  Damit ein künstliches neuronales Netz (KNN) eine Aufgabe lösen kann, gilt es die Gewichte der Kanten und die Parameter der Aktivierungsfunktionen dahingehend zu optimieren, dass die Ausgangswerte sich möglichst nahe an die erwarteten Werte anpassen. Dieser Vorgang wird als Lernen bezeichnet.
+Künstliche neuronale Netze werden meist für Klassifizierungsaufgaben verwendet. Demnach enthält der Ausgangslayer für jede Klasse einen entsprechenden Knoten der für die entsprechende Klasse steht. Die Aktivierungslevel der Ausgangsknoten geben Auskunft über das Ergebnis der Klassifizierung.  Damit ein KNN eine Aufgabe lösen kann, gilt es die Gewichte der Kanten und die Parameter der Aktivierungsfunktionen dahingegen zu optimieren, dass die Ausgangswerte möglichst nahe an die Vorgaben kommen. Dieser Vorgang wird als Lernen bezeichnet.
 
-Ziel des Lernens ist es, ein Modell zu schaffen, welches die Beziehung zwischen den Eingangs- und den Ausgangsdaten eines Systems möglichst genau beschreibt. Um diesen Prozess zu ermöglichen und das Lernen des KNN durchzuführen ist eine entsprechende Menge an Daten erforderlich.\parencite{M.AnderssonM.Arvola}\parencite{Chollet2017}
+Ziel des KNN ist es, ein Modell zu schaffen, welche die Beziehung zwischen den Eingangs- und den Ausgangsdaten eines Systems möglichst genau beschreibt. Um diesen Prozess zu ermöglichen und das Lernen des KNN durchzuführen ist eine entsprechende Menge an Daten erforderlich.\parencite{M.AnderssonM.Arvola}\parencite{Chollet2017}
 
 \subsubsection{Trainieren eines Netzwerkes}
 
-Damit das Netzwerk die Beziehungen zwischen Eingangs- und Ausgangsdaten beschreiben kann, wird das Netz mit dem vorhandenen Daten trainiert. Für das Trainieren beziehungsweise Lernen eines KNN gibt es verschiedene Vorgehensweisen. Zum Einen gibt es das sogenannte \textit{Supervised Learning}, bei dem der Datensatz für das Training bereits klassifiziert vorliegt. Dem gegenüber steht die Methode des \textit{Unsupervised Learning}.
+Damit das Netzwerk die Beziehungen zwischen Eingangs- und Ausgangsdaten beschreiben kann, wird das Netz mit dem vorhandenen Daten trainiert. Für das Trainieren/Lernen eines KNNs gibt es verschiedene Vorgehensweisen. Zum einen gibt es das sogenannte \textit{Supervised Learning}, bei dem der Datensatz für das Training bereits klassifiziert vorliegt. Dem gegenüber steht die Methode des \textit{Unsupervised Learning}.
 
-\paragraph{Supervised Learning}
-Beim \textit{Supervised Learning} ist jedem Datensatz ein \textit{Label}, auch Klasse, zugewiesen. Das Netzwerk wird mit zufälligen Parametern initialisiert und es wird versucht die Parameter so anzupassen, dass die Ausgangsneuronen das erwartete Ergebnis liefern. Während des Lernens, werden die Parameter des Netzes dahingehend optimiert, dass die Abweichung der Ausgangsneuronen zu dem gewünschten Ergebnis minimiert wird.\parencite{Pattanayak2017}
+\textbf{Supervised Learning}\newline
+Beim \textit{Supervised Learning} ist jedem Datensatz ein Label (Klasse) zugewiesen. Das Netzwerk wird mit zufälligen Parametern initialisiert und es wird versucht die Parameter so anzupassen, dass die Ausgangsneuron das entsprechende Ergebnis liefern. Während des Lernens, werden die Parameter des Netzes dahingehend optimiert, dass die Abweichung der Ausgangsneuron zu dem gewünschten Ergebnis minimiert wird.\parencite{Pattanayak2017}
 
-\paragraph{Unsupervised Learning}
-Beim \textit{Unsupervised Learning} sind dem Lerndatensatz keine \textit{Labels} oder Klassen zugewiesen. Algorithmen dieser Kategorie zielen auf Strukturen innerhalb des Lerndatensatzes ab. Während des Lernens entstehen \textit{Cluster}, die einer Klassifizierung entsprechen.\parencite{Pattanayak2017}
+\textbf{Unsupervised Learning}\newline
+Beim \textit{Unsupervised Learning} sind dem Lerndatensatz keine Labels oder Klassen zugewiesen. Algorithmen dieser Kategorie zielen auf Strukturen innerhalb des Lerndatensatzes ab. Während des Lernens entstehen Cluster, die eine Klassifizierung entsprechen.\parencite{Pattanayak2017}
 
 \subsubsection{Aktivierungsfunktionen}
-Der Gedanke hinter Aktivierungsfunktionen ist die Nachbildung des Verhaltens menschlicher Nervenzellen. Ab einem bestimmten Schwellwert, auch Aktivierungspotential  genannt, wird das Neuron aktiv, das heißt es beginnt zu feuern. Das bedeutet, das Neuron leitet sein Signal weiter. Aktivierungsfunktionen sollen die Ausgabe in einem kleinen Wertebereich (meist -1 bis 1) liegen.\parencite{Manaswi2018}
+Der Gedanke hinter Aktivierungsfunktionen ist die Nachbildung des Verhaltens menschlicher Nervenzellen. Ab einem bestimmten Schwellwert, auch Aktivierungspotential  genannt, wird das Neuron aktiv, das heißt es beginnt zu feuern. Das bedeutet, das Neuron leitet sein Signal weiter. Aktivierungsfunktionen sollen die Ausgabe in einem kleinen Wertebereich (meist -1 bis 1) halten.\parencite{Manaswi2018}
 
-\paragraph{ReLU Aktivierungsfunktion}
-Die \textit{Rectified Linear Unit} (ReLU) ist eine Aktivierungsfunktion, die aufgrund ihrer Einfachheit und Leistungsfähigkeit, immer beliebter wird. Für negative Eingangswerte wird die Funktion null, für alle positiven Werte nimmt die Funktion den Eingangswert an.\parencite{M.AnderssonM.Arvola}
+\textbf{ReLU Aktivierungsfunktion}\newline
+Die \textit{Rectified Linear Unit} (ReLU) ist eine Aktivierungsfunktion, die aufgrund ihrer Einfachheit und Leistungsfähigkeit, immer beliebter wird. Für negative Eingangswerte wird die Funktion null, für alle positive Werte nimmt die Funktion die Eingangswert an.\parencite{M.AnderssonM.Arvola}
 
-\paragraph{SoftMax Aktivierungsfunktion}
-Bei Klassifizierungsproblemen sollte das Ergebnis für die entsprechende Klasse stehen beziehungsweise für die Wahrscheinlichkeit der Zugehörigkeit zu einer Klasse. Durch Verwendung der SoftMax Funktion im \textit{Ausgabelayer} liegen die Ausgabewerte zwischen null und eins, diese können entsprechend als Klassenwahrscheinlichkeit interpretiert werden. Hierfür haben auch wir diese Funktion verwendet. \parencite{LindholmWahlstromLindsten2019}
+\textbf{SoftMax Aktivierungsfunktion}\newline
+Bei Klassifizierungsproblemen sollte das Ergebnis für die entsprechende Klasse stehen beziehungsweise für die Wahrscheinlichkeit der Zugehörigkeit zu einer Klasse. Bei Verwendung der SoftMax Funktion im Ausgabelayer, ermöglicht es, dem neuronalen Netz die Ausgabe in dem Bereich von null bis eins zu liefern, dies kann entsprechend als Klassenwahrscheinlichkeit interpretiert werden.\parencite{AndreasLindholmNiklasWahlstromFredrikLindsten2019}
 
 \subsubsection{Convolutional Neural Network}
-Ein \textit{Convolutional Neural Network} nutzt Faltungsoperatoren beziehungsweise Faltungsschichten (\textit{Convolution Layer}) um Merkmale aus Bildern zu extrahieren. Im Rahmen des Projektes kommen sogenannte \textit{2D-Convolution Layern} zum Einsatz. Diese nutzen 2D Faltungsoperatoren zur Merkmalsextraktion. Durch das Training werden diese Operatoren gelernt. Beispielsweise können so bekannte Filter, wie Kantendetektoren oder Weichzeichner enstehen. Somit lernt das neuronale Netz Bildverarbeitungsfilter die bekannten Filtern ähneln oder sich stark von diesen unterscheiden. Im Allgemeinen lernt der erste \textit{Convolution Layer} einfache Merkmale, beispielsweise Kanten, zu erkennen. Darauffolgende Schichten lernen darauf aufbauend immer komplexer werdende Merkmale zu extrahieren. Ein Vorteil eines CNN ist die geringe Anzahl an Parametern.\parencite{Pattanayak2017}
+Ein \textit{Convolutional Neural Network} nutzt Faltungsoperatoren beziehungsweise Faltungsschichten (\textit{Convolution Layer}) um Merkmale aus Bildern zu extrahieren. Im Rahmen des Projektes kommen sogenannte 2D-Convolution Layern zum Einsatz. Diese nutzen 2D Faltungsoperatoren zur Merkmalsextraktion. Durch das Training werden diese Operatoren gelernt. Beispielsweise können so bekannte Filter, wie Kantendetektoren oder Weichzeichner enstehen. Somit lernt das neuronale Netz Bildverarbeitungsfilter die bekannten Filtern ähneln oder sie stark von denen unterscheiden. Im Allgemeinen lernt die erste Convolution Layer einfache Merkmale (beispielsweise Kanten) zu erkennen. Darauffolgende Schichten lernen darauf aufbauend immer komplexer werdende Merkmale zu extrahieren. Ein Vorteil von CNNs ist die geringe Anzahl an Parametern.\parencite{Pattanayak2017}
 
-\paragraph{Fully Connected Layer}
-In einem sogenannten \textit{Fully Connected Layer}, auch \textit{Dense Layer} genannt, sind alle Neuronen oder Knoten mit den Neuronen des vorhergehenden oder nachfolgenden Layer verbunden.\parencite{Pattanayak2017}
+\textbf{Fully Connected Layer}\newline
+In einem sogenannten \textit{Fully Connected Layer} (auch \textit{Dense Layer} genannt), sind alle Neuronen oder Knoten mit den Neuronen des entweder im vorhergehenden oder nachfolgenden Layer verbunden.\parencite{Pattanayak2017}
 
-\paragraph{Pooling Layer}
-\textit{Pooling Layer} dienen der Verdichtung von Daten. Dies tun sie indem sie Bereiche von Ausgabedaten mit Hilfe von statistische Operationen zusammenfassen. Dies dient der Reduktion von Parametern und der Vereinfachung von Berechnungen.  \textit{Max Pooling Layer} sind eine der am häufigsten eingesetzten Arten von \textit{Pooling Layern} und kommen auch im Rahmen dieses Projektes zum Einsatz. Sie reduzieren eine Region, indem sie nur den Maximalwert der Region erhalten. \textit{Pooling Layer} folgen meist auf \textit{Convolution Layer}.\parencite{Karpathy}\parencite{IanGoodfellowYoshuaBengio2016}
+\textbf{Pooling Layer}\newline
+\textit{Pooling Layer} dienen der Verdichtung von Daten. Dies tun sie indem sie Bereiche von Ausgabedaten mit Hilfe von statistische Operationen zusammenfassen. Dies dient der Reduktion von Parametern und der Vereinfachung von Berechnungen.  Max Pooling Layern sind eine der am häufigsten eingesetzten Art von \textit{Pooling Layer} und kommen auch im Rahmen dieses Projektes zum Einsatz. Sie reduzieren eine Region, indem sie nur den Maximalwert der Region erhalten. \textit{Pooling Layer} folgen meist auf \textit{Convolution Layer}.\parencite{Karpathy}\parencite{IanGoodfellowYoshuaBengio2016}
+\pagebreak
 
 \section{Anforderungen}
 \label{chap: Anforderungen}
@@ -277,6 +276,7 @@ Die optimale Zeit, die eine Runde andauern sollte, würde im späteren Verlauf d
 
 Jedes Mal wenn die Spieler*in "den Stift absetzt", das bedeutet in unserem Fall, den Finger hebt um neu anzusetzen, soll das gezeichnete Bild an das neuronale Netzwerk übergeben werden. Dieses berechnet dann die Ergebnisse. Die fünf Ergebnisse mit den höchsten Vorhersagewahrscheinlichkeiten sollen auf dem Spielbildschirm angezeigt werden. Für die Anzeige eben jener fünf wahrscheinlichsten Wörter soll ein Balkendiagramm verwendet werden, welches das Wort und die zugehörige Wahrscheinlichkeit in Prozent zeigt. Außerdem soll, falls das korrekte Wort in der Auswahl enthalten ist, dieses farblich hervorgehoben werden. Am oberen Rand des Spielbildschirms soll ein farblich gestalteter Balken anzeigen, wie viel Zeit schon vergangen ist. Wenn die Spieler*in es schafft, eine  Zeichnung innerhalb der vorgegebenen Zeit zu erstellen und das neuronale Netzwerk diese als das vorgegebene Wort erkennt, dann ist die Runde gewonnen. Dies bedeutet, dass das gesuchte Wort in den Vorhersagen des neuronalen Netzwerks die höchste Wahrscheinlichkeit verglichen mit allen anderen Möglichkeiten haben muss. Verloren ist das Spiel, wenn dies der Spieler*in nicht in der vorgegebenen Zeit gelingt. 
 In beiden Fällen hat die Spieler*in schließlich die Möglichkeit eine neue Runde mit einem neuen Wort zu starten.
+\pagebreak
 
 \section{Implementierung}
 \subsection{JavaScript}
@@ -324,61 +324,52 @@ Das Modellieren eines neuronales Netzes stellt sich in der Regel als sehr komple
 
 Für die Verbesserung der Genauigkeit wurden verschiedene Parameter variiert. Zuerst wurde die Anzahl der Trainingsdaten schrittweise von 5.000 auf 20.000 erhöht. Anschließend wurden die Epochen während des Trainings weiter angehoben (von 5 auf 15). 
 Zusätzlich zu dem automatischen Tests nach dem Lernprozess, wurden die einzelnen entstandenen Netze auch manuellen Tests unterzogen.
-
-\section{Spielbeschreibung, Ziel}
-
-\iffalse
-Spielkonzept ist bereits beschrieben in Anforderung, Spielkonzept
-\fi
+\pagebreak
 
 \section{Bewertung}
 vgl. Anforderungen mit Ergebnis
 \pagebreak
 
-\pagenumbering{Roman}
 \section{Anlangen}
 \label{chap: Anlagen}
 \subsection{Styleguide}
 
 
-\textbf{Generelle Regeln}
+\textbf{General Rules}
 \begin{itemize}
 \item Daten sollten so gut wie möglich und so oft wie möglich in Diagrammen und Bildern dargestellt werden
-\item Text sollte bis zu 200\% vergrößert werden können
-\item Bilder sollten einen Alt-Data Text haben
+\item Text sollte bis auf 200\% herangezoomt werden können \item Bilder sollten einen Alt-Data Text haben\\
 \end{itemize}
 
-\textbf{Knöpfe}
+\textbf{Buttons}
 \begin{itemize}
-\item Sollen einen ausreichenden Farbkontrast haben (Kontrast nach Web Content Accessibility Guidelines 2 AA \parencite{Caldwell2008})
-\item Texte auf \textit{Buttons} sollen kurz und schlüssig formuliert werden
-\item Abkürzungen gerne, aber sie sollen entweder aus einem Idiom bestehen oder einmal erklärt worden sein
+\item sollten einen ausreichenden Farb-Kontrast haben
+\item Kurz angebunden
+\item Abkürzungen gerne, aber sie sollten entweder aus einem Idiom bestehen oder einmal erklärt worden sein\\
 \end{itemize}
 
 \textbf{Formattierung}
 \begin{itemize}
-\item Klammerpaare sollen vertikal immer aneinander ausgerichtet sein
-\item \textit{if, while} und \textit{for} Anweisungen müssen immer mit Klammern geschrieben werden, auch wenn sie nur eine Kondition aufweisen
-\item Binäre Operatoren sollen ein Leerzeichen auf jeder Seite haben
-\item Klammern sollen in Ausdrücken verwendet werden um Klarheit und Einfachheit im Code zu verbessern
-\item Klassennamen starten mit einem Großbuchstaben (Binnenmajuskeln sind erlaubt wenn notwendig)
-\item Alle anderen Identifikatoren starten klein geschrieben und benutzen daraufhin Binnenmajuskeln (keine Leerzeichen)
+\item Klammer-Paare sollten vertikal immer Matching Braces should always line up vertically in the same column as their constructall if, while and for statements must be written with parentheses, even if they only carry one condition
+Binary operators should have one space on each side
+\item Parenthesis' should be used in expressions not only to clarify but also to simplify
+\item Klassennamen starten mit einem Großbuchstaben (Camelcase ist erlaubt wenn notwendig)
+\item Alle anderen identifiers starten klein geschrieben und benutzen daraufhin Camelcase (keine Leerzeichen)\\
 \end{itemize}
 
 \textbf{Coding}
 \begin{itemize}
 \item Jede Methode sollte etwas zurück geben
-\item Es wird kein \textit{Continue} benutzt
-\item \textit{break} wird nicht außerhalb eines \textit{switch-cases} benutzt
+\item Es wird kein Continue benutztbreak wird nicht außerhalb eines switch-cases benutzt
 \item Variablen werden so nahe wie möglich am Ort ihrer Benutzung initialisiert
-\item Öffentliche Variablen so wenig wie nötig benutzen
+\item Public Variablen so wenig wie nötig benutzen\\
 \end{itemize}
 
 \textbf{Farben}
 
 \begin{tabular}{llll}
-\#7ED957    Grün & \#FF2E2E    Rot & \#4265FF    Blau & \#FFDE59    Gelb \\
-\#545454    Dunkleres Grau & \#737373    Dunkle Grau & \#A6A6A6    Helles Grau & \#D9D9D9    Helleres Grau\\
+\#7ed957    grün & \#FF2E2E    rot & \#4265ff    blau & \#ffde59    gelb \\
+\#545454    dunkleres grau & \#737373    dunkelgrau & \#a6a6a6    hellgrau & \#d9d9d9    sehr helles grau\\
 \end{tabular}
 \pagebreak
 
@@ -386,13 +377,13 @@ vgl. Anforderungen mit Ergebnis
 \begin{itemize}
 \item Schriftgröße: Entweder 18 px oder 14 px und fett (Je nach Media Queries und Layout)
 \item Schriftstyle: non-serif, non-monospace
-\item Schriftart: Standard Browser Schriftart und Norwester für das Logo
+\item Schriftart: Standard Browser Schriftart (Norwester für das Logo-font)\\
 \end{itemize}
 
 \textbf{Sprache}
 \begin{itemize}
 \item Einfache Sprache
-\item English/Deutsch(für die zu zeichnenden Wörter)
+\item English/Deutsch(Wörter)\\
 \end{itemize}
 
 \pagebreak

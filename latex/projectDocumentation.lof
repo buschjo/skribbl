@@ -1,26 +1,20 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {ngerman}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Skribbl.AI Logo\relax }}{1}{figure.caption.1}% 
+\contentsline {figure}{\numberline {1}{\ignorespaces Skribbl.AI Logo\relax }}{4}{figure.caption.1}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2}{\ignorespaces Start Bildschirm\relax }}{3}{figure.caption.2}% 
+\contentsline {figure}{\numberline {2}{\ignorespaces StartScreen\relax }}{7}{figure.caption.2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3}{\ignorespaces Spiel Bildschirm\relax }}{3}{figure.caption.3}% 
+\contentsline {figure}{\numberline {3}{\ignorespaces GameScreen\relax }}{8}{figure.caption.3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4}{\ignorespaces Tutorial Ansicht\relax }}{4}{figure.caption.4}% 
+\contentsline {figure}{\numberline {4}{\ignorespaces EndScreen\relax }}{8}{figure.caption.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Tutorial: Erster Schritt}}}{4}{figure.caption.4}% 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {VictoryScreen}}}{8}{figure.caption.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tutorial: weitere Schritte}}}{4}{figure.caption.4}% 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {DefeatScreen}}}{8}{figure.caption.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5}{\ignorespaces Endbildschirm\relax }}{5}{figure.caption.5}% 
+\contentsline {figure}{\numberline {5}{\ignorespaces Ergebnisse des Testzeichnen\relax }}{12}{figure.caption.5}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {VictoryScreen}}}{5}{figure.caption.5}% 
+\contentsline {figure}{\numberline {6}{\ignorespaces \textit {Class Responsibility Collaborator} Karten\relax }}{13}{figure.caption.6}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {DefeatScreen}}}{5}{figure.caption.5}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6}{\ignorespaces Ergebnisse des Testzeichnen\relax }}{9}{figure.caption.12}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces \textit {Class Responsibility Collaborator} Karten\relax }}{10}{figure.caption.13}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8}{\ignorespaces Klassen Diagramm\relax }}{11}{figure.caption.14}% 
+\contentsline {figure}{\numberline {7}{\ignorespaces Klassen Diagramm\relax }}{14}{figure.caption.7}% 
