@@ -114,7 +114,7 @@ Das Projekt ist in drei Bereiche unterteilt.
 \subsubsection{ Themenvergabe und Konzeptausarbeitung }
 \label{chap: Themenvergabe}
 
-Unser Projekt ist das Projekt KI vs IQ, welches von Prof. Jung betreut wurde.
+Unser Projekt ist das Projekt KI vs IQ, welches von Prof. Dr. Jung betreut wurde.
 Die Vorgabe war, eine spielerische Anwendung zu entwickeln, in der ein Mensch gegen ein neuronales Netz antritt, welches dazu trainiert wurde, Bilder zu erkennen.\\
 Mehr dazu in \autoref{chap: Grundlagen}
 	
@@ -209,7 +209,7 @@ Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getes
 Mehr dazu in \autoref{chap: Anlagen} 
 
 \subsection{Layout}
-Im Layout unseres Spiels haben wir möglichst minimalistisch gearbeitet und uns an die vier ausgewählten Hauptfarben gehalten. Durch das Responsive Design passt sich unser Layout an die Größe des Bildschirms beziehungsweise den Viewport an. Vorrangig haben wir das Layout für mobile Geräte in vertikaler Ausrichtung entwickelt. Durch die kleine Bildschirmgröße eine Smartphones würde das Zeichenerlebnis in horizontaler Ausrichtung leiden. Bei Tablets hingegen ist je nach Größe des Geräts auch das Spielen im Landscapemodus möglich.
+Im Layout unseres Spiels haben wir möglichst minimalistisch gearbeitet und uns an die vier ausgewählten Hauptfarben gehalten. Durch das Responsive Design passt sich unser Layout an die Größe des Bildschirms beziehungsweise den Viewport an. Vorrangig haben wir das Layout für mobile Geräte in vertikaler Ausrichtung entwickelt. Durch die kleine Bildschirmgröße eines Smartphones würde das Zeichenerlebnis in horizontaler Ausrichtung leiden. Bei Tablets hingegen ist je nach Größe des Geräts auch das Spielen im Landscapemodus möglich.
 
 \subsubsection{Startbildschirm}
 
@@ -269,7 +269,7 @@ Unter Logo und Text befindet sich in beiden Ansichten das Bild, welches gezeichn
 
 Künstliche Intelligenz beschäftigt sich mit den Möglichkeiten Aufgaben zu lösen und zu automatisieren, die normalerweise von Menschen bearbeitet werden. Dabei ist maschinelles Lernen eine Untermenge der künstlichen Intelligenz. Künstliche neuronale Netze stellen wiederum eine Teilmenge des maschinellen Lernens dar. Künstlichen neuronale Netze versuchen auf einfacher Weise das menschliche Gehirn abzubilden. Dabei werden die Strukturen dem biologischen Vorbild nachempfunden. Einzelne Nervenzellen werden als Knoten abstrahiert, die Verbindungen der Nervenzellen (Axon) werden durch Verbindungen beziehungsweise Kanten der Knoten realisiert. Künstliche neuronale Netze sind in der meisten Fällen so aufgebaut, dass es einen \textit{Eingangslayer}, bestehend aus ein oder mehreren Knoten, gibt, sowie einen oder mehreren versteckten \textit{Layern}. Nach den versteckten \textit{Layer(n)} folgt der \textit{Ausgangslayer}. Dieser beinhaltet die Ausgangsknoten. Die einzelnen Knoten und \textit{Layer} sind durch Kanten miteinander verbunden. Jede dieser Kanten wird ein Gewicht zugewiesen und jedem Knoten im Netzwerk eine Aktivierungsfunktion. Entsprechend dem biologischen Vorbild leitet ein Knoten das Eingangssignal weiter, wenn die Eingangssignale einen entsprechenden Schwellwert, bestimmt durch die Aktivierungsfunktion, überschreiten.
 
-Künstliche neuronale Netze werden meist für Klassifizierungsaufgaben verwendet. Demnach enthält der \textit{Ausgangslayer} für jede Klasse einen entsprechenden Knoten der für die entsprechende Klasse steht. Die Aktivierungslevel der Ausgangsknoten geben Auskunft über das Ergebnis der Klassifizierung.  Damit ein künstliches neuronales Netz (KNN) eine Aufgabe lösen kann, gilt es die Gewichte der Kanten und die Parameter der Aktivierungsfunktionen dahingehend zu optimieren, dass die Ausgangswerte sich möglichst nahe an die erwarteten Werte anpassen. Dieser Vorgang wird als Lernen bezeichnet.
+Künstliche neuronale Netze werden meist für Klassifizierungsaufgaben verwendet. Demnach enthält der \textit{Ausgangslayer} für jede Klasse einen entsprechenden Knoten, der für die entsprechende Klasse steht. Die Aktivierungslevel der Ausgangsknoten geben Auskunft über das Ergebnis der Klassifizierung.  Damit ein künstliches neuronales Netz (KNN) eine Aufgabe lösen kann, gilt es die Gewichte der Kanten und die Parameter der Aktivierungsfunktionen dahingehend zu optimieren, dass die Ausgangswerte sich möglichst nahe an die erwarteten Werte anpassen. Dieser Vorgang wird als Lernen bezeichnet.
 
 Ziel des Lernens ist es, ein Modell zu schaffen, welches die Beziehung zwischen den Eingangs- und den Ausgangsdaten eines Systems möglichst genau beschreibt. Um diesen Prozess zu ermöglichen und das Lernen des KNN durchzuführen ist eine entsprechende Menge an Daten erforderlich.\parencite{M.AnderssonM.Arvola}\parencite{Chollet2017}
 
@@ -295,10 +295,10 @@ Bei Klassifizierungsproblemen sollte das Ergebnis für die entsprechende Klasse 
 \subsubsection{Convolutional Neural Network}
 Ein \textit{Convolutional Neural Network} nutzt Faltungsoperatoren beziehungsweise Faltungsschichten (\textit{Convolution Layer}) um Merkmale aus Bildern zu extrahieren. Im Rahmen des Projektes kommen sogenannte \textit{2D-Convolution Layern} zum Einsatz. Diese nutzen 2D Faltungsoperatoren zur Merkmalsextraktion. Durch das Training werden diese Operatoren gelernt. Beispielsweise können so bekannte Filter, wie Kantendetektoren oder Weichzeichner enstehen. Somit lernt das neuronale Netz Bildverarbeitungsfilter die bekannten Filtern ähneln oder sich stark von diesen unterscheiden. Im Allgemeinen lernt der erste \textit{Convolution Layer} einfache Merkmale, beispielsweise Kanten, zu erkennen. Darauffolgende Schichten lernen darauf aufbauend immer komplexer werdende Merkmale zu extrahieren. Ein Vorteil eines CNN ist die geringe Anzahl an Parametern.\parencite{Pattanayak2017}
 
-\chapter{Fully Connected Layer}
+\subsubsection*{Fully Connected Layer}
 In einem sogenannten \textit{Fully Connected Layer}, auch \textit{Dense Layer} genannt, sind alle Neuronen oder Knoten mit den Neuronen des vorhergehenden oder nachfolgenden Layer verbunden.\parencite{Pattanayak2017}
 
-\chapter{Pooling Layer}
+\subsubsection*{Pooling Layer}
 \textit{Pooling Layer} dienen der Verdichtung von Daten. Dies tun sie indem sie Bereiche von Ausgabedaten mit Hilfe von statistische Operationen zusammenfassen. Dies dient der Reduktion von Parametern und der Vereinfachung von Berechnungen.  \textit{Max Pooling Layer} sind eine der am häufigsten eingesetzten Arten von \textit{Pooling Layern} und kommen auch im Rahmen dieses Projektes zum Einsatz. Sie reduzieren eine Region, indem sie nur den Maximalwert der Region erhalten. \textit{Pooling Layer} folgen meist auf \textit{Convolution Layer}.\parencite{Karpathy}\parencite{IanGoodfellowYoshuaBengio2016}
 
 \section{Anforderungen}
@@ -320,9 +320,9 @@ Um Skribbl.AI auf vielen verschiedenen mobilen Endgeräten spielen zu können oh
 Das Spiel sollte für alle Alterklassen interessant und spielbar sein. Neben der Eigenschaft, dass eine Runde nur eine bestimmte Dauer haben sollte, würden hier hauptsächlich die Begriffe, die die Spieler*in malen sollte, ausschlaggebend sein. Siehe hierzu Kapitel \ref{chap:spielkonzept}.
 \subsection{Spielkonzept}
 Um die, in Kapitel \ref{chap: productVision} genannten Eigenschaften in unserem Spiel umzusetzen entwarfen wir verschiedene Spielkonzepte. Das Konzept, auf welches wir uns letzendlich einigten sieht wie folgt aus.
-Die Spieler*in sollte zu Beginn einer Spielrunde für wenige Sekunden ein Wort aus einem Pool von Wörtern gezeigt bekommen. Dieses Wort ist dann innerhalb eines festgelegten Zeitraums zu Zeichnen.
+Die Spieler*in sollte zu Beginn einer Spielrunde für wenige Sekunden ein zufälliges Wort aus einem Pool von Wörtern gezeigt bekommen. Dieses Wort ist dann innerhalb eines festgelegten Zeitraums zu Zeichnen.
 
-Die optimale Zeit, die eine Runde andauern sollte, würde im späteren Verlauf des Projekts ermittelt werden. Hierzu haben alle Teammitglieder insgesamt 24 verschiedene Begriffe gezeichnet und dabei die Zeit, die gebraucht wurde bis das Wort erkannt wurde (oder das Teammitglied aufgab) festgehalten. Mit Hilfe der Ergebnisse, ein Ausschnitt dieser ist zu sehen in Abbildung \ref{fig:testResults}, bestimmten wir einen Durchschnitt, der angebrachte Zeit darstellte. 
+Die optimale Zeit, die eine Runde andauern sollte, würde im späteren Verlauf des Projekts ermittelt werden. Hierzu haben alle Teammitglieder insgesamt 24 verschiedene Begriffe gezeichnet und dabei die Zeit, die gebraucht wurde bis das Wort erkannt wurde (oder das Teammitglied aufgab), festgehalten. Mit Hilfe der Ergebnisse, ein Ausschnitt dieser ist zu sehen in Abbildung \ref{fig:testResults}, bestimmten wir einen Durchschnitt, der angebrachte Zeit darstellte. 
 
 \label{chap:spielkonzept}
 \begin{figure}[ht]
