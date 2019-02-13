@@ -20,6 +20,7 @@
 
 \usepackage{authblk}
 \usepackage{hyperref}
+\usepackage{float}
 
 
 \PassOptionsToPackage{
@@ -380,7 +381,7 @@ Für die Projektarbeit wurden der Datensatz im Form der .npy Dateien verwendet. 
 Im Rahmen dieser Projektarbeit wurden 100 Kategorien mit jeweils 20.000 Bildern für das Modell ausgewählt.
 
 \subsubsection{Aufbau des Netzes}
-Für die Umsetzung des KNNs wurde die Open-Source-Softwarebibliothek \textit{Tensorflow} verwendet. Zusätzlich wurde \textit{Keras} als API für den Zugriff auf \textit{Tensorflow} in Python 3.0 verwendet. Dabei stellt \textit{Keras} eine \textit{high level} API, da die \textit{Tensorflow} im Hintergrund verwendet. \textit{Keras} bietet verschiedene Typen von Layern, Aktivierungsfunktion, vortrainerte Modelle und weitere Funktionen an.
+Für die Umsetzung des KNNs wurde die Open-Source-Softwarebibliothek \textit{Tensorflow} verwendet. Zusätzlich wurde \textit{Keras} als API für den Zugriff auf \textit{Tensorflow} in Python 3.0 verwendet. Dabei stellt \textit{Keras} eine \textit{high level} API, die \textit{Tensorflow} im Hintergrund verwendet. \textit{Keras} bietet verschiedene Typen von Layern, Aktivierungsfunktion, vortrainerte Modelle und weitere Funktionen an.
 
 Der Trainingsdatensatz für das Modell besteht aus 100 Klassen mit je 20.000 Skizzen. Dieser wurde aufgeteilt in Trainingsdaten (80\%) und Testdaten (20\%).
 
@@ -389,14 +390,62 @@ Das Design des verwendeten Netzes enthält drei 2D-Convolutional Layern, die all
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1\textwidth]{images/Network Architecture1.png}
+\includegraphics[width=1\textwidth]{images/NetworkArchitecture1.png}
 \caption{\label{fig:classDiagram}Architektur des neuronalen Netzwerkes}
 \end{figure}
 
-Das Modellieren eines neuronales Netzes stellt sich in der Regel als sehr komplexes Thema dar. Zudem existieren bereits viele Modelle für verschiedenste Aufgaben als Ergebnisse unterschiedlichste Studien. Viele von diesen sind im Internet frei verfügbar. Nachdem wir verschiedene einfache Modelle probiert und getestet haben, haben wir uns schließlich für das Modell von Zaid Alyafeai\parencite{ZaidAlyafeai2018} entschieden. Alyafeai erreichte in seinem Versuchen mit diesem Aufbau eine Genauigkeit von ca. 92,20\%. Dabei verwendete er 5.000 Datensätze pro Klasse. Wir konnten eine Genauigkeit von   94,69\% erreichen unter Verwendung von 20.000 Datensätze pro Klasse.
+Das Modellieren eines neuronales Netzes stellt sich in der Regel als sehr komplexes Thema dar. Zudem existieren bereits viele Modelle für verschiedenste Aufgaben als Ergebnisse unterschiedlichster Studien. Viele von diesen sind im Internet frei verfügbar. Nachdem wir verschiedene einfache Modelle probiert und getestet haben, haben wir uns schließlich für das Modell von Zaid Alyafeai\parencite{ZaidAlyafeai2018} entschieden. Alyafeai erreichte in seinem Versuchen mit diesem Aufbau eine Genauigkeit von ca. 92,20\%. Dabei verwendete er 5.000 Datensätze pro Klasse. Wir konnten eine Genauigkeit von   94,69\% erreichen unter Verwendung von 20.000 Datensätze pro Klasse.
 
 Für die Verbesserung der Genauigkeit wurden verschiedene Parameter variiert. Zuerst wurde die Anzahl der Trainingsdaten schrittweise von 5.000 auf 20.000 erhöht. Anschließend wurden die Epochen während des Trainings weiter angehoben (von 5 auf 15). 
 Zusätzlich zu dem automatischen Tests nach dem Lernprozess, wurden die einzelnen entstandenen Netze auch manuellen Tests unterzogen.
+
+\subsubsection{Auswertung des Trainings}
+Das Ergebnis des Trainings des verwendeten Modells mit 20.000 Skizzen pro Klasse und 15 Epochen ist in Tabelle \ref{tab:ErgebnisTraining} aufgelistet. Zu sehen ist, wie die Genauigkeit von Epoche zu Epoche kontinuierlich ansteigt.
+Abbildung \ref{fig:topkcatacc} und \ref{fig:loss} zeigen den Verlauf der Genauigkeit bzw. \textit{Loss Rate} über die Epochen. In den beiden Abbildungen ist zu erkennen, dass die Genauigkeit bzw. die \textit{Loss Rate} bereits konvergiert. Der geringe Abstand zwischen der Genauigkeit des Trainings (train) und der Validierung während des Trainings (test) in Abbildung \ref{fig:topkcatacc} weist darauf hin, dass ein \textit{Overfitting} in dem Modell unwahrscheinlich ist. 
+
+
+\begin{table}
+	\centering
+	\caption{\label{tab:ErgebnisTraining} Ergebnis des Trainings je Epoche}	
+	\begin{tabular}{ccccc}
+		\hline
+		Epoch & Loss & Accuracy & Validation Loss & Validation Accuracy \\ 
+		\hline
+		1 & 1.2034  & 0.8870 & 0.9098 & 0.9243 \\
+		2 & 0.8370  & 0.9317 & 0.8043 & 0.9345 \\
+		3 & 0.7616  & 0.9387 & 0.7662 & 0.9387 \\
+		4 & 0.7213  & 0.9423 & 0.7318 & 0.9417 \\
+		5 & 0.6965  & 0.9446 & 0.7125 & 0.9432 \\
+		6 & 0.6791  & 0.9462 & 0.7039 & 0.9443 \\
+		7 & 0.6664  & 0.9473 & 0.6975 & 0.9444 \\
+		8 & 0.6562  & 0.9483 & 0.6966 & 0.9447 \\
+		9 & 0.6477  & 0.9490 & 0.6880 & 0.9457 \\
+		10 & 0.6409  & 0.9498 & 0.6797 & 0.9465 \\
+		11 & 0.6359  & 0.9501 & 0.6787 & 0.9462 \\
+		12 & 0.6313  & 0.9505 & 0.6749 & 0.9471 \\
+		13 & 0.6267  & 0.9511 & 0.6695 & 0.9470 \\
+		14 & 0.6237  & 0.9513 & 0.6763 & 0.9465 \\
+		15 & 0.6208  & 0.9516 & 0.6776 & 0.9466 \\ 
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/top_k_cat_acc}
+	\caption{Top K Kategorien Genauigkeit}
+	\label{fig:topkcatacc}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/loss}
+	\caption{Loss Rate}
+	\label{fig:loss}
+\end{figure}
+
+
+
 
 \section{Fazit}
 
