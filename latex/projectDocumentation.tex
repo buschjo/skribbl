@@ -152,11 +152,11 @@ Zu Beginn eines Sprints beziehungsweise zum Ende des vorhergehenden wurden die \
 Am Ende des Sprints wurde überprüft ob die Tickets abgearbeitet werden konnten. Außerdem wurde immer zum Ende des Sprints von allen Teammitgliedern getestet und die Testergebnisse beim nächsten Meeting besprochen.\\
 Gruppentreffen fanden zwei- bis dreimal wöchentlich statt. Immer Montags und Freitags und zusätzlich alle zwei Wochen am Mittwoch im Projektmanagement Kurs.
 \subsubsection{Retrospektive}
-Die Retrospektive dient als Stimmungsbarometer im Team. Ungefähr zur Halbzeit unseres Projektes haben wir, angeleitet durch Herrn Schmidt, diesem Thema ein Treffen gewidment. Hierbei hatte jedes Teammitglied die Möglichkeit Probleme und Schwierigkeiten auf zwischenmenschlicher Ebenen anzusprechen. Die so gesammelten Themen wurden dann von allen Teammitgliedern priorisiert und über die wichtigsten drei Punkte wurde im Detail gesprochen. Besonders wichtig war dabei, dass zum Ende, für alle genauer besprochenen Themen, das weitere Vorgehen abgestimmt wurde, damit solche Probleme in Zukunft nicht mehr auftreten würden.\\
-Die Retrospektive war für das Team von großer Wichtigkeit. Viele Mitglieder hatten Bedenken wegen ähnlicher Problematiken und durch diesen Rahmen hatten wir die Möglichkeit diese erfolgreich auszuräumen. Nach diesem Treffen haben sich die dort besprochenen Probleme entscheidend entschärft.
+Die Retrospektive dient als Stimmungsbarometer im Team. Ungefähr im dritten Monat des Projekts haben wir, angeleitet durch Herrn Schmidt, diesem Thema ein Treffen gewidment. Hierbei hatte jedes Teammitglied die Möglichkeit Probleme und Schwierigkeiten auf zwischenmenschlicher Ebenen anzusprechen. Die so gesammelten Themen wurden dann von allen Teammitgliedern priorisiert und über die wichtigsten drei Punkte wurde im Detail gesprochen. Besonders wichtig war dabei, dass zum Ende, für alle genauer besprochenen Themen, das weitere Vorgehen abgestimmt wurde, damit solche Probleme in Zukunft nicht mehr auftreten würden.\\
+Die Retrospektive war für das Team von großer Wichtigkeit. Die meisten Teammitlieder hatten ähnliche Sorgen und durch diesen Rahmen hatten wir die Möglichkeit diese erfolgreich auszuräumen. Nach diesem Treffen haben sich die dort besprochenen Probleme entscheidend entschärft.
 \subsubsection{User Stories}
 \label{chap:userstories}
-\textit{User Stories} oder Tickets sind die kleinste Einheit der Arbeitspakete eines Projekts. Sie werden aus der Sicht des Produktanwenders geschrieben und werden mit einer vorgegebenen Form formuliert. Ein Beispiel aus unserem Projekt ist folgendes. 'As a player I want to see the values of the bars in the bar chart in percent in the game screen.' Siehe auch Abbildung \ref{fig:userstory}.\\
+\textit{User Stories} oder Tickets sind die kleinste Einheit der Arbeitspakete eines Projekts. Sie werden aus der Sicht des Produktanwenders geschrieben und werden mit einer vorgegebenen Form formuliert. Ein Beispiel aus unserem Projekt ist folgendes. 'As a player I want to see the values of the bars in the bar chart in percent in the game screen.' Siehe Abbildung \ref{fig:userstory}.\\
 Die \textit{User Stories} wurden vom Team selbst geschrieben. Wichtig war hierbei zu beachten, dass die Rolle definiert wird, 'As a ...'. Als nächstes wird die Funktionalität beschrieben, die diese Rolle braucht, 'I want to ...'. Ergänzt werden kann die \textit{User Story} durch eine Begründung oder durch Akzeptanzkriterien. Diese geben die Details an, die bei vollendung der Implementation dieses Tickets, auf jeden Fall umgesetzt sein müssen.
 
 \begin{figure}[ht]
@@ -206,8 +206,7 @@ Dabei mussten mögliche Hürden mit dem Touchscreen, den unterschiedlichen Bilds
 
 Accessibility war ein Punkt, der zwar erst ein wenig später in unserem Projekt angesprochen wurde, aber dennoch von hoher Bedeutung für uns war. Mit dem sehr visuellen Thema des Zeichnens und der heutigen Einstellung zu Accessibility Themen, war uns schnell klar, dass wir unser Spiel so zugänglich wie möglich für alle Nutzer machen wollten.
 
-Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf.\\
-Mehr dazu in \autoref{chap: Anlagen} 
+Ein Styleguide wurde erstellt, in welchem jede Farbe und Schriftgröße so getestet wurde, dass sie den Werten des AA Standards der W3C Verordnung entspricht. Außerdem nahmen wir noch andere Richtlinen wie Clean Coding Regeln in unseren Styleguide mit auf. Mehr dazu in \autoref{chap: Anlagen} .
 
 \subsection{Layout}
 Im Layout unseres Spiels haben wir möglichst minimalistisch gearbeitet und uns an die vier ausgewählten Hauptfarben gehalten. Durch das Responsive Design passt sich unser Layout an die Größe des Bildschirms beziehungsweise den Viewport an. Vorrangig haben wir das Layout für mobile Geräte in vertikaler Ausrichtung entwickelt. Durch die kleine Bildschirmgröße eines Smartphones würde das Zeichenerlebnis in horizontaler Ausrichtung leiden. Bei Tablets hingegen ist je nach Größe des Geräts auch das Spielen im Landscapemodus möglich.
@@ -370,7 +369,7 @@ Es gibt eine \textit{ViewController} Klasse, diese initialisiert den \textit{App
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{images/QuickDrawData.jpg}
-\caption{\label{fig:classDiagram}Quick, Draw! Dataset}
+\caption{\label{fig:quickDraw}Quick, Draw! Dataset}
 \end{figure}
 
 \begin{comment}
@@ -393,7 +392,7 @@ Das Design des verwendeten Netzes enthält drei 2D-Convolutional Layern, die all
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{images/NetworkArchitecture1.png}
-\caption{\label{fig:classDiagram}Architektur des neuronalen Netzwerkes}
+\caption{\label{fig:networkArchitektur}Architektur des neuronalen Netzwerkes}
 \end{figure}
 
 Das Modellieren eines neuronales Netzes stellt sich in der Regel als sehr komplexes Thema dar. Zudem existieren bereits viele Modelle für verschiedenste Aufgaben als Ergebnisse unterschiedlichster Studien. Viele von diesen sind im Internet frei verfügbar. Nachdem wir verschiedene einfache Modelle probiert und getestet haben, haben wir uns schließlich für das Modell von Zaid Alyafeai\parencite{ZaidAlyafeai2018} entschieden. Alyafeai erreichte in seinem Versuchen mit diesem Aufbau eine Genauigkeit von ca. 92,20\%. Dabei verwendete er 5.000 Datensätze pro Klasse. Wir konnten eine Genauigkeit von   94,69\% erreichen unter Verwendung von 20.000 Datensätze pro Klasse.
@@ -446,10 +445,30 @@ Abbildung \ref{fig:topkcatacc} und \ref{fig:loss} zeigen den Verlauf der Genauig
 	\label{fig:loss}
 \end{figure}
 
-
-
-
 \section{Fazit}
+Zurück blickend auf unsere, am Anfang des Projektes festgelegte, Produktvision, sind wir uns sicher, dass wir unser Ziel erreicht haben. Innerhalb der letzten viereinhalb Monaten haben wir ein Spiel entwickelt, das auf den, auf dem deutschen Markt am verbreitesten, Smartphones spielbar ist. Dass das Spiel bei meheren Generationen gut ankommt, konnten wir live auf der Showtime testen und beobachten.\\
+Während des Projektes hatten wir einige Hürden, die wir bewältigen mussten. Im Folgenden wollen wir auf drei etwas näher eingehen.
+\subsection{Einigung auf ein Spielekonzept}
+Am Anfang des Projektes hatten wir sehr viele Ideen zu Spielekonzepten. Während der Ideenfindungsphase hatte jedes Projektmitglied die Möglichkeit eigene Ideen und Vorschläge einzubringen und auszuarbeiten. Die daraus resultierenden Ideen fassten wir zu drei verschiedenen Konzepten zusammen über die wir dann abstimmten.\\
+In Abbildung \ref{fig:concepts} sind die drei Spielekonzepte in Stichpunkten zusammengefasst auf der Abstimmungstafel zu sehen. In Spielekonzept 1 (SK1) war die Idee, dass die Spieler erst, wenn Sie ihre Zeichnung fertig gestellt haben und auf einen Bestätigungsknopf gedrückt haben, die Vorhersagen der künstlichen Intelligenz angezeigt bekommen. Das zweite Spielekonzept (SK2) unterschied sich vom ersten insofern, dass die Vorhersagen der KI immer sichtbar sein sollten. Der Unterschied zwischen dem dritten und zweiten Konzept sollte sein, dass hier nur eine noch festzulegende Anzahl an Vorhersagen angezeigt werden sollten.\\
+Zuletzt fiel das Abstimmungsergebnis für das Spielkonzept 2 mit vier Stimmen von acht. Die beiden anderen Konzepte bekamen jeweils zwei Stimmen. Es sollte sich aber später im Verlaufe des Projektes festellen, dass das Spielkonzept 3 besser geeignet wäre, woraufhin wir dieses Umsetzten. Da die Unterschiede eher klein sind, war das auch kein zu großes Problem.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{images/spielekonzept.jpg}
+	\caption{Abstimmung über die Spielekonzepte}
+	\label{fig:concepts}
+\end{figure}
+
+\subsection{Responsive Design}
+Da wir unser Spiel für mobile Endgeräte und Smartphones im Speziellen konzipiert hatten, stellte sich die Problematik, dass das Spiel auf manche Bildschirmgrößen kaum passte und auf Anderen sehr viel leere Flächen zu sehen waren.\\
+Um gewährleisten zu können, dass das Spiel immer optimal im Browser angezeigt wird benutzten wir \textit{Media Queries}. Mit \textit{Media Queries} in CSS kann das Layout angepasst werden für unterschiedliche Bildschirmausrichtungen und Bildschirmgrößen. Wir entschieden uns zwei sogenannte \textit{Breakpoints} zu implementieren. Einen bei einer Bildschirmbreite von mindestens 720px und einen zweiten bei mindestens 1200px. Ab diesen Punkten werden nun je automatisch andere CSS-Regeln angewandt.\\
+Außerdem vereinbarten wir bereits in der Anfangsphase unseres Projektes, dass wir regelmäßige Tests durchführen wollten. Die Tests wurden auf unterschiedlichen Smartphonegrößen durchgeführt und hierbei sollte auch jedesmal das Layout mit überprüft werden.\\
+Besonders schwierig war das Iphone SE mit einem sehr kleinen Display, aber letzten Endes haben wir es auch darauf geschafft den kompletten Spielbildschirm anzuzeigen.
+\subsection{Fehlendes Know-How zu neuronalen Netzen}
+Die größte Quelle der Verunsicherung in unserem Team zu Beginn der Arbeiten war, dass niemand von uns Erfahrungen mit neuronalen Netzwerken hatte. Prof. Dr. Jung brachte bereits beim ersten Projekttreffen das Framework \textit{TensorFlow} ins Gespräch. Um uns mit der Thematik bekannt zu machen vereinbarten wir, dass jedes Projektteammitglied das offizielle Tutorial von \textit{TensorFlow} bearbeiten sollte. \parencite{tensorFlowTutorial}\\
+Nachdem jeder das Tutorial durchgearbeitet hatte entschieden wir, dass nur maximal die Hälfte des Teams sich noch mehr in die Thematik einarbeiten sollte. Alle Anderen würden sich um andere Themen wie die weiter Entwicklung der Spielidee, das User Interface Design und die Entwicklung der Webseite kümmern.\\
+Außerdem bot auch Prof. Dr. Jung seine Hilfe an, in dem er uns eine kleine Einführung in die Thematik gab.
 
 Zu Beginn des Projektes war die Erkennungsrate des Netzes nicht zufriedenstellend und viele offensichtliche gute Zeichnungen wurden nicht erkannt. Selbst die Verbesserung des Netzes erbrachte nicht gleich die ersehnte Steigerung der Erkennungsrate. Bei einer Analyse des Codes wurde dann festgestellt, dass das Ausschneiden der vom Spieler gezeichneten Skizze rechteckig  sein kann. Hinzu kam, dass die Linien aufgrund der Strichstärke und der Art, wie die Skizze ausgeschnitten wurde, unvollständig erfasst wurden. 
 Daher wurde der Code zum Ausschneiden der Skizze dahingegen überarbeitet, dass die Auswahl immer quadratisch ist und die Strichstärke berücksichtigt ist. 
