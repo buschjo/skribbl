@@ -465,10 +465,13 @@ Da wir unser Spiel für mobile Endgeräte und Smartphones im Speziellen konzipie
 Um gewährleisten zu können, dass das Spiel immer optimal im Browser angezeigt wird benutzten wir \textit{Media Queries}. Mit \textit{Media Queries} in CSS kann das Layout angepasst werden für unterschiedliche Bildschirmausrichtungen und Bildschirmgrößen. Wir entschieden uns zwei sogenannte \textit{Breakpoints} zu implementieren. Einen bei einer Bildschirmbreite von mindestens 720px und einen zweiten bei mindestens 1200px. Ab diesen Punkten werden nun je automatisch andere CSS-Regeln angewandt.\\
 Außerdem vereinbarten wir bereits in der Anfangsphase unseres Projektes, dass wir regelmäßige Tests durchführen wollten. Die Tests wurden auf unterschiedlichen Smartphonegrößen durchgeführt und hierbei sollte auch jedesmal das Layout mit überprüft werden.\\
 Besonders schwierig war das Iphone SE mit einem sehr kleinen Display, aber letzten Endes haben wir es auch darauf geschafft den kompletten Spielbildschirm anzuzeigen.
+
 \subsection{Fehlendes Know-How zu neuronalen Netzen}
 Die größte Quelle der Verunsicherung in unserem Team zu Beginn der Arbeiten war, dass niemand von uns Erfahrungen mit neuronalen Netzwerken hatte. Prof. Dr. Jung brachte bereits beim ersten Projekttreffen das Framework \textit{TensorFlow} ins Gespräch. Um uns mit der Thematik bekannt zu machen vereinbarten wir, dass jedes Projektteammitglied das offizielle Tutorial von \textit{TensorFlow} bearbeiten sollte. \parencite{tensorFlowTutorial}\\
 Nachdem jeder das Tutorial durchgearbeitet hatte entschieden wir, dass nur maximal die Hälfte des Teams sich noch mehr in die Thematik einarbeiten sollte. Alle Anderen würden sich um andere Themen wie die weiter Entwicklung der Spielidee, das User Interface Design und die Entwicklung der Webseite kümmern.\\
 Außerdem bot auch Prof. Dr. Jung seine Hilfe an, in dem er uns eine kleine Einführung in die Thematik gab.
+
+\subsection{Probleme und weitere Optimierungsmöglichkeiten beim neuronalen Netz}
 
 Zu Beginn des Projektes war die Erkennungsrate des Netzes nicht zufriedenstellend und viele offensichtliche gute Zeichnungen wurden nicht erkannt. Selbst die Verbesserung des Netzes erbrachte nicht gleich die ersehnte Steigerung der Erkennungsrate. Bei einer Analyse des Codes wurde dann festgestellt, dass das Ausschneiden der vom Spieler gezeichneten Skizze rechteckig  sein kann. Hinzu kam, dass die Linien aufgrund der Strichstärke und der Art, wie die Skizze ausgeschnitten wurde, unvollständig erfasst wurden. 
 Daher wurde der Code zum Ausschneiden der Skizze dahingegen überarbeitet, dass die Auswahl immer quadratisch ist und die Strichstärke berücksichtigt ist. 
