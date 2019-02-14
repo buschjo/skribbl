@@ -382,6 +382,7 @@ Für die Projektarbeit wurden der Datensatz im Form der .npy Dateien verwendet. 
 Im Rahmen dieser Projektarbeit wurden 100 Kategorien mit jeweils 20.000 Bildern für das Modell ausgewählt.
 
 \subsubsection{Aufbau des Netzes}
+\label{sec:AufbauNetz}
 Für die Umsetzung des KNNs wurde die Open-Source-Softwarebibliothek \textit{Tensorflow} verwendet. Zusätzlich wurde \textit{Keras} als API für den Zugriff auf \textit{Tensorflow} in Python 3.0 verwendet. Dabei stellt \textit{Keras} eine \textit{high level} API, die \textit{Tensorflow} im Hintergrund verwendet. \textit{Keras} bietet verschiedene Typen von Layern, Aktivierungsfunktion, vortrainerte Modelle und weitere Funktionen an.
 
 Der Trainingsdatensatz für das Modell besteht aus 100 Klassen mit je 20.000 Skizzen. Dieser wurde aufgeteilt in Trainingsdaten (80\%) und Testdaten (20\%).
@@ -449,6 +450,12 @@ Abbildung \ref{fig:topkcatacc} und \ref{fig:loss} zeigen den Verlauf der Genauig
 
 
 \section{Fazit}
+
+Zu Beginn des Projektes war die Erkennungsrate des Netzes nicht zufriedenstellend und viele offensichtliche gute Zeichnungen wurden nicht erkannt. Selbst die Verbesserung des Netzes erbrachte nicht gleich die ersehnte Steigerung der Erkennungsrate. Bei einer Analyse des Codes wurde dann festgestellt, dass das Ausschneiden der vom Spieler gezeichneten Skizze rechteckig  sein kann. Hinzu kam, dass die Linien aufgrund der Strichstärke und der Art, wie die Skizze ausgeschnitten wurde, unvollständig erfasst wurden. 
+Daher wurde der Code zum Ausschneiden der Skizze dahingegen überarbeitet, dass die Auswahl immer quadratisch ist und die Strichstärke berücksichtigt ist. 
+Diese Überlegung ist im Trainingsdatensatzes begründet. Dieser basiert auf quadratischen Bildern der Größe 28 mal 28 Pixeln. Die Eingänge des Netzes sind dementsprechend Konfiguriert, daher muss die vom Spieler gezeichnete Skizze entsprechend skaliert werden. Wurde nun die vom Spieler gezeichnete Skizze nicht quadratisch ausgeschnitten, kam es zu Verzerrungen, die vermutlich die Erkennung negativ beeinflusst haben. Durch diese Korrektur konnte die Erkennungsrate erheblich verbessert werden. 
+
+Das in dieser Arbeit verwendete Modell eines CNN kann durch weiteren Aufwand evt. noch verbessert werden. Zum einen könnte die Anzahl der Epochen weiter erhöht werden, um zu prüfen ob sich die Genauigkeit noch weiter steigern lässt. Auch ist es denkbar die Lernrate während des Trainings anzupassen um weitere Optimierungen zu erreichen. Wie schon unter \ref{sec:AufbauNetz} erwähnt gibt es viele Parameter die an einem CNN optimiert werden können und lassen das Thema entsprechend komplex werden. 
 
 \pagebreak
 
